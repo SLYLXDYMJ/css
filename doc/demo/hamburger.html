@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../dist/css/jason-responsive.min.css">
+  <style>
+    .hamburger{
+      display: block;
+      margin:25px auto;
+    }
+    .hamburger.active>div,.hamburger.active>div:after,.hamburger.active>div:before{
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="hamburger hamburger-1">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-2">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-3">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-4">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-5">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-6">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-7">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-8">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-9">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-10">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-11">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-12">
+  <div></div>
+</div>
+
+<div class="hamburger hamburger-13">
+  <div></div>
+</div>
+
+
+<script src="../../src/lib/jquery-1.11.3.min.js"></script>
+<script>
+  var $hamburgers=$('.hamburger');
+  $hamburgers.click(function(){
+    $(this).toggleClass('active');
+  })
+</script>
+</body>
+</html>
