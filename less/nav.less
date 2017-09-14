@@ -1,0 +1,60 @@
+
+//大屏幕状态下
+.nav[data-plugin="nav"]{
+  height:100%;
+  .transition(all .5s);
+  &:extend(.clearfix all);
+  &.active{
+    background-color:rgba(0,0,0,.6);
+  }
+
+  //文字一行显示
+  a{
+    display: block;
+    white-space: nowrap;
+  }
+  //一级导航
+  >ul{
+    display: table;
+    height:100%;
+  }
+  >ul>li{
+    height:100%;
+    vertical-align: middle;
+    display: table-cell;
+  }
+
+  //小屏幕状态下
+  @media screen and (max-width: @screen-sm-max) {
+    &{
+
+      position: absolute;
+      z-index: 100;
+      width: 100%;
+      height:auto;
+      top:100%;
+      left:0;
+      text-align: center;
+
+      >ul,>ul>li{
+        height:auto;
+        display: block;
+      }
+
+      ul{
+        display: none;
+        background-color:#fff;
+      }
+
+      a{
+        padding-top:20px;
+        padding-bottom:20px;
+        margin:0;
+      }
+
+    }
+  }
+
+}
+
+

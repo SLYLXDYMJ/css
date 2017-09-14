@@ -1,0 +1,131 @@
+
+//设置盒子模型
+*,*:after,*:before{box-sizing: border-box}
+
+html{
+  font-family: "Microsoft YaHei",sans-serif;
+  //防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
+  //苹果IOS设备调整后会自动调整文字的大小
+  //按照苹果的意图是为了提升用户体验
+  //比如竖屏状态下是14px
+  //转换为横屏时就变成了20px
+  //把text-size-adjust:100%就不会调整字体大小了
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+//设置背景色，line-height:1
+body{
+  background-color:#fff;
+  line-height: 1;
+  font-size:@bodyFontSize;
+  color:#000;
+  margin:0;
+}
+
+//h5元素
+//修复 IE 8/9，HTML5新元素不能正确显示的问题，定义为block的元素
+//修复 IE 10/11，details 和 summary 定义为 block 的元素
+//修复 IE 11，main定义为 block 的元素
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+//边距取消
+h1,h2,h3,h4,h5,h6,dl,dd,p{
+  margin:0;
+}
+
+//字体大小继承
+h1,h2,h3,h4,h5,h6{
+  font-size:inherit;
+  font-weight:normal;
+}
+
+//列表样式取消，边距取消，内边距取消
+ul,ol{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+//取消内边框
+input,textarea,button,a{
+  outline: none;
+}
+
+//a元素取消下划线，颜色继承
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+//点击样式的按钮
+button,a{
+  cursor: pointer;
+}
+
+//过渡
+button,a,input,textarea{
+  .transition(all @transitionTime);
+}
+
+//IE下的图片的边框
+img{
+  //IE
+  border:none;
+}
+
+//修正所有浏览器中颜色不继承的问题
+//修正所有浏览器中字体不继承的问题
+//修正 Firefox 3+， Safari5 和 Chrome 中外边距不同的问题
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+//表单元素border颜色改变
+input[type="text"],input[type="password"],textarea{
+  border:@inputBorder;
+}
+
+//输入框的左右padding增加
+input[type="text"],input[type="password"]{
+  padding-left:@inputPaddingLR;
+  padding-right:@inputPaddingLR;
+}
+
+//不让拉伸，溢出滚动
+textarea{
+  overflow: auto;
+  resize: none;
+  padding:@textareaPadding;
+}
+
+//去掉在iphone下的表单按钮默认样式
+input[type="button"], input[type="submit"], input[type="reset"],textarea {
+  -webkit-appearance: none;
+  .border-radius(none);
+}
+
+//IE10+输出框后面的小叉号消除
+input::-ms-clear {
+  display: none;
+}

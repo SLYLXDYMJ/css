@@ -1,0 +1,142 @@
+
+/****************************** CSS Reset 开始 **************************/
+
+//页面默认的字体大小
+@bodyFontSize:            14px;
+
+//按钮的过渡时间
+@transitionTime:          .2s;
+
+//输入框和textarea的边框
+@inputBorder:             1px solid #aeaeae;
+
+//输入框的左右padding
+@inputPaddingLR:          5px;
+
+//textarea的上下左右padding
+@textareaPadding:         10px;
+
+/****************************** CSS Reset 结束 **************************/
+
+
+
+
+
+
+
+
+
+/***************************** font awesome 开始 ******************************/
+
+//使用的 font aswesome的版本
+@fa-version:              "4.6.3";
+
+//字体文件的路径
+@fa-font-path:            "../font";
+
+/***************************** font awesome 开始 ******************************/
+
+
+
+
+
+
+
+
+
+/***************************** 栅格布局 开始 ***************************/
+
+//不同尺寸屏幕标准的定义
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+//.container的槽宽 （padding-left+padding-right）
+@grid-gutter-width:         20px;
+
+//不同尺寸屏幕下.container的宽度
+@container-tablet:             (720px + @grid-gutter-width);
+@container-sm:                 @container-tablet;
+
+@container-desktop:            (940px + @grid-gutter-width);
+@container-md:                 @container-desktop;
+
+@container-large-desktop:      (1140px + @grid-gutter-width);
+@container-lg:                 @container-large-desktop;
+
+//一行的列数
+@grid-columns:              12;
+
+/***************************** 栅格布局 结束 ***************************/
+
+
+
+
+
+/***************************** Button 开始 *****************************/
+
+//.btn按钮的字体大小
+@btnFontSize:             14px;
+
+/***************************** Button 结束 *****************************/
+
+
+
+
+
+
+
+/************************** 实用工具类开始 ******************************/
+
+//最大的行高
+@maxLh:                   200;
+
+//最大的字体大小
+@maxFontSize:             100px;
+
+//最大的外边距
+@maxMargin:               100px;
+
+//最大的内边距
+@maxPadding:              100px;
+
+/************************** 实用工具类结束 ******************************/
+
+
+
+
+
+
+
+
+
+/**************************** 汉堡包按钮 开始****************************/
+
+//每一条线的宽度
+@hamburger-layer-width                     : 40px ;
+//每一条线的高度
+@hamburger-layer-height                    : 4px ;
+//每一条线的高度间隔
+@hamburger-layer-spacing                   : 6px ;
+//线的颜色
+@hamburger-layer-color                     : #000 ;
+//线的圆角效果
+@hamburger-layer-border-radius             : 4px ;
+
+/**************************** 汉堡包按钮 结束****************************/

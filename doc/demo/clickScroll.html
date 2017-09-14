@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>名字</title>
+  <link rel="stylesheet" href="../../dist/css/jason-responsive.css">
+  <style>
+    .top{
+      position: absolute;
+      bottom:0;left:0;
+    }
+    .selector{
+      position: absolute;
+      top:50%;
+    }
+  </style>
+</head>
+<body class="relative" style="height:10000px;">
+
+  <!--必须属性-->
+  <!--data-plugin="clickScroll"-->
+  <!--data-position="top/bottom/数值/选择器"-->
+  <!--data-time="时间默认为0"-->
+
+<button class="btn top" data-plugin="clickScroll" data-position="top" data-time="1000">top</button>
+<button class="btn" data-plugin="clickScroll" data-position="bottom" data-time="1000">bottom</button>
+<button class="btn" data-plugin="clickScroll" data-position=".selector" data-time="1000">跳转到元素</button>
+
+<div class="selector">选择器</div>
+
+<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../../js/$win.js"></script>
+<script type="text/javascript" src="../../js/clickScroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+.clearfix(){
+  &:after,&:before{
+    content:"";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+
+//覆盖父元素的子元素
+.mark-cover(){
+  // Common styles for all sizes of grid columns, widths 1-12
+  .cover(@index) { // initial
+    @item: ~".shadow-@{index}";
+    .cover((@index + 1), @item);
+  }
+  .cover(@index, @list) when (@index < 10) { // general; "=<" isn't a typo
+    @item: ~".shadow-@{index}";
+    .cover((@index + 1), ~"@{list}, @{item}");
+  }
+  .cover(@index, @list) when (@index = 10) { // terminal
+    @{list},.cover {
+      position: absolute;
+      top:0;right:0;bottom:0;left:0;
+    }
+  }
+  .cover(1); // kickstart it
+}
+.mark-shadow(@index:9) when (@index>0){
+  .shadow-@{index}{
+    background-color:rgba(0,0,0,@index*.1)
+  }
+  .mark-shadow(@index - 1);
+}
+
+//层叠性设置
+.mark-z-index(@index:10) when (@index>=0){
+  .z-index-@{index}{
+    z-index: @index;
+  }
+  .mark-z-index(@index - 1);
+}
+
+

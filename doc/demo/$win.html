@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>window.$win</title>
+  <link rel="stylesheet" href="../../dist/css/jason-responsive.css">
+</head>
+<body>
+
+<h1 class="fs-xs-50 mb-xs-20">点击完每个按钮会打印控制台，请查看控制台</h1>
+
+<h2 class="fs-xs-40 mb-xs-20">页面缩放，页面滚动都会刷新$win</h2>
+
+<h3 class="fs-xs-30 mb-xs-20">想手动刷新 调用 $win.update方法</h3>
+
+<h4 class="fs-xs-30 mb-xs-20">手动刷新的demo例子 ↓ </h4>
+
+<button id="add">点击添加内容</button>
+
+<button id="update">刷新$win（会执行window.$win.update方法 刷新数据）</button>
+
+<div id="p" class="mt-xs-20">
+  内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+</div>
+
+<script>
+  window.$win='我是旧的$win（防止命名冲突）';
+</script>
+<script src="../../lib/jquery-1.11.3.min.js"></script>
+<script src="../../js/$win.js"></script>
+<script>
+  $('#add').click(function(){
+    var html=$('#p').html();
+    html+=html;
+    $('#p').html(html);
+  });
+  $('#update').click(function(){
+    window.$win.update();
+  });
+  $('#add,#update').click(function(){
+    console.dir($win);
+  });
+</script>
+</body>
+</html>

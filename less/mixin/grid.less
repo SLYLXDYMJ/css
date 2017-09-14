@@ -1,0 +1,177 @@
+
+//响应式 开始
+
+.container-fixed(@gutter: @grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  floor((@gutter / 2));
+  padding-right: ceil((@gutter / 2));
+  height:100%;
+  &:extend(.clearfix all);
+}
+
+.make-row() {
+  &:extend(.clearfix all);
+}
+
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) { // initial
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list},.col-lg,.col-md,.col-sm,.col-xs {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.float-grid-columns(@class) {
+  .col(@index) { // initial
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list},.col-@{class}{
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-@{class}-@{index} {
+    width: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
+  .col-@{class}-push-@{index} {
+    left: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
+  .col-@{class}-push-0 {
+    left: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
+  .col-@{class}-pull-@{index} {
+    right: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
+  .col-@{class}-pull-0 {
+    right: auto;
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = offset) {
+  .col-@{class}-offset-@{index} {
+    margin-left: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @class, @type) when (@type = space){
+  @space:@index*5;
+  .row-@{class}-@{space}{
+    margin-left:@space*-1px;
+    margin-right:@space*-1px;
+    >div{
+      padding-left:@space*1px;
+      padding-right:@space*1px;
+    }
+  }
+}
+
+.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
+  // next iteration
+  .loop-grid-columns((@index - 1), @class, @type);
+}
+
+.make-grid(@class) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@grid-columns, @class, width);
+  .loop-grid-columns(@grid-columns, @class, pull);
+  .loop-grid-columns(@grid-columns, @class, push);
+  .loop-grid-columns(@grid-columns, @class, offset);
+  .loop-grid-columns(@grid-columns, @class, space);
+}
+
+//响应式 结束
+
+//定宽 开始
+
+.wrapper(){
+  margin-right: auto;
+  margin-left: auto;
+  height:100%;
+  &:extend(.clearfix all);
+}
+
+.wrapper-fluid(){
+  &:extend(.clearfix all);
+}
+
+//定宽列的基本属性
+.make-grid-columns-fixed(){
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) { // initial
+    @item: ~".col-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item: ~".col-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list},.col {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+//定宽列的宽度
+.calc-grid-column-fixed(@index,@type) when (@type = width) and (@index > 0) {
+  .col-@{index} {
+    width: percentage((@index / @grid-columns));
+  }
+}
+//定宽列的间距
+.calc-grid-column-fixed(@index,@type) when (@type = space) and (@index > 0 ){
+  @space:@index*5;
+  .row-@{space}{
+    margin-left:@space*-1px;
+    margin-right:@space*-1px;
+    >div{
+      padding-left:@space*1px;
+      padding-right:@space*1px;
+    }
+  }
+}
+//用于定宽列的循环执行
+.loop-grid-columns-fixed(@index,@type) when (@index >= 0) {
+  .calc-grid-column-fixed(@index,@type);
+  .loop-grid-columns-fixed((@index - 1),@type);
+}
+//定宽栅格的接口
+.make-grid-fixed() {
+  .loop-grid-columns-fixed(@grid-columns,width);
+  .loop-grid-columns-fixed(@grid-columns,space);
+}
+
+//定宽结束

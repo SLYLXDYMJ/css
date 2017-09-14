@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>等待图片加载完成后，执行的函数</title>
+  <link rel="stylesheet" href="../../dist/css/jason-responsive.css">
+  <style>
+    img{opacity: 0}
+  </style>
+</head>
+<body>
+
+<img src="../../test/image/1.jpg" alt="">
+<img src="../../test/image/2.jpg" alt="">
+<img src="../../test/image/3.jpg" alt="">
+<img src="../../test/image/4.jpg" alt="">
+
+<script type="text/javascript" src="../../lib/jquery-1.11.3.min.js"></script>
+<script>
+  $.fn.imgLoadEnd=2;
+</script>
+<script type="text/javascript" src="../../js/imgLoadFunction.js"></script>
+<script>
+  $('img').imgLoadEnd(function(){
+    alert('加载完成了');
+  });
+</script>
+</body>
+</html>
