@@ -1,0 +1,50 @@
+/* =====================================================
+    模拟下拉菜单
+   =====================================================*/
+
+.select{
+  display: block;
+  width: @select-width;
+  height:@select-height;
+  line-height:@select-height;
+  border:1px solid @select-border-color;
+  font-size:@select-font-size;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  background-color:#fff;
+
+  label{
+    display: block;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ul,ol{
+    position: absolute;
+    top:100%;
+    left:-1px;
+    width: @select-width;
+    border:1px solid @select-border-color;
+    display: none;
+    background-color:#fff;
+  }
+
+  li+li{
+    border-top:1px solid @select-border-color;
+  }
+
+  a{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  input,select{
+    display: none;
+  }
+
+}

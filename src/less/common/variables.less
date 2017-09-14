@@ -1,0 +1,192 @@
+/* =========================================================
+   reset
+   ========================================================= */
+
+/**
+ * 网页默认字体 和 行高
+ */
+@default-font-size:              14px;
+@default-line-height:            1;
+
+/**
+ * 超链接 默认过渡 时间
+ */
+@link-transition-time:          .2s;
+
+/**
+ * 输入框 初始化的 宽度，高度，左右padding
+ */
+@textInput-width:               100px;
+@textInput-height:              30px;
+@textInput-padding:             5px;
+
+/**
+ * 输入栏 初始化的 宽度，高度，左右padding
+ */
+@textarea-width:                200px;
+@textarea-height:               60px;
+@textarea-padding:              10px;
+
+
+
+
+
+/* =========================================================
+   btn
+   ========================================================= */
+
+/**
+ * 按钮的字体大小
+ */
+@btn-font-size:                 14px;
+
+/**
+ * 按钮 的默认颜色
+ */
+@btn-default-background-color:  #8ac7db;
+@btn-default-color:             #fff;
+
+/**
+ * 动画过度标准 时间 , 留白
+ */
+@btn-transition-padding:        8px 25px;
+@btn-transition-time-short:     .3s;
+@btn-transition-time-middle:    .6s;
+@btn-transition-time-long:      .9s;
+@btn-transition-time-default:   @btn-transition-time-middle;
+
+/**
+ * 按钮 slide 滑动 效果
+ */
+@btn-slide-ttf:                 cubic-bezier(.77,0,.18,1);
+@btn-slide-distance:            20px;
+@btn-slide-delay:               .1s;
+@btn-slide-shadow:              rgba(0,0,0,.3);
+@btn-slide-active-shadow:       rgba(0,0,0,.45);
+
+/**
+ * 按钮 line动画 效果
+ */
+@btn-line-color:                rgba(0,0,0,.5);
+
+
+
+
+/* =========================================================
+   layout
+   ========================================================= */
+
+/**
+ * 定宽库 各布局属性的最大值
+ */
+@fixed-margin-max:              100px;
+@fixed-padding-max:             100px;
+@fixed-fs-max:                  100px;
+@fixed-lh-max:                  200%;
+
+/**
+ * 响应式库 各布局属性的最大值
+ */
+@responsive-margin-max:         100px;
+@responsive-padding-max:        100px;
+@responsive-fs-max:             100px;
+@responsive-lh-max:             200%;
+
+
+
+
+/* =========================================================
+   grid
+   ========================================================= */
+
+/**
+ * 定宽库 栅格系统
+ * 行中列间距的最大值
+ * 一行中的列数
+ */
+@fixed-container-width:         1200px;
+@fixed-max-row-space:           100px;
+@fixed-columns:                 12;
+
+
+
+/**
+ * 响应式库 栅格系统
+ * 不同尺寸屏幕标准的定义
+ * .container 的槽宽 和 宽度 标准
+ * 行中列间距的最大值
+ * 一行中的列数
+ */
+
+@screen-sm:                     768px;
+@screen-sm-min:                 @screen-sm;
+@screen-tablet:                 @screen-sm-min;
+
+@screen-md:                     992px;
+@screen-md-min:                 @screen-md;
+@screen-desktop:                @screen-md-min;
+
+@screen-lg:                     1200px;
+@screen-lg-min:                 @screen-lg;
+@screen-lg-desktop:             @screen-lg-min;
+
+@screen-xs-max:                 (@screen-sm-min - 1);
+@screen-sm-max:                 (@screen-md-min - 1);
+@screen-md-max:                 (@screen-lg-min - 1);
+
+@grid-gutter-width:             20px;
+@responsive-grid-max-row-space: 100px;
+
+@container-tablet:              (720px + @grid-gutter-width);
+@container-sm:                  @container-tablet;
+
+@container-desktop:             (940px + @grid-gutter-width);
+@container-md:                  @container-desktop;
+
+@container-large-desktop:       (1140px + @grid-gutter-width);
+@container-lg:                  @container-large-desktop;
+
+@grid-columns:                  12;
+
+
+/* =========================================================
+   select
+   ========================================================= */
+
+/**
+ * 模拟下拉菜单 的 宽度 高度 边框颜色 字体大小
+ */
+@select-height:                 30px;
+@select-width:                  100px;
+@select-border-color:           #ccc;
+@select-font-size:              14px;
+
+
+
+
+
+/* =========================================================
+   responsive-nav
+   ========================================================= */
+
+// 响应式导航栏 默认 字体大小
+@responsive-nav-font-size:       16px;
+
+// 响应式导航栏 大屏幕下的左右margin
+@responsive-nav-b-margin:        10px;
+
+// 响应式导航栏 小屏幕下的z-index
+@responsive-nav-s-z-index:       100;
+
+// 响应式导航栏 小屏幕下的上下margin
+@responsive-nav-s-margin:        10px;
+
+// 响应式导航栏 过度时间
+@responsive-nav-s-time:          500ms;
+
+//响应式导航栏 小屏幕遮罩颜色
+@responsive-nav-s-bg:            rgba(0,0,0,.4);
+
+//响应式导航栏 小屏幕下字体颜色
+@responsive-nav-s-color:         #fff;
+

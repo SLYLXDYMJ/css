@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<img class="imgs" src="http://www.beargrylls.com/static/media/img/home/header/03.png" alt="" style="max-width: 100%">
+
+
+<script src="../../src/lib/jquery-1.11.3.min.js"></script>
+<script src="../../src/js/jason.utility.js"></script>
+<script>
+
+  // 创建 jason 对象
+  var jason=$.jason;
+
+  // 随机一个指定范围的数字
+  // jason.random(最小值，最大值，小数位数);
+  console.log('随机数为： '+jason.random(0,5,1));
+
+  // 打乱一个数数组
+  // jason.arrMess(arr);
+  console.log('打乱后的数组为： '+jason.arrMess([1,2,3,4,5,6,7,8]));
+
+  // 等待图片们都加载完成后，才执行的函数
+  jason.imgLoadEnd('.imgs',function(){
+    alert('图片们都加载完成了');
+  });
+
+  // 判断是否是一个数组
+  console.log(jason.isArray([]));
+
+
+</script>
+</body>
+</html>

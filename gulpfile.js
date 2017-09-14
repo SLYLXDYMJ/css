@@ -1,52 +1,72 @@
-// gulp
-let gulp=require('gulp');
-// 重命名
-let rename=require('gulp-rename');
-// js编译错误提示
-let jsHint=require('gulp-jshint');
-// JS代码合并
-let jsConcat=require('gulp-concat');
-// JS代码压缩
-let jsCompress=require('gulp-uglify');
-// CSS代码压缩
-let cssCompress=require('gulp-cssnano');
-// Less编译
-let less=require('gulp-less');
-// 给src中的文件排序
-let order=require('gulp-order');
+// 依赖导入
+const gulp=require('gulp');
+const $=require('gulp-load-plugins')();
 
-gulp.task('default',['css','js','watch']);
+// 本地服务器选项
+const connectOptions={
+  root:'./',
+  port:8888,
+};
 
-// LESS编译生成，压缩
-gulp.task('css',function(){
-  gulp.src('less/jason-*.less')
-    .pipe(less())
-    .pipe(gulp.dest('dist/css'))
-    .pipe(cssCompress())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/css'));
+// 各个文件
+const files={
+	less:[
+		'./src/less/jason-fixed.less',
+		'./src/less/jason-responsive.less'
+	],
+	js:'./src/js/*.js'
+};
+
+// 输出路径
+const exportPath={
+	distCss:'./dist/css',
+	distJs:'./dist/js'
+};
+
+gulp.task('build',['less','js'],function () {
+  console.log('========== 构建成功 ==========');
 });
 
-// JS整合，压缩
+gulp.task('less',function(){
+  gulp.src(files.less)
+    .pipe($.plumber())
+    .pipe($.less())
+    .pipe($.autoprefixer({
+      browsers:'>0%',
+      cascade:true
+    }))
+    .pipe(gulp.dest(exportPath.distCss))
+    .pipe($.minifyCss())
+    .pipe($.rename({suffix: '.min'}))
+    .pipe(gulp.dest(exportPath.distCss));
+});
+
 gulp.task('js',function(){
-  gulp.src('js/*.js')
-    .pipe(order([
-      'haveJq.js',
-      '$win.js',
+  gulp.src(files.js)
+    .pipe($.plumber())
+    .pipe($.jshint())
+    .pipe($.order([
+      'jason.haveJq.js',
+      'jason.win.js',
       '*.js'
     ]))
-    .pipe(jsConcat('jason.js'))
-    .pipe(jsHint())
-    .pipe(jsHint.reporter('jshint-stylish'))
-    .pipe(gulp.dest('dist/js'))
-    .pipe(jsCompress())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/js'));
+    .pipe($.concat('jason.js'))
+    .pipe($.babel({
+      presets: ['es2015']
+    }))
+    .pipe(gulp.dest(exportPath.distJs))
+    .pipe($.uglify())
+    .pipe($.rename({suffix: '.min'}))
+    .pipe(gulp.dest(exportPath.distJs));
 });
 
-// 监听
+gulp.task('dev',['build','connect','watch']);
+
+gulp.task('connect',function(){
+  $.connect.server(connectOptions);
+});
+
 gulp.task('watch',function(){
-  gulp.watch('less/*.less',['css']);
-  gulp.watch('less/mixin/*.less',['css']);
-  gulp.watch('js/*.js',['js']);
+  gulp.watch('./src/**/*.less',['less']);
+  gulp.watch('./src/**/*.js',['js']);
 });

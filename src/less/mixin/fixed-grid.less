@@ -1,0 +1,67 @@
+/**
+ * 定宽库 行中列间距
+ */
+.fixed-grid-row-space(){
+
+  .row-space(@space) when (@space<=@fixed-max-row-space){
+    @index:unit(@space);
+    .row-@{index}{
+      margin-left:-@space / 2;
+      margin-right:-@space / 2;
+      >div{
+        padding-left:@space / 2;
+        padding-right:@space / 2;
+      }
+    }
+
+    .row-space(@space + 5px);
+  }
+
+  .row-space(5px);
+
+}
+
+/**
+ * 定宽库 列属性
+ */
+.fixed-grid-col-attr(){
+  .col(@index) {
+    @item: ~".col-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) {
+    @item: ~".col-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) {
+    @{list} {
+      position: relative;
+      min-height: 1px;
+      float: left;
+    }
+  }
+  .col(1);
+}
+
+/**
+ * 定宽库 列宽度
+ */
+.fixed-grid-col-width(){
+
+  .col-width(@index) when (@index>0) {
+    .col-@{index}{
+      width:percentage((@index / @grid-columns));
+    }
+    .col-width(@index - 1);
+  }
+
+  .col-width(@fixed-columns);
+
+}
+
+/**
+ * 定宽库 列接口
+ */
+.fixed-grid-col(){
+  .fixed-grid-col-width();
+};

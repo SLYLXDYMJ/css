@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    a.active{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+  </div>
+
+  <div class="content">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="content">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+<script src="../../src/lib/jquery-1.11.3.min.js"></script>
+<script src="../../src/js/jason.tab.js"></script>
+<script>
+
+// 归为 和 轮播 功能 同时只能有一个
+
+// API
+// 注意: 接口调用的跳转，不管你设没设置归为，他永远不会归为，只有事件触发的才会归为
+
+//移动到指定的元素 注意 index 不是下标，是第几个
+//$('#nav').tab(index,false)
+
+
+//  参数默认值
+//  注意：first参数 > 页面上的active
+
+// 切换的小组成员
+//  groupSelector:null,
+//  触发事件
+//  event:'click',
+//  触发事件后是否等待一会
+//  wait:false,
+//  是否自动切换
+//  auto:false,
+//  无操作的时，是否归为
+//  isReturn:false,
+//  初始激活第几个元素
+//  first:1,
+//  回调函数（参数为 索引值 ，如果是刚开始，before为undefined）
+//  before:null,
+//  after:null,
+
+  $('#nav').tab({
+    // 切换的小组成员
+    groupSelector:'.content',
+    // 触发事件
+    event:'click',
+    // 触发事件后是否等待一会
+    wait:1000,
+    // 是否自动切换
+    autoplay:2000,
+    // 无操作的时，是否归为
+//    goBack:1000,
+    // 初始激活元素
+    first:3,
+    // 回调函数
+    before:function(i){
+      console.log(i);
+    },
+    after:function(i){
+      console.log(i);
+    }
+  });
+</script>
+</body>
+</html>

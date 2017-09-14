@@ -1,728 +1,670 @@
-/**
- * Created by Administrator on 2017/7/9.
- */
+'use strict';
 
-if(!window.jQuery){
-  throw new Error('jason依赖jQuery，请导入 jquery-1.11.3 及以上版本');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+if (window.jQuery === undefined) {
+  throw new Error('请先导入jquery');
 }
-/**
- * Created by Administrator on 2017/7/9.
- */
+(function ($) {
 
-(function($,window){
+  'use strict';
 
-  "use strict";
-  
-  var old=window.$win&&window.$win;
+  // 记录body
 
-  var $win={
-    //不包括滚动条的页面宽度
-    innerWidth:null,
-    // 不包括滚动条的页面高度
-    innerHeight:null,
-    // 包括滚动条的页面宽度
-    outWidth:null,
-    // 包括滚动条的页面高度
-    outHeight:null,
-    // 是否是电脑屏幕
-    isPc:null,
-    // 是否是平板屏幕
-    isPad:null,
-    // 是否是手机屏幕
-    isPhone:null,
-    // 滚动条的宽度
-    scrollWidth:null,
-    // 页面/滚动条的总高度
-    bodyHeight:null,
-    // 滚动条的当前位置
-    scrollPosition:{
+  var $body = $('body');
+
+  // 扩展jQuery
+  $.extend({
+    $win: {
+      //不包括滚动条的页面宽度
+      innerWidth: null,
+      // 不包括滚动条的页面高度
+      innerHeight: null,
+      // 包括滚动条的页面宽度
+      outWidth: null,
+      // 包括滚动条的页面高度
+      outHeight: null,
+      // 滚动条的宽度
+      scrollWidth: null,
+      // 页面/滚动条的总高度
+      bodyHeight: null,
       // 当前视口顶部距离页面顶部的距离
-      top:null,
+      scrollPositionTop: null,
       // 当前视口底部距离页面顶部的距离
-      bottom:null
-    },
-    // 刷新
-    update:function(){
-      resize();
-      scroll();
-    }
-  };
+      scrollPositionBottom: null,
+      // 判断是否是手机用户
+      isPhone: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+      // 强制更新视图
+      update: function update() {
+        //视口顶部，距离页面顶部的距离
+        this.scrollPositionTop = Math.max($body.scrollTop(), document.documentElement.scrollTop);
+        // 视口底部，距离页面顶部的距离
+        this.scrollPositionBottom = Math.max($body.scrollTop(), document.documentElement.scrollTop) + document.documentElement.clientHeight;
 
-  var resize=(function resize(){
-    //视口的宽度 排除滚动条 加上滚动条的 直接用innerWidth
-    $win.innerWidth=document.documentElement.clientWidth;
-    //视口的高度，除去滚动条的
-    $win.innerHeight=document.documentElement.clientHeight;
-    // 页面的总高度
-    $win.bodyHeight=parseFloat($('body').outerHeight()) + parseFloat($('body').css('marginTop')) + parseFloat($('body').css('marginBottom'));
-    //注意：
-    //IE 6 7 8 没有innerWidth和innerHeight
-    //IE9已经全都支持了
-    //如果是IE 6 7 8那么会报错，影响JS的运行
-    try{
-      //游览器包括滚动条的宽度
-      $win.outWidth=innerWidth;
-      //游览器包括滚动条的高度
-      $win.outHeight=innerHeight;
-      //Y轴滚动条的宽度
-      $win.scrollWidth=innerWidth-$(window).width();
-      //是否是电脑屏幕
-      $win.isPc=innerWidth>=992?true:false;
-      //是否是平板屏幕
-      $win.isPad=(innerWidth>=768&&innerWidth<992)?true:false;
-      //是否是手机
-      $win.isPhone=innerWidth<768?true:false;
-    }catch(err){
-      // 弹出警告
-      console.log("您可能在用低版本IE访问本页面，$win的部分属性将受到影响不能正常读取");
-    }
-    return resize;
-  })();
-  var scroll=(function scroll(){
-    //视口顶部，距离页面顶部的距离
-    $win.scrollPosition.top=
-      Math.max($('body').scrollTop(),document.documentElement.scrollTop);
-    // 视口底部，距离页面顶部的距离
-    $win.scrollPosition.bottom=$win.scrollPosition.top+$win.innerHeight;
-
-    return scroll;
-
-  })();
-
-  $(window).on('resize',resize);
-  $(window).on('scroll',scroll);
-
-  window.$win=$win;
-
-  // 如果冲突
-  if(old){
-    $win.old=old;
-  }
-
-}(window.jQuery,window));
-
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-(function($){
-
-  "use strict";
-
-  // 定义构造函数
-  var ClickScroll=function(elem){
-    $(elem).on('click',this.scroll);
-  };
-
-  ClickScroll.selector='[data-plugin="clickScroll"]';
-
-  ClickScroll.prototype.scroll=function(){
-    var $this=$(this);
-    var position=$this.data('position');
-    var time=$this.data('time')||0;
-    var top=null;
-    if(parseFloat(position)){
-      top=parseFloat(position);
-    }else if(position.toLowerCase()==='top'){
-      top=0;
-    }else if(position.toLowerCase()==='bottom'){
-      top=window.$win.bodyHeight;
-    }else{
-      top=$(position).offset().top;
-    }
-    $('html,body').animate({
-      scrollTop:top
-    },time);
-  };
-
-  // 依附jquery
-  var plugin=function(){
-    return this.each(function(i,elem){
-      var $this=$(this);
-      var data=$this.data('jason.clickScroll');
-      if(!data){
-        $this.data('jason.modal',(data=new ClickScroll(this)));
+        //视口的宽度 排除滚动条 加上滚动条的 直接用innerWidth
+        this.innerWidth = document.documentElement.clientWidth;
+        //视口的高度，除去滚动条的
+        this.innerHeight = document.documentElement.clientHeight;
+        // 页面的总高度
+        this.bodyHeight = parseFloat($body.outerHeight()) + parseFloat($body.css('marginTop')) + parseFloat($body.css('marginBottom'));
+        //注意：
+        //IE 6 7 8 没有innerWidth和innerHeight
+        //IE9已经全都支持了
+        //如果是IE 6 7 8那么会报错，影响JS的运行
+        try {
+          //游览器包括滚动条的宽度
+          this.outWidth = innerWidth;
+          //游览器包括滚动条的高度
+          this.outHeight = innerHeight;
+          //Y轴滚动条的宽度
+          this.scrollWidth = innerWidth - $(window).width();
+        } catch (err) {
+          // 弹出警告
+          console.log("您可能在用低版本IE访问本页面，$win的部分属性将受到影响不能正常读取");
+        }
       }
-    });
-  };
-
-  // 判断是否命名冲突
-  var old=$.fn.clickScroll;
-
-  $.fn.clickScroll=plugin;
-
-  if(old){
-    $.fn.clickScroll.old=old;
-    $.fn.clickScroll.noConflict=function(){
-      $.fn.clickScroll=$.fn.clickScroll.old;
-      return this;
-    };
-  }
-
-  // 智能初始化
-  $(function(){
-    var $clickScroll=$(ClickScroll.selector);
-    plugin.call($clickScroll);
+    }
   });
 
-}(window.jQuery));
-/**
- * Created by Administrator on 2017/7/9.
- */
+  $.$win.update();
+  $(window).resize(function () {
+    $.$win.update();
+  });
+  $(window).scroll(function () {
+    $.$win.update();
+  });
+})(window.jQuery);
+(function ($) {
 
-(function($){
+  'use strict';
 
-  "use strict";
+  var canIe = $('html').data('jason');
+  var nonsupport = false;
 
-  var Dropdown=function($elem,time,group,type){
-    this.$elem=$elem;
-    this.$text=$elem.children('span');
-    this.$list=$elem.children('ul,ol');
-    this.time=time;
-    this.$dataElem=$elem.children('input,select');
-    this.group=group||null;
-    this.type=type||null;
-    $elem.on('click',this.toggle);
-    if(type==='select'){
-      this.$list.on('click','a',$.proxy(this.bindData,this));
-    }
-  };
+  switch (canIe) {
+    case 'ie678':
+      {
+        if (document.all && !document.addEventListener) {
+          nonsupport = true;
+        }
+        break;
+      }
+    case 'ie6789':
+      {
+        if (document.all && !window.atob) {
+          nonsupport = true;
+        }
+        break;
+      }
+  }
 
-  Dropdown.selector='[data-plugin="dropdown"]';
+  if (nonsupport) {
+    $('body').html('<div class="ie678"><div><h2>您的游览器不支持游览该网页</h2> <h3>请升级</h3> <a class="btn" href="http://se.360.cn/">点击升级</a></div></div>');
+  }
+})(window.jQuery);
 
-  Dropdown.prototype.toggle=function(){
-    var data=$(this).data('jason.dropdown');
-    if(data.group){
-      data.sameGroupUp(data.$elem,data.group);
-    }
-    data.$elem.toggleClass('active');
-    data.$list.stop().slideToggle(data.time);
-  };
+(function ($) {
 
-  Dropdown.prototype.sameGroupUp=function($notElem,group){
-    var $dropdown=$(Dropdown.selector).not($notElem);
-    $dropdown.each(function(i,elem){
-      var data=$(elem).data('jason.dropdown');
-      if(data.group===group){
-        data.$elem.removeClass('active');
-        data.$list.stop().slideUp(data.time);
+  'use strict';
+})(window.jQuery);
+(function ($) {
+
+  // 打开导航的名字
+  var openClass = 'responsive-nav-open';
+
+  $.fn.responsiveNav = function () {
+
+    this.each(function (i, nav) {
+      var $nav = $(nav),
+          $navList = $nav.children('ul'),
+          api = $nav.data('jason.responsive-nav');
+
+      if (!api) {
+        $nav.data('jason.responsive-nav', new Nav($nav, $navList));
       }
     });
   };
 
-  Dropdown.prototype.bindData=function(e){
-    e.preventDefault();
-    var $aElem=$(e.target);
-    // 存放数据
-    var value=null;
-    // 判断是input还是select标签
-    var nodeName=this.$dataElem.get(0).nodeName;
-    if(nodeName==='INPUT'){
-      value=$aElem.data('value');
-    }else if(nodeName==='SELECT'){
-      value=this.$dataElem.children('option').eq(this.$list.find('a').index($aElem)).val();
-    }
-    this.$text.html($aElem.html());
-    this.$dataElem.val(value);
-  };
+  var Nav = function () {
+    function Nav($nav, $navList) {
+      _classCallCheck(this, Nav);
 
-  $(document).on('click',function(e){
-    var $target=$(e.target);
-    if($target.closest(Dropdown.selector).length===0){
-      var $dropdown=$(Dropdown.selector);
-      $dropdown.each(function(i,elem){
-        var data=$(elem).data('jason.dropdown');
-        data.$elem.removeClass('active');
-        data.$list.stop().slideUp(data.time);
+      var my = this;
+
+      // 导航栏元素
+      my.$nav = $nav;
+      // 导航栏列表元素
+      my.$navList = $navList;
+      // 隐藏元素的定时器标志
+      my.timer = null;
+      // 事件的定时器标志 （开启之后 和 关闭之后共用）
+      my.eventTimer = null;
+      // 导航栏的的状态
+      my.isOpen = false;
+
+      // 事件函数
+      my.openBefore = null;
+      my.openAfter = null;
+      my.closeBefore = null;
+      my.closeAfter = null;
+
+      // 用来确认 开关
+      var navId = my.$nav.attr('id') || 'jason-responsive-nav';
+      $(document).on('click', '[href="#' + navId + '"]', function () {
+        if (my.isOpen) {
+          my.close();
+        } else {
+          my.open();
+        }
+      });
+    }
+
+    _createClass(Nav, [{
+      key: 'open',
+      value: function open() {
+        var _this = this;
+
+        // 取消定时器
+        clearTimer([this.eventTimer, this.timer]);
+
+        // 触发事件
+        if (this.openBefore) this.openBefore(this);
+
+        // 状态切换
+        this.isOpen = true;
+
+        // 设置 元素 显示
+        this.$nav.show();
+
+        // display 和 transition
+        this.$nav.css('display');
+
+        // 加class
+        this.$nav.addClass(openClass);
+
+        // 触发事件
+        if (this.openAfter) {
+          // 每次都重新获取过度时间，因为是响应式，用户有可能从大屏幕切换到小屏幕
+          var tTime = getTTime(this.$nav);
+          this.eventTimer = setTimeout(function () {
+            _this.openAfter(_this);
+          }, tTime);
+        }
+      }
+    }, {
+      key: 'close',
+      value: function close() {
+        var _this2 = this;
+
+        // 结束掉定时器
+        clearTimer(this.eventTimer);
+
+        // 每次都重新获取过度时间，因为是响应式，用户有可能从大屏幕切换到小屏幕
+        var tTime = getTTime(this.$nav);
+
+        // 触发事件
+        if (this.closeBefore) this.closeBefore(this);
+
+        // 状态切换
+        this.isOpen = false;
+
+        // 移除 class
+        this.$nav.removeClass(openClass);
+
+        // 动画结束后，隐藏元素
+        this.timer = setTimeout(function () {
+          _this2.$nav.hide();
+        }, tTime);
+
+        // 触发事件
+        if (this.closeAfter) {
+          this.eventTimer = setTimeout(function () {
+            _this2.closeAfter();
+          }, tTime);
+        }
+      }
+    }, {
+      key: 'on',
+      value: function on(event, callback) {
+        switch (event) {
+          case 'open:before':
+            {
+              this.openBefore = callback;
+              break;
+            }
+          case 'open:after':
+            {
+              this.openAfter = callback;
+              break;
+            }
+          case 'close:before':
+            {
+              this.closeBefore = callback;
+              break;
+            }
+          case 'close:after':
+            {
+              this.closeAfter = callback;
+              break;
+            }
+        }
+      }
+    }]);
+
+    return Nav;
+  }();
+
+  // 获取过度时长
+  // 每次都重新获取过度时间，因为是响应式，用户有可能从大屏幕切换到小屏幕，导致计算错误
+
+
+  function getTTime($elem) {
+    return parseFloat($elem.css('transitionDuration')) * 1000 || 0;
+  }
+
+  // 清除定时器
+  function clearTimer(timer) {
+    // 数组
+    if (Object.prototype.toString.call(timer) === '[object Array]') {
+      timer.forEach(function (t, i) {
+        clearTimeout(t);
+        t = null;
+      });
+    } else {
+      clearTimeout(timer);
+      timer = null;
+    }
+  }
+})(window.jQuery);
+(function ($) {
+
+  'use strict';
+
+  // 用于记录下拉菜单对象
+
+  var selectObjArray = [];
+
+  // 如果点击它处，则关闭所有的下拉菜单
+  $(document).on('click.jason.select.document', function (e) {
+
+    var $target = $(e.target);
+
+    if (!$target.closest('.select').length) {
+      selectObjArray.forEach(function (selectObj) {
+        selectObj.close();
       });
     }
   });
 
-  // 命名冲突处理
-  var old=$.fn.dropdown;
+  // 依附jquery
+  $.fn.select = function () {
 
-  // 定义插件
-  var plugin=function(){
-    return this.each(function(i,elem){
-      var $elem=$(elem);
-      var data=$elem.data('jason.dropdown');
-      var time=$elem.data('time')||0;
-      var group=$elem.data('group');
-      var type=$elem.data('type');
-      if(!data){
-        $elem.data('jason.dropdown',(data=new Dropdown($elem,time,group,type)));
+    // 开启或者关闭事件
+    var event = arguments[0];
+    var transitionTime = null;
+
+    // 如果是数字
+    if (!isNaN(event)) {
+      transitionTime = arguments[0];
+      event = null;
+    }
+
+    return this.each(function (i, select) {
+      var $select = $(select);
+      var selectObj = $select.data('jason.select');
+
+      // 如果对象不存在，则是没有初始化
+      if (!selectObj) {
+        var $label = $select.children('label');
+        var $list = $select.children('ul,ol');
+        var $item = $list.find('a');
+        var $data = $select.children('select,input');
+        var dataType = function () {
+          if ($data[0].nodeName === 'INPUT') {
+            return 'INPUT';
+          } else if ($data[0].nodeName === 'SELECT') {
+            return 'SELECT';
+          }
+        }();
+        var time = transitionTime || parseFloat($select.data('time')) || 200;
+        $select.data('jason.select', new Select({
+          $select: $select,
+          $label: $label,
+          $list: $list,
+          $item: $item,
+          $data: $data,
+          dataType: dataType,
+          time: time
+        }));
+      }
+
+      // 如果事件存在
+      if (event) {
+        // 重新赋值
+        selectObj = $select.data('jason.select');
+
+        selectObj[event]();
       }
     });
   };
-
-  $.fn.tab=plugin;
-
-  if(old){
-    $.fn.dropdown.old=old;
-    $.fn.dropdown.noConflict=function(){
-      $.fn.dropdown=$.fn.dropdown.old;
-      return this;
-    };
-  }
-
-  // 智能初始化
-  $(function(){
-    var $dropdown=$(Dropdown.selector);
-    plugin.call($dropdown);
-  });
-
-}(window.jQuery));
-
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-// 实现思路
-// IE 6,7,8 把 -[1,] 解析成NaN，而其他游览器解析成 -1
-// 判断是否为NaN即可
-
-(function($){
-
-  "use strict";
-
-  if($('html').attr('data-ie678')==="false"&&isNaN(-[1,])){
-    var html='<div class="ie678"><div><h2>您的游览器不支持游览该网页</h2> <h3>请升级</h3> <a class="btn" href="http://se.360.cn/">点击升级</a></div></div>';
-    $('body').html(html);
-  }
-
-}(window.jQuery));
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-
-// 实现思路
-// 启动定时器每5毫秒（定时器最快执行速度）遍历一次所有图片
-// 判断图片是否加载完成，用 img.complete ，如果都为true则代表全都加载完成了
-// 最后，执行回调函数
-
-(function($){
-
-  "use strict";
-
-  var old=null;
-  // 判断命名是否冲突
-  if($.fn.imgLoadEnd){
-    old=$.fn.imgLoadEnd;
-  }
-
-  // 依附jquery
-  $.fn.imgLoadEnd=function(callbacks){
-
-    var $img=this;
-
-    var timer=setInterval(function(){
-      for(var i=0;i<$img.length;i++){
-        if(!$img[i].complete){
-          return;
-        }
-      }
-      clearInterval(timer);
-      timer = null;
-      callbacks();
-    },5);
-
-    return this;
-
-  };
-
-  if(old){
-    $.fn.imgLoadEnd.old=old;
-    old=null;
-    $.fn.imgLoadEnd.noConflict=function(){
-      $.fn.imgLoadEnd=$.fn.imgLoadEnd.old;
-      return this;
-    };
-  }
-
-}(window.jQuery));
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-// 思路
-// 对象属性
-// time:在手机下导航栏整体过度的时间，用来控制visibility
-// screenStandards:屏幕标准，已这个数值来确认是大屏幕，还是小屏幕
-// $nav:导航栏
-// $navList:导航栏列表
-// $navToggle：导航栏开关
-
-// 对象创建时
-// 根据屏幕标准，给$navToggle添加不同的class 用来显示$navToggle
-
-(function(){
-
-  "use strict";
 
   // 构造函数
-  function Nav(params) {
 
-    // 参数合并
-    $.extend(this,params);
-    // 控制visibility的定时器标示
-    this.closeTimer=null;
+  var Select = function () {
+    function Select(params) {
+      var _this3 = this;
 
-    // 判断是否激活小屏状态，计算高度，并且绑定事件
-    this.screenToggle();
-    $(window).resize($.proxy(this.screenToggle,this));
+      _classCallCheck(this, Select);
 
-    // 判断点击在哪个元素上，如果是点击在他处，关闭导航
-    $(window).click($.proxy(this.clickOther,this));
+      $.extend(true, this, params);
 
-    // 给开关绑定事件
-    this.$navToggle.on('click',$.proxy(this.navToggle,this));
-  }
+      // 收缩
+      this.$select.on('click.jason.select', function (e) {
+        e.preventDefault();
+        _this3.$select.toggleClass('select-open');
+        _this3.$list.stop().slideToggle(_this3.time);
+      });
+      // 选中内容替换
+      this.$list.on('click.jason.select.list', 'a', function (e) {
+        e.preventDefault();
+        var $target = $(e.target);
+        var dataValue = void 0;
 
-  Nav.selector='[data-plugin="nav"]';
+        // 网页内容替换
+        _this3.$label.html($target.html());
 
-  // 控制大屏幕和 小屏幕的状态切换
-  Nav.prototype.screenToggle=function(){
-    if(window.$win.innerWidth>this.screenStandards){
-      clearTimeout(this.closeTimer);
-      this.closeTimer=null;
-      this.$nav.attr('style','').removeClass('active');
-      this.$navList.stop(false,true).attr('style','');
-      this.$navToggle.removeClass('active');
-    }else{
-      var height=window.$win.innerHeight-parseFloat($('header,.header').css('height'));
-      this.$nav.css('height',height);
+        // 表单内容替换
+        switch (_this3.dataType) {
+          case 'INPUT':
+            {
+              dataValue = $target.data('value');
+              break;
+            }
+          case 'SELECT':
+            {
+              var i = _this3.$item.index($target);
+              dataValue = _this3.$data.children('option').eq(i).val();
+              break;
+            }
+        }
+        _this3.$data.val(dataValue);
+      });
+
+      // 记录 对象
+      selectObjArray.push(this);
     }
-  };
 
-  // 点击导航栏
-  Nav.prototype.navToggle=function(){
-    if(this.$nav.hasClass('active')){
-      this.close();
-    }else{
-      this.open();
-    }
-  };
+    // 展开
 
-  // 开
-  Nav.prototype.open=function(){
-    clearTimeout(this.closeTimer);
-    this.closeTimer=null;
-    this.$nav.css('visibility','visible').addClass('active');
-    this.$navToggle.addClass('active');
-    this.$navList.stop().slideDown(this.time);
-  };
 
-  // 关
-  Nav.prototype.close=function(){
-    var my=this;
-    this.$nav.removeClass('active');
-    this.$navToggle.removeClass('active');
-    this.$navList.stop().slideUp(this.time);
-    this.closeTimer=setTimeout(function(){
-      my.$nav.css('visibility','hidden');
-    },this.time);
-  };
-
-  // 点击在别的地方的话，关闭导航
-  Nav.prototype.clickOther=function(e){
-    // 在小屏幕，并且点击在了nav上
-    if($win.innerWidth<=this.screenStandards&&e.target===this.$nav.get(0)){
-      this.close();
-    }
-  };
-
-  // 命名冲突处理
-  var old=$.fn.nav;
-
-  // 定义插件
-  var plugin=function(){
-    return this.each(function(i,elem){
-      var $elem=$(elem);
-      var data=$elem.data('jason.nav');
-      // 初始化
-      if(!data){
-        var params={
-          $nav:$elem,
-          $navList:$elem.children('ul,ol'),
-          $navToggle:$('.hamburger'),
-          screenStandards:$elem.data('screenStandards')||991,
-          time:parseFloat($elem.css('transitionDuration'))*1000||0
-        };
-        $elem.data('jason.nav',new Nav(params));
+    _createClass(Select, [{
+      key: 'open',
+      value: function open() {
+        this.$select.addClass('select-open');
+        this.$list.stop().slideDown(this.time);
       }
-    });
-  };
 
-  $.fn.nav=plugin;
+      // 关闭
 
-  if(old){
-    $.fn.nav.old=old;
-    $.fn.nav.noConflict=function(){
-      $.fn.nav=$.fn.nav.old;
-      return this;
-    };
-  }
+    }, {
+      key: 'close',
+      value: function close() {
+        this.$select.removeClass('select-open');
+        this.$list.stop().slideUp(this.time);
+      }
+    }]);
+
+    return Select;
+  }();
 
   // 智能初始化
-  $(function(){
-    var $nav=$(Nav.selector);
-    plugin.call($nav);
+
+
+  var selector = '[data-jason="select"]';
+  $(function () {
+    $(selector).select();
   });
+})(window.jQuery);
+(function () {
 
-}());
-/**
- * Created by Administrator on 2017/7/9.
- */
+  'use strict';
 
+  // 依附jquery
 
-// 实现思路
-// 创建rect对象，把比例都写在对象中
-// 屏幕尺寸改变时，遍历所有匹配选择器的元素，设置他们的高度
-// 设置高度： 默认比例为1:1
-//   首先判断屏幕，根据不同的屏幕去设置不同比例的高度，重复赋值处理
+  $.fn.tab = function (options) {
 
-(function($){
-
-  "use strict";
-
-  // 定义构造函数
-  var Rect=function($elem){
-    this.$elem=$elem;
-    this.xsScale=$elem.data('scale-xs')||1;
-    this.smScale=$elem.data('scale-sm')||this.xsScale;
-    this.mdScale=$elem.data('scale-md')||this.smScale;
-    if(!this.xsScale||!this.smScale||!this.mdScale){
-      throw new Error('jason rect插件，需要正确的比例值');
-    }
-    this.setHeight();
-  };
-
-  Rect.selector='[data-plugin="rect"]';
-
-  Rect.prototype.setHeight=function(){
-    var $elem=this.$elem;
-    var scale=null;
-    var width=parseFloat($elem.css('width'));
-    var height=parseFloat($elem.css('height'));
-    var newHeight=null;
-
-    if(window.$win.isPc){
-      scale=this.mdScale;
-    }else if(window.$win.isPad){
-      scale=this.smScale;
-    }else{
-      scale=this.xsScale;
-    }
-
-    // 重复操作处理
-    if(height!=width*scale){
-      newHeight=width*scale;
-      $elem.css('height',newHeight);
-    }
-
-  };
-
-  // 绑定事件
-  $(window).resize(function(){
-    var $rects=$(Rect.selector);
-
-    $rects.each(function(i,elem){
-      $(elem).data('jason.rect').setHeight();
-    });
-
-  });
-
-  // 命名冲突处理
-  var old=$.fn.rect;
-
-  // 定义插件
-  var plugin=function(){
-    return this.each(function(i,elem){
-      var $elem=$(elem);
-      var data=$elem.data('jason.rect');
-      if(!data){
-        $elem.data('jason.rect',(data=new Rect($elem)));
-      }else{
-        data.setHeight();
-      }
-    });
-  };
-
-  $.fn.rect=plugin;
-
-  if(old){
-    $.fn.rect.old=old;
-    $.fn.rect.noConflict=function(){
-      $.fn.rect=$.fn.rect.old;
-      return this;
+    var defaults = {
+      // 切换的小组成员
+      groupSelector: null,
+      // 触发事件
+      event: 'click',
+      // 触发事件后是否等待一会
+      wait: false,
+      // 是否自动切换
+      autoplay: false,
+      // 无操作的时，是否归为
+      isReturn: false,
+      // 初始激活第几个元素
+      first: 1,
+      // 回调函数
+      before: null,
+      after: null
     };
-  }
 
-  // 智能初始化
-  $(function(){
-    var $rect=$(Rect.selector);
-    plugin.call($rect);
-  });
+    return this.each(function (i, tab) {
+      var $tab = $(tab);
+      var data = $tab.data('jason.tab');
 
-}(window.jQuery));
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-// 实现思路
-// 创建一个构造函数，用于，给sameheight分组
-// 创建一个新数组，遍历所有的SameHeight，把其高度设置为auto
-// 获取其group值，如果数组[group]不存在则建立二维数组，如果存在则把元素压入数组中
-// 遍历数组，获取相同数组中最高的那个元素获取高度，给同数组中的元素赋值
-
-(function($){
-
-  "use strict";
-
-  function SameHeight(elem){
-    this.$elem=$(elem);
-    this.group=this.$elem.data('group');
-  }
-
-  SameHeight.selector='[data-plugin="sameHeight"]';
-
-  // 分组
-  function grouping(){
-    var arr=[];
-    var $elems=$(SameHeight.selector);
-
-    // 分组，并且把height归auto
-    $elems.css('height','auto').each(function(i,elem){
-      // var obj=$(elem).data('jason.sameHeight');
-      var $elem=$(elem);
-
-      // 如果组名为数字，那么arr会变成索引数组，数组中间会有undefined
-      // 把每个组名前面拼上相同的字符串就可以解决
-      var hash='group'+$elem.data('group');
-
-      if(!arr[hash]){
-        arr[hash]=[];
+      if (!data) {
+        var params = $.extend(true, defaults, options, {
+          $wrapper: $tab,
+          $tabs: $tab.find('a'),
+          $groupElem: $(options.groupSelector)
+        });
+        $tab.data('jason.tab', new Tab(params));
       }
-      arr[hash].push($elem);
 
+      data = $tab.data('jason.tab');
+
+      // 如果是移动至
+      if (!isNaN(options)) {
+        data.hoverTo(options - 1);
+      }
     });
+  };
 
-    // 计算最大高度 并赋值
-    for(var key in arr){
-      var maxHeight=null;
-      for(var i=0;i<arr[key].length;i++){
-        maxHeight=parseFloat(arr[key][i].css('height'))>maxHeight?parseFloat(arr[key][i].css('height')):maxHeight;
+  // 构造函数
+
+  var Tab = function () {
+    function Tab(params) {
+      _classCallCheck(this, Tab);
+
+      var my = this;
+
+      $.extend(my, params);
+      // 等待激活的定时器标志
+      my.waitActiveTimer = null;
+      // 等待回归的定时器标志
+      my.waitBackTimer = null;
+      // 等待轮播的定时器标志
+      my.waitAutoTimer = null;
+      // 轮播的定时器标志
+      my.autoplayTimer = null;
+
+      // 归为 和 轮播 功能 同时只能有一个
+      if (my.goBack) {
+        if (my.autoplay) {
+          throw new Error('归为和自动轮播冲突。请重新构建你的逻辑');
+        }
       }
-      for(var j=0;j<arr[key].length;j++){
-        arr[key][j].css('height',maxHeight);
+
+      // 用于记录相同组对应位置的元素，这样加class方便
+      my.tabGroup = [];
+
+      var _loop = function _loop(i) {
+        var jqArr = $();
+
+        jqArr.push(my.$tabs.get(i));
+        my.$groupElem.each(function (j, elem) {
+          jqArr.push($(elem).children().get(i));
+        });
+
+        my.tabGroup[i] = jqArr;
+      };
+
+      for (var i = 0; i < my.$tabs.length; i++) {
+        _loop(i);
       }
+
+      // 初始默认元素
+      if (my.first) {
+        my.hoverTo(my.first - 1);
+      }
+
+      // 轮播
+      if (my.autoplay) {
+        autoPlay(my);
+      }
+
+      // 事件绑定
+      my.$wrapper.on(my.event, 'a', function (e) {
+        e.preventDefault();
+        clearTimeout(my.waitActiveTimer);
+        clearTimeout(my.waitBackTimer);
+        clearTimeout(my.waitAutoTimer);
+        clearInterval(my.autoplayTimer);
+        my.waitActiveTimer = null;
+        my.waitBackTimer = null;
+        my.waitAutoTimer = null;
+        my.autoplayTimer = null;
+
+        var i = my.$tabs.index($(this));
+
+        // 用于 计算 触发延迟时间 和 归为时间
+        var goBackTime = my.goBack;
+
+        // 如果设定了触发延迟
+        if (my.wait) {
+          goBackTime += my.wait;
+          my.waitActiveTimer = setTimeout(function () {
+            my.hoverTo(i);
+          }, my.wait);
+        }
+
+        // 否则直接切换
+        else {
+            my.hoverTo(i);
+          }
+
+        // 如果设置了归为
+        if (my.goBack) {
+          my.waitBackTimer = setTimeout(function () {
+            my.hoverTo(my.first - 1);
+          }, goBackTime);
+        }
+
+        // 如果设置了轮播
+        if (my.autoplay) {
+          if (my.wait) {
+            my.waitAutoTimer = setTimeout(function () {
+              autoPlay(my);
+            }, my.wait);
+          } else {
+            autoPlay(my);
+          }
+        }
+      });
     }
+
+    // 切换至某一个
+    // 注意：这里的参数 i 是下标
+
+
+    _createClass(Tab, [{
+      key: 'hoverTo',
+      value: function hoverTo(i) {
+        // 判断是否是重复触发
+        if (this.tabGroup[i].hasClass('active')) {
+          return false;
+        } else {
+          this.tabGroup.forEach(function (group, i2) {
+            group.removeClass('active');
+          });
+          this.before(this.now);
+          this.tabGroup[i].addClass('active');
+          this.after(i + 1);
+          this.now = i + 1;
+        }
+      }
+    }]);
+
+    return Tab;
+  }();
+
+  // 轮播定时器启动
+
+
+  function autoPlay(my) {
+    my.autoplayTimer = setInterval(function () {
+      var i = null;
+      // 判断 是否是最后一个，如果是那么从第一个开始
+      if (my.now === my.$tabs.length) {
+        i = 0;
+      } else {
+        i = my.now;
+      }
+      my.hoverTo(i);
+    }, my.autoplay);
   }
+})();
+(function () {
 
-  $(window).resize(grouping);
+  'use strict';
 
-  // 命名冲突处理
-  var old=$.fn.sameHeight;
+  $.extend({
+    jason: {
 
-  // 定义插件
-  var plugin=function(){
-    if(this.length===0){
-      grouping();
-      return ;
+      // 随机一个指定范围的数字
+      random: function random(max, min, length) {
+        var rNum = Math.random() * (max - min) + min;
+        rNum = parseFloat(rNum.toFixed(length));
+        return rNum;
+      },
+
+      // 打乱一个数组
+      arrMess: function arrMess(arr) {
+        var messArr = arr.slice(0);
+        for (var j, x, i = messArr.length; i; j = parseInt(Math.random() * i), x = messArr[--i], messArr[i] = messArr[j], messArr[j] = x) {}
+        return messArr;
+      },
+
+      // 图片加载完成后执行的函数
+      imgLoadEnd: function imgLoadEnd(imgSelector, callback) {
+        // 实现思路
+        // 判断图片是否加载完成，用 img.complete ，如果都为true则代表全都加载完成了
+        // 最后，执行回调函数
+
+        var $imgs = $(imgSelector);
+
+        var timer = setInterval(function () {
+          for (var i = 0; i < $imgs.length; i++) {
+            if (!$imgs[i].complete) {
+              return;
+            }
+          }
+          clearInterval(timer);
+          timer = null;
+          callback();
+        });
+      },
+
+      // 判断是否是一个数组
+      isArray: function isArray(arr) {
+        return Object.prototype.toString.call(arr) === '[object Array]';
+      }
+
     }
-    return this.each(function(i,elem){
-      var $elem=$(elem);
-      var data=$elem.data('jason.sameHeight');
-      if(!data){
-        $elem.data('jason.sameHeight',(data=new SameHeight($elem)));
-      }
-    });
-  };
-
-  $.fn.sameHeight=plugin;
-
-  if(old){
-    $.fn.sameHeight.old=old;
-    $.fn.sameHeight.noConflict=function(){
-      $.fn.sameHeight=$.fn.sameHeight.old;
-      return this;
-    };
-  }
-
-  // 智能初始化
-  $(function(){
-    var $sameHeight=$(SameHeight.selector);
-    plugin.call($sameHeight);
-    grouping();
   });
-
-}(window.jQuery));
-/**
- * Created by Administrator on 2017/7/9.
- */
-
-// 实现思路
-// tab插件的a触发后，找到tab插件，并取出组名
-// 找到全部相同组的，在对应位置全都加上.active
-
-(function(){
-
-  "use strict";
-
-  // 创建构造函数以及其原型
-  var Tab=function($elem,group,event){
-    this.group=group;
-    $elem.on(event,'a',this.switchover);
-  };
-
-  Tab.selector='[data-plugin="tab"]';
-
-  Tab.prototype.switchover=function(e){
-    e.preventDefault();
-    var $this=$(this);
-    if($this.hasClass('active')){return;}
-    var $tabElem=$this.closest(Tab.selector);
-    var group=$tabElem.data('jason.tab').group;
-    var i=$tabElem.find('a').index($this);
-    var $otherElem=$('[data-group='+group+']').not($tabElem);
-
-    $tabElem.find('a').removeClass('active').eq(i).addClass('active');
-    $otherElem.each(function(j,elem){
-      $(elem).children().removeClass('active').eq(i).addClass('active');
-    });
-  };
-
-  // 命名冲突处理
-  var old=$.fn.tab;
-
-  // 定义插件
-  var plugin=function(){
-    return this.each(function(i,elem){
-      var $elem=$(elem);
-      var group=$elem.data('group');
-      var event=$elem.data('event')||'click';
-      var data=$elem.data('jason.tab');
-      if(!data){
-        $elem.data('jason.tab',(data=new Tab($elem,group,event)));
-      }
-    });
-  };
-
-  $.fn.tab=plugin;
-
-  if(old){
-    $.fn.tab.old=old;
-    $.fn.tab.noConflict=function(){
-      $.fn.tab=$.fn.tab.old;
-      return this;
-    };
-  }
-
-  // 智能初始化
-  $(function(){
-    var $tabs=$(Tab.selector);
-    plugin.call($tabs);
-  });
-
-}());
+})();

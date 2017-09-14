@@ -1,0 +1,99 @@
+/*
+ * 定宽库 外边距
+ */
+.fixed-layout-margin(){
+
+  .margin(@margin) when (@margin<=@fixed-margin-max){
+    @index:unit(@margin);
+    .mt-@{index}{margin-top:@margin}
+    .mr-@{index}{margin-right:@margin}
+    .mb-@{index}{margin-bottom:@margin}
+    .ml-@{index}{margin-left:@margin}
+    .m-@{index}{margin:@margin}
+    .mtb-@{index}{
+      margin-top:@margin;
+      margin-bottom:@margin;
+    }
+    .mlf-@{index}{
+      margin-left:@margin;
+      margin-right:@margin;
+    }
+    .margin(@margin+5px);
+  }
+
+  .margin(5px);
+
+}
+
+/*
+ * 定宽库 内边距
+ */
+.fixed-layout-padding(){
+
+  .padding(@padding) when (@padding<=@fixed-padding-max){
+    @index:unit(@padding);
+    .pt-@{index}{padding-top:@padding}
+    .pr-@{index}{padding-right:@padding}
+    .pb-@{index}{padding-bottom:@padding}
+    .pl-@{index}{padding-left:@padding}
+    .p-@{index}{padding:@padding}
+    .ptb-@{index}{
+      padding-top:@padding;
+      padding-bottom:@padding;
+    }
+    .plf-@{index}{
+      padding-left:@padding;
+      padding-right:@padding;
+    }
+
+    .padding(@padding+5px);
+  }
+
+  .padding(5px);
+
+}
+
+/**
+ * 定宽库 字体大小
+ */
+.fixed-layout-font-size(){
+
+  .fs(@fs) when (@fs<=@fixed-fs-max){
+    @index:unit(@fs);
+    .fs-@{index}{
+      font-size:@fs;
+    }
+    .fs(@fs+1px)
+  }
+
+  .fs(12px);
+
+}
+
+/**
+ * 定宽库 行高
+ */
+.fixed-layout-line-height(){
+
+  .lh(@lh) when (@lh <=@fixed-lh-max){
+    @index:unit(@lh);
+    .lh-@{index}{
+      line-height: @lh;
+    }
+    .lh(@lh + 10%);
+  }
+
+  .lh(100%);
+
+}
+
+/**
+ * 定宽库 layout 接口
+ */
+.fixed-layout(){
+  .fixed-layout-margin();
+  .fixed-layout-padding();
+  .fixed-layout-font-size();
+  .fixed-layout-line-height();
+}
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../../dist/css/jason-responsive.css">
+</head>
+<body>
+
+  <!-- 结构如下 -->
+
+  <!-- 如果你想智能初始化
+        那么请添加属性 data-jason="select"
+        data-time="number" 可有可无，默认值为 200 毫秒，用于过度的时间
+  -->
+
+  <!-- 表单如果是 input 标签 那么 需要指定 a 标签的 data-value 属性和属性值 -->
+
+  <div class="select" data-jason="select" data-time="100" >
+    <label for="select">1</label>
+    <ul>
+      <li><a href="#" data-value="yi">1</a></li>
+      <li><a href="#" data-value="er">2</a></li>
+      <li><a href="#" data-value="san">3</a></li>
+      <li><a href="#" data-value="si">4</a></li>
+    </ul>
+    <input id="select" type="text" value="yi">
+    <!--<select id="data" name="" id="select">-->
+      <!--<option value="yi">1</option>-->
+      <!--<option value="er">2</option>-->
+      <!--<option value="san">3</option>-->
+      <!--<option value="si">4</option>-->
+    <!--</select>-->
+  </div>
+
+
+<script src="../../src/lib/jquery-1.11.3.min.js"></script>
+<script src="../../src/js/jason.select.js"></script>
+
+<script>
+
+  /*=====================================================================
+    API
+  =======================================================================*/
+//  初始化
+//  $('.select').select( [毫秒数（过渡时间）] );
+//  展开
+//  $('.select').select('open');
+//  收缩
+//  $('.select').select('close');
+
+</script>
+
+</body>
+</html>

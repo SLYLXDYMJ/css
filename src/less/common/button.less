@@ -1,0 +1,204 @@
+/**
+ * 基础
+ */
+.btn{
+
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+
+  font-size:@btn-font-size;
+  background-color: transparent;
+  border: none;
+  padding:0;
+
+  position: relative;
+  overflow: hidden;
+
+  span{
+    display: block;
+  }
+
+}
+
+/**
+ * 动画效果
+ */
+.btn-animation{
+  padding:@btn-transition-padding;
+  background-color:@btn-default-background-color;
+  color:@btn-default-color;
+
+  &-short{
+    &:after,&:before,span,span:after,span:before{
+      transition-duration: @btn-transition-time-short !important;
+    }
+  }
+  &-middle{
+    &:after,&:before,span,span:after,span:before{
+      transition-duration: @btn-transition-time-middle !important;
+    }
+  }
+  &-long{
+    &:after,&:before,span,span:after,span:before{
+      transition-duration: @btn-transition-time-long !important;
+    }
+  }
+}
+
+/**
+ * 滑动 效果
+ */
+.btn-slide{
+
+  &-top,&-right,&-bottom,&-left{
+    &:hover span,&.hover span{
+      opacity: 0
+    }
+    &:hover:after,&.hover:after{
+      transform:translate3d(0,0,0);
+    }
+    &:hover:before,&.hover:before,&:hover:after,&.hover:after{
+      opacity: 1
+    }
+    &:active:after{
+      background-color:@btn-slide-active-shadow;
+      transition-duration: .1s;
+    }
+
+    span,&:after,&:before{
+      transition:all @btn-transition-time-default @btn-slide-ttf;
+    }
+    &:after{
+      content:"";
+      position: absolute;
+      z-index: 1;
+      top:0;left:0;bottom:0;right:0;
+      background-color:@btn-slide-shadow;
+      opacity: 0;
+    }
+    &:before{
+      content:attr(data-text);
+      position: absolute;
+      z-index: 2;
+      width:100%;
+      opacity: 0;
+    }
+  }
+
+  &-top{
+    &:hover span,&.hover span{
+      transform:translate3d(0,-@btn-slide-distance,0);
+    }
+    &:hover:before,&.hover:before{
+      top:50%;
+      transition-delay: @btn-slide-delay;
+      transform:translate3d(0,-50%,0);
+    }
+    &:after{
+      transform:translate3d(0,100%,0);
+    }
+    &:before{
+      top:100%;
+      left:0;
+      transform:translate3d(0,0,0);
+    }
+  }
+  &-right{
+    &:hover span,&.hover span{
+      transform:translate3d(@btn-slide-distance,0,0);
+    }
+    &:hover:before,&.hover:before{
+      right:0;
+      transition-delay: @btn-slide-delay;
+    }
+    &:after{
+      transform:translate3d(-100%,0,0);
+    }
+    &:before{
+      top:50%;
+      right:100%;
+      transform:translate3d(0,-50%,0);
+    }
+  }
+  &-bottom{
+    &:hover span,&.hover span{
+      transform:translate3d(0,@btn-slide-distance,0);
+    }
+    &:hover:before,&.hover:before{
+      bottom:50%;
+      transition-delay: @btn-slide-delay;
+      transform:translate3d(0,50%,0);
+    }
+    &:after{
+      transform:translate3d(0,-100%,0);
+    }
+    &:before{
+      bottom:100%;
+      left:0;
+      transform:translate3d(0,0,0);
+    }
+  }
+  &-left{
+    &:hover span,&.hover span{
+      transform:translate3d(-@btn-slide-distance,0,0);
+    }
+    &:hover:before,&.hover:before{
+      left:0;
+      transition-delay: @btn-slide-delay;
+    }
+    &:after{
+      transform:translate3d(100%,0,0);
+    }
+    &:before{
+      top:50%;
+      left:100%;
+      transform:translate3d(0,-50%,0);
+    }
+  }
+
+}
+
+/**
+ * 线动画 效果
+ */
+.btn-line{
+  &:hover:after,&:hover:before{
+    height:100%;
+  }
+  &:hover span:after,&:hover span:before{
+    width:100%;
+  }
+
+  // &:after     左
+  // &:before    右
+  // span:after  上
+  // span:before 下
+  &:after,&:before,span:after,span:before{
+    content:"";
+    position: absolute;
+    background-color:@btn-line-color;
+    height:0;width: 0;
+    transition:height,width @btn-transition-time-default,@btn-transition-time-default;
+  }
+  &:after,&:before{
+    width: 1px;
+  }
+  & span:after,& span:before{
+    height: 1px;
+  }
+  &:after{
+    left:0;top:0;
+  }
+  &:before{
+    right:0;bottom:0;
+  }
+  span:after{
+    right:0;top:0;
+  }
+  span:before{
+    left:0;bottom:0;
+  }
+
+}

@@ -1,0 +1,23 @@
+.container,.container-fluid,.row{
+  &:extend(.clearfix all);
+}
+
+.container{
+  width: @fixed-container-width;
+  margin:0 auto;
+}
+
+/**
+ * 顶宽库 行中列间距
+ */
+.fixed-grid-row-space();
+
+/**
+ * 定宽库 列的基础属性
+ */
+.fixed-grid-col-attr();
+
+/**
+ * 定宽库 计算列的栅格属性
+ */
+.fixed-grid-col();
