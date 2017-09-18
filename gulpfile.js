@@ -23,11 +23,11 @@ const exportPath={
 	distJs:'./dist/js'
 };
 
-gulp.task('build',['less','js'],function () {
-  console.log('========== 构建成功 ==========');
+gulp.task('build',['style','script'],function () {
+  console.log(showTime('build'));
 });
 
-gulp.task('less',function(){
+gulp.task('style',function(){
   gulp.src(files.less)
     .pipe($.plumber())
     .pipe($.less())
@@ -39,9 +39,11 @@ gulp.task('less',function(){
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distCss));
+
+    console.log(showTime('style'));
 });
 
-gulp.task('js',function(){
+gulp.task('script',function(){
   gulp.src(files.js)
     .pipe($.plumber())
     .pipe($.jshint())
@@ -58,15 +60,27 @@ gulp.task('js',function(){
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distJs));
+
+  console.log(showTime('script'));
 });
 
 gulp.task('dev',['build','connect','watch']);
 
 gulp.task('connect',function(){
   $.connect.server(connectOptions);
+
+  console.log(showTime('server'));
 });
 
 gulp.task('watch',function(){
-  gulp.watch('./src/**/*.less',['less']);
-  gulp.watch('./src/**/*.js',['js']);
+  gulp.watch('./src/**/*.less',['style']);
+  gulp.watch('./src/**/*.js',['script']);
+
+  console.log(showTime('watch'));
 });
+
+// 用于显示时间
+function showTime(fun){
+  let time = new Date();
+  return `功能：${fun}\n时间：${time.getHours()}:${time.getMinutes()}:${time.getUTCSeconds()}`
+}
