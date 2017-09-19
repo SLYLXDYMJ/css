@@ -4,13 +4,13 @@
 
   $.extend({
     jason:{
-
+      
       // 随机一个指定范围的数字
       random : function(max,min,length){
-      let rNum=Math.random()*(max - min) + min;
-      rNum=parseFloat(rNum.toFixed(length));
-      return rNum;
-    },
+        let rNum=Math.random()*(max - min) + min;
+        rNum=parseFloat(rNum.toFixed(length));
+        return rNum;
+      },
 
       // 打乱一个数组
       arrMess : function(arr){

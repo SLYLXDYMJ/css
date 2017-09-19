@@ -107,10 +107,6 @@ if (window.jQuery === undefined) {
 
 (function ($) {
 
-  'use strict';
-})(window.jQuery);
-(function ($) {
-
   // 打开导航的名字
   var openClass = 'responsive-nav-open';
 
