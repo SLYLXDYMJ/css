@@ -76,9 +76,10 @@
         let jqArr=$();
 
         jqArr.push(my.$tabs.get(i));
-        my.$groupElem.each(function(j,elem){
-          jqArr.push($(elem).children().get(i));
-        });
+        
+        for(var j = 0;j<my.$groupElem.length;j++){
+          jqArr.push(my.$groupElem.eq(j).children().get(i));
+        }
 
         my.tabGroup[i]=jqArr;
       }
@@ -115,7 +116,7 @@
           goBackTime+=my.wait;
           my.waitActiveTimer=setTimeout(function(){
             my.hoverTo(i);
-          },my.wait)
+          },my.wait);
         }
 
         // 否则直接切换
@@ -178,7 +179,7 @@
         i=my.now;
       }
       my.hoverTo(i);
-    },my.autoplay)
+    },my.autoplay);
   }
 
 }());

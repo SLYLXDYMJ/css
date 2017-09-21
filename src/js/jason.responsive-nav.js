@@ -14,7 +14,7 @@
         $nav.data('jason.responsive-nav',new Nav($nav, $navList));
       }
 
-    })
+    });
 
   };
 
@@ -44,9 +44,9 @@
       let navId=my.$nav.attr('id')||'jason-responsive-nav';
       $(document).on('click',`[href="#${navId}"]`,function(){
         if(my.isOpen){
-          my.close()
+          my.close();
         }else{
-          my.open()
+          my.open();
         }
       });
 
@@ -79,7 +79,7 @@
         let tTime=getTTime(this.$nav);
         this.eventTimer=setTimeout(()=>{
           this.openAfter(this);
-        },tTime)
+        },tTime);
       }
 
     }

@@ -13,7 +13,7 @@
     if(!$target.closest('.select').length){
       selectObjArray.forEach(function(selectObj){
         selectObj.close();
-      })
+      });
     }
 
   });

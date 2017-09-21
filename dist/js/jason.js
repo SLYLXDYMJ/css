@@ -498,20 +498,16 @@ if (window.jQuery === undefined) {
 
       // 用于记录相同组对应位置的元素，这样加class方便
       my.tabGroup = [];
-
-      var _loop = function _loop(i) {
+      for (var i = 0; i < my.$tabs.length; i++) {
         var jqArr = $();
 
         jqArr.push(my.$tabs.get(i));
-        my.$groupElem.each(function (j, elem) {
-          jqArr.push($(elem).children().get(i));
-        });
+
+        for (var j = 0; j < my.$groupElem.length; j++) {
+          jqArr.push(my.$groupElem.eq(j).children().get(i));
+        }
 
         my.tabGroup[i] = jqArr;
-      };
-
-      for (var i = 0; i < my.$tabs.length; i++) {
-        _loop(i);
       }
 
       // 初始默认元素

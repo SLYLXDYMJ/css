@@ -1,10 +1,11 @@
 (function($){
 
   'use strict';
+  
 
   let canIe=$('html').data('jason');
   let nonsupport=false;
-
+  
   switch (canIe){
     case 'ie678':{
       if(	document.all && !document.addEventListener ){

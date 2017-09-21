@@ -42,7 +42,7 @@
 
       // 判断是否是一个数组
       isArray : function (arr){
-        return Object.prototype.toString.call(arr)==='[object Array]'
+        return Object.prototype.toString.call(arr)==='[object Array]';
       }
 
     }

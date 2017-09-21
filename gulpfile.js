@@ -47,6 +47,7 @@ gulp.task('script',function(){
   gulp.src(files.js)
     .pipe($.plumber())
     .pipe($.jshint())
+    .pipe($.jshint.reporter("default"))
     .pipe($.order([
       'jason.haveJq.js',
       'jason.win.js',
