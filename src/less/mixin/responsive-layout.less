@@ -2,7 +2,6 @@
  * 响应式库 外边距
  */
 .responsive-layout-margin(@screen){
-
   .margin(@margin) when (@margin<=@responsive-margin-max) {
     @index:unit(@margin);
 
@@ -15,7 +14,7 @@
       margin-top:@margin;
       margin-bottom:@margin;
     }
-    .mlf-@{screen}-@{index}{
+    .mlr-@{screen}-@{index}{
       margin-left:@margin;
       margin-right:@margin;
     }
@@ -23,16 +22,13 @@
     .margin(@margin + 5px);
 
   }
-
   .margin(0px);
-
 }
 
 /**
  * 响应式库 内边距
  */
 .responsive-layout-padding(@screen){
-
   .padding(@padding) when (@padding<=@responsive-padding-max) {
     @index:unit(@padding);
 
@@ -45,7 +41,7 @@
       padding-top:@padding;
       padding-bottom:@padding;
     }
-    .plf-@{screen}-@{index}{
+    .plr-@{screen}-@{index}{
       padding-left:@padding;
       padding-right:@padding;
     }
@@ -53,16 +49,13 @@
     .padding(@padding + 5px);
 
   }
-
   .padding(0px);
-
 }
 
 /**
  * 响应式库 字体大小
  */
 .responsive-layout-font-size(@screen){
-
   .fs(@fs) when (@fs<=@responsive-fs-max){
     @index:unit(@fs);
 
@@ -73,16 +66,13 @@
     .fs(@fs + 1px);
 
   }
-
   .fs(12px);
-
 }
 
 /**
  * 响应式库 行高
  */
 .responsive-layout-line-height(@screen){
-
   .lh(@lh) when (@lh <=@responsive-lh-max){
     @index:unit(@lh);
     .lh-@{screen}-@{index}{
@@ -90,9 +80,7 @@
     }
     .lh(@lh + 10%);
   }
-
   .lh(100%);
-
 }
 
 /**

@@ -136,9 +136,6 @@
 /**
  * 响应式库 layout 接口
  */
-/* =========================================================================
-    基本（盒子模型，html，body） 一致化
-   ===========================================================================*/
 /**
  * 设置盒子模型
  * 将默认字体设置为 sans-serif
@@ -174,9 +171,6 @@ body {
   line-height: 1;
   font-size: 14px;
 }
-/* =========================================================================
-    html5 元素
-   ===========================================================================*/
 /**
  * 修复 IE 8/9，HTML5新元素不能正确显示的问题，定义为block的元素
  * 修复 IE 10/11，details 和 summary 定义为 block 的元素
@@ -220,9 +214,6 @@ audio:not([controls]) {
 [hidden] {
   display: none;
 }
-/* =========================================================================
-    html 元素 一致化
-   ===========================================================================*/
 /**
  * 防止所有浏览器中的sub和sup影响行高.
  */
@@ -239,9 +230,6 @@ sup {
 sub {
   bottom: -0.25em;
 }
-/* =========================================================================
-    排版 一致化
-   ===========================================================================*/
 /**
  * 外边距 重置
  */
@@ -261,11 +249,9 @@ select,
 textarea {
   margin: 0;
 }
-/* =========================================================================
-    继承关系 一致化
-   ===========================================================================*/
 /**
- * 修正 h1~h6 字体大小的继承
+ * 修正 h1~h6 字体大小的继承 
+ * 加粗取消
  */
 h1,
 h2,
@@ -274,12 +260,7 @@ h4,
 h5,
 h6 {
   font-size: inherit;
-}
-/**
- * 修正 a 标签 颜色的继承
- */
-a {
-  color: inherit;
+  font-weight: normal;
 }
 /**
  * 修正所有浏览器中颜色不继承的问题
@@ -294,9 +275,6 @@ textarea {
   font-size: inherit;
   color: inherit;
 }
-/* =========================================================================
-    列表 样式 一致化
-   ===========================================================================*/
 /**
  * 列表样式取消，边距取消，内边距取消
  */
@@ -306,9 +284,6 @@ ol {
   padding: 0;
   list-style: none;
 }
-/* =========================================================================
-    嵌入 内容 一致化
-   ===========================================================================*/
 /**
  * 移除在 IE 8/9 中嵌入到‘a’元素时的边框
  */
@@ -321,17 +296,16 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
-/* =========================================================================
-    超链接
-   ===========================================================================*/
 /**
  * 取消下划线
  * 移入的鼠标样式
  * 取消outline
  * 增加过度效果
  * 去掉 IE 10+ 点击链接时的灰色背景.
+ * 颜色继承
  */
 a {
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
   -webkit-transition: all 0.2s;
@@ -347,9 +321,6 @@ a:active,
 a:hover {
   outline: 0;
 }
-/* =========================================================================
-    表格
-   ===========================================================================*/
 /**
  * 合并单元格边框，重置内边距
  */
@@ -361,9 +332,6 @@ td,
 th {
   padding: 0;
 }
-/* =========================================================================
-    表单元素
-   ===========================================================================*/
 /**
  * 设置 移入 button 的鼠标样式
  * 在 IE 8/9/10/11里的button默认的overflow是hidden，这里统一为visible
@@ -393,7 +361,7 @@ input[type="password"] {
 }
 /**
  * 初始化宽高
- * 移出隐藏
+ * 移除隐藏
  * 不让用户拖拽大小
  * 增加padding
  */
@@ -652,7 +620,7 @@ input::-ms-clear {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.mlf-5 {
+.mlr-5 {
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -675,7 +643,7 @@ input::-ms-clear {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.mlf-10 {
+.mlr-10 {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -698,7 +666,7 @@ input::-ms-clear {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.mlf-15 {
+.mlr-15 {
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -721,7 +689,7 @@ input::-ms-clear {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.mlf-20 {
+.mlr-20 {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -744,7 +712,7 @@ input::-ms-clear {
   margin-top: 25px;
   margin-bottom: 25px;
 }
-.mlf-25 {
+.mlr-25 {
   margin-left: 25px;
   margin-right: 25px;
 }
@@ -767,7 +735,7 @@ input::-ms-clear {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.mlf-30 {
+.mlr-30 {
   margin-left: 30px;
   margin-right: 30px;
 }
@@ -790,7 +758,7 @@ input::-ms-clear {
   margin-top: 35px;
   margin-bottom: 35px;
 }
-.mlf-35 {
+.mlr-35 {
   margin-left: 35px;
   margin-right: 35px;
 }
@@ -813,7 +781,7 @@ input::-ms-clear {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-.mlf-40 {
+.mlr-40 {
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -836,7 +804,7 @@ input::-ms-clear {
   margin-top: 45px;
   margin-bottom: 45px;
 }
-.mlf-45 {
+.mlr-45 {
   margin-left: 45px;
   margin-right: 45px;
 }
@@ -859,7 +827,7 @@ input::-ms-clear {
   margin-top: 50px;
   margin-bottom: 50px;
 }
-.mlf-50 {
+.mlr-50 {
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -882,7 +850,7 @@ input::-ms-clear {
   margin-top: 55px;
   margin-bottom: 55px;
 }
-.mlf-55 {
+.mlr-55 {
   margin-left: 55px;
   margin-right: 55px;
 }
@@ -905,7 +873,7 @@ input::-ms-clear {
   margin-top: 60px;
   margin-bottom: 60px;
 }
-.mlf-60 {
+.mlr-60 {
   margin-left: 60px;
   margin-right: 60px;
 }
@@ -928,7 +896,7 @@ input::-ms-clear {
   margin-top: 65px;
   margin-bottom: 65px;
 }
-.mlf-65 {
+.mlr-65 {
   margin-left: 65px;
   margin-right: 65px;
 }
@@ -951,7 +919,7 @@ input::-ms-clear {
   margin-top: 70px;
   margin-bottom: 70px;
 }
-.mlf-70 {
+.mlr-70 {
   margin-left: 70px;
   margin-right: 70px;
 }
@@ -974,7 +942,7 @@ input::-ms-clear {
   margin-top: 75px;
   margin-bottom: 75px;
 }
-.mlf-75 {
+.mlr-75 {
   margin-left: 75px;
   margin-right: 75px;
 }
@@ -997,7 +965,7 @@ input::-ms-clear {
   margin-top: 80px;
   margin-bottom: 80px;
 }
-.mlf-80 {
+.mlr-80 {
   margin-left: 80px;
   margin-right: 80px;
 }
@@ -1020,7 +988,7 @@ input::-ms-clear {
   margin-top: 85px;
   margin-bottom: 85px;
 }
-.mlf-85 {
+.mlr-85 {
   margin-left: 85px;
   margin-right: 85px;
 }
@@ -1043,7 +1011,7 @@ input::-ms-clear {
   margin-top: 90px;
   margin-bottom: 90px;
 }
-.mlf-90 {
+.mlr-90 {
   margin-left: 90px;
   margin-right: 90px;
 }
@@ -1066,7 +1034,7 @@ input::-ms-clear {
   margin-top: 95px;
   margin-bottom: 95px;
 }
-.mlf-95 {
+.mlr-95 {
   margin-left: 95px;
   margin-right: 95px;
 }
@@ -1089,7 +1057,7 @@ input::-ms-clear {
   margin-top: 100px;
   margin-bottom: 100px;
 }
-.mlf-100 {
+.mlr-100 {
   margin-left: 100px;
   margin-right: 100px;
 }
@@ -1112,7 +1080,7 @@ input::-ms-clear {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.plf-5 {
+.plr-5 {
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -1135,7 +1103,7 @@ input::-ms-clear {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.plf-10 {
+.plr-10 {
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -1158,7 +1126,7 @@ input::-ms-clear {
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.plf-15 {
+.plr-15 {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -1181,7 +1149,7 @@ input::-ms-clear {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.plf-20 {
+.plr-20 {
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -1204,7 +1172,7 @@ input::-ms-clear {
   padding-top: 25px;
   padding-bottom: 25px;
 }
-.plf-25 {
+.plr-25 {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -1227,7 +1195,7 @@ input::-ms-clear {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.plf-30 {
+.plr-30 {
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -1250,7 +1218,7 @@ input::-ms-clear {
   padding-top: 35px;
   padding-bottom: 35px;
 }
-.plf-35 {
+.plr-35 {
   padding-left: 35px;
   padding-right: 35px;
 }
@@ -1273,7 +1241,7 @@ input::-ms-clear {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.plf-40 {
+.plr-40 {
   padding-left: 40px;
   padding-right: 40px;
 }
@@ -1296,7 +1264,7 @@ input::-ms-clear {
   padding-top: 45px;
   padding-bottom: 45px;
 }
-.plf-45 {
+.plr-45 {
   padding-left: 45px;
   padding-right: 45px;
 }
@@ -1319,7 +1287,7 @@ input::-ms-clear {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.plf-50 {
+.plr-50 {
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -1342,7 +1310,7 @@ input::-ms-clear {
   padding-top: 55px;
   padding-bottom: 55px;
 }
-.plf-55 {
+.plr-55 {
   padding-left: 55px;
   padding-right: 55px;
 }
@@ -1365,7 +1333,7 @@ input::-ms-clear {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.plf-60 {
+.plr-60 {
   padding-left: 60px;
   padding-right: 60px;
 }
@@ -1388,7 +1356,7 @@ input::-ms-clear {
   padding-top: 65px;
   padding-bottom: 65px;
 }
-.plf-65 {
+.plr-65 {
   padding-left: 65px;
   padding-right: 65px;
 }
@@ -1411,7 +1379,7 @@ input::-ms-clear {
   padding-top: 70px;
   padding-bottom: 70px;
 }
-.plf-70 {
+.plr-70 {
   padding-left: 70px;
   padding-right: 70px;
 }
@@ -1434,7 +1402,7 @@ input::-ms-clear {
   padding-top: 75px;
   padding-bottom: 75px;
 }
-.plf-75 {
+.plr-75 {
   padding-left: 75px;
   padding-right: 75px;
 }
@@ -1457,7 +1425,7 @@ input::-ms-clear {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-.plf-80 {
+.plr-80 {
   padding-left: 80px;
   padding-right: 80px;
 }
@@ -1480,7 +1448,7 @@ input::-ms-clear {
   padding-top: 85px;
   padding-bottom: 85px;
 }
-.plf-85 {
+.plr-85 {
   padding-left: 85px;
   padding-right: 85px;
 }
@@ -1503,7 +1471,7 @@ input::-ms-clear {
   padding-top: 90px;
   padding-bottom: 90px;
 }
-.plf-90 {
+.plr-90 {
   padding-left: 90px;
   padding-right: 90px;
 }
@@ -1526,7 +1494,7 @@ input::-ms-clear {
   padding-top: 95px;
   padding-bottom: 95px;
 }
-.plf-95 {
+.plr-95 {
   padding-left: 95px;
   padding-right: 95px;
 }
@@ -1549,7 +1517,7 @@ input::-ms-clear {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.plf-100 {
+.plr-100 {
   padding-left: 100px;
   padding-right: 100px;
 }
@@ -2866,9 +2834,6 @@ input::-ms-clear {
   position: relative;
   overflow: hidden;
 }
-.btn span {
-  display: block;
-}
 /**
  * 动画效果
  */
@@ -2876,6 +2841,9 @@ input::-ms-clear {
   padding: 8px 25px;
   background-color: #8ac7db;
   color: #fff;
+}
+.btn-animation span {
+  display: block;
 }
 .btn-animation-short:after,
 .btn-animation-short:before,

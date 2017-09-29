@@ -2,7 +2,6 @@
  * 定宽库 外边距
  */
 .fixed-layout-margin(){
-
   .margin(@margin) when (@margin<=@fixed-margin-max){
     @index:unit(@margin);
     .mt-@{index}{margin-top:@margin}
@@ -14,22 +13,19 @@
       margin-top:@margin;
       margin-bottom:@margin;
     }
-    .mlf-@{index}{
+    .mlr-@{index}{
       margin-left:@margin;
       margin-right:@margin;
     }
     .margin(@margin+5px);
   }
-
   .margin(5px);
-
 }
 
 /*
  * 定宽库 内边距
  */
 .fixed-layout-padding(){
-
   .padding(@padding) when (@padding<=@fixed-padding-max){
     @index:unit(@padding);
     .pt-@{index}{padding-top:@padding}
@@ -41,23 +37,20 @@
       padding-top:@padding;
       padding-bottom:@padding;
     }
-    .plf-@{index}{
+    .plr-@{index}{
       padding-left:@padding;
       padding-right:@padding;
     }
 
     .padding(@padding+5px);
   }
-
   .padding(5px);
-
 }
 
 /**
  * 定宽库 字体大小
  */
 .fixed-layout-font-size(){
-
   .fs(@fs) when (@fs<=@fixed-fs-max){
     @index:unit(@fs);
     .fs-@{index}{
@@ -65,16 +58,13 @@
     }
     .fs(@fs+1px)
   }
-
   .fs(12px);
-
 }
 
 /**
  * 定宽库 行高
  */
 .fixed-layout-line-height(){
-
   .lh(@lh) when (@lh <=@fixed-lh-max){
     @index:unit(@lh);
     .lh-@{index}{
@@ -82,9 +72,7 @@
     }
     .lh(@lh + 10%);
   }
-
   .lh(100%);
-
 }
 
 /**

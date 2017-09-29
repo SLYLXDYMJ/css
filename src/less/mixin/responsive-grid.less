@@ -2,7 +2,6 @@
  * 响应式库 行中列间距
  */
 .responsive-grid-row-space(@screen){
-
   .row-space(@space) when (@space<=@responsive-grid-max-row-space){
     @index:unit(@space);
     .row-@{screen}-@{index}{
@@ -15,9 +14,7 @@
     }
     .row-space(@space+5px);
   }
-
   .row-space(0px);
-
 }
 
 /**
@@ -99,11 +96,8 @@
  * 响应式库 用于循环
  */
 .responsive-grid-col-loop(@index,@screen,@type) when (@index>=0) {
-
   .responsive-grid-col-calc(@index,@screen,@type);
-
   .responsive-grid-col-loop((@index - 1),@screen,@type)
-
 }
 
 /**

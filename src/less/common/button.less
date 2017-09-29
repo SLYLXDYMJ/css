@@ -16,10 +16,6 @@
   position: relative;
   overflow: hidden;
 
-  span{
-    display: block;
-  }
-
 }
 
 /**
@@ -30,6 +26,12 @@
   background-color:@btn-default-background-color;
   color:@btn-default-color;
 
+  // 基础文字
+  span{
+    display: block;
+  }
+
+  // 时间定义
   &-short{
     &:after,&:before,span,span:after,span:before{
       transition-duration: @btn-transition-time-short !important;

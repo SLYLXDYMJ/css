@@ -2,7 +2,6 @@
  * 定宽库 行中列间距
  */
 .fixed-grid-row-space(){
-
   .row-space(@space) when (@space<=@fixed-max-row-space){
     @index:unit(@space);
     .row-@{index}{
@@ -16,9 +15,7 @@
 
     .row-space(@space + 5px);
   }
-
   .row-space(5px);
-
 }
 
 /**
@@ -47,16 +44,13 @@
  * 定宽库 列宽度
  */
 .fixed-grid-col-width(){
-
   .col-width(@index) when (@index>0) {
     .col-@{index}{
       width:percentage((@index / @grid-columns));
     }
     .col-width(@index - 1);
   }
-
   .col-width(@fixed-columns);
-
 }
 
 /**

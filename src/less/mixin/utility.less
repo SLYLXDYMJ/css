@@ -16,24 +16,20 @@
  * 遮罩（分为白色和黑色）
  */
 .shadow(){
-
   .cover(@index){
     @item: ~".shadow-black-@{index} , .shadow-white-@{index}";
     .cover((@index + 1),@item);
   }
-
   .cover(@index,@list) when (@index<10){
     @item: ~".shadow-black-@{index} , .shadow-white-@{index}";
     .cover((@index + 1),~"@{list},@{item}");
   }
-
   .cover(@index,@list) when (@index=10){
     @{list}{
       position: absolute;
       top:0;left:0;right:0;bottom:0;
     }
   }
-
   .shadow-black(@index) when (@index<10){
 
     .shadow-black-@{index}{
@@ -43,7 +39,6 @@
     .shadow-black(@index+1);
 
   }
-
   .shadow-white(@index) when (@index<10){
 
     .shadow-white-@{index}{
@@ -53,27 +48,20 @@
     .shadow-white(@index+1);
 
   }
-
   .cover(1);
   .shadow-black(1);
   .shadow-white(1);
-
 }
 
 /**
  * z-index
  */
 .zIndex(){
-
   .zIndex(@index) when (@index<=10){
     .z-index-@{index}{
       z-index: @index;
     }
-
     .zIndex(@index + 1);
-
   }
-
   .zIndex(0);
-
 }
