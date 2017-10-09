@@ -20,10 +20,10 @@
 + 一行显示溢出隐藏： .text-nowrap
 
 ### 图片相关
-+ 响应式图片 .img-responsive
++ 响应式图片: .img-responsive
 
 ### display相关
-+ 块元素： .display-block
++ 块元素: .display-block
 + 行内块元素： .display-inline-block
 + 行内元素： .display-inline
 
