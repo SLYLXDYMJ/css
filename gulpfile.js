@@ -10,21 +10,32 @@ const connectOptions={
 
 // 各个文件
 const files={
-	less:[
+	less: [
 		'./src/less/jason-fixed.less',
 		'./src/less/jason-responsive.less'
 	],
-	js:'./src/js/*.js'
+  js: './src/js/*.js',
+  shelf: './src/shelf/**/*' 
 };
 
 // 输出路径
 const exportPath={
-	distCss:'./dist/css',
-	distJs:'./dist/js'
+  distShelf:  './dist/app',
+	distCss:    './dist/css',
+  distJs:     './dist/js',
+  shelfCss:   './dist/app/plugins/jason/css',
+  shelfJs:    './dist/app/plugins/jason/js'
 };
 
-gulp.task('build',['style','script'],function () {
+gulp.task('build',['shelf','style','script'],function () {
   console.log(showTime('build'));
+});
+
+gulp.task('shelf',function(){
+  gulp.src(files.shelf)
+    .pipe(gulp.dest(exportPath.distShelf));
+
+  console.log(showTime('shelf'));
 });
 
 gulp.task('style',function(){
@@ -35,12 +46,12 @@ gulp.task('style',function(){
       browsers:'>0%',
       cascade:true
     }))
-    .pipe(gulp.dest(exportPath.distCss))
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(exportPath.distCss));
+    .pipe(gulp.dest(exportPath.distCss))
+    .pipe(gulp.dest(exportPath.shelfCss));
 
-    console.log(showTime('style'));
+  console.log(showTime('style'));
 });
 
 gulp.task('script',function(){
@@ -60,7 +71,8 @@ gulp.task('script',function(){
     .pipe(gulp.dest(exportPath.distJs))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(exportPath.distJs));
+    .pipe(gulp.dest(exportPath.distJs))
+    .pipe(gulp.dest(exportPath.shelfJs));
 
   console.log(showTime('script'));
 });
