@@ -32,8 +32,6 @@ gulp.task('style',function(){
 gulp.task('script',function(){
   gulp.src(path.script+'/main.js')
     .pipe($.plumber())
-    .pipe($.jshint())
-    .pipe($.jshint.reporter("default"))
     .pipe($.babel({
       presets: ['es2015']
     }))
