@@ -2,7 +2,6 @@
 
   'use strict';
   
-
   let canIe=$('html').data('jason');
   let nonsupport=false;
   
