@@ -4,10 +4,6 @@
 .fixed-layout-margin(){
   .margin(@margin) when (@margin<=@fixed-margin-max){
     @index:unit(@margin);
-    .mt-@{index}{margin-top:@margin}
-    .mr-@{index}{margin-right:@margin}
-    .mb-@{index}{margin-bottom:@margin}
-    .ml-@{index}{margin-left:@margin}
     .m-@{index}{margin:@margin}
     .mtb-@{index}{
       margin-top:@margin;
@@ -17,6 +13,10 @@
       margin-left:@margin;
       margin-right:@margin;
     }
+    .mt-@{index}{margin-top:@margin}
+    .mr-@{index}{margin-right:@margin}
+    .mb-@{index}{margin-bottom:@margin}
+    .ml-@{index}{margin-left:@margin}
     .margin(@margin+5px);
   }
   .margin(5px);
@@ -28,10 +28,6 @@
 .fixed-layout-padding(){
   .padding(@padding) when (@padding<=@fixed-padding-max){
     @index:unit(@padding);
-    .pt-@{index}{padding-top:@padding}
-    .pr-@{index}{padding-right:@padding}
-    .pb-@{index}{padding-bottom:@padding}
-    .pl-@{index}{padding-left:@padding}
     .p-@{index}{padding:@padding}
     .ptb-@{index}{
       padding-top:@padding;
@@ -41,6 +37,10 @@
       padding-left:@padding;
       padding-right:@padding;
     }
+    .pt-@{index}{padding-top:@padding}
+    .pr-@{index}{padding-right:@padding}
+    .pb-@{index}{padding-bottom:@padding}
+    .pl-@{index}{padding-left:@padding}
 
     .padding(@padding+5px);
   }

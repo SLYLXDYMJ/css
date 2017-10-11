@@ -4,11 +4,6 @@
 .responsive-layout-margin(@screen){
   .margin(@margin) when (@margin<=@responsive-margin-max) {
     @index:unit(@margin);
-
-    .mt-@{screen}-@{index}{margin-top:@margin}
-    .mr-@{screen}-@{index}{margin-right:@margin}
-    .mb-@{screen}-@{index}{margin-bottom:@margin}
-    .ml-@{screen}-@{index}{margin-left:@margin}
     .m-@{screen}-@{index}{margin:@margin}
     .mtb-@{screen}-@{index}{
       margin-top:@margin;
@@ -18,6 +13,10 @@
       margin-left:@margin;
       margin-right:@margin;
     }
+    .mt-@{screen}-@{index}{margin-top:@margin}
+    .mr-@{screen}-@{index}{margin-right:@margin}
+    .mb-@{screen}-@{index}{margin-bottom:@margin}
+    .ml-@{screen}-@{index}{margin-left:@margin}
 
     .margin(@margin + 5px);
 
@@ -32,10 +31,6 @@
   .padding(@padding) when (@padding<=@responsive-padding-max) {
     @index:unit(@padding);
 
-    .pt-@{screen}-@{index}{padding-top:@padding}
-    .pr-@{screen}-@{index}{padding-right:@padding}
-    .pb-@{screen}-@{index}{padding-bottom:@padding}
-    .pl-@{screen}-@{index}{padding-left:@padding}
     .p-@{screen}-@{index}{padding:@padding}
     .ptb-@{screen}-@{index}{
       padding-top:@padding;
@@ -45,6 +40,10 @@
       padding-left:@padding;
       padding-right:@padding;
     }
+    .pt-@{screen}-@{index}{padding-top:@padding}
+    .pr-@{screen}-@{index}{padding-right:@padding}
+    .pb-@{screen}-@{index}{padding-bottom:@padding}
+    .pl-@{screen}-@{index}{padding-left:@padding}
 
     .padding(@padding + 5px);
 

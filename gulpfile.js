@@ -46,6 +46,7 @@ gulp.task('style',function(){
       browsers:'>0%',
       cascade:true
     }))
+    .pipe(gulp.dest(exportPath.distCss))
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distCss))
