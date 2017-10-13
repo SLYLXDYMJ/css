@@ -112,39 +112,43 @@
 
 /**
  * 响应式库 栅格系统
- * 不同尺寸屏幕标准的定义
  * .container 的槽宽 和 宽度 标准
  * 行中列间距的最大值
  * 一行中的列数
  */
 
+/**
+ * 屏幕档位定义
+ */
 @screen-sm:                     768px;
-@screen-sm-min:                 @screen-sm;
-@screen-tablet:                 @screen-sm-min;
-
 @screen-md:                     992px;
-@screen-md-min:                 @screen-md;
-@screen-desktop:                @screen-md-min;
-
 @screen-lg:                     1200px;
+
+@screen-sm-min:                 @screen-sm;
+@screen-md-min:                 @screen-md;
 @screen-lg-min:                 @screen-lg;
-@screen-lg-desktop:             @screen-lg-min;
 
 @screen-xs-max:                 (@screen-sm-min - 1);
 @screen-sm-max:                 (@screen-md-min - 1);
 @screen-md-max:                 (@screen-lg-min - 1);
 
+
+/**
+ * .container 的槽宽
+ * 最大的行中列间距
+ */
 @grid-gutter-width:             20px;
 @responsive-grid-max-row-space: 100px;
 
-@container-tablet:              (720px + @grid-gutter-width);
-@container-sm:                  @container-tablet;
 
-@container-desktop:             (940px + @grid-gutter-width);
-@container-md:                  @container-desktop;
-
-@container-large-desktop:       (1160px + @grid-gutter-width);
-@container-lg:                  @container-large-desktop;
+/**
+ * .container 的宽度定义
+ * 计算的公式为 屏幕档位向下取整十位 - 槽宽
+ * 这样在任何屏幕下，屏幕两侧最小的留白 为槽宽，不会有
+ */
+@container-sm:                  floor(@screen-sm*0.1) * 10;
+@container-md:                  floor(@screen-md*0.1) * 10;
+@container-lg:                  floor(@screen-lg*0.1) * 10;
 
 @grid-columns:                  12;
 

@@ -20,11 +20,11 @@ const files={
 
 // 输出路径
 const exportPath={
-  distShelf:  './dist/app',
+  distShelf:  './dist/shelf',
 	distCss:    './dist/css',
   distJs:     './dist/js',
-  shelfCss:   './dist/app/plugins/jason/css',
-  shelfJs:    './dist/app/plugins/jason/js'
+  shelfCss:   './dist/shelf/plugins/jason/css',
+  shelfJs:    './dist/shelf/plugins/jason/js'
 };
 
 gulp.task('build',['shelf','style','script'],function () {
@@ -66,10 +66,10 @@ gulp.task('script',function(){
       '*.js'
     ]))
     .pipe($.concat('jason.js'))
+    .pipe(gulp.dest(exportPath.distJs))
     .pipe($.babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest(exportPath.distJs))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distJs))

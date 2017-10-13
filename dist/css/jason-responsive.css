@@ -50,10 +50,21 @@
  */
 /**
  * 响应式库 栅格系统
- * 不同尺寸屏幕标准的定义
  * .container 的槽宽 和 宽度 标准
  * 行中列间距的最大值
  * 一行中的列数
+ */
+/**
+ * 屏幕档位定义
+ */
+/**
+ * .container 的槽宽
+ * 最大的行中列间距
+ */
+/**
+ * .container 的宽度定义
+ * 计算的公式为 屏幕档位向下取整十位 - 槽宽
+ * 这样在任何屏幕下，屏幕两侧最小的留白 为槽宽，不会有
  */
 /* =========================================================
    select
@@ -387,6 +398,9 @@ textarea {
 input::-ms-clear {
   display: none;
 }
+body {
+  overflow-x: hidden;
+}
 .container,
 .container-fluid {
   padding-left: 10px;
@@ -397,17 +411,17 @@ input::-ms-clear {
 }
 @media screen and (min-width: 768px) {
   .container {
-    width: 740px;
+    width: 760px;
   }
 }
 @media screen and (min-width: 992px) {
   .container {
-    width: 960px;
+    width: 990px;
   }
 }
 @media screen and (min-width: 1200px) {
   .container {
-    width: 1180px;
+    width: 1200px;
   }
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
