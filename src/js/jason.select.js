@@ -23,11 +23,11 @@
 
     // 开启或者关闭事件
     let event=arguments[0];
-    let transitionTime=null;
+    let duration=null;
 
     // 如果是数字
     if(!isNaN(event)){
-      transitionTime=arguments[0];
+      duration=arguments[0];
       event = null;
     }
 
@@ -48,7 +48,7 @@
             return 'SELECT';
           }
         }());
-        let time=transitionTime||parseFloat($select.data('time'))||200;
+        let time=duration||parseFloat($select.data('time'))||200;
         $select.data('jason.select',new Select({
           $select:$select,
           $label:$label,
@@ -74,6 +74,7 @@
 
   // 构造函数
   class Select{
+
     constructor(params){
       $.extend(true,this,params);
 
