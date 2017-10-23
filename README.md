@@ -6,7 +6,10 @@
 + 选择css库（shelf/plugins/jason/*.css）
 + 根据（shelf/README.md）愉快的切图
 
-## 栅格说明（参考了bootstrap，新增了可变的列间距）
+## reset 说明
++ 游览器默认样式统统删除！
+
+## 栅格说明（参考bootstrap，新增了可变的列间距）
 + 定宽列间距： .row-(0~100)
 + 响应列间距： .row-(xs/sm/md/lg)-(0~100)
 
