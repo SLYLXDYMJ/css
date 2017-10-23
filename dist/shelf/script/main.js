@@ -10,7 +10,7 @@
   
 
 
-  // 启动应用
+  // 启动器
   $(function(){
     var app=$('html').data('app');
     var appArr=(function(){
