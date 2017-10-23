@@ -23,9 +23,9 @@
 + 响应式图片: .img-responsive
 
 ### display相关
-+ 块元素: .display-block
-+ 行内块元素： .display-inline-block
-+ 行内元素： .display-inline
++ 块元素: .block
++ 行内块元素： .inline-block
++ 行内元素： .inline
 
 ### 列表相关(ul,ol)
 + 横向列表浮动实现： .list-float
@@ -50,9 +50,12 @@
 
 ### 隐藏和显示相关
 + 永久隐藏： .hide
-+ 大屏幕电脑显示其他屏幕隐藏： .hide-md
-+ 中屏幕电脑显示其他屏幕隐藏： .hide-sm
-+ 小屏幕电脑显示其他屏幕隐藏： .hide-xs
++ lg屏幕显示其他屏幕隐藏： .hide-md
++ md屏幕显示其他屏幕隐藏： .hide-sm
++ xs屏幕显示其他屏幕隐藏： .hide-xs
++ lg屏幕隐藏其他屏幕显示： .show-md
++ lg、md屏幕隐藏其他屏幕显示：  .show-sm
++ lg、md、xs屏幕隐藏小屏幕显示：  .show-xs
 
 
 
