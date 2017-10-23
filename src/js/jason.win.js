@@ -32,7 +32,6 @@
         this.scrollPositionTop = Math.max($body.scrollTop(),document.documentElement.scrollTop);
         // 视口底部，距离页面顶部的距离
         this.scrollPositionBottom = Math.max($body.scrollTop(),document.documentElement.scrollTop) + document.documentElement.clientHeight;
-
         //视口的宽度 排除滚动条 加上滚动条的 直接用innerWidth
         this.innerWidth=document.documentElement.clientWidth;
         //视口的高度，除去滚动条的
@@ -59,12 +58,13 @@
     }
   });
 
-  $.$win.update();
   $(window).resize(function(){
     $.$win.update();
   });
   $(window).scroll(function(){
     $.$win.update();
   });
+
+  $.$win.update();
 
 }(window.jQuery));
