@@ -1,7 +1,7 @@
 # shelf
 前端切图目录结构，使用gulp自动化构建工具。
 
-# 使用：( package.jason 使用的是 淘宝镜像 cnpm的初始化 )
+# 使用：（使用淘宝的镜像cnpm  npm太卡。。。）
   1. 导入依赖包,cnpm install <br/>
   2. cnpm run dev（开发者模式）<br/>
   3. cnpm run build（打包plugins目录的文件到build.css和build.js） <br/>
