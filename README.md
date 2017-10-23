@@ -1,6 +1,11 @@
 # jason
 切图框架——css分为定宽和响应式，需要手动选择
 
+## 切图使用方法
++ 复制dist下的shelf文件下到工程目录
++ 选择css库（shelf/plugins/jason/*.css）
++ 根据README.md愉快的切图
+
 ## 栅格说明（参考了bootstrap，新增了可变的列间距）
 + 定宽列间距： .row-(0~100)
 + 响应列间距： .row-(xs/sm/md/lg)-(0~100)
