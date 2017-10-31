@@ -14,5 +14,4 @@
 	assets 	  : 静态资源（字体文件，图片文件，视频音频文件）  <br/>
 
 # js 启动器
-  在 html 标签上定义属性 data-app="属性值" （属性值为myApp对象执行的方法名）
-  
+  在 html 标签上定义属性 data-app="属性值" （属性值为main.js中myApp对象执行的方法名）
