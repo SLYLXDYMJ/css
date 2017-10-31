@@ -5,7 +5,7 @@ const path = {
   script:__dirname+'/script',
   style:__dirname+'/style',
   plugins:__dirname+'/plugins'
-}
+};
 
 // 开发者模式
 gulp.task('dev',['build','server','watch']);
@@ -15,12 +15,12 @@ gulp.task('build',['style','script'],build);
 
 // 样式编译
 gulp.task('style',function(){
-  gulp.src(path.style+'/import.less')
+  gulp.src(path.style+'/import.scss')
     .pipe($.plumber())
-    .pipe($.less())
-    .pipe($.autoprefixer({
-      browsers:['>= 5%']
-    }))
+    .pipe($.sass())
+    .pipe($.postcss([
+      require('autoprefixer')({browsers: ['>=5%']})
+    ]))
     .pipe($.cleanCss())
     .pipe(gulp.dest(path.style));
 
@@ -59,7 +59,7 @@ gulp.task('server',function(){
 gulp.task('watch',function(){
 
   gulp.watch(path.script+'/main.js',['script']);
-  gulp.watch(path.style+'/*.less',['style']);
+  gulp.watch(path.style+'/*.scss',['style']);
   $.watch('plugins/**/*.*',build);
 
   console.log(showTime('watch'));
@@ -68,12 +68,8 @@ gulp.task('watch',function(){
 
 // 打包函数，因为 gulp-watch 无法 调用task
 function build(){
-  gulp.src([path.plugins+'/**/*.css',path.plugins+'/**/*.less'])
-    .pipe($.less())
+  gulp.src(path.plugins+'/**/*.css')
     .pipe($.concat('bundle.css'))
-    .pipe($.autoprefixer({
-      browsers:['>= 5%']
-    }))
     .pipe($.cleanCss())
     .pipe(gulp.dest(path.style));
 

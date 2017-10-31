@@ -1,0 +1,74 @@
+/////////////////////////////////////////////////////
+// 定宽 .container .container-fluid
+/////////////////////////////////////////////////////
+@mixin container-attr{
+  height: 100%;
+  margin: 0 auto;
+  padding-left :$responsive-gutter / 2;
+  padding-right :$responsive-gutter / 2;
+  @extend .clearfix;
+}
+@mixin container-width{
+  width: $fixed-container-width;
+}
+
+
+/////////////////////////////////////////////////////
+// 定宽 .row
+/////////////////////////////////////////////////////
+@mixin row{
+  @extend .clearfix;
+  @include row-mark;
+}
+@mixin row-mark{
+  @include row-loop;
+}
+@mixin row-loop{
+  @include row-space;
+}
+@mixin row-space{
+  $i : 0;
+  @while $i <= strip-units($fixed-max-space){
+    &-#{$i}{
+      margin-left: (-$i / 2 ) * 1px;
+      margin-right: (-$i / 2 ) * 1px;
+      >div{
+        padding-left: ($i / 2 ) * 1px;
+        padding-right: ($i / 2 ) * 1px;
+      }
+    }
+    $i : $i + 5;
+  }
+}
+
+
+
+
+
+/////////////////////////////////////////////////////
+// 定宽 .col
+/////////////////////////////////////////////////////
+@mixin col{
+  @include col-mark;
+}
+@mixin col-mark{
+  @include col-loop;
+}
+@mixin col-loop{
+  @include col-attr;
+  @include col-width;
+}
+@mixin col-attr{
+  @for $i from 1 through $fixed-columns{
+    &-#{$i}{
+      position: relative;
+      min-height: 1px;
+      float: left;
+    }
+  }
+}
+@mixin col-width{
+  @for $i from 1 through $fixed-columns{
+    &-#{$i}{width: 100% / $fixed-columns * $i }
+  }
+}

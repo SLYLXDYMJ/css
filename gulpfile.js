@@ -10,9 +10,9 @@ const connectOptions={
 
 // 各个文件
 const files={
-	less: [
-		'./src/less/jason-fixed.less',
-		'./src/less/jason-responsive.less'
+	scss: [
+		'./src/scss/jason-fixed.scss',
+		'./src/scss/jason-responsive.scss'
 	],
   js: './src/js/*.js',
   shelf: './src/shelf/**/*' 
@@ -39,13 +39,12 @@ gulp.task('shelf',function(){
 });
 
 gulp.task('style',function(){
-  gulp.src(files.less)
+  gulp.src(files.scss)
     .pipe($.plumber())
-    .pipe($.less())
-    .pipe($.autoprefixer({
-      browsers:'>0%',
-      cascade:true
-    }))
+    .pipe($.sass())
+    .pipe($.postcss([
+      require('autoprefixer')({browsers: ['>=5%']})
+    ]))
     .pipe(gulp.dest(exportPath.distCss))
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
@@ -58,8 +57,6 @@ gulp.task('style',function(){
 gulp.task('script',function(){
   gulp.src(files.js)
     .pipe($.plumber())
-    .pipe($.jshint())
-    .pipe($.jshint.reporter("default"))
     .pipe($.order([
       'jason.haveJq.js',
       'jason.win.js',
@@ -87,7 +84,7 @@ gulp.task('connect',function(){
 });
 
 gulp.task('watch',function(){
-  gulp.watch('./src/**/*.less',['style']);
+  gulp.watch('./src/**/*.scss',['style']);
   gulp.watch('./src/**/*.js',['script']);
 
   console.log(showTime('watch'));

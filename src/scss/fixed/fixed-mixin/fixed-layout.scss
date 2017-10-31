@@ -1,0 +1,66 @@
+@mixin layout{
+  @include layout-mark;
+}
+@mixin layout-mark{
+  @include layout-loop;
+  
+}
+@mixin layout-loop{
+  @include margin;
+  @include padding;
+  @include fs;
+  @include lh;
+}
+/////////////////////////////////////////////////////
+// 定宽 margin
+/////////////////////////////////////////////////////
+@mixin margin{
+  $i : 0;
+  @while $i <= strip-units($fixed-max-margin){
+    .m-#{$i}  {margin: $i * 1px}
+    .mtb-#{$i}{margin-top: $i * 1px;margin-bottom: $i * 1px}
+    .mlr-#{$i}{margin-left: $i * 1px;margin-right: $i * 1px}
+    .mt-#{$i} {margin-top: $i * 1px}
+    .mr-#{$i} {margin-right: $i * 1px}
+    .mb-#{$i} {margin-bottom: $i * 1px}
+    .ml-#{$i} {margin-left: $i * 1px}
+    $i : $i + 5;
+  }
+}
+/////////////////////////////////////////////////////
+// 定宽 padding
+/////////////////////////////////////////////////////
+@mixin padding{
+  $i : 0;
+  @while $i <= strip-units($fixed-max-padding){
+    .p-#{$i}  {padding: $i * 1px}
+    .ptb-#{$i}{padding-top: $i * 1px;padding-bottom: $i * 1px}
+    .plr-#{$i}{padding-left: $i * 1px;padding-right: $i * 1px}
+    .pt-#{$i} {padding-top: $i * 1px}
+    .pr-#{$i} {padding-right: $i * 1px}
+    .pb-#{$i} {padding-bottom: $i * 1px}
+    .pl-#{$i} {padding-left: $i * 1px}
+    $i : $i + 5;
+  }
+}
+/////////////////////////////////////////////////////
+// 定宽 font-size
+/////////////////////////////////////////////////////
+@mixin fs{
+  $i : 12;
+  @while $i <= strip-units($fixed-max-fs){
+    .fs-#{$i}  {font-size: $i * 1px}
+    $i : $i + 2;
+  }
+}
+/////////////////////////////////////////////////////
+// 定宽 line-height
+/////////////////////////////////////////////////////
+@mixin lh{
+  $i : 1;
+  @while $i <= strip-units($fixed-max-lh){
+    .lh-#{$i*10}  {line-height: $i}
+    $i : $i + 0.1;
+  }
+}
+

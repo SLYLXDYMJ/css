@@ -1,0 +1,194 @@
+/***********************************************************
+  浮动
+************************************************************/
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.clearfix{
+  @include clearfix;
+}
+
+
+
+
+/***********************************************************
+  text
+************************************************************/
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-bold{
+  font-weight:bold;
+}
+.text-nowrap{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height:1.2;
+}
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+
+
+
+/***********************************************************
+  图片
+************************************************************/
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  max-height:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+
+/***********************************************************
+  display的值
+************************************************************/
+.block{
+  display: block;
+}
+.inline{
+  display: inline;
+  vertical-align: middle;
+}
+.inline-block{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+
+/***********************************************************
+  列表（ul，ol）
+************************************************************/
+.list-float{
+  @extend .clearfix;
+  >*{
+    float: left;
+  }
+  a{
+    display: block;
+  }
+}
+
+.list-inline-block{
+  >*{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+
+
+/***********************************************************
+  垂直居中
+************************************************************/
+/* transform 方式 */
+.vertical-transform{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+/* margin 方式 */
+.vertical-margin{
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin:auto;
+}
+
+/* 模拟表格 方式 */
+.vertical-table{
+  display: table;
+  height:100%;
+  width:100%;
+}
+.vertical-tr{
+  display:table-row;
+}
+.vertical-td{
+  display:table-cell;
+  vertical-align: middle;
+}
+
+/* 内容生成 方式 */
+.vertical-content{
+
+  &::before,&::after{
+    content:"";
+    height: 100%;
+  }
+
+  &::before,&::after,&>*{
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+}
+
+
+/***********************************************************
+  背景图
+************************************************************/
+.bg-cover{
+  background-size:cover;
+  background-position:center;
+}
+
+
+
+/***********************************************************
+  定位和层叠性 设置
+************************************************************/
+.relative{
+  position: relative;
+}
+.static{
+  position: static !important;
+}
+.z-index{
+  @include z-index;
+}
+
+
+
+/***********************************************************
+  覆盖的元素 和 遮罩
+************************************************************/
+.cover{
+  position: absolute;
+  top:0;right:0;bottom:0;left:0;
+}
+.shadow{
+  @include shadow;  
+}
+
+
+
+
+/***********************************************************
+  使元素隐藏
+************************************************************/
+.hide{
+  display: none !important;
+}
