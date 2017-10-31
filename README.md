@@ -13,6 +13,12 @@
 + 定宽列间距： .row-(0~100)
 + 响应列间距： .row-(xs/sm/md/lg)-(0~100)
 
+## 布局工具类说明
++ .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-sm-5）
++ .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-sm-5）
++ .fs （.fs-sm-18）
++ .lh （.fs-xs-15）（注意：.fs-xs-(10~20)   10代表 line-height:1 20代表 line-height:2）
+
 ## 工具类说明
 ### 浮动相关
 + 左浮动： .float-left
@@ -40,6 +46,7 @@
 + 横向行内块元素实现： .list-inline-block
 
 ### 垂直居中相关
++ 伪元素方式：.vertical-content
 + transform方式： .vertical-transform
 + margin方式： .vertical-margin
 + 模拟表格方式： .vertical-table>.vertical-tr(可省略)>.vertical-td
@@ -55,15 +62,6 @@
 ### 白色/黑色遮罩相关
 + 白色遮罩： .shadow-white-(1~9)
 + 黑色遮罩： .shadow-black-(1~9)
-
-### 隐藏和显示相关
-+ 永久隐藏： .hide
-+ lg屏幕显示其他屏幕隐藏： .hide-md
-+ md屏幕显示其他屏幕隐藏： .hide-sm
-+ xs屏幕显示其他屏幕隐藏： .hide-xs
-+ lg屏幕隐藏其他屏幕显示： .show-md
-+ lg、md屏幕隐藏其他屏幕显示：  .show-sm
-+ lg、md、xs屏幕隐藏小屏幕显示：  .show-xs
 
 
 
