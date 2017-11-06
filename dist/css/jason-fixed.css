@@ -2062,6 +2062,143 @@ input::-ms-clear {
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg); }
 
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  overflow: hidden; }
+
+/***********************************************************
+  动画效果基础样式
+************************************************************/
+.btn-anime {
+  padding: 8px 25px;
+  background-color: #8ac7db;
+  color: #fff; }
+  .btn-anime span {
+    display: block; }
+  .btn-anime-short:after, .btn-anime-short:before, .btn-anime-short span, .btn-anime-short span:after, .btn-anime-short span:before {
+    transition-duration: 0.3s !important; }
+  .btn-anime-middle:after, .btn-anime-middle:before, .btn-anime-middle span, .btn-anime-middle span:after, .btn-anime-middle span:before {
+    transition-duration: 0.6s !important; }
+  .btn-anime-long:after, .btn-anime-long:before, .btn-anime-long span, .btn-anime-long span:after, .btn-anime-long span:before {
+    transition-duration: 0.9s !important; }
+
+/***********************************************************
+  滑动效果
+************************************************************/
+.btn-slide-top:hover span, .btn-slide-top.hover span, .btn-slide-right:hover span, .btn-slide-right.hover span, .btn-slide-bottom:hover span, .btn-slide-bottom.hover span, .btn-slide-left:hover span, .btn-slide-left.hover span {
+  opacity: 0; }
+
+.btn-slide-top:hover:after, .btn-slide-top.hover:after, .btn-slide-right:hover:after, .btn-slide-right.hover:after, .btn-slide-bottom:hover:after, .btn-slide-bottom.hover:after, .btn-slide-left:hover:after, .btn-slide-left.hover:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+
+.btn-slide-top:hover:before, .btn-slide-top.hover:before, .btn-slide-top:hover:after, .btn-slide-top.hover:after, .btn-slide-right:hover:before, .btn-slide-right.hover:before, .btn-slide-right:hover:after, .btn-slide-right.hover:after, .btn-slide-bottom:hover:before, .btn-slide-bottom.hover:before, .btn-slide-bottom:hover:after, .btn-slide-bottom.hover:after, .btn-slide-left:hover:before, .btn-slide-left.hover:before, .btn-slide-left:hover:after, .btn-slide-left.hover:after {
+  opacity: 1; }
+
+.btn-slide-top span, .btn-slide-top:after, .btn-slide-top:before, .btn-slide-right span, .btn-slide-right:after, .btn-slide-right:before, .btn-slide-bottom span, .btn-slide-bottom:after, .btn-slide-bottom:before, .btn-slide-left span, .btn-slide-left:after, .btn-slide-left:before {
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.18, 1); }
+
+.btn-slide-top:after, .btn-slide-right:after, .btn-slide-bottom:after, .btn-slide-left:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0; }
+
+.btn-slide-top:before, .btn-slide-right:before, .btn-slide-bottom:before, .btn-slide-left:before {
+  content: attr(data-text);
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  opacity: 0; }
+
+.btn-slide-top:hover span, .btn-slide-top.hover span {
+  -webkit-transform: translate3d(0, -20px, 0);
+          transform: translate3d(0, -20px, 0); }
+
+.btn-slide-top:hover:before, .btn-slide-top.hover:before {
+  top: 50%;
+  transition-delay: 0.1s;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0); }
+
+.btn-slide-top:after {
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0); }
+
+.btn-slide-top:before {
+  top: 100%;
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+
+.btn-slide-right:hover span, .btn-slide-right.hover span {
+  -webkit-transform: translate3d(20px, 0, 0);
+          transform: translate3d(20px, 0, 0); }
+
+.btn-slide-right:hover:before, .btn-slide-right.hover:before {
+  right: 0;
+  transition-delay: 0.1s; }
+
+.btn-slide-right:after {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0); }
+
+.btn-slide-right:before {
+  top: 50%;
+  right: 100%;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0); }
+
+.btn-slide-bottom:hover span, .btn-slide-bottom.hover span {
+  -webkit-transform: translate3d(0, 20px, 0);
+          transform: translate3d(0, 20px, 0); }
+
+.btn-slide-bottom:hover:before, .btn-slide-bottom.hover:before {
+  bottom: 50%;
+  transition-delay: 0.1s;
+  -webkit-transform: translate3d(0, 50%, 0);
+          transform: translate3d(0, 50%, 0); }
+
+.btn-slide-bottom:after {
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0); }
+
+.btn-slide-bottom:before {
+  bottom: 100%;
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+
+.btn-slide-left:hover span, .btn-slide-left.hover span {
+  -webkit-transform: translate3d(-20px, 0, 0);
+          transform: translate3d(-20px, 0, 0); }
+
+.btn-slide-left:hover:before, .btn-slide-left.hover:before {
+  left: 0;
+  transition-delay: 0.1s; }
+
+.btn-slide-left:after {
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0); }
+
+.btn-slide-left:before {
+  top: 50%;
+  left: 100%;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0); }
+
 /***********************************************************
   浮动
 ************************************************************/

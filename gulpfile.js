@@ -58,15 +58,14 @@ gulp.task('script',function(){
   gulp.src(files.js)
     .pipe($.plumber())
     .pipe($.order([
-      'jason.haveJq.js',
-      'jason.win.js',
+      'jason.js',
       '*.js'
     ]))
     .pipe($.concat('jason.js'))
-    .pipe(gulp.dest(exportPath.distJs))
     .pipe($.babel({
       presets: ['es2015']
     }))
+    .pipe(gulp.dest(exportPath.distJs))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distJs))

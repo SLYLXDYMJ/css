@@ -17,7 +17,7 @@
 + .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-sm-5）
 + .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-sm-5）
 + .fs （.fs-sm-18）
-+ .lh （.fs-xs-15）（注意：.fs-xs-(10~20)   10代表 line-height:1 20代表 line-height:2）
++ .lh （.lh-xs-15）（注意：.lh-xs-(10~20)   10代表 line-height:1 20代表 line-height:2）
 
 ## 工具类说明
 ### 浮动相关

@@ -34,6 +34,28 @@ $hamburger-layer-border-radius:              4px ;
 
 
 
+
+
+///////////////////////////////////////////////////
+// 按钮
+///////////////////////////////////////////////////
+$btn-anime-padding:                     8px 25px;
+$btn-anime-color-default:               #fff;
+$btn-anime-bgc-default:                 #8ac7db;
+$btn-anime-time-short:                  .3s;
+$btn-anime-time-middle:                 .6s;
+$btn-anime-time-long:                   .9s;
+$btn-anime-time-default:                .6s;
+
+// 按钮 slide 滑动 效果
+$btn-slide-ttf:                         cubic-bezier(.77,0,.18,1);
+$btn-slide-distance:                    20px;
+$btn-slide-delay:                       .1s;
+$btn-slide-shadow:                      rgba(0,0,0,.3);
+
+
+
+
 ///////////////////////////////////////////////////
 // 定宽 Css库
 ///////////////////////////////////////////////////

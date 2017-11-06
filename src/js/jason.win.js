@@ -1,70 +1,93 @@
-(function($){
+(function(window){
 
-  'use strict';
+  // 判断是否支持 innerWidth 、 innerHeight 、 addEventListener。
+  // 其实就是判断游览器是否大于IE8
+  let low = window.addEventListener ? false : true;
 
-  // 记录body
-  let $body=$('body');
-
-  // 扩展jQuery
-  $.extend({
-    $win: {
-      //不包括滚动条的页面宽度
-      innerWidth: null,
-      // 不包括滚动条的页面高度
-      innerHeight: null,
-      // 包括滚动条的页面宽度
-      outWidth: null,
-      // 包括滚动条的页面高度
-      outHeight: null,
-      // 滚动条的宽度
-      scrollWidth: null,
-      // 页面/滚动条的总高度
-      bodyHeight: null,
-      // 当前视口顶部距离页面顶部的距离
-      scrollPositionTop: null,
-      // 当前视口底部距离页面顶部的距离
-      scrollPositionBottom: null,
-      // 判断是否是手机用户
-      isPhone: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-      // 强制更新视图
-      update: function(){
-        //视口顶部，距离页面顶部的距离
-        this.scrollPositionTop = Math.max($body.scrollTop(),document.documentElement.scrollTop);
-        // 视口底部，距离页面顶部的距离
-        this.scrollPositionBottom = Math.max($body.scrollTop(),document.documentElement.scrollTop) + document.documentElement.clientHeight;
-        //视口的宽度 排除滚动条 加上滚动条的 直接用innerWidth
-        this.innerWidth=document.documentElement.clientWidth;
-        //视口的高度，除去滚动条的
-        this.innerHeight=document.documentElement.clientHeight;
-        // 页面的总高度
-        this.bodyHeight=parseFloat($body.outerHeight()) + parseFloat($body.css('marginTop')) + parseFloat($body.css('marginBottom'));
-        //注意：
-        //IE 6 7 8 没有innerWidth和innerHeight
-        //IE9已经全都支持了
-        //如果是IE 6 7 8那么会报错，影响JS的运行
-        try{
-          //游览器包括滚动条的宽度
-          this.outWidth=innerWidth;
-          //游览器包括滚动条的高度
-          this.outHeight=innerHeight;
-          //Y轴滚动条的宽度
-          this.scrollWidth=innerWidth-$(window).width();
-        }
-        catch(err){
-          // 弹出警告
-          console.log("您可能在用低版本IE访问本页面，$win的部分属性将受到影响不能正常读取");
-        }
+  // 定义对象
+  let win = {
+    // 游览器可用区域，包括滚动条的宽度
+    innerWidth:           null,
+    // 游览器可用区域，包括滚动条的宽度
+    innerHeight:          null,
+    // 不包括滚动条的页面视口宽度
+    contentWidth:         null,
+    // 不包括滚动条的页面视口高度
+    contentHeight:        null,
+    // 滚动条/页面 的总高度
+    scrollHeight:         null,
+    // 当前视口顶部距离页面顶部的距离
+    scrollPositionTop:    null,
+    // 当前视口底部距离页面顶部的距离
+    scrollPositionBottom: null,
+    // 判断是否是 电脑 用户
+    isPc:                 false,
+    // 判断是否是手机用户
+    isPhone:              false,
+    // 判断是否是ipad用户
+    isPad:                false,
+    // 刷新数据 
+    update: function(){
+      if(!low){
+        // 游览器可用区域，包括滚动条的宽度
+        this.innerWidth         = innerWidth;
+        // 游览器可用区域，包括滚动条的宽度
+        this.innerHeight        = innerHeight;
       }
+      // 不包括滚动条的页面视口宽度
+      this.contentWidth         = document.documentElement.clientWidth;
+      // 不包括滚动条的页面视口高度
+      this.contentHeight        = document.documentElement.clientHeight;
+      // 页面/滚动条的总高度
+      this.scrollHeight         = document.documentElement.scrollHeight;
+      // 当前视口顶部距离页面顶部的距离
+      this.scrollPositionTop    = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+      // 当前视口底部距离页面顶部的距离
+      this.scrollPositionBottom = document.body.scrollTop + document.documentElement.clientHeight;
     }
-  });
+  };
 
-  $(window).resize(function(){
-    $.$win.update();
-  });
-  $(window).scroll(function(){
-    $.$win.update();
-  });
+  // 定义事件
+  if(low){
 
-  $.$win.update();
+    // 删除不兼容属性，提示错误
+    delete win.innerWidth;
+    delete win.innerHeight;
+    console.warn('您使用的低版本游览器，win对象部分功能将被禁止');
+    
+    window.attachEvent('onresize',function(){
+      win.update();
+    });
+    window.attachEvent('onscroll',function(){
+      win.update();
+    });
+  }else{
+    window.addEventListener('resize',function(){
+      win.update();
+    },false);
+    window.addEventListener('scroll',function(){
+      win.update();
+    },false);
+  }
 
-}(window.jQuery));
+  // 判断是否是移动设备
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    // 判断是平板还是手机
+    if(window.screen.availWidth<768){
+      win.isPhone = true;
+    }
+    else{
+      win.isPad   = true;
+    }
+  }
+  else{
+    win.isPc = true;
+  }
+
+  // 刷新一次数据
+  win.update();
+
+  // 暴漏
+  window.jason.win = win;
+  
+}(window));
