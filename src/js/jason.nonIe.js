@@ -72,9 +72,6 @@
     }
 
     return true;
-
   }
 
 }(window));
-
-

@@ -78,7 +78,6 @@ window.jason = {
     return true;
   }
 })(window);
-
 (function (window) {
 
   // 判断是否支持 innerWidth 、 innerHeight 、 addEventListener。
@@ -107,6 +106,10 @@ window.jason = {
     isPhone: false,
     // 判断是否是ipad用户
     isPad: false,
+    // 判断是否是微信用户
+    isWeChat: false,
+    // Css 前缀
+    cssPrefix: false,
     // 刷新数据 
     update: function update() {
       if (!low) {
@@ -131,7 +134,7 @@ window.jason = {
   // 定义事件
   if (low) {
 
-    // 删除不兼容属性，提示错误
+    // 删除不兼容属性，提示警告
     delete win.innerWidth;
     delete win.innerHeight;
     console.warn('您使用的低版本游览器，win对象部分功能将被禁止');
@@ -162,6 +165,31 @@ window.jason = {
   } else {
     win.isPc = true;
   }
+
+  // 判断是否是微信用户
+  if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger") {
+    win.isWeChat = true;
+  }
+
+  // 判断Css 前缀是什么
+  win.cssPrefix = function () {
+    var div = document.createElement('div');
+    div.style.cssText = '-webkit-transition:all .1s; -moz-transition:all .1s; -o-transition:all .1s; -ms-transition:all .1s; transition:all .1s;';
+    var style = div.style;
+    if (style.webkitTransition) {
+      return '-webkit-';
+    }
+    if (style.MozTransition) {
+      return '-moz-';
+    }
+    if (style.oTransition) {
+      return '-o-';
+    }
+    if (style.msTransition) {
+      return '-ms-';
+    }
+    return '';
+  }();
 
   // 刷新一次数据
   win.update();
