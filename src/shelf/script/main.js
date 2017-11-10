@@ -12,8 +12,8 @@
 
   // 启动器
   $(function(){
-    var app=$('html').data('app');
-    var appArr=(function(){
+    let app=$('html').data('app');
+    let appArr=(function(){
       if(app===undefined){
         return null;
       }

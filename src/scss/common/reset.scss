@@ -3,7 +3,7 @@
  * 将默认字体设置为 微软雅黑 sans-serif
  * 在不禁止用户缩放的情况下避免iOS设备方向调整后自动校正字体大小
  */
- html{
+html{
   box-sizing: border-box;
   font-family: "Microsoft Yahei" , sans-serif;
   /*
@@ -263,15 +263,3 @@ input[type="button"], input[type="submit"], input[type="reset"],textarea {
 input::-ms-clear {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-

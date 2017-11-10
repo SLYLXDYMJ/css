@@ -5532,8 +5532,7 @@ body {
 .text-nowrap {
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
-  line-height: 1.2; }
+  overflow: hidden; }
 
 .text-uppercase {
   text-transform: uppercase; }
@@ -5729,3 +5728,11 @@ body {
 ************************************************************/
 .hide {
   display: none !important; }
+
+@media screen and (max-width: 767px) {
+  .hide-xs {
+    display: none; }
+  .text-nowrap-xs {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; } }

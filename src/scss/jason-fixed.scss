@@ -1,21 +1,21 @@
-@import "variables";
-@import "common/function/com-function";
-@import "fixed/fixed-mixin/fixed-mixin";
+@import "./variables";
+@import "./common/function/com-function";
+@import "./fixed/fixed-mixin/fixed-mixin";
 
 //CSS 重置
-@import "common/reset";
+@import "./common/reset";
 
 //定宽 栅格
-@import "fixed/fixed-grid";
+@import "./fixed/fixed-grid";
 //定宽 布局
-@import "fixed/fixed-layout";
+@import "./fixed/fixed-layout";
 
 //组件 IE 支持
-@import "common/ie";
+@import "./common/ie";
 //组件 汉堡包按钮
-@import "common/hamburger";
+@import "./common/hamburger";
 //组件 按钮
-@import "common/button";
+@import "./common/button";
 
 // 工具类
-@import "common/utility";
+@import "./common/utility";

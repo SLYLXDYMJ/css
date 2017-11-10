@@ -65,7 +65,6 @@ gulp.task('script',function(){
     .pipe($.babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest(exportPath.distJs))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distJs))

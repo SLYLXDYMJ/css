@@ -86,26 +86,33 @@ $fixed-max-lh      : 2;
 ///////////////////////////////////////////////////
 
 // 响应式 断点，名称 以及 .container 的宽度
-$responsive-breakpoints : (name:sm,innerWidth:768px,width:750px)
-                          (name:md,innerWidth:992px,width:960px)
-                          (name:lg,innerWidth:1200px,width:1180px);
+// 注意：！从小屏幕到大屏幕，顺序不要改变
+$responsive-breakpoints : (
+  (name:sm,innerWidth:768px,width:750px)
+  (name:md,innerWidth:992px,width:960px)
+  (name:lg,innerWidth:1200px,width:1180px)
+);
+// 响应式 最小屏幕的最大宽度
+$responsive-smallest-maxWidth   : map_get(nth($responsive-breakpoints,1),innerWidth) - 1;
+
 // 响应式 最小屏幕 名称
-$responsive-smallest    : xs;
-// 响应式 槽宽 
-$responsive-gutter      : 20px;
+$responsive-smallest            : xs;
+
+// 响应式 槽宽
+$responsive-gutter              : 20px;
 // 响应式 一行的列数
-$responsive-columns     : 12;
+$responsive-columns             : 12;
 
 // 响应式 行中列间距 （最大值）
-$responsive-max-space   : 100px;
+$responsive-max-space           : 100px;
 // 响应式 外边距 （最大值）;
-$responsive-max-margin  : 100px;
+$responsive-max-margin          : 100px;
 // 响应式 内边距 （最大值）;
-$responsive-max-padding : 100px;
+$responsive-max-padding         : 100px;
 // 响应式 字体大小 （最大值）;
-$responsive-max-fs      : 100px;
+$responsive-max-fs              : 100px;
 // 响应式 行高 （最大值）;
-$responsive-max-lh      : 2;
+$responsive-max-lh              : 2;
 
 
 

@@ -2233,8 +2233,7 @@ input::-ms-clear {
 .text-nowrap {
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
-  line-height: 1.2; }
+  overflow: hidden; }
 
 .text-uppercase {
   text-transform: uppercase; }
