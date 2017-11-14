@@ -90,7 +90,7 @@ $fixed-max-lh      : 2;
 $responsive-breakpoints : (
   (name:sm,innerWidth:768px,width:750px)
   (name:md,innerWidth:992px,width:960px)
-  (name:lg,innerWidth:1200px,width:1180px)
+  (name:lg,innerWidth:1200px,width:1190px)
 );
 // 响应式 最小屏幕的最大宽度
 $responsive-smallest-maxWidth   : map_get(nth($responsive-breakpoints,1),innerWidth) - 1;

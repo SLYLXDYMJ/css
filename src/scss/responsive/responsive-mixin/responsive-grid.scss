@@ -103,6 +103,6 @@
 }
 @mixin col-offset($name){
   @for $i from 1 through $responsive-columns{
-    &-#{$name}-offset-#{$i}{margin: 100% / $responsive-columns * $i }
+    &-#{$name}-offset-#{$i}{margin-left: 100% / $responsive-columns * $i }
   }
 }
