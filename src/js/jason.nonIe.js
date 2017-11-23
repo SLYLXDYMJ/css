@@ -38,6 +38,7 @@
       throw new Error('jason.nonIe仅支持判断IE6~10，请输入正确的版本号');
     }
 
+    // 根据版本号进行判断
     switch (version){
       case 6:{
         if (document.all && document.compatMode && !window.XMLHttpRequest) {

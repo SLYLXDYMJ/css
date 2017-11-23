@@ -74,20 +74,21 @@
 /***********************************************************
   列表（ul，ol）
 ************************************************************/
-.list-float{
-  @extend .clearfix;
-  >*{
-    float: left;
+ul,ol{
+  &.list-float{
+    @extend .clearfix;
+    >li{
+      float: left;
+    }
+    a{
+      display: block;
+    }
   }
-  a{
-    display: block;
-  }
-}
-
-.list-inline-block{
-  >*{
-    display: inline-block;
-    vertical-align: middle;
+  &.list-inline-block{
+    >li{
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -142,7 +143,6 @@
   }
 
 }
-
 
 /***********************************************************
   背景图

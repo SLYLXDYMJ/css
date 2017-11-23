@@ -180,7 +180,7 @@ svg:not(:root) {
  * 取消下划线
  * 移入的鼠标样式
  * 取消outline
- * 增加过度效果
+ * 增加默认过度效果
  * 去掉 IE 10+ 点击链接时的灰色背景.
  * 颜色继承
  */
@@ -229,23 +229,13 @@ input,textarea,button{
   outline: none;
 }
 
-/**
- * 宽度高度初始化
- * 左右 padding 增加
- */
-input[type="text"],input[type="password"]{
-  padding-left:$textInput-padding;
-  padding-right:$textInput-padding;
-}
 
 /**
  * 初始化宽高
  * 移除隐藏
  * 不让用户拖拽大小
- * 增加padding
  */
 textarea{
-  padding:$textarea-padding;
   overflow: auto;
   resize: none;
 }

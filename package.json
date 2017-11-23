@@ -1,7 +1,7 @@
 {
   "name": "jason",
-  "version": "1.0.0",
-  "description": "前端切图工具库，注重响应式",
+  "version": "3.0.0",
+  "description": "前端切图工具库",
   "main": "none",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

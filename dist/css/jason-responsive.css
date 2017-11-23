@@ -159,7 +159,7 @@ svg:not(:root) {
  * 取消下划线
  * 移入的鼠标样式
  * 取消outline
- * 增加过度效果
+ * 增加默认过度效果
  * 去掉 IE 10+ 点击链接时的灰色背景.
  * 颜色继承
  */
@@ -203,21 +203,11 @@ input, textarea, button {
   outline: none; }
 
 /**
- * 宽度高度初始化
- * 左右 padding 增加
- */
-input[type="text"], input[type="password"] {
-  padding-left: 5px;
-  padding-right: 5px; }
-
-/**
  * 初始化宽高
  * 移除隐藏
  * 不让用户拖拽大小
- * 增加padding
  */
 textarea {
-  padding: 10px;
   overflow: auto;
   resize: none; }
 
@@ -5507,11 +5497,11 @@ body {
 .float-right {
   float: right; }
 
-.clearfix::before, .container::before, .container-fluid::before, .row::before, .list-float::before, .clearfix::after, .container::after, .container-fluid::after, .row::after, .list-float::after {
+.clearfix::before, .container::before, .container-fluid::before, .row::before, ul.list-float::before, ol.list-float::before, .clearfix::after, .container::after, .container-fluid::after, .row::after, ul.list-float::after, ol.list-float::after {
   content: "";
   display: table; }
 
-.clearfix::after, .container::after, .container-fluid::after, .row::after, .list-float::after {
+.clearfix::after, .container::after, .container-fluid::after, .row::after, ul.list-float::after, ol.list-float::after {
   clear: both; }
 
 /***********************************************************
@@ -5564,13 +5554,13 @@ body {
 /***********************************************************
   列表（ul，ol）
 ************************************************************/
-.list-float > * {
+ul.list-float > li, ol.list-float > li {
   float: left; }
 
-.list-float a {
+ul.list-float a, ol.list-float a {
   display: block; }
 
-.list-inline-block > * {
+ul.list-inline-block > li, ol.list-inline-block > li {
   display: inline-block;
   vertical-align: middle; }
 

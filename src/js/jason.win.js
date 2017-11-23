@@ -22,6 +22,8 @@
     scrollPositionBottom: null,
     // 判断是否是 电脑 用户
     isPc:                 false,
+    // 判断是否是 移动设备
+    isMobile:             false,
     // 判断是否是手机用户
     isPhone:              false,
     // 判断是否是ipad用户
@@ -77,6 +79,7 @@
 
   // 判断是否是移动设备
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    win.isMobile = true;
     // 判断是平板还是手机
     if(window.screen.availWidth<768){
       win.isPhone = true;
