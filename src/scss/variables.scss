@@ -4,11 +4,11 @@
 ///////////////////////////////////////////////////
 
 //网页字体大小
-$body-font-size:                 14px;
+$default-font-size:                 14px;
 //网页的行高
-$body-line-height:               1;
+$default-line-height:               1;
 //超链接 默认过渡 时间
-$link-transition-time:          .2s;
+$default-link-transition-time:      .2s;
 
 
 
@@ -44,12 +44,22 @@ $btn-anime-time-default:                .6s;
 
 // 按钮 slide 滑动 效果
 $btn-slide-ttf:                         cubic-bezier(.77,0,.18,1);
+// 滑动的距离
 $btn-slide-distance:                    20px;
+// 延迟度
 $btn-slide-delay:                       .1s;
+// 黑色遮罩的颜色
 $btn-slide-shadow:                      rgba(0,0,0,.3);
 
-
-
+// 按钮 load 加载 效果
+// load的大小
+$btn-load-size:                         20px;
+// load的粗细
+$btn-load-width:                        2px;
+// load的颜色
+$btn-load-color:                        #fff;
+// load转一圈的时间
+$btn-load-duration:                     .5s;
 
 ///////////////////////////////////////////////////
 // 定宽 Css库
@@ -59,20 +69,20 @@ $btn-slide-shadow:                      rgba(0,0,0,.3);
 $fixed-container-width:           1200px;
 
 // 定宽 槽宽 
-$fixed-gutter      : 20px;
+$fixed-gutter:                    20px;
 // 定宽 一行的列数
-$fixed-columns     : 12;
+$fixed-columns:                   12;
 
 // 定宽 行中列间距 （最大值）
-$fixed-max-space   : 100px;
+$fixed-max-space:                 100px;
 // 定宽 外边距 （最大值）;
-$fixed-max-margin  : 100px;
+$fixed-max-margin:                100px;
 // 定宽 内边距 （最大值）;
-$fixed-max-padding : 100px;
+$fixed-max-padding:               100px;
 // 定宽 字体大小 （最大值）;
-$fixed-max-fs      : 100px;
+$fixed-max-fs:                    100px;
 // 定宽 行高 （最大值）;
-$fixed-max-lh      : 2;
+$fixed-max-lh:                    2;
 
 
 

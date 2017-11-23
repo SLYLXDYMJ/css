@@ -10,7 +10,11 @@
       margin:25px auto;
     }
     .hamburger.active>div,.hamburger.active>div:after,.hamburger.active>div:before{
-      background-color:red;
+      background-color:#8AC7DB;
+    }
+    .btn{
+      display: block;
+      margin:0 auto;
     }
   </style>
 </head>
@@ -69,6 +73,9 @@
   <div></div>
 </div>
 
+<button class="btn btn-anime btn-slide-top" data-text="Go" onclick="active()">
+  <span>一键切换状态</span>
+</button>
 
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
 <script>
@@ -76,6 +83,9 @@
   $hamburgers.click(function(){
     $(this).toggleClass('active');
   });
+  function active(){
+    $hamburgers.toggleClass('active');
+  }
 </script>
 </body>
 </html>

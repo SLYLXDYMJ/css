@@ -27,21 +27,29 @@
   span{
     display: block;
   }
+
+  &:after,&:before,span,span:after,span:before{
+    transition-duration: $btn-anime-time-middle;
+    animation-duration: $btn-anime-time-middle;
+  }
   
   // 时间定义
   &-short{
     &:after,&:before,span,span:after,span:before{
       transition-duration: $btn-anime-time-short !important;
+      animation-duration: $btn-anime-time-short !important;
     }
   }
   &-middle{
     &:after,&:before,span,span:after,span:before{
       transition-duration: $btn-anime-time-middle !important;
+      animation-duration: $btn-anime-time-middle !important;
     }
   }
   &-long{
     &:after,&:before,span,span:after,span:before{
       transition-duration: $btn-anime-time-long !important;
+      animation-duration: $btn-anime-time-long !important;
     }
   }
 }
@@ -62,7 +70,7 @@
       opacity: 1
     }
     span,&:after,&:before{
-      transition:all $btn-anime-time-default $btn-slide-ttf;
+      transition-timing-function: $btn-slide-ttf;
     }
     &:after{
       content:"";
@@ -152,4 +160,43 @@
     }
   }
 
+}
+
+
+/***********************************************************
+  加载效果
+************************************************************/
+.btn-load{
+  pointer-events: none;
+  &::before,&::after{
+    display: none;
+  }
+  span{
+    transition: none;
+    color:transparent;
+    position: relative;
+    opacity: 1 !important;
+    transform: translate3d(0,0,0) !important;
+    &::after{
+      content:"";
+      height:$btn-load-size;
+      width: $btn-load-size;
+      position: absolute;
+      top:0;left:0;bottom:0;right:0;
+      margin: auto;
+      border-radius: 50%;
+      border:$btn-load-width solid $btn-load-color;
+      border-top-color:transparent;
+      border-right-color:transparent;
+      opacity: 1;
+      animation-name: btn-load;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+
+}
+@keyframes btn-load{
+  0%{transform: rotate(0)}
+  100%{transform: rotate(360deg)}
 }

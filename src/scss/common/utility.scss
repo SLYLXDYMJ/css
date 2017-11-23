@@ -131,17 +131,20 @@ ul,ol{
 
 /* 内容生成 方式 */
 .vertical-content{
-
-  &::before,&::after{
-    content:"";
-    height: 100%;
-  }
+  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
+  font-size: 0;
 
   &::before,&::after,&>*{
     display: inline-block;
     vertical-align: middle;
   }
-
+  &::before,&::after{
+    content:"";
+    height: 100%;
+  }
+  &>*{
+    font-size: $default-font-size;
+  }
 }
 
 /***********************************************************

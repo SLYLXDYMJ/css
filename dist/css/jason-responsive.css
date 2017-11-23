@@ -1,12 +1,9 @@
 @charset "UTF-8";
-/**
- * 设置盒子模型
- * 将默认字体设置为 微软雅黑 sans-serif
- * 在不禁止用户缩放的情况下避免iOS设备方向调整后自动校正字体大小
- */
 html {
-  box-sizing: border-box;
-  font-family: "Microsoft Yahei" , sans-serif;
+  /* 设置 字体大小为 10px 用来 方便设置rem */
+  font-size: 10px;
+  /* 当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。 */
+  -webkit-tap-highlight-color: transparent;
   /*
     防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
     苹果IOS设备调整后会自动调整文字的大小
@@ -15,6 +12,7 @@ html {
     转换为横屏时就变成了20px
     把text-size-adjust:100%就不会调整字体大小了 
   */
+  -webkit-tap-highlight-color: transparent;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
@@ -22,15 +20,17 @@ html {
  * 修改盒子模型为继承
  */
 *, *:after, *:before {
-  box-sizing: inherit; }
+  box-sizing: border-box; }
 
 /**
+ * 将默认字体设置为 微软雅黑 sans-serif
  * 移除默认外边距
  * 网页默认背景色改为白色
  * 修改行高为 1 所有元素都继承
- * 设置默认字体为1
+ * 设置默认字体大小
  */
 body {
+  font-family: "Microsoft Yahei" , sans-serif;
   margin: 0;
   background-color: #fff;
   line-height: 1;
@@ -5371,12 +5371,22 @@ body {
   color: #fff; }
   .btn-anime span {
     display: block; }
+  .btn-anime:after, .btn-anime:before, .btn-anime span, .btn-anime span:after, .btn-anime span:before {
+    transition-duration: 0.6s;
+    -webkit-animation-duration: 0.6s;
+            animation-duration: 0.6s; }
   .btn-anime-short:after, .btn-anime-short:before, .btn-anime-short span, .btn-anime-short span:after, .btn-anime-short span:before {
-    transition-duration: 0.3s !important; }
+    transition-duration: 0.3s !important;
+    -webkit-animation-duration: 0.3s !important;
+            animation-duration: 0.3s !important; }
   .btn-anime-middle:after, .btn-anime-middle:before, .btn-anime-middle span, .btn-anime-middle span:after, .btn-anime-middle span:before {
-    transition-duration: 0.6s !important; }
+    transition-duration: 0.6s !important;
+    -webkit-animation-duration: 0.6s !important;
+            animation-duration: 0.6s !important; }
   .btn-anime-long:after, .btn-anime-long:before, .btn-anime-long span, .btn-anime-long span:after, .btn-anime-long span:before {
-    transition-duration: 0.9s !important; }
+    transition-duration: 0.9s !important;
+    -webkit-animation-duration: 0.9s !important;
+            animation-duration: 0.9s !important; }
 
 /***********************************************************
   滑动效果
@@ -5392,7 +5402,7 @@ body {
   opacity: 1; }
 
 .btn-slide-top span, .btn-slide-top:after, .btn-slide-top:before, .btn-slide-right span, .btn-slide-right:after, .btn-slide-right:before, .btn-slide-bottom span, .btn-slide-bottom:after, .btn-slide-bottom:before, .btn-slide-left span, .btn-slide-left:after, .btn-slide-left:before {
-  transition: all 0.6s cubic-bezier(0.77, 0, 0.18, 1); }
+  transition-timing-function: cubic-bezier(0.77, 0, 0.18, 1); }
 
 .btn-slide-top:after, .btn-slide-right:after, .btn-slide-bottom:after, .btn-slide-left:after {
   content: "";
@@ -5487,6 +5497,58 @@ body {
   left: 100%;
   -webkit-transform: translate3d(0, -50%, 0);
           transform: translate3d(0, -50%, 0); }
+
+/***********************************************************
+  加载效果
+************************************************************/
+.btn-load {
+  pointer-events: none; }
+  .btn-load::before, .btn-load::after {
+    display: none; }
+  .btn-load span {
+    transition: none;
+    color: transparent;
+    position: relative;
+    opacity: 1 !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+            transform: translate3d(0, 0, 0) !important; }
+    .btn-load span::after {
+      content: "";
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      opacity: 1;
+      -webkit-animation-name: btn-load;
+              animation-name: btn-load;
+      -webkit-animation-timing-function: linear;
+              animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
+              animation-iteration-count: infinite; }
+
+@-webkit-keyframes btn-load {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes btn-load {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
 
 /***********************************************************
   浮动
@@ -5598,13 +5660,17 @@ ul.list-inline-block > li, ol.list-inline-block > li {
   vertical-align: middle; }
 
 /* 内容生成 方式 */
-.vertical-content::before, .vertical-content::after {
-  content: "";
-  height: 100%; }
-
-.vertical-content::before, .vertical-content::after, .vertical-content > * {
-  display: inline-block;
-  vertical-align: middle; }
+.vertical-content {
+  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
+  font-size: 0; }
+  .vertical-content::before, .vertical-content::after, .vertical-content > * {
+    display: inline-block;
+    vertical-align: middle; }
+  .vertical-content::before, .vertical-content::after {
+    content: "";
+    height: 100%; }
+  .vertical-content > * {
+    font-size: 14px; }
 
 /***********************************************************
   背景图
@@ -5718,11 +5784,3 @@ ul.list-inline-block > li, ol.list-inline-block > li {
 ************************************************************/
 .hide {
   display: none !important; }
-
-@media screen and (max-width: 767px) {
-  .hide-xs {
-    display: none; }
-  .text-nowrap-xs {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden; } }

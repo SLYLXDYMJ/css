@@ -1,11 +1,8 @@
-/**
- * 设置盒子模型
- * 将默认字体设置为 微软雅黑 sans-serif
- * 在不禁止用户缩放的情况下避免iOS设备方向调整后自动校正字体大小
- */
 html{
-  box-sizing: border-box;
-  font-family: "Microsoft Yahei" , sans-serif;
+  /* 设置 字体大小为 10px 用来 方便设置rem */
+  font-size: 10px;
+  /* 当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /*
     防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
     苹果IOS设备调整后会自动调整文字的大小
@@ -14,6 +11,7 @@ html{
     转换为横屏时就变成了20px
     把text-size-adjust:100%就不会调整字体大小了 
   */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -22,20 +20,22 @@ html{
  * 修改盒子模型为继承
  */
 *,*:after,*:before{
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 /**
+ * 将默认字体设置为 微软雅黑 sans-serif
  * 移除默认外边距
  * 网页默认背景色改为白色
  * 修改行高为 1 所有元素都继承
- * 设置默认字体为1
+ * 设置默认字体大小
  */
 body{
+  font-family: "Microsoft Yahei" , sans-serif;
   margin:0;
   background-color:#fff;
-  line-height: $body-line-height;
-  font-size:$body-font-size;
+  line-height: $default-line-height;
+  font-size:$default-font-size;
 }
 
 
@@ -188,7 +188,7 @@ a{
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: all $link-transition-time;
+  transition: all $default-link-transition-time;
   background-color: transparent;
 }
 

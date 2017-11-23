@@ -60,8 +60,11 @@
         </div>
       </div>
       <div class="text-center m-xs-20">
-        <button class="btn btn-anime btn-slide-top not" onclick="toggleClass()" data-text="点我切换hover类名">
+        <button class="btn btn-anime btn-slide-top not" onclick="active()" data-text="点我切换hover类名">
           <span>点我切换hover类名</span>
+        </button>
+        <button class="btn btn-anime btn-slide-top not" onclick="load()" data-text="点击切换load状态">
+          <span>点击切换load状态</span>
         </button>
       </div>
     </div>
@@ -72,8 +75,11 @@
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
 <!--测试 js-->
 <script>
-  function toggleClass(){
+  function active(){
     $('.btn:not(.not)').toggleClass('hover');
+  }
+  function load(){
+    $('.btn:not(.not)').toggleClass('btn-load');
   }
 </script>
 </body>
