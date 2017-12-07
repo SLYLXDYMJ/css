@@ -1,46 +1,21 @@
 @charset "UTF-8";
 html {
-  /* 设置 字体大小为 10px 用来 方便设置rem */
   font-size: 10px;
-  /* 当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。 */
   -webkit-tap-highlight-color: transparent;
-  /*
-    防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
-    苹果IOS设备调整后会自动调整文字的大小
-    按照苹果的意图是为了提升用户体验
-    比如竖屏状态下是14px
-    转换为横屏时就变成了20px
-    把text-size-adjust:100%就不会调整字体大小了 
-  */
   -webkit-tap-highlight-color: transparent;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
-/**
- * 修改盒子模型为继承
- */
 *, *:after, *:before {
   box-sizing: border-box; }
 
-/**
- * 将默认字体设置为 微软雅黑 sans-serif
- * 移除默认外边距
- * 网页默认背景色改为白色
- * 修改行高为 1 所有元素都继承
- * 设置默认字体大小
- */
 body {
   font-family: "Microsoft Yahei" , sans-serif;
   margin: 0;
   background-color: #fff;
-  line-height: 1;
+  line-height: 1.15;
   font-size: 14px; }
 
-/**
- * 修复 IE 8/9，HTML5新元素不能正确显示的问题，定义为block的元素
- * 修复 IE 10/11，details 和 summary 定义为 block 的元素
- * 修复 IE 11，main定义为 block 的元素
- */
 article,
 aside,
 footer,
@@ -54,10 +29,6 @@ details,
 main {
   display: block; }
 
-/**
- * 更正IE 8/9中未定义的‘inline-block’元素显示
- * 修复Chrome, Firefox, Opera的progress元素没有以baseline垂直对齐.
- */
 audio,
 canvas,
 progress,
@@ -65,23 +36,13 @@ video {
   display: inline-block;
   vertical-align: baseline; }
 
-/**
- * 防止现代浏览器将没有controls属性的的‘audio’元素显示出来
- * 移除 iOS 5 设备中多余的高度
- */
 audio:not([controls]) {
   display: none;
   height: 0; }
 
-/**
- * 校正IE 8/9中‘hidden’属性不起作用的问题
- */
 [hidden] {
   display: none; }
 
-/**
- * 防止所有浏览器中的sub和sup影响行高.
- */
 sub,
 sup {
   font-size: 75%;
@@ -95,9 +56,6 @@ sup {
 sub {
   bottom: -0.25em; }
 
-/**
- * 外边距 重置
- */
 h1,
 h2,
 h3,
@@ -114,18 +72,10 @@ select,
 textarea {
   margin: 0; }
 
-/**
- * 修正 h1~h6 字体大小的继承 
- * 加粗取消
- */
 h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
   font-weight: normal; }
 
-/**
- * 修正所有浏览器中颜色不继承的问题
- * 修正所有浏览器中字体不继承的问题
- */
 button,
 input,
 optgroup,
@@ -135,51 +85,27 @@ textarea {
   font-size: inherit;
   color: inherit; }
 
-/**
- * 列表样式取消，边距取消，内边距取消
- */
 ul, ol {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-/**
- * 移除在 IE 8/9 中嵌入到‘a’元素时的边框
- */
 img {
   border: none; }
 
-/**
- * 更正 IE 9 中奇怪的‘overflow’表现
- */
 svg:not(:root) {
   overflow: hidden; }
 
-/**
- * 取消下划线
- * 移入的鼠标样式
- * 取消outline
- * 增加默认过度效果
- * 去掉 IE 10+ 点击链接时的灰色背景.
- * 颜色继承
- */
 a {
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
   transition: all 0.2s;
   background-color: transparent; }
 
-/**
- * 去掉点击时的outline焦点框，同时保证使用键盘可以显示焦点框，这个操作针对所有浏览器
- */
 a:active,
 a:hover {
   outline: 0; }
 
-/**
- * 合并单元格边框，重置内边距
- */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
@@ -188,38 +114,18 @@ td,
 th {
   padding: 0; }
 
-/**
- * 设置 移入 button 的鼠标样式
- * 在 IE 8/9/10/11里的button默认的overflow是hidden，这里统一为visible
- */
 button {
-  cursor: pointer;
   overflow: visible; }
 
-/**
- * 取消内边框
- */
 input, textarea, button {
   outline: none; }
 
-/**
- * 初始化宽高
- * 移除隐藏
- * 不让用户拖拽大小
- */
 textarea {
-  overflow: auto;
   resize: none; }
 
-/**
- * 去掉在iphone下的表单按钮默认样式
- */
 input[type="button"], input[type="submit"], input[type="reset"], textarea {
   -webkit-appearance: none; }
 
-/**
- * IE10+输出框后面的小叉号消除
- */
 input::-ms-clear {
   display: none; }
 
@@ -240,9 +146,9 @@ body {
   @media screen and (min-width: 992px) {
     .container {
       width: 960px; } }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     .container {
-      width: 1190px; } }
+      width: 1260px; } }
 
 /*******************************************************
   响应式栅格系统 .container-fluid
@@ -659,7 +565,7 @@ body {
       padding-left: 50px;
       padding-right: 50px; } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .row-lg-0 {
     margin-left: 0px;
     margin-right: 0px; }
@@ -1286,7 +1192,7 @@ body {
   .col-md-offset-12 {
     margin-left: 100%; } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .col-lg-1 {
     position: relative;
     min-height: 1px;
@@ -4138,7 +4044,7 @@ body {
   .lh-md-20 {
     line-height: 2; } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .m-lg-0 {
     margin: 0px; }
   .mtb-lg-0 {
@@ -5550,9 +5456,6 @@ body {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
-/***********************************************************
-  浮动
-************************************************************/
 .float-left {
   float: left; }
 
@@ -5566,9 +5469,6 @@ body {
 .clearfix::after, .container::after, .container-fluid::after, .row::after, ul.list-float::after, ol.list-float::after {
   clear: both; }
 
-/***********************************************************
-  text
-************************************************************/
 .text-left {
   text-align: left; }
 
@@ -5589,9 +5489,6 @@ body {
 .text-uppercase {
   text-transform: uppercase; }
 
-/***********************************************************
-  图片
-************************************************************/
 .img-responsive {
   display: block;
   max-width: 100%;
@@ -5599,9 +5496,6 @@ body {
   margin-left: auto;
   margin-right: auto; }
 
-/***********************************************************
-  display的值
-************************************************************/
 .block {
   display: block; }
 
@@ -5613,9 +5507,30 @@ body {
   display: inline-block;
   vertical-align: middle; }
 
-/***********************************************************
-  列表（ul，ol）
-************************************************************/
+.vertical-baseline {
+  vertical-align: baseline; }
+
+.vertical-top {
+  vertical-align: top; }
+
+.vertical-middle {
+  vertical-align: middle; }
+
+.vertical-bottom {
+  vertical-align: bottom; }
+
+.vertical-text-bottom {
+  vertical-align: text-bottom; }
+
+.vertical-text-top {
+  vertical-align: text-top; }
+
+.vertical-sub {
+  vertical-align: sub; }
+
+.vertical-super {
+  vertical-align: super; }
+
 ul.list-float > li, ol.list-float > li {
   float: left; }
 
@@ -5626,11 +5541,24 @@ ul.list-inline-block > li, ol.list-inline-block > li {
   display: inline-block;
   vertical-align: middle; }
 
-/***********************************************************
-  垂直居中
-************************************************************/
+ul.list-inline-block a, ol.list-inline-block a {
+  display: block; }
+
+/* 内容生成 方式 */
+.verc-content {
+  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
+  font-size: 0; }
+  .verc-content::before, .verc-content::after, .verc-content > * {
+    display: inline-block;
+    vertical-align: middle; }
+  .verc-content::before, .verc-content::after {
+    content: "";
+    height: 100%; }
+  .verc-content > * {
+    font-size: 14px; }
+
 /* transform 方式 */
-.vertical-transform {
+.verc-transform {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -5638,7 +5566,7 @@ ul.list-inline-block > li, ol.list-inline-block > li {
           transform: translate(-50%, -50%); }
 
 /* margin 方式 */
-.vertical-margin {
+.verc-margin {
   position: absolute;
   top: 0;
   right: 0;
@@ -5647,41 +5575,22 @@ ul.list-inline-block > li, ol.list-inline-block > li {
   margin: auto; }
 
 /* 模拟表格 方式 */
-.vertical-table {
+.verc-table {
   display: table;
   height: 100%;
   width: 100%; }
 
-.vertical-tr {
+.verc-tr {
   display: table-row; }
 
-.vertical-td {
+.verc-td {
   display: table-cell;
   vertical-align: middle; }
 
-/* 内容生成 方式 */
-.vertical-content {
-  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
-  font-size: 0; }
-  .vertical-content::before, .vertical-content::after, .vertical-content > * {
-    display: inline-block;
-    vertical-align: middle; }
-  .vertical-content::before, .vertical-content::after {
-    content: "";
-    height: 100%; }
-  .vertical-content > * {
-    font-size: 14px; }
-
-/***********************************************************
-  背景图
-************************************************************/
 .bg-cover {
   background-size: cover;
   background-position: center; }
 
-/***********************************************************
-  定位和层叠性 设置
-************************************************************/
 .relative {
   position: relative; }
 
@@ -5715,9 +5624,6 @@ ul.list-inline-block > li, ol.list-inline-block > li {
 .z-index-9 {
   z-index: 9; }
 
-/***********************************************************
-  覆盖的元素 和 遮罩
-************************************************************/
 .cover, .shadow-black-1, .shadow-white-1, .shadow-black-2, .shadow-white-2, .shadow-black-3, .shadow-white-3, .shadow-black-4, .shadow-white-4, .shadow-black-5, .shadow-white-5, .shadow-black-6, .shadow-white-6, .shadow-black-7, .shadow-white-7, .shadow-black-8, .shadow-white-8, .shadow-black-9, .shadow-white-9 {
   position: absolute;
   top: 0;
@@ -5779,8 +5685,5 @@ ul.list-inline-block > li, ol.list-inline-block > li {
 .shadow-white-9 {
   background-color: rgba(255, 255, 255, 0.9); }
 
-/***********************************************************
-  使元素隐藏
-************************************************************/
 .hide {
   display: none !important; }

@@ -6,7 +6,7 @@
 //网页字体大小
 $default-font-size:                 14px;
 //网页的行高
-$default-line-height:               1;
+$default-line-height:               1.15;
 //超链接 默认过渡 时间
 $default-link-transition-time:      .2s;
 
@@ -34,22 +34,29 @@ $hamburger-layer-border-radius:              4px ;
 ///////////////////////////////////////////////////
 // 按钮
 ///////////////////////////////////////////////////
+// 按钮的留白
 $btn-anime-padding:                     8px 25px;
+// 按钮的颜色
 $btn-anime-color-default:               #fff;
+// 按钮的背景色
 $btn-anime-bgc-default:                 #8ac7db;
+// 按钮的过度时间定义
 $btn-anime-time-short:                  .3s;
 $btn-anime-time-middle:                 .6s;
 $btn-anime-time-long:                   .9s;
-$btn-anime-time-default:                .6s;
+$btn-anime-time-default:                $btn-anime-time-middle;
+
 
 // 按钮 slide 滑动 效果
+// 滑动的速度曲线
 $btn-slide-ttf:                         cubic-bezier(.77,0,.18,1);
 // 滑动的距离
 $btn-slide-distance:                    20px;
-// 延迟度
+// 文字出现的延迟度
 $btn-slide-delay:                       .1s;
 // 黑色遮罩的颜色
 $btn-slide-shadow:                      rgba(0,0,0,.3);
+
 
 // 按钮 load 加载 效果
 // load的大小
@@ -95,7 +102,7 @@ $fixed-max-lh:                    2;
 $responsive-breakpoints : (
   (name:sm,innerWidth:768px,width:750px)
   (name:md,innerWidth:992px,width:960px)
-  (name:lg,innerWidth:1200px,width:1190px)
+  (name:lg,innerWidth:1280px,width:1260px)
 );
 // 响应式 最小屏幕的最大宽度
 $responsive-smallest-maxWidth   : map_get(nth($responsive-breakpoints,1),innerWidth) - 1;

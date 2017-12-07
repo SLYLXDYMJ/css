@@ -41,15 +41,25 @@
 + 行内块元素： .inline-block
 + 行内元素： .inline
 
+### vertical-align相关
++ .vertical-baseline
++ .vertical-top
++ .vertical-middle
++ .vertical-bottom
++ .vertical-text-top
++ .vertical-text-bottom
++ .vertical-sub
++ .vertical-super
+
 ### 列表相关(ul,ol)
 + 横向列表浮动实现： .list-float
 + 横向行内块元素实现： .list-inline-block
 
 ### 垂直居中相关
-+ 伪元素方式：.vertical-content
-+ transform方式： .vertical-transform
-+ margin方式： .vertical-margin
-+ 模拟表格方式： .vertical-table>.vertical-tr(可省略)>.vertical-td
++ 伪元素方式：.verc-content
++ transform方式： .verc-transform
++ margin方式： .verc-margin
++ 模拟表格方式： .verc-table>.verc-tr(可省略)>.verc-td
 
 ### 背景相关
 + 覆盖元素并显示中心： .bg-cover
@@ -62,7 +72,3 @@
 ### 白色/黑色遮罩相关
 + 白色遮罩： .shadow-white-(1~9)
 + 黑色遮罩： .shadow-black-(1~9)
-
-
-
-
