@@ -15,7 +15,6 @@ const files={
 		'./src/scss/jason-responsive.scss'
 	],
   js: './src/js/*.js',
-  shelf: './src/shelf/**/*' 
 };
 
 // 输出路径
@@ -23,19 +22,10 @@ const exportPath={
   distShelf:  './dist/shelf',
 	distCss:    './dist/css',
   distJs:     './dist/js',
-  shelfCss:   './dist/shelf/plugins/jason/css',
-  shelfJs:    './dist/shelf/plugins/jason/js'
 };
 
-gulp.task('build',['shelf','style','script'],function () {
+gulp.task('build',['style','script'],function () {
   console.log(showTime('build'));
-});
-
-gulp.task('shelf',function(){
-  gulp.src(files.shelf)
-    .pipe(gulp.dest(exportPath.distShelf));
-
-  console.log(showTime('shelf'));
 });
 
 gulp.task('style',function(){
@@ -49,7 +39,6 @@ gulp.task('style',function(){
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distCss))
-    .pipe(gulp.dest(exportPath.shelfCss));
 
   console.log(showTime('style'));
 });
@@ -68,7 +57,6 @@ gulp.task('script',function(){
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(exportPath.distJs))
-    .pipe(gulp.dest(exportPath.shelfJs));
 
   console.log(showTime('script'));
 });
