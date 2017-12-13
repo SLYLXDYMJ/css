@@ -19,7 +19,6 @@ const files={
 
 // 输出路径
 const exportPath={
-  distShelf:  './dist/shelf',
 	distCss:    './dist/css',
   distJs:     './dist/js',
 };
@@ -36,9 +35,12 @@ gulp.task('style',function(){
       require('autoprefixer')({browsers: ['>=5%']})
     ]))
     .pipe(gulp.dest(exportPath.distCss))
-    .pipe($.minifyCss())
+    // .pipe($.minifyCss())
+    .pipe($.postcss([
+      require('cssnano')()
+    ]))
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(exportPath.distCss))
+    .pipe(gulp.dest(exportPath.distCss));
 
   console.log(showTime('style'));
 });
