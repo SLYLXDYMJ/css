@@ -33,6 +33,10 @@
 + 大写： .text-uppercase
 + 一行显示溢出隐藏： .text-nowrap
 
+### 宽高填充
++ 宽度 100% .width-full
++ 高度 100% .width-full
+
 ### 图片相关
 + 响应式图片: .img-responsive
 
