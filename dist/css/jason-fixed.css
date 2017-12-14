@@ -2170,6 +2170,12 @@ input::-ms-clear {
 .clearfix::after, .container::after, .container-fluid::after, .row::after, ul.list-float::after, ol.list-float::after {
   clear: both; }
 
+.width-full {
+  width: 100%; }
+
+.height-full {
+  height: 100%; }
+
 .text-left {
   text-align: left; }
 
@@ -2193,7 +2199,6 @@ input::-ms-clear {
 .img-responsive {
   display: block;
   max-width: 100%;
-  max-height: 100%;
   margin-left: auto;
   margin-right: auto; }
 
