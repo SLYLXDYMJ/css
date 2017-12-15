@@ -5490,7 +5490,8 @@ body {
 .text-nowrap {
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .text-uppercase {
   text-transform: uppercase; }
@@ -5499,7 +5500,8 @@ body {
   display: block;
   max-width: 100%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}
 
 .block {
   display: block; }

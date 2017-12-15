@@ -5,7 +5,9 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-游览器默认样式统统删除！
+> 宗旨：游览器默认样式统统删除，全游览器统一！ <br>
+> 参考了 Normalize.css <br>
+
 
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
@@ -136,19 +138,69 @@
 ```
 
 ### 文字属性相关
-+ 居中： .text-center
-+ 居左： .text-left
-+ 居右： .text-right
-+ 加粗： .text-bold
-+ 大写： .text-uppercase
-+ 一行显示溢出隐藏： .text-nowrap
+#### 居中
+```css
+.text-center{
+  text-align: center;
+}
+```
+#### 居左
+```css
+.text-left{
+  text-align: left;
+}
+```
+#### 居右
+```css
+.text-right{
+  text-align: right;
+}
+```
+#### 加粗
+```css
+.text-bold{
+  font-weight: bold;
+}
+```
+#### 加粗
+```css
+.text-uppercase{
+  text-transform: uppercase;
+}
+```
+#### 加粗
+```css
+.text-nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+```
 
 ### 宽高填充
-+ 宽度 100% .width-full
-+ 高度 100% .width-full
+#### 宽度 100%
+```css
+.width-full {
+  width: 100%;
+}
+```
+#### 高度 100%
+```css
+.height-full {
+  height: 100%;
+}
+```
 
 ### 图片相关
-+ 响应式图片: .img-responsive
+#### 响应式图片
+```css
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
 
 ### display相关
 + 块元素: .block
