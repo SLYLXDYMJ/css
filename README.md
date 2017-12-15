@@ -8,7 +8,7 @@
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
 > 新增了行中列间距的概念 <br>
 > num 为 0 - 100 默认是 5 的倍数
-```javascript
+```html
   <div class="container">
     <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
       <div class="col-xs-6"></div>
