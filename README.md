@@ -510,13 +510,13 @@ ul.list-inline-block a, ol.list-inline-block a {
 </div>
 ```
 
-### window.jason 对象
-#### API
-##### window.jason.nonIe(Array);
+## window.jason 对象
+### API
+#### window.jason.nonIe(Array);
 > IE升级提示 ，把不支持的版本号填到数组中，目前只支持 6 - 10 <br>
 ``` javascript
 window.jason.nonIe([6,7,8,9,10]);
 ```
 
-##### win
+#### win
 window.jason.win
