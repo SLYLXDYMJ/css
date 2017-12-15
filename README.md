@@ -19,15 +19,46 @@
 ```
 ### 实现方式
 ```css
-.row-lg-20 {
-  margin-left: -10px;
-  margin-right: -10px;
+.row-xs-0 {
+  margin-left: 0px;
+  margin-right: 0px;
 }
-.row-lg-20 > div {
-  padding-left: 10px;
-  padding-right: 10px;
+.row-xs-0 > div {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media screen and (min-width: 768px) {
+  .row-sm-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .row-sm-0 > div {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .row-md-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .row-md-0 > div {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .row-lg-50 {
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+  .row-lg-50 > div {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 ```
+
 + 响应列间距： .row-(xs/sm/md/lg)-(num)
 
 ## 布局工具类
