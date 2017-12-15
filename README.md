@@ -65,8 +65,6 @@
 }
 ```
 
-<br>
-
 ## 布局工具类
 ### 例子
 ```html
@@ -114,8 +112,6 @@
 >+ 注意 lh 特殊，值的语义不为 px 代表的是 1.0 - 2.0 = 10 - 20;
 >+ lh-sm-18(line-height: 1.8) lh-xs-15(line-height: 1.5);
 
-<br>
-
 ## 工具类
 ### 浮动相关
 #### 左浮动
@@ -140,8 +136,6 @@
   clear: both;
 }
 ```
-
-<br>
 
 ### 文字属性相关
 #### 居中
@@ -183,8 +177,6 @@
 }
 ```
 
-<br>
-
 ### 宽高填充
 #### 宽度 100%
 ```css
@@ -198,8 +190,6 @@
   height: 100%;
 }
 ```
-
-<br>
 
 ### 图片相关
 #### 响应式图片
@@ -233,8 +223,6 @@
   vertical-align: middle;
 }
 ```
-
-<br>
 
 ### vertical-align属性相关
 ```css
@@ -271,8 +259,6 @@
 }
 ```
 
-<br>
-
 ### 横向列表相关(ul,ol)
 #### 浮动方式实现
 ```css
@@ -295,8 +281,6 @@ ul.list-inline-block a, ol.list-inline-block a {
   display: block;
 }
 ```
-
-<br>
 
 ### 垂直居中相关
 #### 伪元素方式实现
@@ -360,8 +344,6 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 
-<br>
-
 ### 背景相关
 ```css
 .bg-cover {
@@ -369,8 +351,6 @@ ul.list-inline-block a, ol.list-inline-block a {
   background-position: center;
 }
 ```
-
-<br>
 
 ### 定位相关
 #### 相对定位
@@ -385,8 +365,6 @@ ul.list-inline-block a, ol.list-inline-block a {
   position: static !important;
 }
 ```
-
-<br>
 
 ###层叠性
 ```css
@@ -418,8 +396,6 @@ ul.list-inline-block a, ol.list-inline-block a {
   z-index: 9;
 }
 ```
-
-<br>
 
 ### 遮罩
 > 黑色遮罩 和 白色遮罩 全部都有 .cover 的属性
@@ -494,11 +470,10 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 
-<br>
-
 ### 强制隐藏
 ```css
 .hide {
   display: none !important;
 }
 ```
+
