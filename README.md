@@ -519,7 +519,8 @@ window.jason.nonIe([6,7,8,9,10]);
 ```
 
 #### window.jason.win
-> 封装着游览器的各项信息
+> 封装着游览器的各项信息 <br>
+> 属性 和 方法（只有update） 如下
 ```javascript
 // 游览器可用区域，包括滚动条的宽度
 innerWidth
