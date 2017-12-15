@@ -202,6 +202,22 @@
 }
 ```
 
+### 按钮相关
+#### 去除按钮样式
+```css
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+```
+
 ### display相关
 #### 块级元素
 ```css
@@ -477,3 +493,19 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 
+## 小组件
+### 特效按钮
+> 详细 看 doc -> demo -> demo.btn.html
+```html
+<a class="btn btn-anime btn-anime-short btn-slide-top" data-text="slide-top">
+  <span>slide-top</span>
+</a>
+```
+
+### 汉堡包按钮
+> 详细 看 doc -> demo -> demo.hamburger.html
+```html
+<div class="hamburger hamburger-1">
+  <div></div>
+</div>
+```
