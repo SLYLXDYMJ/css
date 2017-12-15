@@ -509,3 +509,12 @@ ul.list-inline-block a, ol.list-inline-block a {
   <div></div>
 </div>
 ```
+
+### window.jason 对象
+#### api
+##### nonIe
+> 不支持 IE ，把不支持的版本号填到数组中，目前只支持 6 - 10
+window.jason.nonIe([6,7,8,9,10]);
+
+##### win
+window.jason.win
