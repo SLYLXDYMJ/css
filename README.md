@@ -10,6 +10,7 @@
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
 > 新增了行中列间距的概念 <br>
+> 数值 为 px 单位 <br>
 > 注意：在需要栅格布局的时候，需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
 ### 例子
 ```html
@@ -104,7 +105,9 @@
 >+ fs代表font-size
 >+ lh代表line-height
 >+ t , b , l , f , tb , lr 代表方向
+>+ 数值 均为 px 单位
 >+ 注意 lh 特殊，值的语义不为 px 代表的是 1.0 - 2.0 = 10 - 20;
+>+ lh-sm-18(line-height: 1.8) lh-xs-15(line-height: 1.5);
 
 ### 定宽库
 + .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-5）
