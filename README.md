@@ -5,12 +5,12 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-+ 游览器默认样式统统删除！
+游览器默认样式统统删除！
 
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
 > 新增了行中列间距的概念 <br>
-> 注意：需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
+> 注意：在需要栅格布局的时候，需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
 ### 例子
 ```html
   <div class="container">
@@ -63,6 +63,42 @@
 ```
 
 ## 布局工具类
+### 例子
+```html
+  <div class="container">
+    <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
+      <div class="col-xs-6">
+        <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
+      </div>
+      <div class="col-xs-6">
+        <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
+      </div>
+    </div>
+  </div>
+```
+
+### 实现方式
+```css
+.mt-xs-10 {
+  margin-top:10px;
+}
+@media screen and (min-width: 768px) {
+  .mt-sm-15 {
+    margin-top:15px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .mt-md-30 {
+    margin-top:30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .mt-lg-50 {
+    margin-top:50px;
+  }
+}
+```
+
 > m代表margin，p代表padding，fs代表font-size，lh代表line-height <br>
 > t,b,l,f,tb,lr 代表上，下，左，右，上下，左右 <br>
 > num 为 0 - 100 <br>
