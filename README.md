@@ -106,6 +106,7 @@
 >+ lh代表line-height
 >+ t , b , l , f , tb , lr 代表方向
 >+ 数值 均为 px 单位
+>+ 注意 如果 没有 方向（p-xs-20）则代表四个方向（padding: 20px）
 >+ 注意 lh 特殊，值的语义不为 px 代表的是 1.0 - 2.0 = 10 - 20;
 >+ lh-sm-18(line-height: 1.8) lh-xs-15(line-height: 1.5);
 
