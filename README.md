@@ -18,12 +18,16 @@
 > lh 的 num 为 10-20 代表 1.0 - 2.0
 
 ### 定宽库
++ .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-5）
++ .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-5）
++ .fs （.fs-18）
++ .lh （.lh-15）
 
 ### 响应式库
 + .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-sm-5）
 + .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-sm-5）
 + .fs （.fs-sm-18）
-+ .lh （.lh-xs-15）（注意：.lh-xs-(10~20)   10代表 line-height:1 20代表 line-height:2）
++ .lh （.lh-xs-15）
 
 ## 工具类说明
 ### 浮动相关
