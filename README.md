@@ -110,23 +110,30 @@
 >+ 注意 lh 特殊，值的语义不为 px 代表的是 1.0 - 2.0 = 10 - 20;
 >+ lh-sm-18(line-height: 1.8) lh-xs-15(line-height: 1.5);
 
-### 定宽库
-+ .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-5）
-+ .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-5）
-+ .fs （.fs-18）
-+ .lh （.lh-15）
-
-### 响应式库
-+ .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-sm-5）
-+ .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-sm-5）
-+ .fs （.fs-sm-18）
-+ .lh （.lh-xs-15）
-
-## 工具类说明
+## 工具类
 ### 浮动相关
-+ 左浮动： .float-left
-+ 右浮动： .float-right
-+ 清除浮动： .clearfix
+####左浮动
+```css
+.float-left {
+  float: left;
+}
+```
+####右浮动
+```css
+.float-left {
+  float: right;
+}
+```
+####清除浮动影响
+```css
+.clearfix:before,.clearfix:after{
+  content:"";
+  display: table;
+}
+.clearfix:after{
+  clear: both;
+}
+```
 
 ### 文字属性相关
 + 居中： .text-center
