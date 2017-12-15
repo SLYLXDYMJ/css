@@ -99,10 +99,11 @@
 }
 ```
 
-> m代表margin，p代表padding，fs代表font-size，lh代表line-height <br>
-> t,b,l,f,tb,lr 代表上，下，左，右，上下，左右 <br>
-> num 为 0 - 100 <br>
-> lh 的 num 为 10-20 代表 1.0 - 2.0
+>+ m代表margin
+>+ p代表padding，fs代表font-size，lh代表line-height <br>
+>+ t,b,l,f,tb,lr 代表上，下，左，右，上下，左右 <br>
+>+ num 为 0 - 100 <br>
+>+ lh 的 num 为 10-20 代表 1.0 - 2.0
 
 ### 定宽库
 + .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-5）
