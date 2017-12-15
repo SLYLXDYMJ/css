@@ -271,24 +271,222 @@
 }
 ```
 
-### 列表相关(ul,ol)
-+ 横向列表浮动实现： .list-float
-+ 横向行内块元素实现： .list-inline-block
+<br>
+
+### 横向列表相关(ul,ol)
+#### 浮动方式实现
+```css
+ul.list-float > li, ol.list-float > li {
+  float: left;
+}
+
+ul.list-float a, ol.list-float a {
+  display: block;
+}
+```
+#### 行内块元素实现
+```css
+ul.list-inline-block > li, ol.list-inline-block > li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ul.list-inline-block a, ol.list-inline-block a {
+  display: block;
+}
+```
+
+<br>
 
 ### 垂直居中相关
-+ 伪元素方式：.verc-content
-+ transform方式： .verc-transform
-+ margin方式： .verc-margin
-+ 模拟表格方式： .verc-table>.verc-tr(可省略)>.verc-td
+#### 伪元素方式实现
+```css
+.verc-content {
+  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
+  font-size: 0;
+}
+.verc-content::before, .verc-content::after, .verc-content > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.verc-content::before, .verc-content::after {
+  content: "";
+  height: 100%;
+}
+.verc-content > * {
+  font-size: 14px;
+}
+```
+#### transform方式实现
+```css
+.verc-transform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+```
+#### margin方式实现
+```css
+.verc-margin {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+```
+#### margin方式实现
+> .verc-table>.verc-tr(可省略)>.verc-td
+```css
+.verc-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.verc-tr {
+  display: table-row;
+}
+
+.verc-td {
+  display: table-cell;
+  vertical-align: middle;
+}
+```
+
+<br>
 
 ### 背景相关
-+ 覆盖元素并显示中心： .bg-cover
+```css
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+}
+```
 
-### 层叠性相关
-+ relative： .relative
-+ static： .static
-+ z-index设置： .z-index-(0~10)
+<br>
 
-### 白色/黑色遮罩相关
-+ 白色遮罩： .shadow-white-(1~9)
-+ 黑色遮罩： .shadow-black-(1~9)
+### 定位相关
+#### 相对定位
+```css
+.relative {
+  position: relative;
+}
+```
+#### 无定位
+```css
+.static {
+  position: static !important;
+}
+```
+
+<br>
+
+###层叠性
+```css
+.z-index-1 {
+  z-index: 1;
+}
+.z-index-2 {
+  z-index: 2;
+}
+.z-index-3 {
+  z-index: 3;
+}
+.z-index-4 {
+  z-index: 4;
+}
+.z-index-5 {
+  z-index: 5;
+}
+.z-index-6 {
+  z-index: 6;
+}
+.z-index-7 {
+  z-index: 7;
+}
+.z-index-8 {
+  z-index: 8;
+}
+.z-index-9 {
+  z-index: 9;
+}
+```
+
+<br>
+
+### 遮罩
+> 黑色遮罩 和 白色遮罩 全部都有 .cover 的属性
+#### 遮罩元素
+```css
+.cover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+```
+#### 黑色遮罩
+```css
+.shadow-black-1 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.shadow-black-2 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.shadow-black-3 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.shadow-black-4 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.shadow-black-5 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.shadow-black-6 {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.shadow-black-7 {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.shadow-black-8 {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.shadow-black-9 {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+```
+#### 白色遮罩
+```css
+.shadow-white-1 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.shadow-white-2 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.shadow-white-3 {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.shadow-white-4 {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.shadow-white-5 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.shadow-white-6 {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.shadow-white-7 {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.shadow-white-8 {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.shadow-white-9 {
+  background-color: rgba(255, 255, 255, 0.9); 
+}
+```
