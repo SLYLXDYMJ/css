@@ -1,19 +1,21 @@
 # jason
 前端切图库 —— 分为定宽和响应式，需要手动选择其css
 
-## 切图使用方法
-+ 复制dist下的shelf文件下到工程目录
-+ 选择css库（shelf/plugins/jason/*.css）
-+ 根据（shelf/README.md）愉快的切图
-
 ## reset 说明
 + 游览器默认样式统统删除！
 
-## 栅格说明（参考bootstrap，新增了可变的列间距）
-+ 定宽列间距： .row-(0~100)
-+ 响应列间距： .row-(xs/sm/md/lg)-(0~100)
+## 栅格布局系统
+> 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
+> 新增了行中列间距的概念 <br>
+> num 为 0 - 100 默认是 5 的倍数
++ 定宽列间距： .row-(num)
++ 响应列间距： .row-(xs/sm/md/lg)-(num)
 
-## 布局工具类说明
+## 布局工具类
+> m代表margin，p代表padding，fs代表font-size，lh代表line-height <br>
+> t,b,l,f,tb,lr 代表上，下，左，右，上下，左右 <br>
+> num 为 0 - 100 <br>
+> lh 的 num 为 10-20 代表 1.0 - 2.0
 + .m,.mtb,.mlr,.mt,.mr,.mb,.ml （.mtb-sm-5）
 + .p,.ptb,.plr,.pt,.pr,.pb,.pl （.ptb-sm-5）
 + .fs （.fs-sm-18）
