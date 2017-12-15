@@ -213,19 +213,63 @@
 ```
 
 ### display相关
-+ 块元素: .block
-+ 行内块元素： .inline-block
-+ 行内元素： .inline
+#### 块级元素
+```css
+.block {
+  display: block;
+}
+```
+#### 行内块元素
+```css
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+```
+#### 行内元素
+```css
+.inline {
+  display: inline;
+  vertical-align: middle;
+}
+```
 
-### vertical-align相关
-+ .vertical-baseline
-+ .vertical-top
-+ .vertical-middle
-+ .vertical-bottom
-+ .vertical-text-top
-+ .vertical-text-bottom
-+ .vertical-sub
-+ .vertical-super
+<br>
+
+### vertical-align属性相关
+```css
+.vertical-baseline {
+  vertical-align: baseline;
+}
+
+.vertical-top {
+  vertical-align: top;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.vertical-bottom {
+  vertical-align: bottom;
+}
+
+.vertical-text-bottom {
+  vertical-align: text-bottom;
+}
+
+.vertical-text-top {
+  vertical-align: text-top;
+}
+
+.vertical-sub {
+  vertical-align: sub;
+}
+
+.vertical-super {
+  vertical-align: super;
+}
+```
 
 ### 列表相关(ul,ol)
 + 横向列表浮动实现： .list-float
