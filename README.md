@@ -112,19 +112,19 @@
 
 ## 工具类
 ### 浮动相关
-####左浮动
+#### 左浮动
 ```css
 .float-left {
   float: left;
 }
 ```
-####右浮动
+#### 右浮动
 ```css
 .float-left {
   float: right;
 }
 ```
-####清除浮动影响
+#### 清除浮动影响
 ```css
 .clearfix:before,.clearfix:after{
   content:"";
