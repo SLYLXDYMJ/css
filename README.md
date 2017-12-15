@@ -19,32 +19,32 @@
 ```
 ### 实现方式
 ```css
-.row-xs-0 {
-  margin-left: 0px;
-  margin-right: 0px;
+.row-xs-10 {
+  margin-left: -5px;
+  margin-right: -5px;
 }
 .row-xs-0 > div {
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 @media screen and (min-width: 768px) {
-  .row-sm-0 {
-    margin-left: 0px;
-    margin-right: 0px;
+  .row-sm-15 {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
   }
-  .row-sm-0 > div {
-    padding-left: 0px;
-    padding-right: 0px;
+  .row-sm-15 > div {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
   }
 }
 @media screen and (min-width: 992px) {
-  .row-md-0 {
-    margin-left: 0px;
-    margin-right: 0px;
+  .row-md-30 {
+    margin-left: -15px;
+    margin-right: -15px;
   }
-  .row-md-0 > div {
-    padding-left: 0px;
-    padding-right: 0px;
+  .row-md-30 > div {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 @media screen and (min-width: 1280px) {
