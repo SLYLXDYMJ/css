@@ -16,12 +16,12 @@
 > 注意：在需要栅格布局的时候，需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
 ### 例子
 ```html
-  <div class="container">
-    <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
-      <div class="col-xs-6"></div>
-      <div class="col-xs-6"></div>
-    </div>
+<div class="container">
+  <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
+    <div class="col-xs-6"></div>
+    <div class="col-xs-6"></div>
   </div>
+</div>
 ```
 ### 实现方式
 ```css
@@ -70,16 +70,16 @@
 ## 布局工具类
 ### 例子
 ```html
-  <div class="container">
-    <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
-      <div class="col-xs-6">
-        <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
-      </div>
-      <div class="col-xs-6">
-        <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
-      </div>
+<div class="container">
+  <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
+    <div class="col-xs-6">
+      <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
+    </div>
+    <div class="col-xs-6">
+      <div class="mt-lg-50 mt-md-30 mt-sm-15 mt-xs-10">abc</div>
     </div>
   </div>
+</div>
 ```
 
 ### 实现方式
@@ -126,7 +126,7 @@
 ```
 #### 右浮动
 ```css
-.float-left {
+.float-right {
   float: right;
 }
 ```
@@ -300,6 +300,7 @@ ul.list-inline-block a, ol.list-inline-block a {
 
 ### 垂直居中相关
 #### 伪元素方式实现
+> 给父元素设置 .verc-content 且 只能有一个子元素
 ```css
 .verc-content {
   /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
@@ -318,6 +319,7 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 #### transform方式实现
+> 父元素要设置定位
 ```css
 .verc-transform {
   position: absolute;
@@ -328,6 +330,7 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 #### margin方式实现
+> 父元素要设置定位
 ```css
 .verc-margin {
   position: absolute;
