@@ -338,7 +338,7 @@ ul.list-inline-block a, ol.list-inline-block a {
   margin: auto;
 }
 ```
-#### margin方式实现
+#### 模拟 table 方式实现
 > .verc-table>.verc-tr(可省略)>.verc-td
 ```css
 .verc-table {
