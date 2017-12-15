@@ -7,7 +7,7 @@
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
 > 新增了行中列间距的概念 <br>
-> num 为 0 - 100 默认是 5 的倍数
+> 注意：需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
 ### 例子
 ```html
   <div class="container">
