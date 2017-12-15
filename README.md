@@ -512,11 +512,41 @@ ul.list-inline-block a, ol.list-inline-block a {
 
 ## window.jason 对象
 ### API
-#### window.jason.nonIe(Array);
+#### window.jason.nonIe(Array)
 > IE升级提示 ，把不支持的版本号填到数组中，目前只支持 6 - 10 <br>
 ``` javascript
 window.jason.nonIe([6,7,8,9,10]);
 ```
 
-#### win
-window.jason.win
+#### window.jason.win
+> 封装着游览器的各项信息
+```javascript
+// 游览器可用区域，包括滚动条的宽度
+innerWidth
+// 游览器可用区域，包括滚动条的宽度
+innerHeight
+// 不包括滚动条的页面视口宽度
+contentWidth
+// 不包括滚动条的页面视口高度
+contentHeight
+// 滚动条/页面 的总高度
+scrollHeight
+// 当前视口顶部距离页面顶部的距离
+scrollPositionTop
+// 当前视口底部距离页面顶部的距离
+scrollPositionBottom
+// 判断是否是 电脑 用户
+isPc
+// 判断是否是 移动设备
+isMobile
+// 判断是否是手机用户
+isPhone
+// 判断是否是ipad用户
+isPad
+// 判断是否是微信用户
+isWeChat
+// Css 前缀
+cssPrefix
+// 刷新数据 
+update
+```
