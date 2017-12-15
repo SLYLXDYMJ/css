@@ -490,3 +490,12 @@ ul.list-inline-block a, ol.list-inline-block a {
   background-color: rgba(255, 255, 255, 0.9); 
 }
 ```
+
+<br>
+
+### 强制隐藏
+```css
+.hide {
+  display: none !important;
+}
+```
