@@ -1,6 +1,9 @@
 # jason
 前端切图库 —— 分为定宽和响应式，需要手动选择其css
 
+## 定宽库 和 响应式库的区别
+基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
+
 ## reset 说明
 + 游览器默认样式统统删除！
 
@@ -58,8 +61,6 @@
   }
 }
 ```
-
-+ 响应列间距： .row-(xs/sm/md/lg)-(num)
 
 ## 布局工具类
 > m代表margin，p代表padding，fs代表font-size，lh代表line-height <br>
