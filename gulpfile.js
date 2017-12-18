@@ -30,12 +30,13 @@ gulp.task('build',['style','script'],function () {
 gulp.task('style',function(){
   gulp.src(files.scss)
     .pipe($.plumber())
-    .pipe($.sass())
+    .pipe($.sass({
+      outputStyle: 'expanded'
+    }))
     .pipe($.postcss([
       require('autoprefixer')({browsers: ['>=5%']})
     ]))
     .pipe(gulp.dest(exportPath.distCss))
-    // .pipe($.minifyCss())
     .pipe($.postcss([
       require('cssnano')()
     ]))
