@@ -168,7 +168,7 @@
   text-transform: uppercase;
 }
 ```
-#### 加粗
+#### 文字一行显示，移除隐藏
 ```css
 .text-nowrap {
   white-space: nowrap;
