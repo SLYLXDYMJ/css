@@ -382,7 +382,7 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 
-###层叠性
+### 层叠性
 ```css
 .z-index-1 {
   z-index: 1;
