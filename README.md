@@ -5,9 +5,7 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-> 宗旨：游览器默认样式统统删除，全游览器统一！ <br>
-> 参考了 Normalize.css <br>
-
+> 基于 Eric Meyer’s “Reset CSS” 2.0 合并了 Normalize.css 部分样式
 
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
