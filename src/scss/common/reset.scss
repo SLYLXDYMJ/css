@@ -21,7 +21,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+// HTML5 display-role reset for older browsers
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -45,82 +45,55 @@ table {
 	border-spacing: 0;
 }
 
+////////////////////////////////////////////////////////////
+// normalize.css v7.0.0 （部分）
+////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////
-// 设置 字体大小为 10px 用来 方便设置rem
-// 当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。
-// 防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
-// 苹果IOS设备调整后会自动调整文字的大小
-// 按照苹果的意图是为了提升用户体验
-// 比如竖屏状态下是14px
-// 转换为横屏时就变成了20px
-// 把text-size-adjust:100%就不会调整字体大小了 
-//////////////////////////////////////////////////////////////////////
-html{
-  font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+// 在方向变化后，防止字体大小的调整
+// 在Windows Phone和iOS系统中
+html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-//////////////////////////////////////////////////////////////////////
-// 修改盒子模型为 border-box 
-//////////////////////////////////////////////////////////////////////
-*,*:after,*:before{
-  box-sizing: border-box;
+// 在IE中添加正确的显示。
+main {
+  display: block;
 }
 
-
-
-//////////////////////////////////////////////////////////////////////
-// 将默认字体设置为 微软雅黑 sans-serif
-// 移除默认外边距
-// 网页默认背景色改为白色
-// 修改默认行高
-// 修改字体大小
-//////////////////////////////////////////////////////////////////////
-body{
-  font-family: "Microsoft Yahei" , sans-serif;
-  background-color:#fff;
-  font-size: 14px;
-}
-
-//////////////////////////////////////////////////////////////////////
-// 更正IE 8/9中未定义的‘inline-block’元素显示
-// 修复Chrome, Firefox, Opera的progress元素没有以baseline垂直对齐.
-//////////////////////////////////////////////////////////////////////
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-
-//////////////////////////////////////////////////////////////////////
-// 防止现代浏览器将没有controls属性的的‘audio’元素显示出来
-// 移除 iOS 5 设备中多余的高度
-//////////////////////////////////////////////////////////////////////
-audio:not([controls]) {
-  display: none;
+// 在Firefox中添加正确的方框大小。
+// 显示边缘和IE的溢出。
+hr {
+  box-sizing: content-box;
   height: 0;
+  overflow: visible;
+}
+ 
+// 删除IE 10中活动链接上的灰色背景。
+// 在ios8 +和Safari 8 +中删除链接下划线。
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
 
-
-//////////////////////////////////////////////////////////////////////
-// 校正IE 8/9中‘hidden’属性不起作用的问题
-//////////////////////////////////////////////////////////////////////
-[hidden] {
-  display: none;
+// 在Safari 6中防止“更大胆”的重复应用。
+b,
+strong {
+  font-weight: inherit;
 }
 
+// 在Chrome、Edge和Safari中添加正确的字体权重。
+b,
+strong {
+  font-weight: bolder;
+}
 
+// 在所有浏览器中添加正确的字体大小。
+small {
+  font-size: 80%;
+}
 
-//////////////////////////////////////////////////////////////////////
-// 防止所有浏览器中的sub和sup影响行高.
-//////////////////////////////////////////////////////////////////////
+// 防止“sub”和“sup”元素影响线高度，所有的浏览器。
 sub,
 sup {
   font-size: 75%;
@@ -128,95 +101,166 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-sup {
-  top: -0.5em;
-}
 sub {
   bottom: -0.25em;
 }
+sup {
+  top: -0.5em;
+}
 
-//////////////////////////////////////////////////////////////////////
-// 改变所有浏览器中的字体样式
-// 删除Firefox和Safari中的空白
-//////////////////////////////////////////////////////////////////////
+// 在IE 9中添加正确的显示。
+audio,
+video {
+  display: inline-block;
+}
+
+// 在iOS 4- 7中添加正确的显示。
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+// 在IE 10的链接中移除边框。
+img {
+  border-style: none;
+}
+
+// 隐藏在IE中的溢出。
+svg:not(:root) {
+  overflow: hidden;
+}
+
+// 显示IE的溢出。
+button,
+input {
+  overflow: visible;
+}
+
+// 删除Firefox中文本转换的继承。
+button,
+select {
+  text-transform: none;
+}
+
+// 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+//    controls in Android 4.
+// 2. Correct the inability to style clickable types in iOS and Safari.
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+// 删除Firefox的内部边框和填充。
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+// 在IE 9中添加正确的显示。
+// 在Chrome、Firefox和Opera中添加正确的垂直对齐方式。
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+// 删除IE中默认的垂直滚动条。
+textarea{
+  overflow: auto;
+}
+
+// 在IE 10中添加正确的方框尺寸。
+// 删除IE 10中的填充。
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+
+// 修正了在iOS和Safari中无法设计可点击类型的问题。
+// 在Safari中更改字体属性以“继承”。
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+// 在IE 9中添加正确的显示。
+canvas {
+  display: inline-block;
+}
+
+// 在IE中添加正确的显示。
+template {
+  display: none;
+}
+
+// 在IE 10中添加正确的显示。
+[hidden] {
+  display: none;
+}
+
+
+////////////////////////////////////////////////////////////
+// jason reset
+////////////////////////////////////////////////////////////
+
+// 1. 设置 字体大小为 10px 用来 方便设置rem
+// 2. 当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。
+html {
+  // 1
+  font-size: 10px;
+  // 2
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// 修改盒子模型为 border-box
+*,*:after,*:before{
+  box-sizing: border-box;
+}
+
+// 1. 将默认字体设置为 微软雅黑 sans-serif
+// 2. 网页默认背景色改为白色
+// 3. 修改字体大小 为 14px
+body{
+  // 1
+  font-family: "Microsoft Yahei" , sans-serif;
+  // 2
+  background-color:#fff;
+  // 3
+  font-size: 14px;
+}
+
+// 1. 改变所有浏览器中的字体样式
+// 2. 删除Firefox和Safari中的空白
 button,
 input,
 optgroup,
 select,
 textarea {
+  // 1
+  font-family: inherit;
   font-size: 100%;
-  color:inherit;
-  margin:0;
+  line-height: 1;
+  // 2
+  margin: 0;
 }
 
-//////////////////////////////////////////////////////////////////////
-// 移除在 IE 8/9 中嵌入到‘a’元素时的边框
-//////////////////////////////////////////////////////////////////////
-img{
-  border:none;
-}
-
-//////////////////////////////////////////////////////////////////////
-// 更正 IE 9 中奇怪的‘overflow’表现
-//////////////////////////////////////////////////////////////////////
-svg:not(:root) {
-  overflow: hidden;
-}
-
-
-//////////////////////////////////////////////////////////////////////
-// 取消下划线
-// 增加默认过度效果
-// 去掉 IE 10+ 点击链接时的灰色背景.
-//////////////////////////////////////////////////////////////////////
+// 1. 颜色继承
+// 2. 取消下划线
+// 3. 增加默认过度效果
 a{
+  // 1
+  color: inherit;
+  // 2
   text-decoration: none;
+  // 3
   transition: all .2s;
-  background-color: transparent;
 }
 
-
-//////////////////////////////////////////////////////////////////////////////
-// 去掉点击时的outline焦点框，同时保证使用键盘可以显示焦点框，这个操作针对所有浏览器
-//////////////////////////////////////////////////////////////////////////////
-a:active,
-a:hover {
-  outline: 0;
-}
-
-//////////////////////////////////////////////////////////////////////
-// 在 IE 8/9/10/11里的button默认的overflow是hidden，这里统一为visible
-//////////////////////////////////////////////////////////////////////
-button{
-  overflow: visible;
-}
-
-
-//////////////////////////////////////////////////////////////////////
-// 取消内边框
-//////////////////////////////////////////////////////////////////////
-input,textarea,button{
-  outline: none;
-}
-
-
-//////////////////////////////////////////////////////////////////////
 // 不可拖拽大小
-//////////////////////////////////////////////////////////////////////
 textarea{
   resize: none;
-}
-
-//////////////////////////////////////////////////////////////////////
-// 去掉在iphone下的表单按钮默认样式
-//////////////////////////////////////////////////////////////////////
-input[type="button"], input[type="submit"], input[type="reset"],textarea {
-  -webkit-appearance: none;
-}
-
-//////////////////////////////////////////////////////////////////////
-// IE10+输出框后面的小叉号消除
-//////////////////////////////////////////////////////////////////////
-input::-ms-clear {
-  display: none;
 }
