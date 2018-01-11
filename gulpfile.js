@@ -49,6 +49,8 @@ gulp.task('style',function(){
 gulp.task('script',function(){
   gulp.src(files.js)
     .pipe($.plumber())
+    .pipe($.eslint())
+    .pipe($.eslint.format())
     .pipe($.order([
       'jason.js',
       '*.js'
