@@ -6803,6 +6803,7 @@ body {
 }
 
 .hamburger {
+  display: block;
   cursor: pointer;
   background-color: transparent;
   overflow: visible;
@@ -7359,6 +7360,7 @@ body {
   padding: 0;
   position: relative;
   overflow: hidden;
+  transition: all .2s;
   /***********************************************************
     动画效果基础样式
   ************************************************************/
@@ -7902,4 +7904,22 @@ ul.list-inline-block a, ol.list-inline-block a {
 
 .hide {
   display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .hide-xs {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .hide-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .hide-md {
+    display: none !important;
+  }
 }

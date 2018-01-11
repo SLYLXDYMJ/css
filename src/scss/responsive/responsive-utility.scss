@@ -1,0 +1,17 @@
+@media screen and (max-width: $responsive-smallest-maxWidth) {
+  .hide-#{$responsive-smallest} {
+    display: none !important;
+  }
+}
+
+@for $i from 1 to length($responsive-breakpoints) {
+  $prev-breakpoint: nth($responsive-breakpoints, $i + 1);
+  $now-breakpoint: nth($responsive-breakpoints, $i);
+  $innerWidth: map-get($prev-breakpoint, innerWidth);
+  $name: map-get($now-breakpoint, name);
+  @media screen and (max-width: $innerWidth - 1){
+    .hide-#{$name} {
+      display: none !important;
+    }
+  }
+}

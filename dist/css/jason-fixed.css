@@ -2093,6 +2093,7 @@ textarea {
 }
 
 .hamburger {
+  display: block;
   cursor: pointer;
   background-color: transparent;
   overflow: visible;
@@ -2649,6 +2650,7 @@ textarea {
   padding: 0;
   position: relative;
   overflow: hidden;
+  transition: all .2s;
   /***********************************************************
     动画效果基础样式
   ************************************************************/
