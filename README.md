@@ -486,6 +486,13 @@ ul.list-inline-block a, ol.list-inline-block a {
 }
 ```
 
+### 溢出隐藏
+```css
+.overflow-hidden {
+  overflow: hidden;
+}
+```
+
 ### 强制隐藏
 ```css
 .hide {
