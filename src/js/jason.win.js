@@ -1,7 +1,7 @@
 (function (window) {
   // 判断是否支持 innerWidth 、 innerHeight 、 addEventListener。
   // 其实就是判断游览器是否大于IE8
-  let low = window.addEventListener || true;
+  let low = window.addEventListener ? 0 : 1;
   // 定义对象
   let win = {
     // 游览器可用区域，包括滚动条的宽度
@@ -56,10 +56,10 @@
     delete win.innerWidth;
     delete win.innerHeight;
     console.warn('您使用的低版本游览器，win对象部分功能将被禁止');
-    window.attachEvent('onresize', function () {
+    window.addEventListener('onresize', function () {
       win.update();
     });
-    window.attachEvent('onscroll', function () {
+    window.addEventListener('onscroll', function () {
       win.update();
     });
   } else {
