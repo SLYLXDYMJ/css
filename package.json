@@ -1,8 +1,8 @@
 {
-  "name": "jason",
+  "name": "q-jason",
   "version": "4.0.0",
   "description": "前端切图工具库",
-  "main": "none",
+  "main": "./src/js/jason.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp dev",
