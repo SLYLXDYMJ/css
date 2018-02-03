@@ -2,8 +2,11 @@
 @import "./common/function/com-function";
 @import "./fixed/fixed-mixin/fixed-mixin";
 
-//CSS 重置
-@import "./common/reset";
+// 全局样式
+@import "./common/global";
+
+// 导入 jason-reset
+@import "../../node_modules/jason-reset/src/jason-reset";
 
 //定宽 栅格
 @import "./fixed/fixed-grid";

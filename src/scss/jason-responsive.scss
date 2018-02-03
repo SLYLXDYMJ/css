@@ -2,8 +2,13 @@
 @import "./common/function/com-function";
 @import "./responsive/responsive-mixin/responsive-mixin";
 
-//CSS 重置
-@import "./common/reset";
+// 全局样式
+@import "./common/global";
+
+// 导入 jason-reset
+@import "../../node_modules/jason-reset/src/jason-reset";
+
+// 响应式 reset
 @import "./responsive/responsive-reset";
 
 //响应式 栅格

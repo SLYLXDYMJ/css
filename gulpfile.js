@@ -1,88 +1,70 @@
-// 依赖导入
-const gulp=require('gulp');
-const $=require('gulp-load-plugins')();
+const path = require('path');
 
-// 本地服务器选项
-const connectOptions={
-  root:'./',
-  port:8888,
-};
+const gulp = require('gulp');
+const connect = require('gulp-connect');
+const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const eslint = require('gulp-eslint');
+const uglify = require("gulp-uglify");
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
 
-// 各个文件
-const files={
-	scss: [
-		'./src/scss/jason-fixed.scss',
-		'./src/scss/jason-responsive.scss'
-	],
-  js: './src/js/*.js',
-};
-
-// 输出路径
-const exportPath={
-	distCss:    './dist/css',
-  distJs:     './dist/js',
-};
-
-gulp.task('build',['style','script'],function () {
-  console.log(showTime('build'));
-});
-
-gulp.task('style',function(){
-  gulp.src(files.scss)
-    .pipe($.plumber())
-    .pipe($.sass({
-      outputStyle: 'expanded'
-    }))
-    .pipe($.postcss([
-      require('autoprefixer')({browsers: ['>=5%']})
-    ]))
-    .pipe(gulp.dest(exportPath.distCss))
-    .pipe($.postcss([
-      require('cssnano')()
-    ]))
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(exportPath.distCss));
-
-  console.log(showTime('style'));
-});
-
-gulp.task('script',function(){
-  gulp.src(files.js)
-    .pipe($.plumber())
-    .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.order([
-      'jason.js',
-      '*.js'
-    ]))
-    .pipe($.concat('jason.js'))
-    .pipe($.babel({
-      presets: ['es2015']
-    }))
-    .pipe($.uglify())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(exportPath.distJs))
-
-  console.log(showTime('script'));
-});
-
-gulp.task('dev',['build','connect','watch']);
-
-gulp.task('connect',function(){
-  $.connect.server(connectOptions);
-
-  console.log(showTime('server'));
-});
-
-gulp.task('watch',function(){
-  gulp.watch('./src/**/*.scss',['style']);
-  gulp.watch('./src/**/*.js',['script']);
-
-  console.log(showTime('watch'));
-});
-
-// 用于显示时间
-function showTime(fun){
-  let time = new Date();
-  return `功能：${fun}\n时间：${time.getHours()}:${time.getMinutes()}:${time.getUTCSeconds()}`
+// connect 配置
+const SERVERCONFIG = {
+  root: __dirname,
+  port: 8888,
+  livereload: true,
 }
+// style 主文件
+const FILE_MAIN_STYLE = [
+  path.resolve(__dirname, 'src/scss/jason-fixed.scss'),
+  path.resolve(__dirname, 'src/scss/jason-responsive.scss')
+];
+// 所有 style 文件
+const FILE_STYLES = path.resolve(__dirname, 'src/scss/**/*.scss');
+// js 主文件
+const FILE_MAIN_SCRIPT = path.resolve(__dirname, 'src/js/jason.js');
+// 所有 js 文件
+const FILE_SCRIPTS = path.resolve(__dirname, 'src/js/**/*.js');
+// 输出目录
+const OUTPUT = path.resolve(__dirname, 'dist');
+
+gulp.task('build', ['style', 'script']);
+gulp.task('dev', ['build', 'connect', 'watch']);
+
+gulp.task('style', function () {
+  gulp.src(FILE_MAIN_STYLE)
+    .pipe(sass())
+      .on('error', function () {
+        console.log('报错了')
+      })
+    .pipe(postcss())
+    .pipe(gulp.dest(OUTPUT));
+});
+gulp.task('script', ['eslint'], function () {
+  // eslint 检查
+  return browserify(FILE_MAIN_SCRIPT, {standalone: 'jason'})
+    .transform('babelify')
+    .bundle()
+      .on('error', function (err) {
+        console.log('JS报错：' + err.message);
+        this.emit('end');
+      })
+    .pipe(source('jason.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(OUTPUT))
+});
+gulp.task('eslint', function () {
+  gulp.src(FILE_SCRIPTS)
+    .pipe(eslint())
+    .pipe(eslint.format());
+});
+gulp.task('connect', function () {
+  connect.server(SERVERCONFIG);
+});
+gulp.task('watch', function () {
+  gulp.watch(FILE_SCRIPTS, ['script']);
+  gulp.watch(FILE_STYLES, ['style']);
+});
