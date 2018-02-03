@@ -37,7 +37,7 @@ gulp.task('style', function () {
   gulp.src(FILE_MAIN_STYLE)
     .pipe(sass())
       .on('error', function () {
-        console.log('报错了')
+        console.log('scss文件编译失败');
       })
     .pipe(postcss())
     .pipe(gulp.dest(OUTPUT));
