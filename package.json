@@ -45,6 +45,6 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "jason-reset": "^1.0.0"
+    "jason-reset": "^1.0.1"
   }
 }

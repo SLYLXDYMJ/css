@@ -5,9 +5,7 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-> 合并了 Eric Meyer’s “Reset CSS” 2.0 所有 <br>
-> 合并了 Normalize.css 部分样式 <br>
-> 新增了一些 默认样式 <br>
+[jason-reset](https://github.com/q-jason/jason-reset)
 
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
