@@ -5,7 +5,13 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-[jason-reset](https://github.com/q-jason/jason-reset)
+> 挪用了[jason-reset](https://github.com/q-jason/jason-reset)
+> 给 链接 和 按钮 增加了 默认的过度效果
+```css
+a, button {
+  transition: all .2s ease;
+}
+```
 
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>

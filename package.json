@@ -1,6 +1,6 @@
 {
   "name": "q-jason",
-  "version": "4.0.1",
+  "version": "4.0.3",
   "description": "前端切图工具库",
   "main": "./src/js/jason.js",
   "scripts": {
@@ -45,6 +45,6 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "jason-reset": "^1.0.3"
+    "jason-reset": "^1.0.5"
   }
 }
