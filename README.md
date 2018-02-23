@@ -5,7 +5,7 @@
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
 ## reset 说明
-> 挪用了[jason-reset](https://github.com/q-jason/jason-reset)
+> 挪用了[jason-reset](https://github.com/q-jason/jason-reset) <br>
 > 给 链接 和 按钮 增加了 默认的过度效果
 ```css
 a, button {
