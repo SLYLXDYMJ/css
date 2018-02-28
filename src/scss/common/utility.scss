@@ -108,17 +108,11 @@ ul,ol{
     >li{
       float: left;
     }
-    a{
-      display: block;
-    }
   }
   &.list-inline-block{
     >li{
       display: inline-block;
       vertical-align: middle;
-    }
-    a{
-      display: block;
     }
   }
 }
