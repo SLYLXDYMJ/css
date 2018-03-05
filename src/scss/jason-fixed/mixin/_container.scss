@@ -1,0 +1,15 @@
+@mixin container-base {
+  & {
+    height: 100%;
+    margin: 0 auto;
+    padding-left :$fixed-gutter / 2;
+    padding-right :$fixed-gutter / 2;
+    @extend .clearfix;
+  }
+}
+
+@mixin container-width {
+  & {
+    width: $fixed-container-width;
+  }
+}

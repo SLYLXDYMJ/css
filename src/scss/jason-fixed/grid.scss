@@ -1,16 +1,2 @@
-// container、container-fluid
-.container,
-.container-fluid{
-  @include container-base;
-}
-.container {
-  @include container-width;
-}
-
-// row、col
-@if $flex {
-  @include grid-flex;
-}
-@else {
-  @include grid-float;
-}
+.row { @include row }
+.col { @include col }

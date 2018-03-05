@@ -1,4 +1,3 @@
-@import './mixin/_layout.scss';
-@import 'mixin/grid-base';
-@import 'mixin/grid-float';
-@import './mixin/_grid-flex.scss';
+@import './mixin/_layout';
+@import './mixin/_container';
+@import './mixin/_grid';

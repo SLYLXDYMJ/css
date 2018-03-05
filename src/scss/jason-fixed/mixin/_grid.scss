@@ -1,10 +1,11 @@
-@mixin grid-float {
-  .row { @include row }
-  .col { @include col }
-}
-
 @mixin row{
-  @extend .clearfix;
+  @if $flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @else {
+    @extend .clearfix;
+  }
   @include row-mark;
 }
 @mixin row-mark{
@@ -43,7 +44,9 @@
     &-#{$i}{
       position: relative;
       min-height: 1px;
-      float: left;
+      @if $flex == false {
+        float: left;
+      }
     }
   }
 }

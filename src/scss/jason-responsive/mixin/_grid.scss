@@ -1,10 +1,13 @@
-@mixin grid-float {
-  .row { @include row }
-  .col { @include col }
-}
-
 @mixin row {
-  @extend .clearfix;
+  @if $flex {
+    & {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  @else {
+    @extend .clearfix;
+  }
   @include row-mark;
 }
 @mixin row-mark{
@@ -39,17 +42,18 @@
   @include col-mark;
 }
 @mixin col-mark{
+  @include col-attr(xs);
   @include col-loop(xs);
   @each $breakpoint in $responsive-breakpoints{
     $name       : map-get($breakpoint,name);
     $innerWidth : map-get($breakpoint,innerWidth);
+    @include col-attr($name);
     @media screen and (min-width: $innerWidth) {
       @include col-loop($name);
     }
   }
 }
 @mixin col-loop($name){
-  @include col-attr($name);
   @include col-width($name);
   @include col-pull($name);
   @include col-push($name);
@@ -60,13 +64,17 @@
     &-#{$name}-#{$i}{
       position: relative;
       min-height: 1px;
-      float: left;
+      @if $flex == false {
+        float: left;
+      }
     }
   }
 }
 @mixin col-width($name){
   @for $i from 1 through $responsive-columns{
-    &-#{$name}-#{$i}{width: 100% / $responsive-columns * $i }
+    &-#{$name}-#{$i}{
+      width: 100% / $responsive-columns * $i;
+    }
   }
 }
 @mixin col-push($name){

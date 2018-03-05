@@ -2,8 +2,8 @@
 前端切图库 —— 分为定宽和响应式，需要手动选择其css
 
 ## flex
-> 优先使用flex版本做栅格，如果想使用float版本的栅格 <br/>
-> 在src/scss/variables.scss 中改变
+> 优先使用flex版本做栅格 <br/>
+> 如果想使用 float 的栅格，在src/scss/variables.scss 中改变
 ```css
 // 是否开启弹性盒子布局
 $flex: true;
