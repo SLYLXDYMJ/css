@@ -1,6 +1,14 @@
 # jason
 前端切图库 —— 分为定宽和响应式，需要手动选择其css
 
+## flex
+> 优先使用flex版本做栅格，如果想使用float版本的栅格 <br/>
+> 在src/scss/variables.scss 中改变
+```css
+// 是否开启弹性盒子布局
+$flex: true;
+```
+
 ## 定宽库 和 响应式库的区别
 基本没有区别 =。= 只是定宽库要将 代表 屏幕的标示去掉 比如 row-10 mt-20
 
@@ -16,7 +24,6 @@ a, button {
 ## 栅格布局系统
 > 参考 bootstrap 。基本与bootstrap的栅格系统一致 <br>
 > 新增了行中列间距的概念 <br>
-> 数值 为 px 单位 <br>
 > 注意：在需要栅格布局的时候，需严格按照 .container/.container-fluid > .row > .col 的栅格模式去布局
 ### 例子
 ```html
@@ -26,47 +33,6 @@ a, button {
     <div class="col-xs-6"></div>
   </div>
 </div>
-```
-### 实现方式
-```css
-.row-xs-10 {
-  margin-left: -5px;
-  margin-right: -5px;
-}
-.row-xs-0 > div {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-@media screen and (min-width: 768px) {
-  .row-sm-15 {
-    margin-left: -7.5px;
-    margin-right: -7.5px;
-  }
-  .row-sm-15 > div {
-    padding-left: 7.5px;
-    padding-right: 7.5px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .row-md-30 {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-  .row-md-30 > div {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .row-lg-50 {
-    margin-left: -25px;
-    margin-right: -25px;
-  }
-  .row-lg-50 > div {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-}
 ```
 
 ## 布局工具类
@@ -84,28 +50,6 @@ a, button {
 </div>
 ```
 
-### 实现方式
-```css
-.mt-xs-10 {
-  margin-top:10px;
-}
-@media screen and (min-width: 768px) {
-  .mt-sm-15 {
-    margin-top:15px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .mt-md-30 {
-    margin-top:30px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .mt-lg-50 {
-    margin-top:50px;
-  }
-}
-```
-
 >+ m代表margin
 >+ p代表padding
 >+ fs代表font-size
@@ -118,388 +62,114 @@ a, button {
 
 ## 工具类
 ### 浮动相关
-#### 左浮动
 ```css
+// 左浮动
 .float-left {
   float: left;
 }
-```
-#### 右浮动
-```css
+
+// 右浮动
 .float-right {
   float: right;
 }
-```
-#### 清除浮动影响
-```css
-.clearfix:before,.clearfix:after{
-  content:"";
-  display: table;
+
+// 清除浮动影响
+// 防止margin溢出
+.clearfix {
+  @include clearfix;
 }
-.clearfix:after{
-  clear: both;
+```
+### 宽度和高度最大化
+```css
+// 宽度撑满父容器
+.width-full{
+  width: 100%;
+}
+
+// 高度撑满父容器
+.height-full{
+  height: 100%;
 }
 ```
 
 ### 文字属性相关
-#### 居中
 ```css
-.text-center{
-  text-align: center;
-}
-```
-#### 居左
-```css
+// 居左
 .text-left{
   text-align: left;
 }
-```
-#### 居右
-```css
+
+// 居中
+.text-center{
+  text-align: center;
+}
+
+// 居右
 .text-right{
   text-align: right;
 }
-```
-#### 加粗
-```css
+
+// 加粗
 .text-bold{
-  font-weight: bold;
+  font-weight:bold;
 }
-```
-#### 加粗
-```css
-.text-uppercase{
-  text-transform: uppercase;
-}
-```
-#### 文字一行显示，移除隐藏
-```css
-.text-nowrap {
+
+// 一行显示溢出隐藏
+.text-nowrap{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-```
 
-### 宽高填充
-#### 宽度 100%
-```css
-.width-full {
-  width: 100%;
-}
-```
-#### 高度 100%
-```css
-.height-full {
-  height: 100%;
+// 大写
+.text-uppercase{
+  text-transform: uppercase;
 }
 ```
 
-### 图片相关
-#### 响应式图片
+### 响应式图片
 ```css
-.img-responsive {
+.img-responsive{
   display: block;
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 ```
 
-### 按钮相关
-#### 去除按钮样式
+### 横向列表
 ```css
-.btn {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  vertical-align: middle;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
+// 横向列表 float 实现方式
+ul.list-float,
+ol.list-float {
+  @extend .clearfix;
+  li {float: left}
+}
+
+// 横向列表 inline-block 实现方式
+ul.list-inline-block,
+ol.list-inline-block {
+  li {display: inline-block}
+}
+
+// 横向列表 flex 实现方式（如果开启了弹性布局）
+ul.list-flex,
+ol.list-flex {
+  display: flex;
 }
 ```
 
-### display相关
-#### 块级元素
-```css
-.block {
-  display: block;
-}
-```
-#### 行内块元素
-```css
-.inline-block {
-  display: inline-block;
-  vertical-align: middle;
-}
-```
-#### 行内元素
-```css
-.inline {
-  display: inline;
-  vertical-align: middle;
-}
-```
-
-### vertical-align属性相关
-```css
-.vertical-baseline {
-  vertical-align: baseline;
-}
-
-.vertical-top {
-  vertical-align: top;
-}
-
-.vertical-middle {
-  vertical-align: middle;
-}
-
-.vertical-bottom {
-  vertical-align: bottom;
-}
-
-.vertical-text-bottom {
-  vertical-align: text-bottom;
-}
-
-.vertical-text-top {
-  vertical-align: text-top;
-}
-
-.vertical-sub {
-  vertical-align: sub;
-}
-
-.vertical-super {
-  vertical-align: super;
-}
-```
-
-### 横向列表相关(ul,ol)
-#### 浮动方式实现
-```css
-ul.list-float > li, ol.list-float > li {
-  float: left;
-}
-
-ul.list-float a, ol.list-float a {
-  display: block;
-}
-```
-#### 行内块元素实现
-```css
-ul.list-inline-block > li, ol.list-inline-block > li {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-ul.list-inline-block a, ol.list-inline-block a {
-  display: block;
-}
-```
-
-### 垂直居中相关
-#### 伪元素方式实现
-> 给父元素设置 .verc-content 且 只能有一个子元素
-```css
-.verc-content {
-  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
-  font-size: 0;
-}
-.verc-content::before, .verc-content::after, .verc-content > * {
-  display: inline-block;
-  vertical-align: middle;
-}
-.verc-content::before, .verc-content::after {
-  content: "";
-  height: 100%;
-}
-.verc-content > * {
-  font-size: 14px;
-}
-```
-#### transform方式实现
-> 父元素要设置定位
-```css
-.verc-transform {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-```
-#### margin方式实现
-> 父元素要设置定位
-```css
-.verc-margin {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-```
-#### 模拟 table 方式实现
-> .verc-table>.verc-tr(可省略)>.verc-td
-```css
-.verc-table {
-  display: table;
-  height: 100%;
-  width: 100%;
-}
-
-.verc-tr {
-  display: table-row;
-}
-
-.verc-td {
-  display: table-cell;
-  vertical-align: middle;
-}
-```
-
-### 背景相关
+### 响应式背景
 ```css
 .bg-cover {
-  background-size: cover;
-  background-position: center;
+  background-size:cover;
+  background-position:center;
 }
 ```
 
-### 定位相关
-#### 相对定位
+### 强制隐藏元素
 ```css
-.relative {
-  position: relative;
-}
-```
-#### 无定位
-```css
-.static {
-  position: static !important;
-}
-```
-
-### 层叠性
-```css
-.z-index-1 {
-  z-index: 1;
-}
-.z-index-2 {
-  z-index: 2;
-}
-.z-index-3 {
-  z-index: 3;
-}
-.z-index-4 {
-  z-index: 4;
-}
-.z-index-5 {
-  z-index: 5;
-}
-.z-index-6 {
-  z-index: 6;
-}
-.z-index-7 {
-  z-index: 7;
-}
-.z-index-8 {
-  z-index: 8;
-}
-.z-index-9 {
-  z-index: 9;
-}
-```
-
-### 遮罩
-> 黑色遮罩 和 白色遮罩 全部都有 .cover 的属性
-#### 遮罩元素
-```css
-.cover{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-```
-#### 黑色遮罩
-```css
-.shadow-black-1 {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.shadow-black-2 {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.shadow-black-3 {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.shadow-black-4 {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.shadow-black-5 {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.shadow-black-6 {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.shadow-black-7 {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.shadow-black-8 {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.shadow-black-9 {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-```
-#### 白色遮罩
-```css
-.shadow-white-1 {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.shadow-white-2 {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.shadow-white-3 {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-.shadow-white-4 {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.shadow-white-5 {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.shadow-white-6 {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-.shadow-white-7 {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-.shadow-white-8 {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-.shadow-white-9 {
-  background-color: rgba(255, 255, 255, 0.9); 
-}
-```
-
-### 溢出隐藏
-```css
-.overflow-hidden {
-  overflow: hidden;
-}
-```
-
-### 强制隐藏
-```css
-.hide {
+.hide{
   display: none !important;
 }
 ```

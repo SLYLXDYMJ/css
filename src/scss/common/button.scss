@@ -1,203 +1,192 @@
-.btn{
-  
+// 按钮初始化
+.btn {
   font-size: 14px;
   display: inline-block;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
-
   background-color: transparent;
   border: none;
   padding:0;
-
   position: relative;
   overflow: hidden;
-
   transition: all .2s;
 
-  /***********************************************************
-    动画效果基础样式
-  ************************************************************/
-  &-anime{
-    padding:$btn-anime-padding;
-    background-color:$btn-anime-bgc-default;
-    color:$btn-anime-color-default;
+  // 按钮动画初始化
+  &-anime {
+    padding: $btn-anime-padding;
+    background-color: $btn-anime-bgc-default;
+    color: $btn-anime-color-default;
     
     // 基础文字
-    span{
+    span {
       display: block;
     }
 
-    &:after,&:before,span,span:after,span:before{
+    &:after,
+    &:before,
+    span,
+    span:after,
+    span:before {
       transition-duration: $btn-anime-time-middle;
       animation-duration: $btn-anime-time-middle;
     }
     
     // 时间定义
-    &-short{
-      &:after,&:before,span,span:after,span:before{
+    &-short {
+      &:after,
+      &:before,
+      span,
+      span:after,
+      span:before {
         transition-duration: $btn-anime-time-short !important;
         animation-duration: $btn-anime-time-short !important;
       }
     }
-    &-middle{
-      &:after,&:before,span,span:after,span:before{
+    &-middle {
+      &:after,
+      &:before,
+      span,
+      span:after,
+      span:before {
         transition-duration: $btn-anime-time-middle !important;
         animation-duration: $btn-anime-time-middle !important;
       }
     }
-    &-long{
-      &:after,&:before,span,span:after,span:before{
+    &-long {
+      &:after,
+      &:before,
+      span,
+      span:after,
+      span:before {
         transition-duration: $btn-anime-time-long !important;
         animation-duration: $btn-anime-time-long !important;
       }
     }
   }
 
-  /***********************************************************
-    滑动效果
-  ************************************************************/
-  &-slide{
-
-    &-top,&-right,&-bottom,&-left{
-      &:hover span,&.hover span{
+  // 滑动效果
+  &-slide {
+    &-top,
+    &-right,
+    &-bottom,
+    &-left {
+      &:hover span,
+      &.hover span {
         opacity: 0
       }
-      &:hover:after,&.hover:after{
-        transform:translate3d(0,0,0);
+      &:hover:after,
+      &.hover:after {
+        transform: translate3d(0,0,0);
       }
-      &:hover:before,&.hover:before,&:hover:after,&.hover:after{
+      &:hover:before,
+      &.hover:before,
+      &:hover:after,
+      &.hover:after {
         opacity: 1
       }
-      span,&:after,&:before{
+      span,
+      &:after,
+      &:before{
         transition-timing-function: $btn-slide-ttf;
       }
-      &:after{
+      &:after {
         content:"";
         position: absolute;
         z-index: 1;
-        top:0;left:0;bottom:0;right:0;
-        background-color:$btn-slide-shadow;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: $btn-slide-shadow;
         opacity: 0;
       }
-      &:before{
-        content:attr(data-text);
+      &:before {
+        content: attr(data-text);
         position: absolute;
         z-index: 2;
-        width:100%;
+        width: 100%;
         opacity: 0;
       }
     }
 
-    &-top{
-      &:hover span,&.hover span{
-        transform:translate3d(0,-$btn-slide-distance,0);
+    &-top {
+      &:hover span,
+      &.hover span {
+        transform: translate3d(0,-$btn-slide-distance,0);
       }
-      &:hover:before,&.hover:before{
-        top:50%;
+      &:hover:before,
+      &.hover:before {
+        top: 50%;
         transition-delay: $btn-slide-delay;
-        transform:translate3d(0,-50%,0);
+        transform: translate3d(0,-50%,0);
       }
-      &:after{
-        transform:translate3d(0,100%,0);
+      &:after {
+        transform: translate3d(0,100%,0);
       }
-      &:before{
-        top:100%;
-        left:0;
-        transform:translate3d(0,0,0);
+      &:before {
+        top: 100%;
+        left: 0;
+        transform: translate3d(0,0,0);
       }
     }
     &-right{
-      &:hover span,&.hover span{
-        transform:translate3d($btn-slide-distance,0,0);
+      &:hover span,
+      &.hover span {
+        transform: translate3d($btn-slide-distance,0,0);
       }
-      &:hover:before,&.hover:before{
-        right:0;
+      &:hover:before,
+      &.hover:before {
+        right: 0;
         transition-delay: $btn-slide-delay;
       }
-      &:after{
-        transform:translate3d(-100%,0,0);
+      &:after {
+        transform: translate3d(-100%,0,0);
       }
-      &:before{
-        top:50%;
-        right:100%;
-        transform:translate3d(0,-50%,0);
+      &:before {
+        top: 50%;
+        right: 100%;
+        transform: translate3d(0,-50%,0);
       }
     }
-    &-bottom{
-      &:hover span,&.hover span{
-        transform:translate3d(0,$btn-slide-distance,0);
+    &-bottom {
+      &:hover span,
+      &.hover span {
+        transform: translate3d(0,$btn-slide-distance,0);
       }
-      &:hover:before,&.hover:before{
-        bottom:50%;
+      &:hover:before,
+      &.hover:before {
+        bottom: 50%;
         transition-delay: $btn-slide-delay;
-        transform:translate3d(0,50%,0);
+        transform: translate3d(0,50%,0);
       }
-      &:after{
-        transform:translate3d(0,-100%,0);
+      &:after {
+        transform: translate3d(0,-100%,0);
       }
-      &:before{
-        bottom:100%;
-        left:0;
-        transform:translate3d(0,0,0);
+      &:before {
+        bottom: 100%;
+        left: 0;
+        transform: translate3d(0,0,0);
       }
     }
-    &-left{
-      &:hover span,&.hover span{
-        transform:translate3d(-$btn-slide-distance,0,0);
+    &-left {
+      &:hover span,
+      &.hover span {
+        transform: translate3d(-$btn-slide-distance,0,0);
       }
-      &:hover:before,&.hover:before{
-        left:0;
+      &:hover:before,
+      &.hover:before {
+        left: 0;
         transition-delay: $btn-slide-delay;
       }
-      &:after{
-        transform:translate3d(100%,0,0);
+      &:after {
+        transform: translate3d(100%,0,0);
       }
-      &:before{
-        top:50%;
-        left:100%;
-        transform:translate3d(0,-50%,0);
-      }
-    }
-
-  }
-
-  /***********************************************************
-    加载效果
-  ************************************************************/
-  &-load{
-    pointer-events: none;
-    &::before,&::after{
-      display: none;
-    }
-    span{
-      transition: none;
-      color:transparent;
-      position: relative;
-      opacity: 1 !important;
-      transform: translate3d(0,0,0) !important;
-      &::after{
-        content:"";
-        height:$btn-load-size;
-        width: $btn-load-size;
-        position: absolute;
-        top:0;left:0;bottom:0;right:0;
-        margin: auto;
-        border-radius: 50%;
-        border:$btn-load-width solid $btn-load-color;
-        border-top-color:transparent;
-        border-right-color:transparent;
-        opacity: 1;
-        animation-name: btn-load;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+      &:before {
+        top: 50%;
+        left: 100%;
+        transform: translate3d(0,-50%,0);
       }
     }
   }
-  
-}
-
-@keyframes btn-load{
-  0%{transform: rotate(0)}
-  100%{transform: rotate(360deg)}
 }

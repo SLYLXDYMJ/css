@@ -26,7 +26,7 @@ const FILE_STYLES = path.resolve(__dirname, 'src/scss/**/*.scss');
 // js 主文件
 const FILE_MAIN_SCRIPT = path.resolve(__dirname, 'src/js/jason.js');
 // 所有 js 文件
-const FILE_SCRIPTS = path.resolve(__dirname, 'src/js/**/*.js');
+const FILE_SCRIPTS = path.resolve(__dirname, 'src/script/**/*.js');
 // 输出目录
 const OUTPUT = path.resolve(__dirname, 'dist');
 
@@ -36,8 +36,8 @@ gulp.task('dev', ['build', 'connect', 'watch']);
 gulp.task('style', function () {
   gulp.src(FILE_MAIN_STYLE)
     .pipe(sass())
-      .on('error', function () {
-        console.log('scss文件编译失败');
+      .on('error', function (error) {
+        console.log(error);
       })
     .pipe(postcss())
     .pipe(gulp.dest(OUTPUT));

@@ -1,21 +1,8 @@
-/////////////////////////////////////////////////////
-// 定宽 .container .container-fluid
-/////////////////////////////////////////////////////
-@mixin container-attr{
-  height: 100%;
-  margin: 0 auto;
-  padding-left :$responsive-gutter / 2;
-  padding-right :$responsive-gutter / 2;
-  @extend .clearfix;
-}
-@mixin container-width{
-  width: $fixed-container-width;
+@mixin grid-float {
+  .row { @include row }
+  .col { @include col }
 }
 
-
-/////////////////////////////////////////////////////
-// 定宽 .row
-/////////////////////////////////////////////////////
 @mixin row{
   @extend .clearfix;
   @include row-mark;
@@ -41,13 +28,6 @@
   }
 }
 
-
-
-
-
-/////////////////////////////////////////////////////
-// 定宽 .col
-/////////////////////////////////////////////////////
 @mixin col{
   @include col-mark;
 }

@@ -1,54 +1,62 @@
-/////////////////////////////////////////////////////////
-// 浮动
-/////////////////////////////////////////////////////////
-.float-left{
+// 左浮动
+.float-left {
   float: left;
 }
-.float-right{
+
+// 右浮动
+.float-right {
   float: right;
 }
-.clearfix{
+
+// 清除浮动影响
+// 防止margin溢出
+.clearfix {
   @include clearfix;
 }
 
-/////////////////////////////////////////////////////////
-// 宽度和高度
-/////////////////////////////////////////////////////////
+// 宽度撑满父容器
 .width-full{
   width: 100%;
 }
+
+// 高度撑满父容器
 .height-full{
   height: 100%;
 }
 
-/////////////////////////////////////////////////////////
-// text
-/////////////////////////////////////////////////////////
+// 居左
 .text-left{
   text-align: left;
 }
+
+// 居中
 .text-center{
   text-align: center;
 }
+
+// 居右
 .text-right{
   text-align: right;
 }
+
+// 加粗
 .text-bold{
   font-weight:bold;
 }
+
+// 一行显示溢出隐藏
 .text-nowrap{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+// 大写
 .text-uppercase{
   text-transform: uppercase;
 }
 
-
-/////////////////////////////////////////////////////////
-// 图片
-/////////////////////////////////////////////////////////
+// 响应式图片
 .img-responsive{
   display: block;
   max-width: 100%;
@@ -56,163 +64,34 @@
   margin-right:auto;
 }
 
-/////////////////////////////////////////////////////////
-// display的值
-/////////////////////////////////////////////////////////
-.block{
-  display: block;
-}
-.inline{
-  display: inline;
-  vertical-align: middle;
-}
-.inline-block{
-  display: inline-block;
-  vertical-align: middle;
+// 横向列表 float 实现方式
+ul.list-float,
+ol.list-float {
+  @extend .clearfix;
+  li {float: left}
 }
 
-/////////////////////////////////////////////////////////
-// vertical-align
-/////////////////////////////////////////////////////////
-.vertical-baseline{
-  vertical-align: baseline;
-}
-.vertical-top{
-  vertical-align: top;
-}
-.vertical-middle{
-  vertical-align: middle;
-}
-.vertical-bottom{
-  vertical-align: bottom;
-}
-.vertical-text-bottom{
-  vertical-align: text-bottom;
-}
-.vertical-text-top{
-  vertical-align: text-top;
-}
-.vertical-sub{
-  vertical-align: sub;
-}
-.vertical-super{
-  vertical-align: super;
+// 横向列表 inline-block 实现方式
+ul.list-inline-block,
+ol.list-inline-block {
+  li {display: inline-block}
 }
 
-/////////////////////////////////////////////////////////
-// 列表（ul，ol）
-/////////////////////////////////////////////////////////
-ul,ol{
-  &.list-float{
-    @extend .clearfix;
-    >li{
-      float: left;
-    }
-  }
-  &.list-inline-block{
-    >li{
-      display: inline-block;
-      vertical-align: middle;
-    }
+// 横向列表 flex 实现方式
+@if $flex {
+  ul.list-flex,
+  ol.list-flex {
+    display: flex;
   }
 }
 
-/////////////////////////////////////////////////////////
-// 垂直居中
-/////////////////////////////////////////////////////////
-/* 内容生成 方式 */
-.verc-content{
-  /* 字体大小设置为 0 ，前后伪元素就不会和实际元素有边距 */
-  font-size: 0;
-
-  &::before,&::after,&>*{
-    display: inline-block;
-    vertical-align: middle;
-  }
-  &::before,&::after{
-    content:"";
-    height: 100%;
-  }
-  &>*{
-    font-size: 14px;
-  }
-}
-/* transform 方式 */
-.verc-transform{
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-}
-/* margin 方式 */
-.verc-margin{
-  position: absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  margin:auto;
-}
-/* 模拟表格 方式 */
-.verc-table{
-  display: table;
-  height:100%;
-  width:100%;
-}
-.verc-tr{
-  display:table-row;
-}
-.verc-td{
-  display:table-cell;
-  vertical-align: middle;
-}
-
-/////////////////////////////////////////////////////////
-// 背景图
-/////////////////////////////////////////////////////////
-.bg-cover{
+// 响应式背景图
+.bg-cover {
   background-size:cover;
   background-position:center;
 }
 
-/////////////////////////////////////////////////////////
-// 定位
-/////////////////////////////////////////////////////////
-.relative{
-  position: relative;
-}
-.static{
-  position: static !important;
-}
-
-/////////////////////////////////////////////////////////
-// 层叠性
-/////////////////////////////////////////////////////////
-.z-index{
-  @include z-index;
-}
-
-/////////////////////////////////////////////////////////
-// 覆盖的元素 和 遮罩
-/////////////////////////////////////////////////////////
-.cover{
-  position: absolute;
-  top:0;right:0;bottom:0;left:0;
-}
-.shadow{
-  @include shadow;  
-}
-
-/////////////////////////////////////////////////////////
-// 溢出隐藏
-/////////////////////////////////////////////////////////
-.overflow-hidden {
-  overflow: hidden;
-}
-
-/////////////////////////////////////////////////////////
 // 使元素隐藏
-/////////////////////////////////////////////////////////
 .hide{
   display: none !important;
 }

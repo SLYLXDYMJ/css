@@ -1,29 +1,20 @@
-@import "./variables";
-@import "./common/function/com-function";
-@import "./responsive/responsive-mixin/responsive-mixin";
+// jason-reset
+@import "../../node_modules/jason-reset/src/jason-reset.scss";
 
-// 全局样式
-@import "./common/global";
+// 引入变量
+@import "./variables.scss";
 
-// 导入 jason-reset
-@import "../../node_modules/jason-reset/src/jason-reset";
+// 引入公用文件
+@import "./common/function.scss";
+@import "./common/mixin.scss";
+@import "./common/global.scss";
+@import "./common/button.scss";
+@import "./common/hamburger.scss";
+@import "./common/nonIe.scss";
+@import "./common/utility.scss";
 
-// 响应式 reset
-@import "./responsive/responsive-reset";
-
-//响应式 栅格
-@import "./responsive/responsive-grid";
-//响应式 布局
-@import "./responsive/responsive-layout";
-
-//插件 IE 支持
-@import "./common/ie";
-//组件 汉堡包按钮
-@import "./common/hamburger";
-//组件 按钮
-@import "./common/button";
-
-//工具类
-@import "./common/utility";
-//响应式工具类
-@import "./responsive/responsive-utility";
+// 响应式库样式
+@import "./jason-responsive/mixin.scss";
+@import "./jason-responsive/global.scss";
+@import "./jason-responsive/layout.scss";
+@import "./jason-responsive/grid.scss";
