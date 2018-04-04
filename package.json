@@ -1,6 +1,6 @@
 {
   "name": "jason-layout",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "前端切图工具库",
   "main": "./src/js/jason.js",
   "scripts": {
@@ -43,8 +43,5 @@
     "npm-check": "^5.5.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "dependencies": {
-    "jason-reset": "^1.0.7"
   }
 }
