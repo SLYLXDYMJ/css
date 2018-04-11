@@ -4,15 +4,16 @@
       display: flex;
       flex-wrap: wrap;
     }
+    @include row-utils;
   }
   @else {
     @extend .clearfix;
   }
   @include row-mark;
 }
-@mixin row-mark{
+@mixin row-mark {
   @include row-loop(xs);
-  @each $breakpoint in $responsive-breakpoints{
+  @each $breakpoint in $responsive-breakpoints {
     $name       : map-get($breakpoint,name);
     $innerWidth : map-get($breakpoint,innerWidth);
     @media screen and (min-width: $innerWidth) {
@@ -25,7 +26,7 @@
 }
 @mixin row-space($name){
   $i : 0;
-  @while $i <= strip-units($responsive-max-space){
+  @while $i <= strip-units($responsive-max-space) {
     &-#{$name}-#{$i}{
       margin-left: (-$i / 2 ) * 1px;
       margin-right: (-$i / 2 ) * 1px;
@@ -35,6 +36,20 @@
       }
     }
     $i : $i + 5;
+  }
+}
+@mixin row-utils {
+  &-align-full {
+    align-items: stretch;
+  }
+  &-align-top {
+    align-items: flex-start;
+  }
+  &-align-center {
+    align-items: center;
+  }
+  &-align-bottom {
+    align-items: flex-end;
   }
 }
 

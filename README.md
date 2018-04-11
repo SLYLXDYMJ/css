@@ -4,10 +4,19 @@
 ## flex
 > 优先使用flex版本做栅格 <br/>
 > 如果想使用 float 的栅格，在src/scss/variables.scss 中改变
-```css
+> flex版本的栅格多了对其方式
+
+### variables
+```sass
 // 是否开启弹性盒子布局
 $flex: true;
 ```
+
+### 对齐方式
+1. .row-align-full
+2. .row-align-top
+3. .row-align-center
+4. .row-align-bottom
 
 ## 定宽库 和 响应式库的区别
 > 基本没有区别，只是响应式库加了屏幕的断点 <br>
@@ -182,6 +191,25 @@ ol.list-flex {
 ```css
 .hide{
   display: none !important;
+}
+```
+
+### 响应式隐藏元素
+```css
+@media (max-width: 767px) {
+  .hide-xs {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .hide-sm {
+    display: none;
+  }
+}
+@media (max-width: 1199px) {
+  .hide-md {
+    display: none;
+  }
 }
 ```
 

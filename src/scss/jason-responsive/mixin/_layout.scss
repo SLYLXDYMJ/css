@@ -1,11 +1,11 @@
-@mixin layout{
+@mixin layout {
   @include layout-mark;
 }
 @mixin layout-mark{
   @include layout-loop($responsive-smallest);
   @each $breakpoint in $responsive-breakpoints{
-    $name       : map-get($breakpoint,name);
-    $innerWidth : map-get($breakpoint,innerWidth);
+    $name       : map-get($breakpoint, name);
+    $innerWidth : map-get($breakpoint, innerWidth);
     @media screen and (min-width: $innerWidth) {
       @include layout-loop($name);
     }

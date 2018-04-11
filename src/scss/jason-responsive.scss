@@ -8,11 +8,12 @@
 @import "./common/button.scss";
 @import "./common/hamburger.scss";
 @import "./common/nonIe.scss";
-@import "./common/utility.scss";
+@import "./common/utils";
 
 // 响应式库样式
 @import "./jason-responsive/mixin.scss";
 @import "./jason-responsive/global.scss";
+@import "./jason-responsive/utils.scss";
 @import "./jason-responsive/layout.scss";
 @import "./jason-responsive/container.scss";
 @import "./jason-responsive/grid.scss";
