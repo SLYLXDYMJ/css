@@ -12,6 +12,7 @@
 ```sass
 // 是否开启弹性盒子布局
 $flex: true;
+```
 
 ## reset 说明
 > 此库不包括 reset <br>
