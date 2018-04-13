@@ -6,8 +6,9 @@
 
 ## flex
 > 优先使用flex版本做栅格 <br/>
-> 如果想使用 float 的栅格，在src/scss/variables.scss 中改变
-> flex版本的栅格多了对其方式
+> 如果想使用 float 的栅格 <br/>
+> 在 src/scss/variables.scss 中更改 <br/>
+> 注意：如果用float做栅格则没有 .row 的对齐方式类
 
 ```sass
 // 是否开启弹性盒子布局
