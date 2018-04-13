@@ -49,10 +49,13 @@ $flex: true;
 <div class="container">
   <!-- 默认 -->
   <div class="row row-align-full"></div>
+
   <!-- 顶部对其（align-item: flex-start） -->
   <div class="row row-align-top"></div>
+
   <!-- 居中对其（align-item: flex-center） -->
   <div class="row row-align-center"></div>
+  
   <!-- 底部对其（align-item: flex-end） -->
   <div class="row row-align-bottom"></div>
 </div>
