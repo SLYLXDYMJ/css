@@ -10,7 +10,7 @@
 > 在 src/scss/variables.scss 中更改 <br/>
 > 注意：如果用float做栅格则没有 .row 的对齐方式类
 
-```sass
+```scss
 // 是否开启弹性盒子布局
 $flex: true;
 ```
