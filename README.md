@@ -1,25 +1,17 @@
 # jason
 > 前端切图库 —— 分为定宽和响应式，需要手动选择其css
 
+## 定宽库 和 响应式库的区别
+> 基本没有区别，只是响应式库加了屏幕的断点 <br>
+
 ## flex
 > 优先使用flex版本做栅格 <br/>
 > 如果想使用 float 的栅格，在src/scss/variables.scss 中改变
 > flex版本的栅格多了对其方式
 
-### variables
 ```sass
 // 是否开启弹性盒子布局
 $flex: true;
-```
-
-### 对齐方式
-1. .row-align-full
-2. .row-align-top
-3. .row-align-center
-4. .row-align-bottom
-
-## 定宽库 和 响应式库的区别
-> 基本没有区别，只是响应式库加了屏幕的断点 <br>
 
 ## reset 说明
 > 此库不包括 reset <br>
@@ -48,6 +40,12 @@ $flex: true;
   </div>
 </div>
 ```
+
+## 对齐方式类
+1. .row-align-full
+2. .row-align-top
+3. .row-align-center
+4. .row-align-bottom
 
 ## 布局工具类
 ### 例子
