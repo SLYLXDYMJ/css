@@ -22,7 +22,7 @@ $flex: true;
 ## 栅格布局系统
 > 参考 bootstrap <br>
 > 用法基本一致，新增了可变的行中列间距的概念 <br>
-> 注：推荐的布局嵌套 容器 > 行 > 列 > div > 标题 + 内容
+> 注：推荐的布局嵌套 容器 > 行 > 列 > div > 标题 + 内容 <br>
 > ↓↓↓
 
 ```html
@@ -44,13 +44,22 @@ $flex: true;
 ```
 
 ## 对齐方式类
-1. .row-align-full
-2. .row-align-top
-3. .row-align-center
-4. .row-align-bottom
+
+```html
+<div class="container">
+  <!-- 默认 -->
+  <div class="row row-align-full"></div>
+  <!-- 顶部对其（align-item: flex-start） -->
+  <div class="row row-align-top"></div>
+  <!-- 居中对其（align-item: flex-center） -->
+  <div class="row row-align-center"></div>
+  <!-- 底部对其（align-item: flex-end） -->
+  <div class="row row-align-bottom"></div>
+</div>
+```
 
 ## 布局工具类
-### 例子
+
 ```html
 <div class="container">
   <div class="row row-lg-50 row-md-30 row-sm-15 row-xs-10">
