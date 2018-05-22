@@ -16,8 +16,25 @@ $flex: true;
 ```
 
 ## reset 说明
-> 此库不包括 reset <br>
+> 此库不包括全部（含有部分）reset <br>
 > 推荐[jason-reset](https://github.com/q-jason/jason-reset)
+
+## 部分 reset
+```scss
+// html 默认 10px 好设置 rem
+html {
+  font-size: 10px;
+}
+// 设置网页默认字体
+body {
+  font-size: 16px;
+  font-family: "Microsoft Yahei", sans-serif;
+}
+// 设置 按钮默认有过度效果
+a, button {
+  transition: all .2s ease;
+}
+```
 
 ## 栅格布局系统
 > 参考 bootstrap <br>
@@ -225,9 +242,8 @@ ol.list-flex {
 }
 ```
 
-## 小组件
 ### 特效按钮
-> 详细 看 doc -> demo -> demo.btn.html
+> 详细 看 example -> btn.html
 ```html
 <a class="btn btn-anime btn-anime-short btn-slide-top" data-text="slide-top">
   <span>slide-top</span>
@@ -235,51 +251,9 @@ ol.list-flex {
 ```
 
 ### 汉堡包按钮
-> 详细 看 doc -> demo -> demo.hamburger.html
+> 详细 看 example -> hamburger.html
 ```html
 <div class="hamburger hamburger-1">
   <div></div>
 </div>
-```
-
-## window.jason 对象
-### API
-#### window.jason.nonIe(Array)
-> IE升级提示 ，把不支持的版本号填到数组中，目前只支持 6 - 10 <br>
-``` javascript
-window.jason.nonIe([6,7,8,9,10]);
-```
-
-#### window.jason.win
-> 封装着游览器的各项信息 <br>
-> 以下是 属性 和 方法（只有update）
-```javascript
-// 游览器可用区域，包括滚动条的宽度
-innerWidth
-// 游览器可用区域，包括滚动条的宽度
-innerHeight
-// 不包括滚动条的页面视口宽度
-contentWidth
-// 不包括滚动条的页面视口高度
-contentHeight
-// 滚动条/页面 的总高度
-scrollHeight
-// 当前视口顶部距离页面顶部的距离
-scrollPositionTop
-// 当前视口底部距离页面顶部的距离
-scrollPositionBottom
-// 判断是否是 电脑 用户
-isPc
-// 判断是否是 移动设备
-isMobile
-// 判断是否是手机用户
-isPhone
-// 判断是否是ipad用户
-isPad
-// 判断是否是微信用户
-isWeChat
-// Css 前缀
-cssPrefix
-// 刷新数据 
-update
 ```
