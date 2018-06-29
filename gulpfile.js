@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 
-const index = './src/index.scss';
+const index = './src/jason-css-lib.scss';
 const output = './dist';
 
 gulp.task('build:sass', () => {
