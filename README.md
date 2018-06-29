@@ -60,7 +60,9 @@
 -------------------------------------------------------------------------------
 
 ## 汉堡包按钮
-> 一共 13 种效果
+> 一共 13 种效果 <br/>
+> [demo](https://q-jason.github.io/jason-css-lib/hamburger.html)
+
 ``` html
   <!-- hamburger 定义基础样式 -->
   <!-- hamburger-num 选择哪一种效果 -->
@@ -73,6 +75,8 @@
 -------------------------------------------------------------------------------
 
 ## 特效按钮
+> [demo](https://q-jason.github.io/jason-css-lib/button.html)
+
 ```html
   <!-- .btn 会将任意按钮(input, a, button)还原成无样式 -->
   <!-- .btn-animte 是特效按钮的基础 class -->
