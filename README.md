@@ -27,7 +27,7 @@
 
 ## 栅格
 > 参考了 bootstrap 在其基础上增加了 可变的 行中列间距 <br/>
-> (demo)[https://q-jason.github.io/jason-css-lib/grid.html]
+> [demo](https://q-jason.github.io/jason-css-lib/grid.html)
 
 ```html
   <div class="container">
