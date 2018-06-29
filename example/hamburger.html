@@ -2,90 +2,102 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Title</title>
-  <link rel="stylesheet" href="../../dist/jason-responsive.css">
+  <link rel="stylesheet" href="../dist/index.css">
   <style>
-    .hamburger{
-      display: block;
-      margin:25px auto;
+    body {
+      text-align: center;
     }
-    .hamburger.active>div,.hamburger.active>div:after,.hamburger.active>div:before{
-      background-color:#8AC7DB;
-    }
-    .btn{
-      display: block;
-      margin:0 auto;
+    body > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
     }
   </style>
 </head>
 <body>
 
+  <h1>点击按钮</h1>
 
-<div class="hamburger hamburger-1">
-  <div></div>
+  <div>
+    <a class="hamburger hamburger-1" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-2" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-3" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-4" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-5" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-6" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-7" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-8" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-9" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-10" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-11" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-12" href="#">
+      <div></div>
+    </a>
+  </div>
+  <div>
+    <a class="hamburger hamburger-13" href="#">
+      <div></div>
+    </a>
+  </div>
+
+<div>
+
 </div>
 
-<div class="hamburger hamburger-2">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-3">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-4">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-5">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-6">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-7">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-8">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-9">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-10">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-11">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-12">
-  <div></div>
-</div>
-
-<div class="hamburger hamburger-13">
-  <div></div>
-</div>
-
-<button class="btn btn-anime btn-slide-top" data-text="Go" onclick="active()">
-  <span>一键切换状态</span>
-</button>
-
-<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script src="./jquery.1.11.3.min.js"></script>
 <script>
-  var $hamburgers=$('.hamburger');
-  $hamburgers.click(function(){
+  $('.hamburger').click(function (e) {
+    e.preventDefault();
     $(this).toggleClass('active');
-  });
-  function active(){
-    $hamburgers.toggleClass('active');
-  }
+  })
 </script>
 </body>
 </html>

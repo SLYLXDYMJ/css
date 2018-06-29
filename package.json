@@ -1,29 +1,25 @@
 {
-  "name": "jason-layout",
-  "version": "6.1.0",
+  "name": "jason-css-lib",
+  "version": "7.0.0",
   "description": "前端切图工具库",
-  "main": "./src/js/jason.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev",
-    "build": "gulp build"
+    "build": "./node_modules/.bin/gulp build:sass"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/q-jason/jason.git"
+    "url": "git+https://github.com/q-jason/jason-css-lib.git"
   },
   "author": "596908546@qq.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/q-jason/jason/issues"
+    "url": "https://github.com/q-jason/jason-css-lib/issues"
   },
-  "homepage": "https://github.com/q-jason/jason#readme",
+  "homepage": "https://github.com/q-jason/jason-css-lib#readme",
   "devDependencies": {
-    "autoprefixer": "^7.1.6",
+    "autoprefixer": "^8.6.4",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^4.0.1"
   }
 }

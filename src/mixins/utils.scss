@@ -1,9 +1,11 @@
+// 清除浮动影响
 @mixin clearfix{
-  &::before,&::after{
+  &::before,
+  &::after {
     content:"";
     display: table;
   }
-  &::after{
+  &::after {
     clear: both;
   }
 }

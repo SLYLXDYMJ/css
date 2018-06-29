@@ -1,0 +1,188 @@
+@mixin grid-container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding-left: $container-plr;
+  padding-right: $container-plr;
+  // 判断是否是响应式
+  // 若是，则需要响应宽度
+  @if ($is-responsive) {
+    @each $breakpoint in $responsive-breakpoint {
+      $min-width: map_get($breakpoint, min-width);
+      $container-width: map_get($breakpoint, container-width);
+      @media (min-width: $min-width) {
+        width: $container-width;
+      }
+    }
+  }
+  // 若不是则需要定宽宽度
+  @else {
+    width: $container-fixed-width;
+  }
+}
+@mixin grid-contaienr-fluid {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: $container-plr;
+  padding-right: $container-plr;
+}
+
+@mixin grid-row {
+  box-sizing: border-box;
+  @if ($flex) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @else {
+    @include clearfix;
+  }
+}
+
+// attr 存在 问题
+// 媒体查询中无法 @extend 待解决
+// 现在的缺点是 文件会变大
+@mixin grid-col-attr ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-#{$i} {
+      box-sizing: border-box;
+      position: relative;
+      min-height: 1px;
+      // 判断是否使用 flex 实现
+      @if ($flex == false) {
+        float: left;
+      }
+    }
+  }
+  @else {
+    &-#{$i} {
+      box-sizing: border-box;
+      position: relative;
+      min-height: 1px;
+      // 判断是否使用 flex 实现
+      @if ($flex == false) {
+        float: left;
+      }
+    }
+  }
+}
+@mixin grid-col-width ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-#{$i} {
+      width: 100% / $cols * $i;
+    }
+  }
+  @else {
+    &-#{$i} {
+      width: 100% / $cols * $i;
+    }
+  }
+}
+@mixin grid-col-offset ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-offset-#{$i} {
+      margin-left: 100% / $cols * $i;
+    }
+  }
+  @else {
+    &-offset-#{$i} {
+      margin-left: 100% / $cols * $i;
+    }
+  }
+}
+@mixin grid-col-pull ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-pull-#{$i} {
+      left: -100% / $cols * $i;
+    }
+  }
+  @else {
+    &-pull-#{$i} {
+      left: -100% / $cols * $i;
+    }
+  }
+}
+@mixin grid-col-push ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-push-#{$i} {
+      left: 100% / $cols * $i;
+    }
+  }
+  @else {
+    &-push-#{$i} {
+      left: 100% / $cols * $i;
+    }
+  }
+}
+@mixin grid-col-loop ($name, $i) {
+  @if ($is-responsive) {
+    @include grid-col-attr($name, $i);
+    @include grid-col-width($name, $i);
+    @include grid-col-offset($name, $i);
+    @include grid-col-pull($name, $i);
+    @include grid-col-push($name, $i);
+  }
+  @else {
+    @include grid-col-attr(null, $i);
+    @include grid-col-width(null, $i);
+    @include grid-col-offset(null, $i);
+    @include grid-col-pull(null, $i);
+    @include grid-col-push(null, $i);
+  }
+}
+// 列间隔，在 row 上写 class
+@mixin grid-col-space ($name, $i) {
+  @if ($is-responsive) {
+    &-#{$name}-space-#{$i} {
+      left: 100% / $cols * $i;
+    }
+  }
+  @else {
+    &-space-#{$i} {
+      left: 100% / $cols * $i;
+    }
+  }
+}
+@mixin grid-col {
+  // 判断是否响应式
+  // 是响应式
+  @if ($is-responsive) {
+    @each $breakpoint in $responsive-breakpoint {
+      $name: map_get($breakpoint, name);
+      $min-width: map_get($breakpoint, min-width);
+      @media (min-width: $min-width) {
+        @for $i from 1 through $cols {
+          @include grid-col-loop($name, $i);
+        }
+        // 列间距
+        @for $i from 0 through $col-space / $col-space-step {
+          $spaceNum: $i * $col-space-step;
+          &-#{$name}-space-#{$spaceNum} {
+            margin-left: -1px * $spaceNum / 2;
+            margin-right: -1px * $spaceNum / 2;
+            >div {
+              padding-left: 1px * $spaceNum / 2;
+              padding-right: 1px * $spaceNum / 2;
+            }
+          }
+        }
+      }
+    }
+  }
+  // 定宽
+  @else {
+    @for $i from 1 through $cols {
+      @include grid-col-loop(null, $i);
+      // 列间距
+      @for $i from 0 through $col-space / $col-space-step {
+        $spaceNum: $i * $col-space-step;
+        &-space-#{$spaceNum} {
+          margin-left: -1px * $spaceNum / 2;
+          margin-right: -1px * $spaceNum / 2;
+          >div {
+            padding-left: 1px * $spaceNum / 2;
+            padding-right: 1px * $spaceNum / 2;
+          }
+        }
+      }
+    }
+  }
+}

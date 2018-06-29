@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link rel="stylesheet" href="../dist/index.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+    div {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>
+      slide
+    </h1>
+    <div>
+      <a class="btn btn-anime btn-anime-short btn-slide-top" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-short btn-slide-right" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-short btn-slide-bottom" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-short btn-slide-left" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+    </div>
+    <div>
+      <a class="btn btn-anime btn-anime-middle btn-slide-top" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-middle btn-slide-right" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-middle btn-slide-bottom" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-middle btn-slide-left" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+    </div>
+    <div>
+      <a class="btn btn-anime btn-anime-long btn-slide-top" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-long btn-slide-right" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-long btn-slide-bottom" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+      <a class="btn btn-anime btn-anime-long btn-slide-left" href="#" data-text="JASON">
+        <span>jason</span>
+      </a>
+    </div>
+  </div>
+
+  <button class="btn btn-anime btn-slide-bottom" data-text="go">
+    <span>鼠标移动到我上面切换按钮</span>
+  </button>
+
+<script src="./jquery.1.11.3.min.js"></script>
+<script>
+  $('button').hover(function (e) {
+    e.preventDefault();
+    $('a').toggleClass('hover');
+  })
+</script>
+</body>
+</html>

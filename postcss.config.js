@@ -1,6 +1,10 @@
 module.exports = {
   plugins: {
-    autoprefixer: {},
-    cssnano: {}
+    autoprefixer: {
+      browsers: ['> 5%']
+    },
+    cssnano: {
+      safe: true
+    }
   }
 };
