@@ -185,4 +185,20 @@
       }
     }
   }
+  // 判断是否是 flex 实现
+  @if ($flex) {
+    // 列对其工具类
+    &-align-full {
+      align-items: stretch;
+    }
+    &-align-top {
+      align-items: flex-start;
+    }
+    &-align-center {
+      align-items: center;
+    }
+    &-align-bottom {
+      align-items: flex-end;
+    }
+  }
 }

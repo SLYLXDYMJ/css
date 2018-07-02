@@ -1,25 +1,17 @@
 # jason-css-cli
 > css 库
 
--------------------------------------------------------------------------------
-
 ## 注意
-1. 此库不包含 css reset（推荐[jason-reset](https://github.com/q-jason/jason-reset)）
-
--------------------------------------------------------------------------------
+1. 此库不包含 css reset，看这里 -> [jason-reset](https://github.com/q-jason/jason-reset)
 
 ## 特点
-1. 响应式、定宽（根据 variable.scss -> $is-responsive 变量切换）
+1. 响应式、定宽，根据 variable.scss -> $is-responsive 变量切换
 2. 响应式（栅格）行中列间距
 3. addones 可随时插拔
 4. 可随时增删改响应式断点
 
--------------------------------------------------------------------------------
-
 ## 响应式库 和 定宽度的区别
 > 用法基本一样，只有栅格系统有所不同（响应式库在定宽度的基础上增加了屏幕标识）
-
--------------------------------------------------------------------------------
 
 ## addones
 > 可在 variable.scss 中编辑包含哪些组件，默认全部包含
@@ -28,15 +20,14 @@
 3. hamburger - 13款特效汉堡包按钮
 4. utils - 常用的 class 类封装
 
--------------------------------------------------------------------------------
-
 ## 栅格
 > 参考了 bootstrap 在其基础上增加了 可变的 行中列间距 <br/>
-> [demo](https://q-jason.github.io/jason-css-lib/grid.html)
+> 默认使用 flex 实现栅格，可根据 varaible.scss -> flex: false 改为 float 实现栅格 <br/>
+> [demo](https://q-jason.github.io/jason-css-lib/grid.html) <br/>
 
 ```html
   <div class="container">
-    <div class="row col-lg-space-20 col-md-space-15 col-sm-space-10">
+    <div class="row col-align-center col-lg-space-20 col-md-space-15 col-sm-space-10">
       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
         <div class="content"></div>
       </div>
@@ -59,10 +50,26 @@
   </div>
 ```
 
-### 注意：
-栅格布局建议按照 container > row > col > div.content 的结构布局
+### 列对其工具类
+> 注意：只有 使用 flex 实现栅格才能使用 <br/>
+> 注意：此类是写在 .row 元素上的 <br/>
+```css
+.col-align-full {
+  align-items: stretch;
+}
+.col-align-top {
+  align-items: flex-start;
+}
+.col-align-center {
+  align-items: center;
+}
+.col-align-bottom {
+  align-items: flex-end;
+}
+```
 
--------------------------------------------------------------------------------
+### 注意：
+1. 栅格布局建议按照 container > row > col > div.content 的结构布局
 
 ## 汉堡包按钮
 > 一共 13 种效果 <br/>
@@ -76,8 +83,6 @@
     <div></div>
   </a>
 ```
-
--------------------------------------------------------------------------------
 
 ## 特效按钮
 > [demo](https://q-jason.github.io/jason-css-lib/button.html)
@@ -100,8 +105,6 @@
 |btn-slide-right |滑动 - 右|
 |btn-slide-bottom|滑动 - 下|
 |btn-slide-left  |滑动 - 左|
-
--------------------------------------------------------------------------------
 
 ## 工具类
 ```html
