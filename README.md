@@ -88,12 +88,12 @@
 ```
 
 ### 效果类名
-|class名|
-|-------|
-|btn-slide-top|
-|btn-slide-right|
-|btn-slide-bottom|
-|btn-slide-left|
+|class名         |效果说明 |
+|----------------|        |
+|btn-slide-top   |滑动 - 上|
+|btn-slide-right |滑动 - 右|
+|btn-slide-bottom|滑动 - 下|
+|btn-slide-left  |滑动 - 左|
 -------------------------------------------------------------------------------
 
 ## 工具类
