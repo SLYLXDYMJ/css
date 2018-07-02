@@ -1,7 +1,7 @@
 {
   "name": "jason-css-lib",
   "description": "前端切图工具库",
-  "main": "./dist/jason-css-lib.css",
+  "main": "./src/jason-css-lib.scss",
   "authors": [
     "596908546@qq.com"
   ],
