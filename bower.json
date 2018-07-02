@@ -8,10 +8,10 @@
   "license": "ISC",
   "keywords": [
     "scss",
-    "css"
+    "css",
+    "html"
   ],
   "homepage": "https://github.com/q-jason/jason-css-lib",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
