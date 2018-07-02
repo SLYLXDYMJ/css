@@ -1,0 +1,22 @@
+{
+  "name": "jason-css-lib",
+  "description": "前端切图工具库",
+  "main": "./src/jason-css-lib.scss",
+  "authors": [
+    "596908546@qq.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "scss",
+    "css"
+  ],
+  "homepage": "https://github.com/q-jason/jason-css-lib",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
