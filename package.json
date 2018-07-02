@@ -2,6 +2,7 @@
   "name": "jason-css-lib",
   "version": "7.0.0",
   "description": "前端切图工具库",
+  "main": "./src/jason-css-lib.scss",
   "scripts": {
     "build": "./node_modules/.bin/gulp build:sass"
   },
