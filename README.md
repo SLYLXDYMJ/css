@@ -66,6 +66,9 @@
 .col-align-bottom {
   align-items: flex-end;
 }
+.col-align-baseline {
+  align-items: baseline;
+}
 ```
 
 ### 注意：
