@@ -1,8 +1,10 @@
 @import './variable';
 @import './mixins/index';
+@import './function/index';
 
 // addones --------------------------------------------------
 @import './addones/grid';
+@import './addones/layout';
 @import './addones/hamburger';
 @import './addones/button';
 @import './addones/utils';

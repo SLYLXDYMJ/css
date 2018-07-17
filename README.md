@@ -7,7 +7,6 @@
 ## 特点
 1. 响应式、定宽，根据 variable.scss -> $is-responsive 变量切换
 2. 响应式（栅格）行中列间距
-3. addones 可随时插拔
 4. 可随时增删改响应式断点
 
 ## 响应式库 和 定宽度的区别
@@ -16,6 +15,7 @@
 ## addones
 > 可在 variable.scss 中编辑包含哪些组件，默认全部包含
 1. grid - 栅格系统
+2. layout - 布局工具类
 2. button - 特效按钮
 3. hamburger - 13款特效汉堡包按钮
 4. utils - 常用的 class 类封装
@@ -72,7 +72,7 @@
 ```
 
 ### 注意：
-1. 栅格布局建议按照 container > row > col > div.content 的结构布局
+1. 栅格布局建议严格按照 container > row > col > div.content 的结构布局
 
 ## 汉堡包按钮
 > 一共 13 种效果 <br/>
@@ -85,6 +85,54 @@
   <a class="hamburger hamburger-7" href="#">
     <div></div>
   </a>
+```
+
+## 布局工具类
+> 不建议使用，会额外增加大量的 css代码体积，并导致 html 与 css 耦合。<br/>
+
+### 存在意义：
+1. 快速开发
+2. 大量的并且极度不统一的样式时的前端解决方案
+
+#### 使用
+```html
+
+<!-- sm 屏 margin：10 -->
+<div class="m-sm-10"></div>
+
+<!-- sm 屏 margin-top：10 -->
+<div class="mt-sm-10"></div>
+
+<!-- sm 屏 margin-right：10 -->
+<div class="mr-sm-10"></div>
+
+<!-- sm 屏 margin-bottom：10 -->
+<div class="mb-sm-10"></div>
+
+<!-- sm 屏 margin-left：10 -->
+<div class="ml-sm-10"></div>
+
+<!-- md 屏 padding：10 -->
+<div class="p-sm-10"></div>
+
+<!-- md 屏 padding-top：10 -->
+<div class="pt-sm-10"></div>
+
+<!-- md 屏 padding-right：10 -->
+<div class="pr-sm-10"></div>
+
+<!-- md 屏 padding-bottom：10 -->
+<div class="pb-sm-10"></div>
+
+<!-- md 屏 padding-left：10 -->
+<div class="pl-sm-10"></div>
+
+<!-- xs 屏 font-size：12px -->
+<div class="fs-xs-12"></div>
+
+<!-- lg 屏 line-height：1.6 -->
+<div class="lh-lg-16"></div>
+
 ```
 
 ## 特效按钮
