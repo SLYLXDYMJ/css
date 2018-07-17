@@ -2,7 +2,7 @@
 > css 库
 
 ## 注意
-1. 此库不包含 css reset，看这里 -> [jason-reset](https://github.com/q-jason/jason-reset)
+1. 此库不包含 css reset，个人整合的reset -> [jason-reset](https://github.com/q-jason/jason-reset)
 
 ## 特点
 1. 响应式、定宽，根据 variable.scss -> $is-responsive 变量切换
