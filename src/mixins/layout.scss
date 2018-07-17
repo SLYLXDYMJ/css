@@ -68,6 +68,67 @@
       }
     }
   }
+  @else {
+    // 当前循环的下标
+    $i: 0;
+    // 当前值（带单位的）
+    $value: 0;
+    @while ($value < $max) {
+      // 当前值（带单位的）
+      $value: $i * $step;
+      // 用于 class 名 的 属性
+      $value-class: strip-unit($value);
+      // font-size 和 line-height 有最小值
+      @if ($attr == font-size) {
+        $value: $value + strip-unit($fs-min);
+        $value-class: $value-class + strip-unit($fs-min);
+      }
+        // line-height 有最小值，并且名字需要特殊处理
+      @else if ($attr == line-height) {
+        $value: $value + strip-unit($lh-min);
+        $value-class: ( $value-class + strip-unit($lh-min) ) * 10;
+      }
+      &-#{$value-class} {
+        @if ($attr == margin) {
+          margin: $value;
+        }
+        @else if ($attr == margin-top) {
+          margin-top: $value;
+        }
+        @else if ($attr == margin-right) {
+          margin-right: $value;
+        }
+        @else if ($attr == margin-bottom) {
+          margin-bottom: $value;
+        }
+        @else if ($attr == margin-left) {
+          margin-left: $value;
+        }
+        @else if ($attr == padding) {
+          padding: $value;
+        }
+        @else if ($attr == padding-top) {
+          padding-top: $value;
+        }
+        @else if ($attr == padding-right) {
+          padding-right: $value;
+        }
+        @else if ($attr == padding-bottom) {
+          padding-bottom: $value;
+        }
+        @else if ($attr == padding-left) {
+          padding-left: $value;
+        }
+        @else if ($attr == font-size) {
+          font-size: $value;
+        }
+        @else if ($attr == line-height) {
+          line-height: $value;
+        }
+      }
+      $i: $i + 1;
+    }
+  }
 }
 
 @mixin margin () {

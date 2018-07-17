@@ -30,7 +30,7 @@ $container-fixed-width: 1180px;
 
 // grid - 响应式 -----------------------------------------------
 // 是否是响应式
-$is-responsive: true;
+$is-responsive: false;
 // 响应式断点
 $responsive-breakpoint: (
   (name: xs, min-width: 0px, container-width: 100%),
