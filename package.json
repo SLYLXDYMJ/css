@@ -1,6 +1,6 @@
 {
   "name": "jason-css-lib",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "description": "前端切图工具库",
   "scripts": {
     "build": "./node_modules/.bin/gulp build:sass"

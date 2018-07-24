@@ -1,23 +1,28 @@
 @if ($has-utils) {
+  
   // 清除浮动影响
   // 防止margin溢出
   *.clearfix {
     @include clearfix;
   }
+
   // 宽度 100%
   *.width-100 {
     width: 100%;
   }
+
   // 高度 100%
   *.height-100 {
     height: 100%;
   }
+
   // 一行显示溢出隐藏
   *.ellipsis {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
   // 响应式图片
   img.img-responsive {
     display: block;
@@ -25,13 +30,41 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   // 背景处理
   *.bg-cover {
     background-size: cover;
     background-position: center;
   }
+
   // 强制隐藏
   *.hide {
     display: none !important;
   }
+
+  // 溢出隐藏
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  // 居左
+  .text-left {
+    text-align: left;
+  }
+
+  // 居右
+  .text-right {
+    text-align: right;
+  }
+
+  // 居中
+  .text-center {
+    text-align: center;
+  }
+
+  // 两端对齐
+  .text-justify {
+    text-align: justify;
+  }
+
 }
