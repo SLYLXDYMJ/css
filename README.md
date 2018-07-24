@@ -13,12 +13,12 @@
 > 用法基本一样，只有栅格系统有所不同（响应式库在定宽度的基础上增加了屏幕标识）
 
 ## addones
-> 可在 variable.scss 中编辑包含哪些组件，默认全部包含
-1. grid - 栅格系统
-2. layout - 布局工具类
-2. button - 特效按钮
-3. hamburger - 13款特效汉堡包按钮
-4. utils - 常用的 class 类封装
+> 可在 variable.scss 中编辑包含哪些组件
+[ ]  1. grid - 栅格系统
+[x]  2. layout - 布局工具类
+[x]  2. button - 特效按钮
+[ ]  3. hamburger - 13款特效汉堡包按钮
+[ ]  4. utils - 常用的 class 类封装
 
 ## 栅格
 > 参考了 bootstrap 在其基础上增加了 可变的 行中列间距 <br/>
