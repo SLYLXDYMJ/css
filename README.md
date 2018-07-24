@@ -23,7 +23,7 @@
 ## 栅格
 > 参考了 bootstrap 在其基础上增加了 可变的 行中列间距 <br/>
 > 默认使用 flex 实现栅格，可根据 varaible.scss -> flex: false 改为 float 实现栅格 <br/>
-> [demo](https://q-jason.github.io/jason-css-lib/grid.html) <br/>
+> [demo](https://q-jason.github.io/jason-css/grid.html) <br/>
 
 ```html
   <div class="container">
@@ -76,7 +76,7 @@
 
 ## 汉堡包按钮
 > 一共 13 种效果 <br/>
-> [demo](https://q-jason.github.io/jason-css-lib/hamburger.html)
+> [demo](https://q-jason.github.io/jason-css/hamburger.html)
 
 ``` html
   <!-- hamburger 定义基础样式 -->
@@ -136,7 +136,7 @@
 ```
 
 ## 特效按钮
-> [demo](https://q-jason.github.io/jason-css-lib/button.html)
+> [demo](https://q-jason.github.io/jason-css/button.html)
 
 ```html
   <!-- .btn 会将任意按钮(input, a, button)还原成无样式 -->
