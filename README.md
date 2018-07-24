@@ -14,11 +14,11 @@
 
 ## addones
 > 可在 variable.scss 中编辑包含哪些组件
-[ ]  1. grid - 栅格系统
-[x]  2. layout - 布局工具类
-[x]  2. button - 特效按钮
-[ ]  3. hamburger - 13款特效汉堡包按钮
-[ ]  4. utils - 常用的 class 类封装
+[ ]grid - 栅格系统
+[x]layout - 布局工具类
+[x]button - 特效按钮
+[ ]hamburger - 13款特效汉堡包按钮
+[ ]utils - 常用的 class 类封装
 
 ## 栅格
 > 参考了 bootstrap 在其基础上增加了 可变的 行中列间距 <br/>
