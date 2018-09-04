@@ -10,23 +10,38 @@
   }
   .col {
     @include grid-col;
-    // flex - 列对其工具类
-    @if ($flex) {
-      &-align-full {
-        align-items: stretch;
-      }
-      &-align-top {
-        align-items: flex-start;
-      }
-      &-align-center {
-        align-items: center;
-      }
-      &-align-bottom {
-        align-items: flex-end;
-      }
-      &-align-baseline {
-        align-items: baseline;
-      }
+  }
+  // flex - 列对其工具类
+  @if ($flex) {
+    .align-stretch {
+      align-items: stretch;
+    }
+    .align-start {
+      align-items: flex-start;
+    }
+    .align-center {
+      align-items: center;
+    }
+    .align-end {
+      align-items: flex-end;
+    }
+    .align-baseline {
+      align-items: baseline;
+    }
+    .justify-center {
+      justify-content: center;
+    }
+    .justify-end {
+      justify-content: flex-end;
+    }
+    .justify-start {
+      justify-content: flex-start;
+    }
+    .justify-space-around {
+      justify-content: space-around;
+    }
+    .justify-space-between {
+      justify-content: space-between;
     }
   }
 }

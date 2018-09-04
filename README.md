@@ -17,8 +17,8 @@
 
 * [x] grid - 栅格系统
 * [ ] layout - 布局工具类
-* [ ] button - 特效按钮
 * [x] hamburger - 13款特效汉堡包按钮
+* [ ] button - 特效按钮
 * [x] utils - 常用的 class 类封装
 
 ## 栅格
@@ -55,21 +55,36 @@
 > 注意：只有 使用 flex 实现栅格才能使用 <br/>
 > 注意：此类是写在 .row 元素上的 <br/>
 ```css
-.col-align-full {
-  align-items: stretch;
-}
-.col-align-top {
-  align-items: flex-start;
-}
-.col-align-center {
-  align-items: center;
-}
-.col-align-bottom {
-  align-items: flex-end;
-}
-.col-align-baseline {
-  align-items: baseline;
-}
+  .align-stretch {
+    align-items: stretch;
+  }
+  .align-start {
+    align-items: flex-start;
+  }
+  .align-center {
+    align-items: center;
+  }
+  .align-end {
+    align-items: flex-end;
+  }
+  .align-baseline {
+    align-items: baseline;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .justify-start {
+    justify-content: flex-start;
+  }
+  .justify-space-around {
+    justify-content: space-around;
+  }
+  .justify-space-between {
+    justify-content: space-between;
+  }
 ```
 
 ### 注意：

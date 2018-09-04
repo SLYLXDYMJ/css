@@ -30,7 +30,7 @@ $container-fixed-width: 1180px;
 
 // grid - 响应式 -----------------------------------------------
 // 是否是响应式
-$is-responsive: false;
+$is-responsive: true;
 // 响应式断点
 $responsive-breakpoint: (
   (name: xs, min-width: 0px, container-width: 100%),
@@ -87,5 +87,5 @@ $btn-slide-ttf: cubic-bezier(.77, 0, .18, 1);
 $btn-slide-distance: 20px;
 // slide文字出现的延迟度
 $btn-slide-delay: 0.1s;
-// slide黑色遮罩的颜色
+// slide遮罩的颜色
 $btn-slide-shadow: rgba(0, 0, 0, .3);
