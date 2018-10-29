@@ -1,6 +1,6 @@
 {
   "name": "jason-css-lib",
-  "version": "7.4.1",
+  "version": "7.4.0",
   "description": "前端css库",
   "scripts": {
     "build": "./node_modules/.bin/gulp build:sass"
