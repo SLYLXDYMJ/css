@@ -11,6 +11,6 @@ gulp.task('build', function () {
   return gulp.src([ normalScss, responsiveScss ])
     .pipe(sass())
     .on('error', sass.logError)
-    .pipe(postcss())
+    // .pipe(postcss())
     .pipe(gulp.dest(output));
 });

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import '../src/responsive.scss';
+import '../src/normal.scss';
 
 Vue.config.productionTip = false;
 

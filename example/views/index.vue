@@ -1,5 +1,11 @@
 <template>
-  <div>index</div>
+  <div class="container">
+    <div class="row">
+      <div v-for="$i in 20" style="width: 20%">
+        {{ $i }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

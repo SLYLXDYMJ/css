@@ -1,0 +1,51 @@
+// scss 工具库
+
+// 返回去除单位后的数值
+@function strip-unit ($value) {
+  @return ($value / ($value * 0 + 1));
+}
+
+// 将数值 按照 指定的设计图大小转为 vw 单位
+@function vw ($px, $width: 1920px) {
+  $width: strip-unit($width);
+  $px: strip-unit($px);
+  @return $px / ($width / 100) * 1vw;
+}
+
+// 清除浮动影响
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+// 背景常用处理
+@mixin bg-cover($position-x: center, $position-y: center) {
+  background-size: cover;
+  background-position: $position-x $position-y;
+}
+
+// 文字一行显示溢出隐藏
+@mixin ellipsis() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 覆盖的元素
+@mixin cover($position: absolute, $z-index: null) {
+  @if ($position) {
+    position: $position;
+  } @else {
+    position: absolute;
+  }
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  @if ($z-index) {
+    z-index: $z-index;
+  }
+}
