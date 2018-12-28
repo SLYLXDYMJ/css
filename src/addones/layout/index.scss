@@ -87,7 +87,7 @@
     $name: -#{$name};
   }
   @for $i from 1 through $col-space-level {
-    $value: $col-space-span * $i * $ratio;
+    $value: $col-space-span * $i * $ratio / 2;
     @if ($value < $col-space-min-px) {
       $value: $col-space-min-px;
     }
