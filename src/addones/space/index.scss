@@ -1,0 +1,65 @@
+// margin 和 padding
+// 响应式库会按照定义的响应式断点进行响应
+
+@mixin margin($i) {
+  .m {
+    margin: $space-span * $i;
+  }
+  .mx {
+    margin-left: $space-span * $i;
+    margin-right: $space-span * $i;
+  }
+  .my {
+    margin-top: $space-span * $i;
+    margin-bottom: $space-span * $i;
+  }
+  .mt {
+    margin-top: $space-span * $i;
+  }
+  .mr {
+    margin-right: $space-span * $i;
+  }
+  .mb {
+    margin-bottom: $space-span * $i;
+  }
+  .ml {
+    margin-left: $space-span * $i;
+  }
+}
+
+@mixin padding($i) {
+  .p {
+    padding: $space-span * $i;
+  }
+  .px {
+    padding-left: $space-span * $i;
+    padding-right: $space-span * $i;
+  }
+  .py {
+    padding-top: $space-span * $i;
+    padding-bottom: $space-span * $i;
+  }
+  .pt {
+    padding-top: $space-span * $i;
+  }
+  .pr {
+    padding-right: $space-span * $i;
+  }
+  .pb {
+    padding-bottom: $space-span * $i;
+  }
+  .pl {
+    padding-left: $space-span * $i;
+  }
+}
+
+@if ($mode == normal) {
+  @for $i from 1 through $space-level {
+    @include margin($i);
+    @include padding($i);
+  }
+}
+
+@if ($mode == responsive) {
+
+}

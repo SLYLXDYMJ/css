@@ -1,0 +1,24 @@
+{
+  "name": "jason-layout",
+  "version": "10.0.0",
+  "private": false,
+  "scripts": {
+    "dev": "vue-cli-service serve ./example/main.js",
+    "build": "./node_modules/.bin/gulp build & vue-cli-service build ./example/main.js"
+  },
+  "dependencies": {
+    "cssnano": "^4.1.8",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

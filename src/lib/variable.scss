@@ -1,0 +1,11 @@
+// 响应式断点，从小到大写
+$responsive-breakpoint: (
+  (name: xs, min-width: 0px, container-width: 100%),
+  (name: sm, min-width: 768px, container-width: 750px),
+  (name: md, min-width: 992px, container-width: 960px),
+  (name: lg, min-width: 1280px, container-width: 1260px)
+);
+// 间距的跨域
+$space-span: 5px;
+// 间距的级别
+$space-level: 10;
