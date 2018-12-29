@@ -1,0 +1,121 @@
+// 栅格列数
+$col-num: 12;
+// 是否使用 flex
+$use-flex: true;
+// normal 模式 contianer 的宽度
+$container-normal-max-width: 1260px;
+// container 左右槽宽
+$container-gutter: 30px;
+// space 最大的级别
+$space-max-level: 20 !default;
+// 级别间的跨度
+$space-level-span: 5px !default;
+// space 响应式最低档缩小比例
+$space-min-ratio: 0.3 !default;
+// space 最小值
+$space-min-val: 5px !default;
+// 响应式断点，从小到大写
+$responsive-breakpoint: (
+  // 手机
+  (name: xs, min-width: 0px, container-max-width: 100%),
+    // 平板
+  (name: sm, min-width: 768px, container-max-width: 720px),
+    // 小屏电脑
+  (name: md, min-width: 992px, container-max-width: 960px),
+    // 大屏电脑
+  (name: lg, min-width: 1280px, container-max-width: 1260px)
+) !default;
+
+.container {
+  &, &-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $container-gutter / 2;
+    padding-right: $container-gutter / 2;
+  }
+  // 宽度
+  @if ($mode == normal) {
+    max-width: $container-normal-max-width;
+  }
+  @if ($mode == responsive) {
+    @each $breakpoint in $responsive-breakpoint {
+      // 响应式断点宽度
+      $min-width: map_get($breakpoint, min-width);
+      // 当前断点 container 最大宽度
+      $container-max-width: map_get($breakpoint, container-max-width);
+      // 非最小屏幕宽度样式（最小时为 100%）
+      @if ($min-width != 0px) {
+        @media (min-width: $min-width) {
+          max-width: $container-max-width;
+        }
+      }
+    }
+  }
+}
+
+.row {
+  @if ($use-flex == true) {
+    display: flex;
+    flex-wrap: wrap;
+  } @else {
+    @include clearfix;
+  }
+  // 行中列间距
+  @if ($mode == normal) {
+    @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, 1);
+  }
+  @if ($mode == responsive) {
+    // 断点数量
+    $breakpointLength: length($responsive-breakpoint);
+    // 断点之前值的缩放比例
+    $span-ratio: (1 - $space-min-ratio) / ($breakpointLength - 1);
+    // 记录当前的比例
+    $current-ratio: $space-min-ratio;
+    // for
+    @each $breakpoint in $responsive-breakpoint {
+      // 断点最小宽度
+      $min-width: map_get($breakpoint, min-width);
+      // 断点最低档不设置媒体查询
+      @if ($min-width == 0px) {
+        @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, $current-ratio);
+      }
+      // 其余档位设置媒体查询
+      @if ($min-width != 0px) {
+        @media (min-width: $min-width) {
+          @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, $current-ratio);
+        }
+      }
+      // 改变比例值
+      $current-ratio: $current-ratio + $span-ratio;
+    }
+  }
+}
+
+// 列
+@include col-base($use-flex);
+@include col-width($use-flex);
+@if ($mode == responsive) {
+  @each $breakpoint in $responsive-breakpoint {
+    // 断点名称
+    $name: map_get($breakpoint, name);
+    // 响应式断点宽度
+    $min-width: map_get($breakpoint, min-width);
+    @include col-base($use-flex, $name);
+    @if ($min-width == 0) {
+      @include col-width($use-flex, $name);
+    } @else {
+      @media (min-width: $min-width) {
+        @include col-width($use-flex, $name);
+      }
+    }
+  }
+}
+
+// flex-grow: 1
+@if ($use-flex == true) {
+  .col {
+    flex-grow: 1;
+  }
+}
+

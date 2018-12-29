@@ -1,6 +1,6 @@
 {
-  "name": "jason-layout",
-  "version": "10.0.0",
+  "name": "jason-css",
+  "version": "0.0.0",
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve ./example/main.js",

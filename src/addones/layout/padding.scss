@@ -1,0 +1,40 @@
+// padding 最大的级别
+$padding-max-level: 20 !default;
+// 级别间的跨度
+$padding-level-span: 5px !default;
+// padding 响应式最低档缩小比例
+$padding-min-ratio: 0.3 !default;
+// padding 最小值
+$padding-min-val: 5px !default;
+
+// normal
+@if ($mode == normal) {
+  @include loop-level(padding, $padding-max-level, $padding-level-span, $padding-min-val, 1);
+}
+
+@if ($mode == responsive) {
+  // 断点数量
+  $breakpointLength: length($responsive-breakpoint);
+  // 断点之前值的缩放比例
+  $span-ratio: (1 - $padding-min-ratio) / ($breakpointLength - 1);
+  // 记录当前的比例
+  $current-ratio: $padding-min-ratio;
+  // for
+  @each $breakpoint in $responsive-breakpoint {
+    // 断点最小宽度
+    $min-width: map_get($breakpoint, min-width);
+    // 断点最低档不设置媒体查询
+    @if ($min-width == 0px) {
+      @include loop-level(padding, $padding-max-level, $padding-level-span, $padding-min-val, $current-ratio);
+    }
+    // 其余档位设置媒体查询
+    @if ($min-width != 0px) {
+      @media (min-width: $min-width) {
+        @include loop-level(padding, $padding-max-level, $padding-level-span, $padding-min-val, $current-ratio);
+      }
+    }
+    // 改变比例值
+    $current-ratio: $current-ratio + $span-ratio;
+  }
+}
+

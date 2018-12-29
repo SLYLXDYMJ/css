@@ -1,0 +1,40 @@
+// fs 最大的级别
+$fs-max-level: 40 !default;
+// 级别间的跨度
+$fs-level-span: 2px !default;
+// fs 响应式最低档缩小比例
+$fs-min-ratio: 0.2 !default;
+// fs 最小值
+$fs-min-val: 8px !default;
+
+// normal
+@if ($mode == normal) {
+  @include loop-level(font-size, $fs-max-level, $fs-level-span, $fs-min-val, 1);
+}
+
+@if ($mode == responsive) {
+  // 断点数量
+  $breakpointLength: length($responsive-breakpoint);
+  // 断点之前值的缩放比例
+  $span-ratio: (1 - $fs-min-ratio) / ($breakpointLength - 1);
+  // 记录当前的比例
+  $current-ratio: $fs-min-ratio;
+  // for
+  @each $breakpoint in $responsive-breakpoint {
+    // 断点最小宽度
+    $min-width: map_get($breakpoint, min-width);
+    // 断点最低档不设置媒体查询
+    @if ($min-width == 0px) {
+      @include loop-level(font-size, $fs-max-level, $fs-level-span, $fs-min-val, $current-ratio);
+    }
+    // 其余档位设置媒体查询
+    @if ($min-width != 0px) {
+      @media (min-width: $min-width) {
+        @include loop-level(font-size, $fs-max-level, $fs-level-span, $fs-min-val, $current-ratio);
+      }
+    }
+    // 改变比例值
+    $current-ratio: $current-ratio + $span-ratio;
+  }
+}
+

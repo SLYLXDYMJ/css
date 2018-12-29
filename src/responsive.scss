@@ -1,9 +1,7 @@
-@import "lib/variable";
 @import "lib/utils";
 
 $mode: responsive;
 
 @import "addones/reset/index";
 @import "addones/layout/index";
-@import "addones/space/index";
 @import "addones/components/index";

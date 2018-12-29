@@ -1,0 +1,231 @@
+// 循环等级
+@mixin loop-level($attr, $max-level, $level-span, $min-val, $ratio: 1) {
+  @for $i from 1 through $max-level {
+    // 当前值
+    $value: $min-val + ($level-span * ($i - 1) * $ratio);
+    // 值不能小于最小值
+    @if ($min-val) {
+      @if ($value < $min-val) {
+        $value: $min-val;
+      }
+    }
+    // 根据属性名进行赋值
+    @if ($attr == margin) {
+      .m-#{$i} {
+        margin: $value;
+      }
+      .mx-#{$i} {
+        margin-left: $value;
+        margin-right: $value;
+      }
+      .my-#{$i} {
+        margin-top: $value;
+        margin-bottom: $value;
+      }
+      .mt-#{$i} {
+        margin-top: $value;
+      }
+      .mr-#{$i} {
+        margin-right: $value;
+      }
+      .mb-#{$i} {
+        margin-bottom: $value;
+      }
+      .ml-#{$i} {
+        margin-left: $value;
+      }
+    }
+    @if ($attr == padding) {
+      .p-#{$i} {
+        padding: $value;
+      }
+      .px-#{$i} {
+        padding-left: $value;
+        padding-right: $value;
+      }
+      .py-#{$i} {
+        padding-top: $value;
+        padding-bottom: $value;
+      }
+      .pt-#{$i} {
+        padding-top: $value;
+      }
+      .pr-#{$i} {
+        padding-right: $value;
+      }
+      .pb-#{$i} {
+        padding-bottom: $value;
+      }
+      .pl-#{$i} {
+        padding-left: $value;
+      }
+    }
+    @if ($attr == line-height) {
+      .lh-#{$i} {
+        line-height: $value;
+      }
+    }
+    @if ($attr == font-size) {
+      .fs-#{$i} {
+        font-size: $value;
+      }
+    }
+    @if ($attr == space) {
+      &.space-#{$i} {
+        margin-left: -($value / 2);
+        margin-right: -($value / 2);
+        > * {
+          padding-left: $value / 2;
+          padding-right: $value / 2;
+        }
+      }
+    }
+  }
+}
+
+// flex 工具类
+@mixin flex-utils($name: null) {
+  @if ($name) {
+    $name: -#{$name};
+  }
+  // flex-direction
+  .flex#{$name}-row {
+    flex-direction: row;
+  }
+  .flex#{$name}-row-reverse {
+    flex-direction: row-reverse;
+  }
+  .flex#{$name}-column {
+    flex-direction: column;
+  }
+  .flex#{$name}-column-reverse {
+    flex-direction: column-reverse;
+  }
+  // flex-wrap
+  .flex#{$name}-nowrap {
+    flex-wrap: nowrap;
+  }
+  .flex#{$name}-wrap {
+    flex-wrap: wrap;
+  }
+  .flex#{$name}-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+  // justify-content
+  .justify-content#{$name}-start {
+    justify-content: flex-start;
+  }
+  .justify-content#{$name}-end {
+    justify-content: flex-end;
+  }
+  .justify-content#{$name}-center {
+    justify-content: center;
+  }
+  .justify-content#{$name}-between {
+    justify-content: space-between;
+  }
+  .justify-content#{$name}-around {
+    justify-content: space-around;
+  }
+  // align-items
+  .align-items#{$name}-start {
+    align-items: flex-start;
+  }
+  .align-items#{$name}-end {
+    align-items: flex-end;
+  }
+  .align-items#{$name}-center {
+    align-items: center;
+  }
+  .align-items#{$name}-baseline {
+    align-items: baseline;
+  }
+  .align-items#{$name}-stretch {
+    align-items: stretch;
+  }
+  // align-content
+  .align-content#{$name}-start {
+    align-content: flex-start;
+  }
+  .align-content#{$name}-end {
+    align-content: flex-end;
+  }
+  .align-content#{$name}-center {
+    align-content: center;
+  }
+  .align-content#{$name}-between {
+    align-content: space-between;
+  }
+  .align-content#{$name}-around {
+    align-content: space-around;
+  }
+  .align-content#{$name}-stretch {
+    align-content: stretch;
+  }
+  // align-self
+  .align-self#{$name}-start {
+    align-self: start;
+  }
+  .align-self#{$name}-end {
+    align-self: end;
+  }
+  .align-self#{$name}-center {
+    align-self: center;
+  }
+  .align-self#{$name}-baseline {
+    align-self: baseline;
+  }
+  .align-self#{$name}-stretch {
+    align-self: stretch;
+  }
+  // order
+  @for $i from 0 through $col-num {
+    .order#{$name}-#{$i} {
+      order: $i
+    }
+  }
+}
+
+// 列的基础属性
+@mixin col-base($use-flex, $name: null) {
+  @if ($name) {
+    $name: -#{$name};
+  }
+  // float 实现
+  @if ($use-flex != true) {
+    @for $i from 1 through $col-num {
+      .col#{$name}-#{$i} {
+        float: left;
+      }
+    }
+  }
+}
+
+// 列的宽度定义
+@mixin col-width($use-flex, $name: null) {
+  @if ($name) {
+    $name: -#{$name};
+  }
+  // auto
+  @if ($use-flex == true) {
+    .col#{$name}-auto {
+      max-width: none;
+      width: auto;
+      flex: 0 0 auto;
+    }
+  }
+  // 具体宽度
+  @for $i from 1 through $col-num {
+    $width: 100 / $col-num * $i * 1%;
+    .col#{$name}-#{$i} {
+      // flex
+      @if ($use-flex == true) {
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      @if ($use-flex != true) {
+        width: $width;
+      }
+    }
+  }
+}

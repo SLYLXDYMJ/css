@@ -1,0 +1,23 @@
+@if ($use-flex == true) {
+  .flex {
+    display: flex;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+
+  @include flex-utils();
+  @if ($mode == responsive) {
+    @each $breakpoint in $responsive-breakpoint {
+      // 断点名称
+      $name: map_get($breakpoint, name);
+      // 断点最小宽度
+      $min-width: map_get($breakpoint, min-width);
+      // 根据断点生成
+      @media (min-width: $min-width) {
+        @include flex-utils($name);
+      }
+    }
+  }
+}
+

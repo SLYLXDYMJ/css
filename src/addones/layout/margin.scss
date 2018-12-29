@@ -1,0 +1,72 @@
+// margin 最大的级别
+$margin-max-level: 20 !default;
+// 级别间的跨度
+$margin-level-span: 5px !default;
+// margin 响应式最低档缩小比例
+$margin-min-ratio: 0.3 !default;
+// margin 最小值
+$margin-min-val: 5px !default;
+
+// normal
+@if ($mode == normal) {
+  @include loop-level(margin, $margin-max-level, $margin-level-span, $margin-min-val, 1);
+}
+
+// responsive
+@if ($mode == responsive) {
+  // 断点数量
+  $breakpointLength: length($responsive-breakpoint);
+  // 断点之前值的缩放比例
+  $span-ratio: (1 - $margin-min-ratio) / ($breakpointLength - 1);
+  // 记录当前的比例
+  $current-ratio: $margin-min-ratio;
+  // for
+  @each $breakpoint in $responsive-breakpoint {
+    // 断点最小宽度
+    $min-width: map_get($breakpoint, min-width);
+    // 断点最低档不设置媒体查询
+    @if ($min-width == 0px) {
+      @include loop-level(margin, $margin-max-level, $margin-level-span, $margin-min-val, $current-ratio);
+    }
+    // 其余档位设置媒体查询
+    @if ($min-width != 0px) {
+      @media (min-width: $min-width) {
+        @include loop-level(margin, $margin-max-level, $margin-level-span, $margin-min-val, $current-ratio);
+      }
+    }
+    // 改变比例值
+    $current-ratio: $current-ratio + $span-ratio;
+  }
+}
+
+// margin auto
+.m-auto {
+  margin: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
