@@ -1,10 +1,10 @@
 <template>
-  <div>responsive</div>
+  <div></div>
 </template>
 
 <script>
   export default {
-    name: 'page-responsive'
+    name: 'page-component'
   };
 </script>
 

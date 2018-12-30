@@ -1,10 +1,10 @@
 <template>
-  <div>normal</div>
+  <div></div>
 </template>
 
 <script>
   export default {
-    name: 'page-normal'
+    name: 'page-utils'
   };
 </script>
 
