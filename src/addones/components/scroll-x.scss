@@ -2,6 +2,7 @@
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
   > * {
     display: inline-block;
   }
