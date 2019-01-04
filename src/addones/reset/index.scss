@@ -47,3 +47,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+// 取消按钮和输入框的 outline
+a, button, input {
+  outline: none !important;
+}

@@ -17,5 +17,6 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../../src/lib/utils";
 
 </style>

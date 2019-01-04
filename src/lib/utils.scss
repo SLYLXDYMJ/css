@@ -1,5 +1,3 @@
-// scss 工具库
-
 // 返回去除单位后的数值
 @function strip-unit ($value) {
   @return ($value / ($value * 0 + 1));
@@ -47,5 +45,26 @@
   top: 0;
   @if ($z-index) {
     z-index: $z-index;
+  }
+}
+
+// 响应式
+@mixin res($attr, $base-value, $breakpoints) {
+  // 基础属性值
+  #{$attr}: $base-value;
+  // 根据响应式断点进行设置
+  @each $global-breakpoint in $responsive-breakpoint {
+    $global-name: map_get($global-breakpoint, name);
+    $min-width: map_get($global-breakpoint, min-width);
+    $max-width: $min-width - 1px;
+    @each $breakpoint in $breakpoints {
+      $name: map_get($breakpoint, name);
+      $val: map_get($breakpoint, val);
+      @if ($name == $global-name) {
+        @media (max-width: $max-width) {
+          #{$attr}: $val;
+        }
+      }
+    }
   }
 }
