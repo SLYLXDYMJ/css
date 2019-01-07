@@ -50,7 +50,7 @@
 }
 
 // 覆盖的元素
-@mixin cover($zindex: null, $position: absolute) {
+@mixin cover($z-index: null, $position: absolute) {
   @if ($position) {
     position: $position;
   } @else {

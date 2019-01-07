@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/addones/reset/README.md';
+  import Readme from '../../src/lib/README.md';
 
   export default {
     name: 'page-utils',
