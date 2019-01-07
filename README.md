@@ -1,5 +1,5 @@
 # jason-css
-> 项目基础 css 库，分定宽库 和 响应式库两种
+> css 库，分定宽库 和 响应式库两种，并含有 scss 工具库
 
 ## install
 
@@ -22,6 +22,7 @@ npm i --save jason-css
 import 'jason-css/dist/normal.css';
 // or
 import 'jason-css/dist/responsive.css';
+
 // 引入 scss 需要手动配置 scss 运行环境
 import 'jason-css/src/normal.scss';
 // or
