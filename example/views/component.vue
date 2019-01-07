@@ -1,5 +1,7 @@
 <template>
-  <readme class="markdown-body"/>
+  <div>
+    <readme class="markdown-body"/>
+  </div>
 </template>
 
 <script>

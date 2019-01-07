@@ -48,3 +48,12 @@
     <table>...</table>
   </section>
 ```
+
+## hamburger
+> 汉堡包按钮
+
+ class            | description
+ ---------------- | ----------------------------------------------
+ hamburger        | 汉堡包按钮基本属性
+ hamburger-{1~13} | 汉堡包按钮指定效果
+ hamburger.active | 激活样式
