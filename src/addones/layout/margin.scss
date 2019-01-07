@@ -1,12 +1,3 @@
-// margin 最大的级别
-$margin-max-level: 20 !default;
-// 级别间的跨度
-$margin-level-span: 5px !default;
-// margin 响应式最低档缩小比例
-$margin-min-ratio: 0.3 !default;
-// margin 最小值
-$margin-min-val: 5px !default;
-
 // normal
 @if ($mode == normal) {
   @include loop-level(margin, $margin-max-level, $margin-level-span, $margin-min-val, 1);

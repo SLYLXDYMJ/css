@@ -1,12 +1,3 @@
-// fs 最大的级别
-$fs-max-level: 40 !default;
-// 级别间的跨度
-$fs-level-span: 2px !default;
-// fs 响应式最低档缩小比例
-$fs-min-ratio: 0.2 !default;
-// fs 最小值
-$fs-min-val: 8px !default;
-
 // normal
 @if ($mode == normal) {
   @include loop-level(font-size, $fs-max-level, $fs-level-span, $fs-min-val, 1);

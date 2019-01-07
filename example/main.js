@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 
 // jason-css
-import '../src/responsive.scss';
+import './assets/style/jason-css.scss';
 // markdown css
 import 'github-markdown-css/github-markdown.css';
 

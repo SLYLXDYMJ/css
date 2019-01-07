@@ -1,3 +1,5 @@
+@import "variable";
+
 // 返回去除单位后的数值
 @function strip-unit ($value) {
   @return ($value / ($value * 0 + 1));
@@ -8,6 +10,21 @@
   $width: strip-unit($width);
   $px: strip-unit($px);
   @return $px / ($width / 100) * 1vw;
+}
+
+// 翻转列表
+@function reverse ($list) {
+  // 结果
+  $result: ();
+  // length
+  $length: length($list);
+  // 循环拼接
+  @for $i from 1 through $length {
+    $last-item: nth($list, $length - $i + 1);
+    $result: append($result, $last-item);
+  }
+  // return
+  @return $result;
 }
 
 // 清除浮动影响
@@ -33,7 +50,7 @@
 }
 
 // 覆盖的元素
-@mixin cover($position: absolute, $z-index: null) {
+@mixin cover($zindex: null, $position: absolute) {
   @if ($position) {
     position: $position;
   } @else {
@@ -50,10 +67,11 @@
 
 // 响应式
 @mixin res($attr, $base-value, $breakpoints) {
+  $i: 1;
   // 基础属性值
   #{$attr}: $base-value;
   // 根据响应式断点进行设置
-  @each $global-breakpoint in $responsive-breakpoint {
+  @each $global-breakpoint in reverse($responsive-breakpoint) {
     $global-name: map_get($global-breakpoint, name);
     $min-width: map_get($global-breakpoint, min-width);
     $max-width: $min-width - 1px;

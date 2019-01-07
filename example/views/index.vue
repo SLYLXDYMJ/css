@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row space-3">
       <div class="col-lg-4 col-xs-auto" v-for="$i in 10">
-        <div style="background: red">
+        <div class="chunk">
           {{ $i }}
         </div>
       </div>
@@ -17,6 +17,14 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../src/lib/utils";
+  @import "../assets/style/utils";
 
+  .chunk {
+    @include res(color, red, (
+      (name: lg, val: blue),
+      (name: md, val: green),
+      (name: sm, val: pink),
+      (name: xs, val: black),
+    ))
+  }
 </style>
