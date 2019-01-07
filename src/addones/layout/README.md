@@ -17,7 +17,7 @@
 ```scss
 // 响应式断点，从小到大写
 $responsive-breakpoint: (
-  // 手机
+    // 手机
   (name: xs, min-width: 0px, container-max-width: 100%),
     // 平板
   (name: sm, min-width: 768px, container-max-width: 720px),
