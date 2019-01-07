@@ -1,18 +1,15 @@
 <template>
-  <div class="container">
-    <div class="row space-3">
-      <div class="col-lg-4 col-xs-auto" v-for="$i in 10">
-        <div class="chunk">
-          {{ $i }}
-        </div>
-      </div>
-    </div>
-  </div>
+  <readme class="markdown-body"/>
 </template>
 
 <script>
+  import Readme from '../../README.md';
+
   export default {
-    name: 'page-index'
+    name: 'page-index',
+    components: {
+      Readme
+    }
   };
 </script>
 
