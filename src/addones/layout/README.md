@@ -1,25 +1,73 @@
 # layout
-> 布局工具库，等级相关的类响应时，会自动缩放
+> 布局工具库，等级(level)相关的类响应时，会自动缩放
 
 ## 栅格布局
-> 参考了 bootstrap
+> 参考了 bootstrap，分为 flex 和 float 两种实现方式 ($use-flex)
 
+ class                       | description
+ ----------------------      | ---------------------
+ container                   | 定宽容器
+ container-fluid             | 宽度 100% 的容器
+ row                         | 行，若为 flex 模式，则可用 flex 工具类
+ col-{num}                   | 定宽库 列
+ col-{breakpoint}-{num|auto} | 响应库 列
+ col                         | flex 模式专有，flex-grow: 1
 
 ## flex 布局
 > 若 $use-flex 为 false 则不可用
+
+ class                       | description
+ ----------------------      | ---------------------
+ flex                        | display: flex
+ inline-flex                 | display: inline-flex
+
+### flex 工具类
+> 断点均可去掉
+
+ class                                | description
+ -----------------------------------  | ---------------------
+ flex-{breakpoint}-row                | flex-direction: row
+ flex-{breakpoint}-row-reverse        | flex-direction: row-reverse
+ flex-{breakpoint}-column             | flex-direction: column
+ flex-{breakpoint}-column-reverse     | flex-direction: column-reverse
+ flex-{breakpoint}-nowrap             | flex-wrap: nowrap
+ flex-{breakpoint}-wrap               | flex-wrap: wrap
+ flex-{breakpoint}-wrap-reverse       | flex-wrap: wrap-reverse
+ justify-content-{breakpoint}-start   | justify-content: flex-start
+ justify-content-{breakpoint}-end     | justify-content: flex-end
+ justify-content-{breakpoint}-center  | justify-content: center
+ justify-content-{breakpoint}-between | justify-content: space-between
+ justify-content-{breakpoint}-around  | justify-content: space-around
+ align-items-{breakpoint}-start       | align-items: flex-start
+ align-items-{breakpoint}-end         | align-items: flex-end
+ align-items-{breakpoint}-center      | align-items: center
+ align-items-{breakpoint}-baseline    | align-items: baseline
+ align-items-{breakpoint}-stretch     | align-items: stretch
+ align-content-{breakpoint}-start     | align-content: flex-start
+ align-content-{breakpoint}-end       | align-content: flex-end
+ align-content-{breakpoint}-center    | align-content: center
+ align-content-{breakpoint}-between   | align-content: space-between
+ align-content-{breakpoint}-around    | align-content: space-around
+ align-content-{breakpoint}-stretch   | align-content: stretch
+ align-self-{breakpoint}-start        | align-self: start
+ align-self-{breakpoint}-end          | align-self: end
+ align-self-{breakpoint}-center       | align-self: center
+ align-self-{breakpoint}-baseline     | align-self: baseline
+ align-self-{breakpoint}-stretch      | align-self: stretch
+ order-{breakpoint}-{num}             | order: n
 
 ## 内外间距
 > margin 和 padding 的封装 <br/>
 > 等级默认为 5px 递增
 
- class                | description
- -------------------- | -------------------------------------
- m{方向}-{级别}        | 定宽库 margin 命名规则
- m{方向}-{断点}-{级别} | 响应式库 margin 命名规则
- p{方向}-{级别}        | 定宽度 padding 命名规则
- p{方向}-{断点}-{级别} | 响应式库 padding 命名规则
+ class                        | description
+ ---------------------------- | -------------------------------------
+ m{dir}-{level}               | 定宽库 margin 命名规则
+ m{dir}-{breakpoint}-{level}  | 响应式库 margin 命名规则
+ p{dir}-{level}               | 定宽度 padding 命名规则
+ p{dir}-{breakpoint}-{level}  | 响应式库 padding 命名规则
 
-### 方向说明
+### dir说明
 
  dir | description
  --- | -----------
@@ -34,16 +82,16 @@
 > font-size 的封装 <br/>
 > 默认第一级为 8px，等级已 2px 的跨度递增
 
- class            | description
- -----------------| -------------------------------------
- fs-{级别}        | 定宽库 font-size 命名规则
- fs-{断点}-{级别}  | 响应式库 font-size 命名规则
+ class                   | description
+ ----------------------- | -------------------------------------
+ fs-{level}              | 定宽库 font-size 命名规则
+ fs-{breakpoint}-{level} | 响应式库 font-size 命名规则
 
 ## 行高
 > line-height 的封装 <br/>
 > 默认第一级为 1.15，等级已 0.1 的跨度递增
 
- class            | description
- -----------------| -------------------------------------
- lh-{级别}        | 定宽库 line-height 命名规则
- lh-{断点}-{级别}  | 响应式库 line-height 命名规则
+ class                   | description
+ ----------------------- | -------------------------------------
+ lh-{level}              | 定宽库 line-height 命名规则
+ lh-{breakpoint}-{level} | 响应式库 line-height 命名规则
