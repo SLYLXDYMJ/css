@@ -116,4 +116,17 @@ $padding-level-span: 5px !default;
 $padding-min-ratio: 0.3 !default;
 // padding 最小值
 $padding-min-val: 5px !default;
+
+// --------------------------------------------------
+
+// 汉堡包按钮每一条线的宽度
+$hamburger-layer-width: 40px;
+// 汉堡包按钮每一条线的高度
+$hamburger-layer-height: 4px;
+// 汉堡包按钮每一条线的高度间隔
+$hamburger-layer-spacing: 6px;
+// 汉堡包按钮线的颜色
+$hamburger-layer-color: #000;
+// 汉堡包按钮线的圆角效果
+$hamburger-layer-border-radius: 4px;
 ```
