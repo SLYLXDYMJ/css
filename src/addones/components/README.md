@@ -42,7 +42,9 @@
   <section class="table-responsive">
     <table>...</table>
   </section>
+
   <!-- 禁止自动换行 -->
+  
   <section class="table-responsive nowrap">
     <table>...</table>
   </section>
