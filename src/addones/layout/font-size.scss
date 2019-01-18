@@ -10,8 +10,12 @@
   $span-ratio: (1 - $fs-min-ratio) / ($breakpointLength - 1);
   // 记录当前的比例
   $current-ratio: $fs-min-ratio;
+  // 断点名称列表
+  $name-list: map-keys($responsive-breakpoint);
   // for
-  @each $breakpoint in $responsive-breakpoint {
+  @each $name in $name-list {
+    // 断点
+    $breakpoint: map_get($responsive-breakpoint, $name);
     // 断点最小宽度
     $min-width: map_get($breakpoint, min-width);
     // 断点最低档不设置媒体查询

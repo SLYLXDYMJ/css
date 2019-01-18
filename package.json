@@ -1,6 +1,6 @@
 {
   "name": "jason-css",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/q-jason/jason-css#readme",
   "scripts": {
     "dev": "vue-cli-service serve ./example/main.js",
-    "build": "./node_modules/.bin/gulp build & vue-cli-service build ./example/main.js"
+    "build": "./node_modules/.bin/gulp build & vue-cli-service build ./example/main.js",
+    "build:scss": "./node_modules/.bin/gulp build"
   },
   "dependencies": {
     "cssnano": "^4.1.8",

@@ -1,5 +1,7 @@
 <template>
-  <readme class="markdown-body"/>
+  <div class="chunk">
+    <readme class="markdown-body"/>
+  </div>
 </template>
 
 <script>
@@ -18,10 +20,9 @@
 
   .chunk {
     @include res(color, red, (
-      (name: lg, val: blue),
-      (name: md, val: green),
-      (name: sm, val: pink),
-      (name: xs, val: black),
-    ))
+      md: green,
+      sm: pink,
+      xs: black,
+    ));
   }
 </style>

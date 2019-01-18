@@ -27,6 +27,12 @@
   @return $result;
 }
 
+// 微信小程序 rpx 报错问题
+@function rpx ($value) {
+  $value: strip-unit($value);
+  @return #{$value}rpx;
+}
+
 // 清除浮动影响
 @mixin clearfix() {
   &:after {
@@ -66,22 +72,31 @@
 }
 
 // 响应式
-@mixin res($attr, $base-value, $breakpoints) {
-  $i: 1;
-  // 基础属性值
-  #{$attr}: $base-value;
+@mixin res($attr, $base-value, $options) {
+  // 所有的断点名
+  $breakpoint-name-list: map-keys($responsive-breakpoint);
+  // 需要设置的断点名
+  $options-name-list: map-keys($options);
+  // 响应式断点的个数
+  $breakpoint-length: length($responsive-breakpoint);
+  // 赋值基础属性值
+  @if ($base-value) {
+    #{$attr}: $base-value;
+  }
   // 根据响应式断点进行设置
-  @each $global-breakpoint in reverse($responsive-breakpoint) {
-    $global-name: map_get($global-breakpoint, name);
-    $min-width: map_get($global-breakpoint, min-width);
-    $max-width: $min-width - 1px;
-    @each $breakpoint in $breakpoints {
-      $name: map_get($breakpoint, name);
-      $val: map_get($breakpoint, val);
-      @if ($name == $global-name) {
-        @media (max-width: $max-width) {
-          #{$attr}: $val;
-        }
+  @each $name in $options-name-list {
+    // 值
+    $val: map-get($options, $name);
+    // 对应的响应式断点
+    $breakpoint: map-get($responsive-breakpoint, $name);
+    // 当前断点的下标
+    $i: index(map_keys($responsive-breakpoint), $name);
+    // 若没有超过界限则正常赋值
+    @if ($i + 1 <= $breakpoint-length) {
+      $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
+      $max-width: map_get($next-breakpoint, min-width) - 1px;
+      @media (max-width: $max-width) {
+        #{$attr}: $val;
       }
     }
   }

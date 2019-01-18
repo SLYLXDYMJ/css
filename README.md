@@ -64,13 +64,13 @@ $space-min-val: 5px !default;
 // 响应式断点，从小到大写
 $responsive-breakpoint: (
   // 手机
-  (name: xs, min-width: 0px, container-max-width: 100%),
-    // 平板
-  (name: sm, min-width: 768px, container-max-width: 720px),
-    // 小屏电脑
-  (name: md, min-width: 992px, container-max-width: 960px),
-    // 大屏电脑
-  (name: lg, min-width: 1280px, container-max-width: 1260px)
+  xs: (min-width: 0px, container-max-width: 100%),
+  // 平板
+  sm: (min-width: 768px, container-max-width: 720px),
+  // 小屏电脑
+  md: (min-width: 992px, container-max-width: 960px),
+  // 大屏电脑
+  lg: (min-width: 1280px, container-max-width: 1260px)
 ) !default;
 
 // -----------------------------------------------------------------

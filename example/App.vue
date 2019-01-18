@@ -30,6 +30,7 @@
     data () {
       return {
         navArr: [
+          'page-index',
           'page-reset',
           'page-utils',
           'page-layout',

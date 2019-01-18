@@ -11,8 +11,12 @@
     max-width: $container-normal-max-width;
   }
   @if ($mode == responsive) {
-    @each $breakpoint in $responsive-breakpoint {
-      // 响应式断点宽度
+    // 断点名称列表
+    $name-list: map-keys($responsive-breakpoint);
+    @each $name in $name-list {
+      // 断点
+      $breakpoint: map_get($responsive-breakpoint, $name);
+      // 断点最小宽度
       $min-width: map_get($breakpoint, min-width);
       // 当前断点 container 最大宽度
       $container-max-width: map_get($breakpoint, container-max-width);
@@ -38,14 +42,18 @@
     @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, 1);
   }
   @if ($mode == responsive) {
+    // 断点名称列表
+    $name-list: map-keys($responsive-breakpoint);
     // 断点数量
-    $breakpointLength: length($responsive-breakpoint);
+    $breakpoint-length: length($responsive-breakpoint);
     // 断点之前值的缩放比例
-    $span-ratio: (1 - $space-min-ratio) / ($breakpointLength - 1);
+    $span-ratio: (1 - $space-min-ratio) / ($breakpoint-length - 1);
     // 记录当前的比例
     $current-ratio: $space-min-ratio;
     // for
-    @each $breakpoint in $responsive-breakpoint {
+    @each $name in $name-list {
+      // 断点
+      $breakpoint: map_get($responsive-breakpoint, $name);
       // 断点最小宽度
       $min-width: map_get($breakpoint, min-width);
       // 断点最低档不设置媒体查询
@@ -68,10 +76,12 @@
 @include col-base($use-flex);
 @include col-width($use-flex);
 @if ($mode == responsive) {
-  @each $breakpoint in $responsive-breakpoint {
-    // 断点名称
-    $name: map_get($breakpoint, name);
-    // 响应式断点宽度
+  // 断点名称列表
+  $name-list: map-keys($responsive-breakpoint);
+  @each $name in $name-list {
+    // 断点
+    $breakpoint: map_get($responsive-breakpoint, $name);
+    // 断点最小宽度
     $min-width: map_get($breakpoint, min-width);
     @include col-base($use-flex, $name);
     @if ($min-width == 0) {
