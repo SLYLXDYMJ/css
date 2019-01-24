@@ -387,9 +387,7 @@
       $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
       $max-width: map_get($next-breakpoint, min-width) - 1px;
       @media (max-width: $max-width) {
-        @if ($type == text) {
-          @include text-utils($name);
-        }
+
       }
     }
   }
@@ -420,6 +418,9 @@
       }
       @if ($type == flex) {
         @include flex-utils($name);
+      }
+      @if ($type == text) {
+        @include text-utils($name);
       }
     }
   }
