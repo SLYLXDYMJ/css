@@ -9,6 +9,7 @@
  container                   | 定宽容器
  container-fluid             | 宽度 100% 的容器
  row                         | 行，若为 flex 模式，则可用 flex 工具类
+ row.space-{level}           | 行中列间距
  col-{num}                   | 定宽库 列
  col-{breakpoint}-{num|auto} | 响应库 列
  col                         | flex 模式专有，flex-grow: 1
@@ -27,6 +28,16 @@ $responsive-breakpoint: (
   lg: (min-width: 1280px, container-max-width: 1260px)
 ) !default;
 ```
+
+## text 工具类
+> 断点可去掉
+
+ class                       | description
+ ----------------------      | ---------------------
+ text-align-${name}-left     | text-align: left
+ text-align-${name}-center   | text-align: center
+ text-align-${name}-right    | text-align: right
+ text-nowrap                 | 使行内元素不换行
 
 ## flex 布局
 > 若 $use-flex 为 false 则不可用
@@ -95,7 +106,7 @@ $responsive-breakpoint: (
 
 ## 字体大小
 > font-size 的封装 <br/>
-> 默认第一级为 8px，等级已 2px 的跨度递增
+> 默认第一级为 12px，等级已 2px 的跨度递增
 
  class                   | description
  ----------------------- | -------------------------------------

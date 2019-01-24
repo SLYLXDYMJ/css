@@ -21,17 +21,17 @@
  img-responsive  | 使图片最大宽度不超过父元素，并水平居中显示
  img-full        | 填充父元素，高度等比例缩放
 
-## scroll-x
+## scrollx
 > 横向滚动组件
 
 ```html
-<section class="scroll-x">
-  <div>
-    <article>...</article>
-    <article>...</article>
-    <article>...</article>
-    <article>...</article>
-  </div>
+<section class="scrollx">
+  <section class="scrollx-wrapper">
+    <article class="scrollx-item">...</article>
+    <article class="scrollx-item">...</article>
+    <article class="scrollx-item">...</article>
+    <article class="scrollx-item">...</article>
+  </section>
 </section>
 ```
 

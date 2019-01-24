@@ -1,35 +1,9 @@
 // normal
 @if ($mode == normal) {
-  @include loop-level(line-height, $lh-max-level, $lh-level-span, $lh-min-val, 1);
+  @include loop-level(line-height);
 }
 
 @if ($mode == responsive) {
-  // 断点名称列表
-  $name-list: map-keys($responsive-breakpoint);
-  // 断点数量
-  $breakpointLength: length($responsive-breakpoint);
-  // 断点之前值的缩放比例
-  $span-ratio: (1 - $lh-min-ratio) / ($breakpointLength - 1);
-  // 记录当前的比例
-  $current-ratio: $lh-min-ratio;
-  // for
-  @each $name in $name-list {
-    // 断点
-    $breakpoint: map_get($responsive-breakpoint, $name);
-    // 断点最小宽度
-    $min-width: map_get($breakpoint, min-width);
-    // 断点最低档不设置媒体查询
-    @if ($min-width == 0px) {
-      @include loop-level(line-height, $lh-max-level, $lh-level-span, $lh-min-val, $current-ratio);
-    }
-    // 其余档位设置媒体查询
-    @if ($min-width != 0px) {
-      @media (min-width: $min-width) {
-        @include loop-level(line-height, $lh-max-level, $lh-level-span, $lh-min-val, $current-ratio);
-      }
-    }
-    // 改变比例值
-    $current-ratio: $current-ratio + $span-ratio;
-  }
+  @include loop-level(line-height, true);
 }
 

@@ -1,88 +1,3 @@
-// 循环等级
-@mixin loop-level($attr, $max-level, $level-span, $min-val, $ratio: 1) {
-  @for $i from 1 through $max-level {
-    // 当前值
-    $value: $min-val + ($level-span * ($i - 1) * $ratio);
-    // 值不能小于最小值
-    @if ($min-val) {
-      @if ($value < $min-val) {
-        $value: $min-val;
-      }
-    }
-    // 根据属性名进行赋值
-    @if ($attr == margin) {
-      .m-#{$i} {
-        margin: $value;
-      }
-      .mx-#{$i} {
-        margin-left: $value;
-        margin-right: $value;
-      }
-      .my-#{$i} {
-        margin-top: $value;
-        margin-bottom: $value;
-      }
-      .mt-#{$i} {
-        margin-top: $value;
-      }
-      .mr-#{$i} {
-        margin-right: $value;
-      }
-      .mb-#{$i} {
-        margin-bottom: $value;
-      }
-      .ml-#{$i} {
-        margin-left: $value;
-      }
-    }
-    @if ($attr == padding) {
-      .p-#{$i} {
-        padding: $value;
-      }
-      .px-#{$i} {
-        padding-left: $value;
-        padding-right: $value;
-      }
-      .py-#{$i} {
-        padding-top: $value;
-        padding-bottom: $value;
-      }
-      .pt-#{$i} {
-        padding-top: $value;
-      }
-      .pr-#{$i} {
-        padding-right: $value;
-      }
-      .pb-#{$i} {
-        padding-bottom: $value;
-      }
-      .pl-#{$i} {
-        padding-left: $value;
-      }
-    }
-    @if ($attr == line-height) {
-      .lh-#{$i} {
-        line-height: $value;
-      }
-    }
-    @if ($attr == font-size) {
-      .fs-#{$i} {
-        font-size: $value;
-      }
-    }
-    @if ($attr == space) {
-      &.space-#{$i} {
-        margin-left: -($value / 2);
-        margin-right: -($value / 2);
-        > * {
-          padding-left: $value / 2;
-          padding-right: $value / 2;
-        }
-      }
-    }
-  }
-}
-
 // flex 工具类
 @mixin flex-utils($name: null) {
   @if ($name) {
@@ -186,27 +101,43 @@
   }
 }
 
-// 列的基础属性
-@mixin col-base($use-flex, $name: null) {
+// text 工具类
+@mixin text-utils($name: null) {
+  // 断点名
   @if ($name) {
     $name: -#{$name};
   }
-  // float 实现
-  @if ($use-flex != true) {
-    @for $i from 1 through $col-num {
-      .col#{$name}-#{$i} {
-        float: left;
-      }
-    }
+  .text-align#{$name}-left {
+    text-align: left;
+  }
+  .text-align#{$name}-center {
+    text-align: center;
+  }
+  .text-align#{$name}-right {
+    text-align: right;
   }
 }
 
-// 列的宽度定义
-@mixin col-width($use-flex, $name: null) {
+// container
+@mixin container-width($name: null) {
+  // 断点
+  $breakpoint: map_get($responsive-breakpoint, $name);
+  // 断点最小宽度
+  $min-width: map_get($breakpoint, min-width);
+  // 当前断点 container 最大宽度
+  $container-max-width: map_get($breakpoint, container-max-width);
+  // 默认块级元素 100% 宽度
+  @if ($min-width != 0px) {
+    max-width: $container-max-width;
+  }
+}
+
+// col
+@mixin col($name: null) {
   @if ($name) {
     $name: -#{$name};
   }
-  // auto
+  // width auto
   @if ($use-flex == true) {
     .col#{$name}-auto {
       max-width: none;
@@ -214,17 +145,281 @@
       flex: 0 0 auto;
     }
   }
-  // 具体宽度
+  // 1. width class
+  // 2. pull push offset
   @for $i from 1 through $col-num {
-    $width: 100 / $col-num * $i * 1%;
+    $size: 100 / $col-num * $i * 1%;
+    // 1
     .col#{$name}-#{$i} {
-      // flex
+      // float 实现
       @if ($use-flex == true) {
-        flex: 0 0 $width;
-        max-width: $width;
+        flex: 0 0 $size;
+        max-width: $size;
       }
       @if ($use-flex != true) {
-        width: $width;
+        float: left;
+        width: $size;
+      }
+    }
+    // 2
+    .col#{$name}-pull-#{$i} {
+      position: relative;
+      right: $size
+    }
+    .col#{$name}-push-#{$i} {
+      position: relative;
+      left: $size;
+    }
+    .col#{$name}-offset-#{$i} {
+      margin-left: $size;
+    }
+  }
+}
+
+// margin
+@mixin margin($level, $value) {
+  .m-#{$level} {
+    margin: $value;
+  }
+  .mx-#{$level} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .my-#{$level} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .mt-#{$level} {
+    margin-top: $value;
+  }
+  .mr-#{$level} {
+    margin-right: $value;
+  }
+  .mb-#{$level} {
+    margin-bottom: $value;
+  }
+  .ml-#{$level} {
+    margin-left: $value;
+  }
+}
+
+// padding
+@mixin padding($level, $value) {
+  .p-#{$level} {
+    padding: $value;
+  }
+  .px-#{$level} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  .py-#{$level} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .pt-#{$level} {
+    padding-top: $value;
+  }
+  .pr-#{$level} {
+    padding-right: $value;
+  }
+  .pb-#{$level} {
+    padding-bottom: $value;
+  }
+  .pl-#{$level} {
+    padding-left: $value;
+  }
+}
+
+// line-height
+@mixin line-height($level, $value) {
+  .lh-#{$level} {
+    line-height: $value;
+  }
+}
+
+// font-size
+@mixin font-size($level, $value) {
+  .fs-#{$level} {
+    font-size: $value;
+  }
+}
+
+// row-space
+@mixin row-space($level, $value) {
+  &.space-#{$level} {
+    margin-left: -($value / 2);
+    margin-right: -($value / 2);
+    > * {
+      padding-left: $value / 2;
+      padding-right: $value / 2;
+    }
+  }
+}
+
+// 创建等级类
+@mixin loop-level($type, $responsive: false) {
+  // 最小缩放比例
+  $min-ratio: null;
+  // 最小值
+  $min-val: null;
+  // 最大的级别
+  $max-level: null;
+  // 级别的跨度
+  $level-span: null;
+  // 赋值变量
+  @if ($type == margin) {
+    $max-level: $margin-max-level;
+    $level-span: $margin-level-span;
+    $min-ratio: $margin-min-ratio;
+    $min-val: $margin-min-val;
+  }
+  @if ($type == padding) {
+    $max-level: $padding-max-level;
+    $level-span: $padding-level-span;
+    $min-ratio: $padding-min-ratio;
+    $min-val: $padding-min-val;
+  }
+  @if ($type == line-height) {
+    $max-level: $lh-max-level;
+    $level-span: $lh-level-span;
+    $min-ratio: $lh-min-ratio;
+    $min-val: $lh-min-val;
+  }
+  @if ($type == font-size) {
+    $max-level: $fs-max-level;
+    $level-span: $fs-level-span;
+    $min-ratio: $fs-min-ratio;
+    $min-val: $fs-min-val;
+  }
+  @if ($type == row-space) {
+    $max-level: $space-max-level;
+    $level-span: $space-level-span;
+    $min-ratio: $space-min-ratio;
+    $min-val: $space-min-val;
+  }
+  // 非响应式
+  @if ($responsive != true) {
+    @for $level from 1 through $max-level {
+      // 计算属性值
+      $val: $min-val + (($level - 1) * $level-span);
+      // 根据 type 创建 类
+      @if ($type == margin) {
+        @include margin($level, $val);
+      }
+      @if ($type == padding) {
+        @include padding($level, $val);
+      }
+      @if ($type == line-height) {
+        @include line-height($level, $val);
+      }
+      @if ($type == font-size) {
+        @include font-size($level, $val);
+      }
+      @if ($type == row-space) {
+        @include row-space($level, $val);
+      }
+    }
+  }
+  // 响应式
+  @if ($responsive == true) {
+    // 用于记录当前的缩放比例
+    $current-ratio: $min-ratio;
+    // 断点名称列表
+    $name-list: map-keys($responsive-breakpoint);
+    // 断点数量
+    $breakpointLength: length($responsive-breakpoint);
+    // 断点之间的缩放比例
+    $span-ratio: (1 - $min-ratio) / ($breakpointLength - 1);
+    // 循环断点创建类名
+    @each $name in $name-list {
+      // 当前断点
+      $breakpoint: map_get($responsive-breakpoint, $name);
+      // 断点最小宽度
+      $min-width: map_get($breakpoint, min-width);
+      // 创建 class
+      @media (min-width: $min-width) {
+        @for $level from 1 through $max-level {
+          // 计算属性值
+          $val: $min-val + ($level-span * ($level - 1) * $current-ratio);
+          // 值不能小于最小值
+          @if ($val < $min-val) {
+            $value: $min-val;
+          }
+          // 根据 type 创建 类
+          // 根据 type 创建 类
+          @if ($type == margin) {
+            @include margin($level, $val);
+          }
+          @if ($type == padding) {
+            @include padding($level, $val);
+          }
+          @if ($type == line-height) {
+            @include line-height($level, $val);
+          }
+          @if ($type == font-size) {
+            @include font-size($level, $val);
+          }
+          @if ($type == row-space) {
+            @include row-space($level, $val);
+          }
+        }
+      }
+      // 改变比例值
+      $current-ratio: $current-ratio + $span-ratio;
+    }
+  }
+}
+
+// 根据 max-width 创造类
+@mixin loop-max-width($type) {
+  // 断点名称列表
+  $breakpoint-name-list: map-keys($responsive-breakpoint);
+  // 响应式断点的个数
+  $breakpoint-length: length($responsive-breakpoint);
+  // 根据断点创造 class
+  @each $name in $breakpoint-name-list {
+    // 当前断点的下标
+    $i: index(map_keys($responsive-breakpoint), $name);
+    // 断点
+    $breakpoint: map_get($responsive-breakpoint, $name);
+    // 根据断点生成
+    @if ($i + 1 <= $breakpoint-length) {
+      $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
+      $max-width: map_get($next-breakpoint, min-width) - 1px;
+      @media (max-width: $max-width) {
+        @if ($type == text) {
+          @include text-utils($name);
+        }
+      }
+    }
+  }
+}
+
+// 根据 min-width 创造类
+@mixin loop-min-width($type) {
+  // 断点名称列表
+  $breakpoint-name-list: map-keys($responsive-breakpoint);
+  // 循环断点创建
+  @each $name in $breakpoint-name-list {
+    // 断点
+    $breakpoint: map_get($responsive-breakpoint, $name);
+    // 断点最小宽度
+    $min-width: map_get($breakpoint, min-width);
+    // 断点数量
+    $breakpoint-length: length($responsive-breakpoint);
+    // 根据不同类型创造类
+    @media (min-width: $min-width) {
+      @if ($type == container) {
+        @include container-width($name);
+      }
+      @if ($type == row) {
+        @include row-space($name);
+      }
+      @if ($type == col) {
+        @include col($name);
+      }
+      @if ($type == flex) {
+        @include flex-utils($name);
       }
     }
   }

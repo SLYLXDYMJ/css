@@ -1,4 +1,5 @@
 @if ($use-flex == true) {
+  // 基础类
   .flex {
     display: flex;
   }
@@ -6,20 +7,12 @@
     display: inline-flex;
   }
 
+  // 基础工具类
   @include flex-utils();
+
+  // 根据断点创建响应式 flex 工具类
   @if ($mode == responsive) {
-    // 断点名称列表
-    $name-list: map-keys($responsive-breakpoint);
-    @each $name in $name-list {
-      // 断点
-      $breakpoint: map_get($responsive-breakpoint, $name);
-      // 断点最小宽度
-      $min-width: map_get($breakpoint, min-width);
-      // 根据断点生成
-      @media (min-width: $min-width) {
-        @include flex-utils($name);
-      }
-    }
+    @include loop-min-width(flex);
   }
 }
 

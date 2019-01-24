@@ -1,4 +1,5 @@
 .container {
+  // 基础类
   &, &-fluid {
     width: 100%;
     margin-left: auto;
@@ -6,92 +7,39 @@
     padding-left: $container-gutter / 2;
     padding-right: $container-gutter / 2;
   }
-  // 宽度
+  // 宽度定义
   @if ($mode == normal) {
     max-width: $container-normal-max-width;
   }
   @if ($mode == responsive) {
-    // 断点名称列表
-    $name-list: map-keys($responsive-breakpoint);
-    @each $name in $name-list {
-      // 断点
-      $breakpoint: map_get($responsive-breakpoint, $name);
-      // 断点最小宽度
-      $min-width: map_get($breakpoint, min-width);
-      // 当前断点 container 最大宽度
-      $container-max-width: map_get($breakpoint, container-max-width);
-      // 非最小屏幕宽度样式（最小时为 100%）
-      @if ($min-width != 0px) {
-        @media (min-width: $min-width) {
-          max-width: $container-max-width;
-        }
-      }
-    }
+    @include loop-min-width(container);
   }
 }
 
 .row {
+  // flex 实现
   @if ($use-flex == true) {
     display: flex;
     flex-wrap: wrap;
-  } @else {
+  }
+  // float 实现
+  @if ($use-flex != true) {
     @include clearfix;
   }
   // 行中列间距
   @if ($mode == normal) {
-    @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, 1);
+    @include loop-level(row-space);
   }
+  // 响应式行中列间距
   @if ($mode == responsive) {
-    // 断点名称列表
-    $name-list: map-keys($responsive-breakpoint);
-    // 断点数量
-    $breakpoint-length: length($responsive-breakpoint);
-    // 断点之前值的缩放比例
-    $span-ratio: (1 - $space-min-ratio) / ($breakpoint-length - 1);
-    // 记录当前的比例
-    $current-ratio: $space-min-ratio;
-    // for
-    @each $name in $name-list {
-      // 断点
-      $breakpoint: map_get($responsive-breakpoint, $name);
-      // 断点最小宽度
-      $min-width: map_get($breakpoint, min-width);
-      // 断点最低档不设置媒体查询
-      @if ($min-width == 0px) {
-        @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, $current-ratio);
-      }
-      // 其余档位设置媒体查询
-      @if ($min-width != 0px) {
-        @media (min-width: $min-width) {
-          @include loop-level(space, $space-max-level, $space-level-span, $space-min-val, $current-ratio);
-        }
-      }
-      // 改变比例值
-      $current-ratio: $current-ratio + $span-ratio;
-    }
+    @include loop-level(row-space, true);
   }
 }
 
 // 列
-@include col-base($use-flex);
-@include col-width($use-flex);
+@include col();
 @if ($mode == responsive) {
-  // 断点名称列表
-  $name-list: map-keys($responsive-breakpoint);
-  @each $name in $name-list {
-    // 断点
-    $breakpoint: map_get($responsive-breakpoint, $name);
-    // 断点最小宽度
-    $min-width: map_get($breakpoint, min-width);
-    @include col-base($use-flex, $name);
-    @if ($min-width == 0) {
-      @include col-width($use-flex, $name);
-    } @else {
-      @media (min-width: $min-width) {
-        @include col-width($use-flex, $name);
-      }
-    }
-  }
+  @include loop-min-width(col);
 }
 
 // flex-grow: 1
