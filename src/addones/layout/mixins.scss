@@ -249,7 +249,9 @@
   &.space-#{$level} {
     margin-left: -($value / 2);
     margin-right: -($value / 2);
-    > * {
+    > div,
+    > section,
+    > view {
       padding-left: $value / 2;
       padding-right: $value / 2;
     }
