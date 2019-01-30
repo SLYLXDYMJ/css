@@ -30,6 +30,9 @@ import 'jason-css/dist/responsive.css';
 import 'jason-css/src/normal.scss';
 // or
 import 'jason-css/src/responsive.scss';
+
+// 小程序支持（暂时未转为 rpx 单位）
+import 'jason-css/src/mini-program.scss';
 ```
 
 ## 定制
