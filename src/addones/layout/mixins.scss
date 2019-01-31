@@ -304,6 +304,7 @@
     @for $level from 1 through $max-level {
       // 计算属性值
       $val: $min-val + (($level - 1) * $level-span);
+      $val: jason-css-value($val);
       // 根据 type 创建 类
       @if ($type == margin) {
         @include margin($level, $val);
@@ -342,11 +343,13 @@
       @media (min-width: $min-width) {
         @for $level from 1 through $max-level {
           // 计算属性值
-          $val: $min-val + ($level-span * ($level - 1) * $current-ratio);
+          $value: $min-val + ($level-span * ($level - 1) * $current-ratio);
           // 值不能小于最小值
-          @if ($val < $min-val) {
+          @if ($value < $min-val) {
             $value: $min-val;
           }
+          // rpx
+          $val: jason-css-value($value);
           // 根据 type 创建 类
           // 根据 type 创建 类
           @if ($type == margin) {
@@ -362,7 +365,7 @@
             @include font-size($level, $val);
           }
           @if ($type == row-space) {
-            @include row-space($level, $val);
+            @include row-space($level, $value);
           }
         }
       }

@@ -1,7 +1,12 @@
-@include text-utils();
-
+@if ($mode == normal) {
+  @include text-utils();
+}
 @if ($mode == responsive) {
+  @include text-utils();
   @include loop-min-width(text);
+}
+@if ($mode == mini-program) {
+  @include text-utils();
 }
 
 // 使行内元素一行显示

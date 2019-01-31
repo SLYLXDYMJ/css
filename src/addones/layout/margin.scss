@@ -1,11 +1,13 @@
-// normal
 @if ($mode == normal) {
   @include loop-level(margin);
 }
 
-// responsive
 @if ($mode == responsive) {
   @include loop-level(margin, true);
+}
+
+@if ($mode == mini-program) {
+  @include loop-level(margin);
 }
 
 // margin auto

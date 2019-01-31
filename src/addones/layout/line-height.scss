@@ -1,9 +1,12 @@
-// normal
 @if ($mode == normal) {
   @include loop-level(line-height);
 }
 
 @if ($mode == responsive) {
   @include loop-level(line-height, true);
+}
+
+@if ($mode == mini-program) {
+  @include loop-level(line-height);
 }
 

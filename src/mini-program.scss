@@ -1,7 +1,9 @@
 @import "lib/utils";
 
-$mode: normal;
+$mode: mini-program;
 
 @import "addones/reset/mini-program";
 @import "addones/layout/index";
-@import "addones/components/index";
+// components
+@import "addones/components/hamburger";
+@import "addones/components/scrollx";

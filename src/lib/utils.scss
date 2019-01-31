@@ -101,3 +101,14 @@
     }
   }
 }
+
+// ================
+//  自用
+// ================
+@function jason-css-value ($px) {
+  @if ($mode == mini-program) {
+    @return strip-unit($px) * 1rpx;
+  } @else {
+    @return strip-unit($px) * 1px;
+  }
+}
