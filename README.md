@@ -1,13 +1,13 @@
 # jason-css
-> css 库，分定宽库 和 响应式库两种，并含有 scss 工具库
+> css 库，分为 定宽、响应式、小程序 三种模式库
 
 ## 文档
 > [docs](https://q-jason.github.io/jason-css/)
 
 ## install
 
-1. link 标签直接引入文件
-2. 模块化打包工具
+1. 引入打包好的 css，wxss 文件
+2. 模块化打包（推荐，定制性强）
 
 ### link 标签
 ```html
@@ -16,22 +16,23 @@
 <link rel="stylesheet" href="dist/responsive.css">
 ```
 
+### 小程序
+```scss
+// app.wxss
+@import "./dist/mini-program.wxss";
+```
+
 ### 模块化打包
 ```bash
 npm i --save jason-css
 ```
 
 ```javascript
-import 'jason-css/dist/normal.css';
-// or
-import 'jason-css/dist/responsive.css';
-
-// 引入 scss 需要手动配置 scss 运行环境
+// 定宽
 import 'jason-css/src/normal.scss';
-// or
+// 响应式
 import 'jason-css/src/responsive.scss';
-
-// 小程序支持（暂时未转为 rpx 单位）
+// 小程序
 import 'jason-css/src/mini-program.scss';
 ```
 
@@ -41,10 +42,10 @@ import 'jason-css/src/mini-program.scss';
 1. 新建三个 scss 文件 (jason-css.scss utils.scss variable.scss)
 2. 在 variable.scss 中重写变量
 3. 在 jason-css.scss 和 utils.scss 中引入 variable.scss
-4. jason-css.scss 中 引入 node_modules/jason-css/src/(normal|responsive).scss
+4. jason-css.scss 中 引入 node_modules/jason-css/src/(normal|responsive|mini-program).scss
 5. utils.scss 中引入 node_modules/jason-css/src/lib/utils.scss
-6. 在 入口js 中引入 jason-css.scss
-7. 在 scss 域中引入 utils.scss
+6. 全局引入 jason-css.scss
+7. 需要使用 scss 工具库的地方引入 utils.scss
 
 ### 可复写的变量以及默认值
 ```scss
