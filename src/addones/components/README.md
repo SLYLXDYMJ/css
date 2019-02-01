@@ -21,7 +21,7 @@
  img-responsive  | 使图片最大宽度不超过父元素，并水平居中显示
  img-full        | 填充父元素，高度等比例缩放
 
-## scrollx
+## scrollx（小程序可用）
 > 横向滚动组件
 
 ```html
@@ -49,7 +49,7 @@
   </section>
 ```
 
-## hamburger
+## hamburger（小程序可用）
 > 汉堡包按钮
 
  class            | description
