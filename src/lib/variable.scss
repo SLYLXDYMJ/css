@@ -33,7 +33,7 @@ $fs-max-level: 40 !default;
 // 级别间的跨度
 $fs-level-span: 2px !default;
 // fs 响应式最低档缩小比例
-$fs-min-ratio: 0.2 !default;
+$fs-min-ratio: 0.5 !default;
 // fs 最小值
 $fs-min-val: 12px !default;
 
@@ -44,7 +44,7 @@ $lh-max-level: 10 !default;
 // 级别间的跨度
 $lh-level-span: 0.1 !default;
 // line-height 响应式最低档缩小比例
-$lh-min-ratio: 0.7 !default;
+$lh-min-ratio: 0.8 !default;
 // line-height 最小值
 $lh-min-val: 1.15 !default;
 
@@ -55,7 +55,7 @@ $margin-max-level: 20 !default;
 // 级别间的跨度
 $margin-level-span: 5px !default;
 // margin 响应式最低档缩小比例
-$margin-min-ratio: 0.3 !default;
+$margin-min-ratio: 0.5 !default;
 // margin 最小值
 $margin-min-val: 5px !default;
 
@@ -66,7 +66,7 @@ $padding-max-level: 20 !default;
 // 级别间的跨度
 $padding-level-span: 5px !default;
 // padding 响应式最低档缩小比例
-$padding-min-ratio: 0.3 !default;
+$padding-min-ratio: 0.5 !default;
 // padding 最小值
 $padding-min-val: 5px !default;
 
