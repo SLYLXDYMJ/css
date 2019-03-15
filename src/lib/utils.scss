@@ -109,6 +109,11 @@
   @if ($mode == mini-program) {
     @return strip-unit($px) * 1rpx;
   } @else {
-    @return strip-unit($px) * 1px;
+    // 判断返回 px 单位还是 无单位（line-height）
+    @if (unit($px) == 'px') {
+      @return strip-unit($px) * 1px;
+    } @else {
+      @return $px;
+    }
   }
 }
