@@ -11,7 +11,7 @@ $space-max-level: 20 !default;
 // 级别间的跨度
 $space-level-span: 5px !default;
 // space 响应式最低档缩小比例
-$space-min-ratio: 0.3 !default;
+$space-min-ratio: 0.5 !default;
 // space 最小值
 $space-min-val: 5px !default;
 // 响应式断点，从小到大写
@@ -44,7 +44,7 @@ $lh-max-level: 10 !default;
 // 级别间的跨度
 $lh-level-span: 0.1 !default;
 // line-height 响应式最低档缩小比例
-$lh-min-ratio: 0.8 !default;
+$lh-min-ratio: 0.7 !default;
 // line-height 最小值
 $lh-min-val: 1.15 !default;
 
