@@ -343,7 +343,7 @@
       @media (min-width: $min-width) {
         @for $level from 1 through $max-level {
           // 计算属性值
-          $value: $min-val + ($level-span * ($level - 1) * $current-ratio);
+          $value: $current-ratio * (($level-span * $level) + $min-val);
           // 值不能小于最小值
           @if ($value < $min-val) {
             $value: $min-val;

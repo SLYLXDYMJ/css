@@ -72,39 +72,119 @@
 }
 
 // 响应式
-@mixin res($attr, $base-value, $options) {
+@mixin res($attr, $base-value, $options: true) {
   // 所有的断点名
   $breakpoint-name-list: map-keys($responsive-breakpoint);
-  // 需要设置的断点名
-  $options-name-list: map-keys($options);
   // 响应式断点的个数
   $breakpoint-length: length($responsive-breakpoint);
   // 赋值基础属性值
   @if ($base-value) {
     #{$attr}: $base-value;
   }
-  // 根据响应式断点进行设置
-  @each $name in $options-name-list {
-    // 值
-    $val: map-get($options, $name);
-    // 对应的响应式断点
-    $breakpoint: map-get($responsive-breakpoint, $name);
-    // 当前断点的下标
-    $i: index(map_keys($responsive-breakpoint), $name);
-    // 若没有超过界限则正常赋值
-    @if ($i + 1 <= $breakpoint-length) {
-      $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
-      $max-width: map_get($next-breakpoint, min-width) - 1px;
-      @media (max-width: $max-width) {
-        #{$attr}: $val;
+  // 是否自动进行自动响应式缩放
+  @if ($options == true) {
+    @if (unit($base-value) != "") {
+      // 最小缩小比例
+      $min-ratio: null;
+      // 最小值
+      $min-val: null;
+      // 赋值 最小比例 和 最小值
+      @if ($attr == "font-size") {
+        $min-ratio: $fs-min-ratio;
+        $min-val: $fs-min-val;
+      }
+      @if ($attr == "line-height") {
+        $min-ratio: $lh-min-ratio;
+        $min-val: $lh-min-val;
+      }
+      @if ($attr == "margin") {
+        $min-ratio: $margin-min-ratio;
+        $min-val: $margin-min-val;
+      }
+      @if ($attr == "margin-top") {
+        $min-ratio: $margin-min-ratio;
+        $min-val: $margin-min-val;
+      }
+      @if ($attr == "margin-right") {
+        $min-ratio: $margin-min-ratio;
+        $min-val: $margin-min-val;
+      }
+      @if ($attr == "margin-bottom") {
+        $min-ratio: $margin-min-ratio;
+        $min-val: $margin-min-val;
+      }
+      @if ($attr == "margin-left") {
+        $min-ratio: $margin-min-ratio;
+        $min-val: $margin-min-val;
+      }
+      @if ($attr == "padding") {
+        $min-ratio: $padding-min-ratio;
+        $min-val: $padding-min-val;
+      }
+      @if ($attr == "padding-top") {
+        $min-ratio: $padding-min-ratio;
+        $min-val: $padding-min-val;
+      }
+      @if ($attr == "padding-right") {
+        $min-ratio: $padding-min-ratio;
+        $min-val: $padding-min-val;
+      }
+      @if ($attr == "padding-bottom") {
+        $min-ratio: $padding-min-ratio;
+        $min-val: $padding-min-val;
+      }
+      @if ($attr == "padding-left") {
+        $min-ratio: $padding-min-ratio;
+        $min-val: $padding-min-val;
+      }
+      // 定义响应式缩放
+      @each $breakpoint-name in reverse($breakpoint-name-list) {
+        $breakpoint: map-get($responsive-breakpoint, $breakpoint-name);
+        // 断点所处的下标
+        $i: index(map_keys($responsive-breakpoint), $breakpoint-name);
+        // 若没有超过界限则正常赋值
+        @if ($i + 1 <= $breakpoint-length) {
+          $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
+          $max-width: map_get($next-breakpoint, min-width) - 1px;
+          // 算法为：
+          // 去除最小值（最小值为 $min-ratio）
+          // 将剩下的按照可缩放的比例平分后，确定当前占多少 再加上最小值系数
+          $ratio: $min-ratio + ((1 - $min-ratio) / ($breakpoint-length - 1) * ($i - 1));
+          $val: $base-value * $ratio;
+          @if ($val < $min-val) {
+            $val: $min-val;
+          }
+          @media (max-width: $max-width) {
+            #{$attr}: $val;
+          }
+        }
+      }
+    }
+  }
+    // 根据设置的断点具体值进行缩放
+  @else {
+    @each $name in map-keys($options) {
+      // 值
+      $val: map-get($options, $name);
+      // 对应的响应式断点
+      $breakpoint: map-get($responsive-breakpoint, $name);
+      // 当前断点的下标
+      $i: index(map_keys($responsive-breakpoint), $name);
+      // 若没有超过界限则正常赋值
+      @if ($i + 1 <= $breakpoint-length) {
+        $next-breakpoint: (map_get($responsive-breakpoint, nth($breakpoint-name-list, $i + 1)));
+        $max-width: map_get($next-breakpoint, min-width) - 1px;
+        @media (max-width: $max-width) {
+          #{$attr}: $val;
+        }
       }
     }
   }
 }
 
-// ================
-//  自用
-// ================
+// ===========================
+//  库自用，区分 rpx 和 px
+// ===========================
 @function jason-css-value ($px) {
   @if ($mode == mini-program) {
     @return strip-unit($px) * 1rpx;

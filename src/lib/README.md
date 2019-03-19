@@ -22,9 +22,24 @@
 
 ### res example
 ```scss
+@include res(font-size, 50px);
+@include res(line-height, 50px);
+@include res(margin, 50px);
+@include res(margin-top, 50px);
+@include res(margin-right, 50px);
+@include res(margin-bottom, 50px);
+@include res(margin-left, 50px);
+@include res(padding, 50px);
+@include res(padding-top, 50px);
+@include res(padding-right, 50px);
+@include res(padding-bottom, 50px);
+@include res(padding-left, 50px);
+
+// or
+
 @include res(color, red, (
   md: green,
   sm: pink,
   xs: black,
-))
+));
 ```
