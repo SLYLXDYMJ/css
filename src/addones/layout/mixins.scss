@@ -343,7 +343,7 @@
       @media (min-width: $min-width) {
         @for $level from 1 through $max-level {
           // 计算属性值
-          $value: $current-ratio * (($level-span * $level) + $min-val);
+          $value: (($level - 1) * $level-span + $min-val) * $current-ratio;
           // 值不能小于最小值
           @if ($value < $min-val) {
             $value: $min-val;
@@ -365,7 +365,7 @@
             @include font-size($level, $val);
           }
           @if ($type == row-space) {
-            @include row-space($level, $value);
+            @include row-space($level, $val);
           }
         }
       }
