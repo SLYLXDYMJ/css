@@ -1,5 +1,8 @@
 <template>
-  <readme class="markdown-body"/>
+  <div>
+    <readme class="markdown-body"/>
+    <div class="border"></div>
+  </div>
 </template>
 
 <script>
@@ -14,5 +17,12 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../../src/lib/utils";
 
+  .border {
+    @include one-px('x', center bottom);
+    height: 1px;
+    width: 100%;
+    background-color: red;
+  }
 </style>

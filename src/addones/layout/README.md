@@ -52,6 +52,7 @@ $responsive-breakpoint: (
 
  class                                | description
  -----------------------------------  | ---------------------
+ flex-space                           | flex-group: 1
  flex-{breakpoint}-row                | flex-direction: row
  flex-{breakpoint}-row-reverse        | flex-direction: row-reverse
  flex-{breakpoint}-column             | flex-direction: column

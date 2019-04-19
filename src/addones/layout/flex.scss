@@ -8,6 +8,9 @@
   }
 
   // 基础工具类
+  .flex-space {
+    flex-grow: 1;
+  }
   @include flex-utils();
 
   // 根据断点创建响应式 flex 工具类

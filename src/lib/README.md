@@ -19,6 +19,7 @@
  ellipsis   | -                                | 文字一行显示，溢出隐藏
  cover      | $z-index, $position              | 覆盖
  res        | $attr, $base-value, $breakpoints | 响应式属性
+ one-pix    | $dir, $origin                    | 实现移动端 1px 线
 
 ### res example
 ```scss
