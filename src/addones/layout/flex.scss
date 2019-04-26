@@ -1,5 +1,5 @@
 @if ($use-flex == true) {
-  // 基础类
+  // display
   .flex {
     display: flex;
   }
@@ -7,13 +7,15 @@
     display: inline-flex;
   }
 
-  // 基础工具类
+  // space
   .flex-space {
     flex-grow: 1;
   }
+
+  // 基础工具类
   @include flex-utils();
 
-  // 根据断点创建响应式 flex 工具类
+  // 响应式工具类
   @if ($mode == responsive) {
     @include loop-min-width(flex);
   }

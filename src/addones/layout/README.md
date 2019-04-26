@@ -10,9 +10,8 @@
  container-fluid             | 宽度 100% 的容器
  row                         | 行，若为 flex 模式，则可用 flex 工具类
  row.space-{level}           | 行中列间距
- col-{num}                   | 定宽库 列
- col-{breakpoint}-{num|auto} | 响应库 列
- col                         | flex 模式专有，flex-grow: 1
+ col-{num}                   | 定宽库 列（定宽库和小程序库）
+ col-{breakpoint}-{num}      | 响应库 列（响应式库）
 
 ## 默认断点
 ```scss

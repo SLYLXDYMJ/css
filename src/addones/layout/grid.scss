@@ -1,3 +1,4 @@
+// 容器
 .container {
   // 基础类
   &, &-fluid {
@@ -19,6 +20,7 @@
   }
 }
 
+// 行
 .row {
   // flex 实现
   @if ($use-flex == true) {
@@ -42,15 +44,12 @@
 }
 
 // 列
-@include col();
+@if ($mode == normal) {
+  @include col();
+}
 @if ($mode == responsive) {
   @include loop-min-width(col);
 }
-
-// flex-grow: 1
-@if ($use-flex == true) {
-  .col {
-    flex-grow: 1;
-  }
+@if ($mode == mini-program) {
+  @include col();
 }
-

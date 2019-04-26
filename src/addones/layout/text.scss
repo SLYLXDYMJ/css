@@ -2,7 +2,6 @@
   @include text-utils();
 }
 @if ($mode == responsive) {
-  @include text-utils();
   @include loop-min-width(text);
 }
 @if ($mode == mini-program) {
