@@ -54,7 +54,8 @@
  hamburger.active | 激活样式
  
 ## hidden
-> 隐藏组件，命名规则 .hidden-{ breakpoint name }-{ condition }
+> 隐藏组件，命名规则 .hidden-{ breakpoint name }-{ condition }<br/>
+> hidden-overflow { overflow-hidden }
 
 condition 为 up down only 三种
 

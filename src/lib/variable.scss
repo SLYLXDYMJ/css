@@ -20,10 +20,10 @@ $responsive-breakpoint: (
   xs: (min-width: 0px, container-max-width: 100%),
   // 平板
   sm: (min-width: 768px, container-max-width: 720px),
-  // 小屏电脑
+  // 小屏
   md: (min-width: 992px, container-max-width: 960px),
-  // 大屏电脑
-  lg: (min-width: 1280px, container-max-width: 1260px)
+  // 大屏
+  lg: (min-width: 1280px, container-max-width: 1230px)
 ) !default;
 
 // -----------------------------------------------------------------

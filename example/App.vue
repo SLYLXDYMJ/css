@@ -41,7 +41,9 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @import "../src/lib/utils";
+
   .header {
     position: fixed;
     left: 0;
@@ -63,5 +65,4 @@
   .content {
     padding: 15px;
   }
-
 </style>

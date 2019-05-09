@@ -1,0 +1,14 @@
+/* 内部使用的工具库，不对外开放 */
+
+// 区分 line-height 的无单位
+// 根据 $mode 设置单位（rpx 或 px）
+@function jason-css-value ($px) {
+  // 判断返回 px 单位还是 无单位（line-height）
+  @if (unit($px) == '') {
+    @return $px;
+  } @else if ($mode == mini-program) {
+    @return strip-unit($px) * 1rpx;
+  } @else {
+    @return strip-unit($px) * 1px;
+  }
+}
