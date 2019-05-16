@@ -41,6 +41,21 @@
   @if ($mode == mini-program) {
     @include loop-level(row-space);
   }
+  // 等高（flex 模式专有）
+  @if ($use-flex == true) {
+    &.equal-height {
+      // 使 col 变为 flex
+      // align-items：stretch 实现等高
+      > [class*="col-"] {
+        display: flex;
+        align-items: stretch;
+        // 等高元素
+        > *:first-child {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 // 列

@@ -244,9 +244,7 @@
   &.space-#{$level} {
     margin-left: -($value / 2);
     margin-right: -($value / 2);
-    > div,
-    > section,
-    > view {
+    > [class*="col-"] {
       padding-left: $value / 2;
       padding-right: $value / 2;
     }
