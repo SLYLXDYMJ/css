@@ -62,7 +62,7 @@ $space-max-level: 20 !default;
 // 级别间的跨度
 $space-level-span: 5px !default;
 // space 响应式最低档缩小比例
-$space-min-ratio: 0.3 !default;
+$space-min-ratio: 0.5 !default;
 // space 最小值
 $space-min-val: 5px !default;
 // 响应式断点，从小到大写
@@ -71,10 +71,10 @@ $responsive-breakpoint: (
   xs: (min-width: 0px, container-max-width: 100%),
   // 平板
   sm: (min-width: 768px, container-max-width: 720px),
-  // 小屏电脑
+  // 小屏
   md: (min-width: 992px, container-max-width: 960px),
-  // 大屏电脑
-  lg: (min-width: 1280px, container-max-width: 1260px)
+  // 大屏
+  lg: (min-width: 1280px, container-max-width: 1230px)
 ) !default;
 
 // -----------------------------------------------------------------
@@ -84,9 +84,9 @@ $fs-max-level: 40 !default;
 // 级别间的跨度
 $fs-level-span: 2px !default;
 // fs 响应式最低档缩小比例
-$fs-min-ratio: 0.2 !default;
+$fs-min-ratio: 0.6 !default;
 // fs 最小值
-$fs-min-val: 8px !default;
+$fs-min-val: 12px !default;
 
 // ---------------------------------------------------------
 
@@ -95,7 +95,7 @@ $lh-max-level: 10 !default;
 // 级别间的跨度
 $lh-level-span: 0.1 !default;
 // line-height 响应式最低档缩小比例
-$lh-min-ratio: 0.7 !default;
+$lh-min-ratio: 0.94 !default;
 // line-height 最小值
 $lh-min-val: 1.15 !default;
 
@@ -106,7 +106,7 @@ $margin-max-level: 20 !default;
 // 级别间的跨度
 $margin-level-span: 5px !default;
 // margin 响应式最低档缩小比例
-$margin-min-ratio: 0.3 !default;
+$margin-min-ratio: 0.5 !default;
 // margin 最小值
 $margin-min-val: 5px !default;
 
@@ -117,20 +117,20 @@ $padding-max-level: 20 !default;
 // 级别间的跨度
 $padding-level-span: 5px !default;
 // padding 响应式最低档缩小比例
-$padding-min-ratio: 0.3 !default;
+$padding-min-ratio: 0.5 !default;
 // padding 最小值
 $padding-min-val: 5px !default;
 
 // --------------------------------------------------
 
 // 汉堡包按钮每一条线的宽度
-$hamburger-layer-width: 40px;
+$hamburger-layer-width: 40px !default;
 // 汉堡包按钮每一条线的高度
-$hamburger-layer-height: 4px;
+$hamburger-layer-height: 4px !default;
 // 汉堡包按钮每一条线的高度间隔
-$hamburger-layer-spacing: 6px;
+$hamburger-layer-spacing: 6px !default;
 // 汉堡包按钮线的颜色
-$hamburger-layer-color: #000;
+$hamburger-layer-color: #000 !default;
 // 汉堡包按钮线的圆角效果
-$hamburger-layer-border-radius: 4px;
+$hamburger-layer-border-radius: 4px !default;
 ```
