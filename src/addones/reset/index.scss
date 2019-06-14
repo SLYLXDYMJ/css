@@ -15,6 +15,11 @@
   box-sizing: border-box;
 }
 
+// html line-height 设置为 1
+html {
+  line-height: 1;
+}
+
 // body 背景色默认为白色
 body {
   background-color: #fff;

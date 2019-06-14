@@ -3,18 +3,6 @@
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
-  &.top {
-    background-position-y: top
-  }
-  &.right {
-    background-position-x: right
-  }
-  &.bottom {
-    background-position-y: bottom
-  }
-  &.left {
-    background-position-x: left
-  }
 }
 
 // background-size: 100% 100% 处理

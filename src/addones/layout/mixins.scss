@@ -146,6 +146,7 @@
     $size: 100 / $col-num * $i * 1%;
     // 宽度定义
     .col#{$screen-name}-#{$i} {
+      min-height: 1px;
       // float 实现
       @if ($use-flex == true) {
         flex: 0 0 $size;

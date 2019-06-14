@@ -10,10 +10,10 @@
  container-fluid             | 宽度 100% 的容器
  row                         | 行，若为 flex 模式，则可用 flex 工具类
  row.space-{level}           | 行中列间距
- row.equal-height            | 使所有列在同行上等高（flex 模式专有）
+ row.equal-height            | 使所有列在同行上等高（flex 模式专有，兼容性并不好）
  col-{num}                   | 定宽库 列（定宽库和小程序库）
  col-{breakpoint}-{num}      | 响应库 列（响应式库）
-
+ 
 ## 默认断点
 ```scss
 // 响应式断点，从小到大写
@@ -84,8 +84,7 @@ $responsive-breakpoint: (
  order-{breakpoint}-{num}             | order: n
 
 ## 内外间距
-> margin 和 padding 的封装 <br/>
-> 等级默认为 5px 递增
+> margin 和 padding 的封装
 
  class                        | description
  ---------------------------- | -------------------------------------
@@ -106,8 +105,7 @@ $responsive-breakpoint: (
  y   | 上下
 
 ## 字体大小
-> font-size 的封装 <br/>
-> 默认第一级为 12px，等级已 2px 的跨度递增
+> font-size 的封装
 
  class                   | description
  ----------------------- | -------------------------------------
@@ -115,8 +113,7 @@ $responsive-breakpoint: (
  fs-{breakpoint}-{level} | 响应式库 font-size 命名规则
 
 ## 行高
-> line-height 的封装 <br/>
-> 默认第一级为 1.15，等级已 0.1 的跨度递增
+> line-height
 
  class                   | description
  ----------------------- | -------------------------------------

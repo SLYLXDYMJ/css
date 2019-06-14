@@ -19,7 +19,7 @@
  ellipsis   | -                                   | 文字一行显示，溢出隐藏，显示...
  cover      | $z-index: null, $position: absolute | 使元素覆盖整个父元素
  res        | $attr, $base-value, $options:null   | 响应式属性，下面有例子
- one-px     | $dir: 'x', $origin: center center   | 实现移动端 1px 线
+ one-px     | $dir: 'x', $origin: center center   | 实现移动端 1px 线, transform 方案
 
 ### res example
 > $options 有三种形式 \[空（不填）、断点列表、自动缩放最小比例（数值）\]
@@ -48,7 +48,7 @@
   xs: black,
 ));
 
-// 指定最小缩放比例（只有以下属性才能自动缩放）
+// 指定最小缩放比例
 @include res(font-size, 50px, 0.5);
 @include res(line-height, 1.5, 0.8);
 @include res(margin, 50px, 0.5);
