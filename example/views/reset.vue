@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/addones/reset/README.md';
+  import Readme from '../../src/reset/README.md';
 
   export default {
     name: 'page-reset',
@@ -14,5 +14,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+  @import "../assets/style/utils";
 </style>

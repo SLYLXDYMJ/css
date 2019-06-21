@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <readme class="markdown-body"/>
-  </div>
+  <readme class="markdown-body"/>
 </template>
 
 <script>
-  import Readme from '../../src/addones/components/README.md';
+  import Readme from '../../src/components/README.md';
 
   export default {
     name: 'page-component',
@@ -16,5 +14,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+  @import "../assets/style/utils";
 </style>

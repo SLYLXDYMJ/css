@@ -48,30 +48,3 @@
  hamburger        | 汉堡包按钮基本属性
  hamburger-{1~13} | 汉堡包按钮指定效果
  hamburger.active | 激活样式
- 
-## hidden
-> 隐藏组件，命名规则 .hidden-{ breakpoint name }-{ condition }<br/>
-> hidden-overflow { overflow-hidden }
-
-condition 为 up down only 三种
-
-```scss
-/* 简单示意 */
-@media (min-width: 992px) {
-  .hidden-sm-up {
-    display: none !important
-  }
-}
-
-@media (max-width: 767px) {
-  .hidden-sm-down {
-    display: none !important
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm-only {
-    display: none !important
-  }
-}
-```

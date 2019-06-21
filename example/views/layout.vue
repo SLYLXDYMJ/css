@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/addones/layout/README.md';
+  import Readme from '../../src/layout/README.md';
 
   export default {
     name: 'page-layout',
@@ -14,5 +14,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+  @import "../assets/style/utils";
 </style>

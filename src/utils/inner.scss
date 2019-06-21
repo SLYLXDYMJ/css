@@ -1,5 +1,4 @@
-/* 内部使用的工具库，不对外开放 */
-
+// 内部使用的工具库，不对外开放
 // 区分 line-height 的无单位
 // 根据 $mode 设置单位（rpx 或 px）
 @function jason-css-value ($px) {

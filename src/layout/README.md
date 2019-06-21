@@ -1,5 +1,7 @@
 # layout
-> 布局工具库，等级(level)相关的类响应时，会自动缩放
+> 布局工具库
+
+> 若是响应式库，等级类(.mt-5, fs-4)在屏幕缩放时，会自动缩放大小
 
 ## 栅格布局
 > 参考了 bootstrap，分为 flex 和 float 两种实现方式 ($use-flex)
@@ -88,12 +90,11 @@ $responsive-breakpoint: (
 
  class                        | description
  ---------------------------- | -------------------------------------
- m{dir}-{level}               | 定宽库 margin 命名规则
- m{dir}-{breakpoint}-{level}  | 响应式库 margin 命名规则
- p{dir}-{level}               | 定宽度 padding 命名规则
- p{dir}-{breakpoint}-{level}  | 响应式库 padding 命名规则
+ m{dir}-{level}               | margin 命名规则
+ p{dir}-{level}               | padding 命名规则
 
 ### dir说明
+> dir可省略，全方向
 
  dir | description
  --- | -----------
@@ -109,13 +110,42 @@ $responsive-breakpoint: (
 
  class                   | description
  ----------------------- | -------------------------------------
- fs-{level}              | 定宽库 font-size 命名规则
- fs-{breakpoint}-{level} | 响应式库 font-size 命名规则
+ fs-{level}              | font-size 命名规则
 
 ## 行高
 > line-height
 
  class                   | description
  ----------------------- | -------------------------------------
- lh-{level}              | 定宽库 line-height 命名规则
- lh-{breakpoint}-{level} | 响应式库 line-height 命名规则
+ lh-{level}              | line-height 命名规则
+
+## 条件隐藏
+> 定宽度只有 .hidden(display: none !important)
+
+> 受到 vuetify 的启发，响应式命名规则 .hidden-{ 断点名称 }-{ 条件 }
+>> 条件为 为 up（之上） down（之下） only（只有） 三种
+
+```scss
+/* 实现代码 */
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 992px) {
+  .hidden-sm-up {
+    display: none !important
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-sm-down {
+    display: none !important
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm-only {
+    display: none !important
+  }
+}
+```

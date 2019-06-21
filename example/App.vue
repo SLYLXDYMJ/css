@@ -42,7 +42,7 @@
 </script>
 
 <style lang="scss">
-  @import "../src/lib/utils";
+  @import "./assets/style/utils";
 
   .header {
     position: fixed;

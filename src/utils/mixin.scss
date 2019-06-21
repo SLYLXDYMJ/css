@@ -1,38 +1,3 @@
-@import "variable";
-
-// 返回去除单位后的数值
-@function strip-unit ($value) {
-  @return ($value / ($value * 0 + 1));
-}
-
-// 将数值 按照 指定的设计图大小转为 vw 单位
-@function vw ($px, $width: 1920px) {
-  $width: strip-unit($width);
-  $px: strip-unit($px);
-  @return $px / ($width / 100) * 1vw;
-}
-
-// 翻转列表
-@function reverse ($list) {
-  // 结果
-  $result: ();
-  // length
-  $length: length($list);
-  // 循环拼接
-  @for $i from 1 through $length {
-    $last-item: nth($list, $length - $i + 1);
-    $result: append($result, $last-item);
-  }
-  // return
-  @return $result;
-}
-
-// 微信小程序 rpx 报错问题
-@function rpx ($value) {
-  $value: strip-unit($value);
-  @return #{$value}rpx;
-}
-
 // 清除 float 带来的浮动影响
 @mixin clearfix() {
   &:after {
@@ -208,5 +173,31 @@
     @if ($dir == 'y') {
       transform: scaleX(0.5);
     }
+  }
+}
+
+// 根据主题色创建辅助类名
+// 文字颜色，背景颜色，上下左右边框颜色
+@mixin color($name, $color) {
+  .color-#{$name} {
+    color: $color;
+  }
+  .background-#{$name} {
+    background-color: $color;
+  }
+  .border-#{$name} {
+    border-color: $color;
+  }
+  .border-top-#{$name} {
+    border-top-color: $color;
+  }
+  .border-right-#{$name} {
+    border-right-color: $color;
+  }
+  .border-bottom-#{$name} {
+    border-bottom-color: $color;
+  }
+  .border-left-#{$name} {
+    border-left-color: $color;
   }
 }

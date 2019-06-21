@@ -1,9 +1,14 @@
-@import "lib/inner-utils";
-@import "lib/utils";
-
 $mode: mini-program;
 
-@import "addones/reset/mini-program";
-@import "addones/layout/index";
+// utils
+@import "utils/inner";
+@import "utils/index";
+
+// css reset
+@import "reset/mini-program";
+
+// layout class
+@import "layout/index";
+
 // components
-@import "addones/components/scrollx";
+@import "components/scrollx";

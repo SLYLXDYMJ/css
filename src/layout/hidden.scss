@@ -1,6 +1,4 @@
 // 参考 vuetify helper-class display
-// 格式为 hidden-{ breakpoint name }-{ condition }
-// only up down 三种模式
 .hidden {
   display: none !important;
   @if ($mode == responsive) {
@@ -66,9 +64,4 @@
       }
     }
   }
-}
-
-// overflow-hidden
-.hidden-overflow {
-  overflow: hidden;
 }

@@ -1,8 +1,14 @@
-@import "lib/inner-utils";
-@import "lib/utils";
-
 $mode: responsive;
 
-@import "addones/reset/responsive";
-@import "addones/layout/index";
-@import "addones/components/index";
+// utils
+@import "utils/inner";
+@import "utils/index";
+
+// css reset
+@import "reset/responsive";
+
+// layout class
+@import "layout/index";
+
+// components
+@import "components/index";
