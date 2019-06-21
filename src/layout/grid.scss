@@ -29,7 +29,7 @@
   }
   // float 实现
   @if ($use-flex != true) {
-    @include clearfix;
+    @extend %clearfix;
   }
   // 行中列间距
   @if ($mode == normal) {

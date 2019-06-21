@@ -40,6 +40,7 @@ $responsive-breakpoint: (
  text-align-${name}-center   | text-align: center
  text-align-${name}-right    | text-align: right
  text-nowrap                 | 使行内元素不换行
+ text-bold                   | 加粗
 
 ## flex 布局
 > 若 $use-flex 为 false 则不可用

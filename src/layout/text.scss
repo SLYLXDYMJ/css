@@ -1,11 +1,12 @@
-@if ($mode == normal) {
-  @include text-utils();
-}
+@include text-utils();
+
 @if ($mode == responsive) {
   @include loop-min-width(text);
 }
-@if ($mode == mini-program) {
-  @include text-utils();
+
+// 加粗
+.text-bold {
+  font-weight: bold;
 }
 
 // 使行内元素一行显示
