@@ -1,51 +1,54 @@
 # jason-css
 > css 库，分为 定宽、响应式、小程序 三种模式库
 
+> 并附带 scss 工具库
+
 ## 文档
-> [docs](https://q-jason.github.io/jason-css/)
+> [https://q-jason.github.io/jason-css/](https://q-jason.github.io/jason-css/)
 
-## install
-
-1. 引入打包好的 css，wxss 文件
-2. 模块化打包（推荐，定制性强）
-
-### link 标签
+## 使用
+> link 引入的方式若想定制，只能下载本项目然后修改 /src/lib/variable.scss 后重新打包
 ```html
 <link rel="stylesheet" href="dist/normal.css">
 <!-- or -->
 <link rel="stylesheet" href="dist/responsive.css">
 ```
 
-### 小程序
 ```scss
 // app.wxss
 @import "./dist/mini-program.wxss";
 ```
 
-### 模块化打包
+## 模块化引入（推荐，可定制性强）
+> 需要配置 sass 环境
+
 ```bash
 npm i --save jason-css
 ```
 
-```javascript
-// 定宽
-import 'jason-css/src/normal.scss';
-// 响应式
-import 'jason-css/src/responsive.scss';
-// 小程序
-import 'jason-css/src/mini-program.scss';
+```scss
+// global.scss
+
+// 自定义的变量
+@import "./current-variable.scss";
+// and
+@import "~jason-css/src/normal.scss";
+// or
+@import "~jason-css/src/responsive.scss";
+// or
+@import "~jason-css/src/mini-program.scss";
 ```
 
-## 定制
-> link 标签引入的方法只能通过修改 src/lib/variable.scss 后重新打包
+```scss
+// 工具库的使用
+// page.scss
 
-1. 新建三个 scss 文件 (jason-css.scss utils.scss variable.scss)
-2. 在 variable.scss 中重写变量
-3. 在 jason-css.scss 和 utils.scss 中引入 variable.scss
-4. jason-css.scss 中 引入 node_modules/jason-css/src/(normal|responsive|mini-program).scss
-5. utils.scss 中引入 node_modules/jason-css/src/lib/utils.scss
-6. 全局引入 jason-css.scss
-7. 需要使用 scss 工具库的地方引入 utils.scss
+@import "~jason/css/src/utils/normal.scss";
+// or
+@import "~jason/css/src/utils/responsive.scss";
+// or
+@import "~jason/css/src/utils/mini-program.scss";
+```
 
 ### 可复写的变量以及默认值
 ```scss

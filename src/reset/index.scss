@@ -15,8 +15,13 @@
   box-sizing: border-box;
 }
 
-// html line-height 设置为 1
-html {
+// line-height 设置为 1
+html,
+button,
+input,
+optgroup,
+select,
+textarea {
   line-height: 1;
 }
 

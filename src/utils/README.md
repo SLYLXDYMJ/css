@@ -14,9 +14,7 @@
 
  name       | params                              | description
  ---------- | ----------------------------------- | --------------------------------------
- clearfix   | -                                   | 清除浮动影响
  bg-cover   | $x: center, $y: center              | 常用的背景 cover 处理
- ellipsis   | -                                   | 文字一行显示，溢出隐藏，显示...
  cover      | $z-index: null, $position: absolute | 使元素覆盖整个相对定位父元素
  res        | $attr, $base-value, $options:null   | 响应式属性，下面有例子
  one-px     | $dir: 'x', $origin: center center   | 实现移动端 1px 线, transform 方案
@@ -99,5 +97,21 @@
 }
 .border-left-brown {
   border-left-color: #c9a56f
+}
+```
+
+## extend
+> 可在 scss 中直接使用 @extend %name 来使用的
+
+ name                      | desc
+ ------------------------- | ---------------------------------------
+ clearfix                  | 清除浮动影响
+ ellipsis                  | 文字一行显示，溢出隐藏
+ hidden-{ 断点名 }-{ 条件 } | 下面有例子，条件隐藏，和 layout 中的 hidden 命名相同
+ 
+```scss
+.btn {
+  // 在最小屏幕下隐藏
+  @extend %hidden-xs-only;
 }
 ```

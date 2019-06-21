@@ -1,23 +1,7 @@
-// 清除 float 带来的浮动影响
-@mixin clearfix() {
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
 // 背景常用处理
 @mixin bg-cover($position-x: center, $position-y: center) {
   background-size: cover;
   background-position: $position-x $position-y;
-}
-
-// 文字一行显示溢出隐藏
-@mixin ellipsis() {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 // 覆盖的元素

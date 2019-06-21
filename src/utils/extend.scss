@@ -1,0 +1,20 @@
+// 清除浮动影响
+%clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+// 文字一行显示溢出隐藏
+%ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 条件隐藏
+%hidden {
+  @include responsive-hidden;
+}

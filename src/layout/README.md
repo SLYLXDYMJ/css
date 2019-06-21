@@ -120,7 +120,7 @@ $responsive-breakpoint: (
  lh-{level}              | line-height 命名规则
 
 ## 条件隐藏
-> 定宽度只有 .hidden(display: none !important)
+> 定宽库只有 .hidden(display: none !important)
 
 > 受到 vuetify 的启发，响应式命名规则 .hidden-{ 断点名称 }-{ 条件 }
 >> 条件为 为 up（之上） down（之下） only（只有） 三种

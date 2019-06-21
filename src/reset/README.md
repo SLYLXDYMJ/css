@@ -1,6 +1,9 @@
 # reset
 > 基于 normalize v8.0.1，在此基础上增加了部分自定义样式（css reset）
 
+## 定宽库 reset
+> 无特殊须知
+
 ## 响应式库 reset
 > 不允许 x 轴滚动
 
