@@ -43,11 +43,11 @@ npm i --save jason-css
 // 工具库的使用
 // page.scss
 
-@import "~jason/css/src/utils/normal.scss";
+@import "~jason-css/src/normal-utils.scss";
 // or
-@import "~jason/css/src/utils/responsive.scss";
+@import "~jason-css/src/responsive-utils.scss";
 // or
-@import "~jason/css/src/utils/mini-program.scss";
+@import "~jason-css/src/mini-program-utils.scss";
 ```
 
 ### 可复写的变量以及默认值

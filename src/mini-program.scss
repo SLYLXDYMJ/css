@@ -1,12 +1,9 @@
 // utils
+@import "mini-program-utils";
 @import "utils/inner";
-@import "utils/mini-program";
-
 // css reset
 @import "reset/mini-program";
-
 // layout class
 @import "layout/index";
-
 // components
 @import "components/scrollx";

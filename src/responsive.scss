@@ -1,12 +1,9 @@
 // utils
+@import "responsive-utils";
 @import "utils/inner";
-@import "utils/responsive";
-
 // css reset
 @import "reset/responsive";
-
 // layout class
 @import "layout/index";
-
 // components
 @import "components/index";
