@@ -13,17 +13,18 @@
   box-sizing: border-box;
 }
 
-// line-height 设置为 1
+// 设置默认行高
 html,
 button,
 input,
 optgroup,
 select,
 textarea {
-  line-height: 1;
+  line-height: $default-line-height;
 }
 
 // body 背景色默认为白色
+// 设置默认字体为微软雅黑
 body {
   background-color: #fff;
   font-family: "Microsoft YaHei", sans-serif;

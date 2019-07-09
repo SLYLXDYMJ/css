@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/layout/README.md';
+  import Readme from '../../src/lib/layout/README.md';
 
   export default {
     name: 'page-layout',

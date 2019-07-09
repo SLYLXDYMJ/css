@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/components/README.md';
+  import Readme from '../../src/lib/components/README.md';
 
   export default {
     name: 'page-component',

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import Readme from '../../src/reset/README.md';
+  import Readme from '../../src/lib/reset/README.md';
 
   export default {
     name: 'page-reset',

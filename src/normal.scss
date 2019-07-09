@@ -1,9 +1,8 @@
 // utils
 @import "normal-utils";
-@import "utils/inner";
 // css reset
-@import "reset/normal";
+@import "./lib/reset/normal";
 // layout class
-@import "layout/index";
+@import "./lib/layout/index";
 // components
-@import "components/index";
+@import "./lib/components/index";

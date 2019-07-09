@@ -1,15 +1,18 @@
+// -----------------------------------------------------------------
+
+// 默认行高
+$default-line-height: 1 !default;
+
+// -----------------------------------------------------------------
+
 // 是否使用 flex
 $use-flex: true !default;
-
 // 栅格列数
 $col-num: 12 !default;
-
 // normal 模式 contianer 的宽度
 $container-normal-max-width: 1260px !default;
-
 // container 左右槽宽
 $container-gutter: 30px !default;
-
 // 响应式断点，从小到大写
 $responsive-breakpoint: (
   // 手机
@@ -89,3 +92,5 @@ $hamburger-layer-spacing: 6px !default;
 $hamburger-layer-color: #000 !default;
 // 汉堡包按钮线的圆角效果
 $hamburger-layer-border-radius: 4px !default;
+
+// --------------------------------------------------
