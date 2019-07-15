@@ -384,7 +384,7 @@ input::-webkit-inner-spin-button {
 }
 
 // 清除所有的默认 margin 和 padding 和 列表样式
-body, p, ul, ol, dl, dd {
+body, p, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 ul, ol {
