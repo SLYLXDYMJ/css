@@ -1,7 +1,5 @@
 # jason-css
-> css 库，分为 定宽、响应式、小程序 三种模式库
-
-> 并附带 scss 工具库
+> css 库，分为 定宽、响应式、小程序 三种模式库，提供 scss 工具库
 
 ## 文档
 > [https://q-jason.github.io/jason-css/](https://q-jason.github.io/jason-css/)
@@ -54,11 +52,6 @@ npm i --save jason-css
 ```scss
 // -----------------------------------------------------------------
 
-// 默认行高
-$default-line-height: 1 !default;
-
-// -----------------------------------------------------------------
-
 // 是否使用 flex
 $use-flex: true !default;
 // 栅格列数
@@ -83,7 +76,7 @@ $responsive-breakpoint: (
 
 // .row.space 最大的级别
 $space-max-level: 20 !default;
-// .row.span 级别间的跨度
+// .row.space 级别间的跨度
 $space-level-span: 5px !default;
 // .row.space 响应式最低档缩小比例
 $space-min-ratio: 0.5 !default;

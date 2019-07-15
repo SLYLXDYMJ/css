@@ -5,7 +5,7 @@
 > 无特殊须知
 
 ## 响应式库 reset
-> 不允许 x 轴滚动
+> 不允许默认 x 轴滚动
 
 ```scss
 html, body {
@@ -14,7 +14,7 @@ html, body {
 ```
 
 ## 小程序 reset
-> 不依赖 normalize
+> 不依赖 normalize，实现代码如下
 1. 统一了行高为 1
 2. 全局改变了 box-sizing: border-box
 

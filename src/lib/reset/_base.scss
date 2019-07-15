@@ -9,8 +9,18 @@
  */
 
 html {
-  line-height: 1.15; /* 1 */
+  //line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
+
+  // 统一行高为 1
+  line-height: 1;
+  // 设置 box-sizing，使元素继承
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  // 向上继承 box-sizing
+  box-sizing: inherit;
 }
 
 /* Sections
@@ -20,9 +30,9 @@ html {
  * Remove the margin in all browsers.
  */
 
-body {
-  margin: 0;
-}
+//body {
+//  margin: 0;
+//}
 
 /**
  * Render the `main` element consistently in IE.
@@ -75,6 +85,11 @@ pre {
 
 a {
   background-color: transparent;
+
+  // 取消下边框
+  text-decoration: none;
+  // 颜色继承
+  color: inherit;
 }
 
 /**
@@ -164,8 +179,11 @@ select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
+  //line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
+
+  // 行高统一为 1
+  line-height: 1;
 }
 
 /**
@@ -346,4 +364,35 @@ template {
 
 [hidden] {
   display: none;
+}
+
+// table 边框合并
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 列表样式清除
+ol, ul {
+  list-style: none;
+}
+
+// input number 的上下选择箭头去掉
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+// 清除所有的默认 margin 和 padding 和 列表样式
+body, p, ul, ol, dl, dd {
+  margin: 0;
+}
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+// 删除 h1 ~ h6 的加粗
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
 }
