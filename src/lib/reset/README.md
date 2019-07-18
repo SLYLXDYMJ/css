@@ -5,13 +5,7 @@
 > 无特殊须知
 
 ## 响应式库 reset
-> 不允许默认 x 轴滚动
-
-```scss
-html, body {
-  overflow-x: hidden !important;
-}
-```
+> 无特殊须知
 
 ## 小程序 reset
 > 不依赖 normalize，实现代码如下
