@@ -9,11 +9,9 @@
  */
 
 html {
-  //line-height: 1.15; /* 1 */
+  line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 
-  // 统一行高为 1
-  line-height: 1;
   // 设置 box-sizing，使元素继承
   box-sizing: border-box;
 }
@@ -179,11 +177,8 @@ select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
-  //line-height: 1.15; /* 1 */
+  line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
-
-  // 行高统一为 1
-  line-height: 1;
 }
 
 /**
@@ -392,7 +387,13 @@ ul, ol {
   list-style: none;
 }
 
-// 删除 h1 ~ h6 的加粗
+// 删除 h1 ~ h6 的默认加粗
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
+
+// safari placeholder 偏上的问题
+input::-webkit-input-placeholder {
+  line-height: normal;
+}
+
