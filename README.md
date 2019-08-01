@@ -2,7 +2,7 @@
 > css 库，分为 定宽、响应式、小程序 三种模式库，提供 scss 工具库
 
 ## 文档
-> [https://q-jason.github.io/jason-css/](https://q-jason.github.io/jason-css/)
+> [https://q-jason.github.io/css](https://q-jason.github.io/css)
 
 ## 使用
 > link 引入的方式若想定制，只能下载本项目然后修改 /src/lib/variable.scss 后重新打包
