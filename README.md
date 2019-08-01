@@ -1,33 +1,32 @@
 # jason-css
-> css 库，分为 定宽、响应式、小程序 三种模式库，提供 scss 工具库
+> css 库，分为 定宽、响应式、小程序 三种模式库 <br/>
+> 基于 scss，提供 scss 工具库
 
 ## 文档
 > [https://q-jason.github.io/css](https://q-jason.github.io/css)
 
-## 使用
-> link 引入的方式若想定制，只能下载本项目然后修改 /src/lib/variable.scss 后重新打包
-```html
-<link rel="stylesheet" href="dist/normal.css">
-<!-- or -->
-<link rel="stylesheet" href="dist/responsive.css">
-```
-
-```scss
-// app.wxss
-@import "./dist/mini-program.wxss";
-```
-
-## 模块化引入（推荐，可定制性强）
-> 需要配置 sass 环境
+## npm
 
 ```bash
 npm i --save jason-css
 ```
 
-```scss
-// global.scss
+### import css
 
-// 自定义的变量
+```javascript
+import 'jason-css/dist/normal.css';
+// or
+import 'jason-css/dist/responsive.css';
+// or
+import 'jason-css/dist/mini-program.wxss';
+```
+
+### import scss
+> 需要配置 scss 环境 <br/>
+> 全局 scss 文件中引入
+
+```scss
+// 定制变量
 @import "./current-variable.scss";
 // and
 @import "~jason-css/src/normal.scss";
@@ -37,10 +36,9 @@ npm i --save jason-css
 @import "~jason-css/src/mini-program.scss";
 ```
 
-```scss
-// 工具库的使用
-// page.scss
+### scss 工具库
 
+```scss
 @import "~jason-css/src/normal-utils.scss";
 // or
 @import "~jason-css/src/responsive-utils.scss";
@@ -142,3 +140,17 @@ $hamburger-layer-border-radius: 4px !default;
 
 // --------------------------------------------------
 ```
+
+## link
+> link 引入的方式若想定制，只能下载本项目然后修改 /src/lib/variable.scss 后重新打包引入
+```html
+<link rel="stylesheet" href="dist/normal.css">
+<!-- or -->
+<link rel="stylesheet" href="dist/responsive.css">
+```
+
+```scss
+// app.wxss
+@import "./dist/mini-program.wxss";
+```
+
