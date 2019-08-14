@@ -16,7 +16,7 @@
     @include loop-min-width(container);
   }
   @if ($mode == mini-program) {
-
+    // noop
   }
 }
 

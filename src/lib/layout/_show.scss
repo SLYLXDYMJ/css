@@ -1,0 +1,5 @@
+.show {
+  @if ($mode == responsive) {
+    @include responsive-show();
+  }
+}

@@ -120,14 +120,14 @@ $responsive-breakpoint: (
  ----------------------- | -------------------------------------
  lh-{level}              | line-height 命名规则
 
-## 条件隐藏
+## 响应式显示和隐藏
 > 定宽库只有 .hidden(display: none !important)
 
-> 受到 vuetify 的启发，响应式命名规则 .hidden-{ 断点名称 }-{ 条件 }
+> 受到 vuetify 的启发，响应式命名规则 .\[hidden/show]-{ 断点名称 }-{ 条件 }
 >> 条件为 为 up（之上） down（之下） only（只有） 三种
 
 ```scss
-/* 实现代码 */
+/* 实现代码，下面例子为 hidden，show 同理 */
 .hidden {
   display: none !important;
 }

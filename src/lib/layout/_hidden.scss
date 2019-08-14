@@ -1,5 +1,8 @@
-// 参考 vuetify helper-class display
 .hidden {
   display: none;
-  @include responsive-hidden;
+  
+  // 参考 vuetify helper-class display
+  @if ($mode == responsive) {
+    @include responsive-hidden;
+  }
 }

@@ -14,7 +14,12 @@
   white-space: nowrap;
 }
 
-// 条件隐藏
+// 响应式隐藏
 %hidden {
   @include responsive-hidden;
+}
+
+// 响应式显示
+%show {
+  @include responsive-show;
 }
