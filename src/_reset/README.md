@@ -7,5 +7,4 @@
 ### 可改变量
  name               | default | description
  ------------------ | ------- | ------------
- $reset-open        | false   | 是否包含 css reset
  $reset-line-height | 1.15    | 页面行高

@@ -1,0 +1,42 @@
+// 响应式断点名称
+// 从小到大
+$responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint);
+// 从大到小
+$responsive-name-max-to-min-list: reverse($responsive-name-min-to-max-list);
+
+// container
+@mixin container-base() {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $layout-container-gutter;
+  padding-right: $layout-container-gutter;
+}
+@mixin container-width() {
+  @if ($mode == normal) {
+    width: $layout-container-normal-width;
+  }
+  @if ($mode == responsive) {
+    @each $name in $responsive-name-min-to-max-list {
+      $breakpoint: map_get($layout-responsive-breakpoint, $name);
+      $min-width: map_get($breakpoint, min-width);
+      $container-width: map_get($breakpoint, container-width);
+      @media (min-width: $min-width) {
+        width: $container-width;
+      }
+    }
+  }
+}
+
+// row
+@mixin row-base() {
+  @if ($layout-use-flex == true) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @if ($layout-use-flex == false) {
+    @extend %clearfix;
+  }
+}
+@mixin row-space() {
+  // 待完成
+}

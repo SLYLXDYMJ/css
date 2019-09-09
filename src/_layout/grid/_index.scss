@@ -1,0 +1,18 @@
+@import "../variable";
+@import "../mixin";
+
+.container {
+  @include container-base;
+  @include container-width;
+  &-fluid {
+    @include container-base;
+  }
+}
+
+.row {
+  @include row-base;
+}
+
+.col {
+
+}
