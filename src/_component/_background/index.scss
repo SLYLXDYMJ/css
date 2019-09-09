@@ -1,0 +1,11 @@
+// background-size: cover 处理，默认提取中心区域
+.bg-cover {
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+// background-size: 100% 100% 处理
+.bg-100 {
+  background-size: 100% 100%;
+}

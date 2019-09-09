@@ -1,0 +1,60 @@
+@import "./variable";
+@import "./normalize";
+
+// box-sizing: border-box
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// table 边框合并
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 列表样式清除
+ol, ul {
+  list-style: none;
+}
+
+// a 元素颜色继承，取消下划线
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// input number 的上下选择箭头去掉
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+// 清除所有的默认 margin 和 padding 和 列表样式
+body, p, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+// h1 ~ h6
+// 默认加粗删除
+// 字体大小继承
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: inherit;
+}
+
+// safari placeholder 偏上的问题
+input::-webkit-input-placeholder {
+  line-height: normal;
+}
+
+// textarea 拖拽默认取消
+textarea {
+  resize: none;
+}

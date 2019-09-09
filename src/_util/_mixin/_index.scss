@@ -1,0 +1,48 @@
+// 覆盖的元素
+@mixin cover($z-index: null, $position: absolute) {
+  @if ($position) {
+    position: $position;
+  } @else {
+    position: absolute;
+  }
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  @if ($z-index) {
+    z-index: $z-index;
+  }
+}
+
+// 背景常用处理
+@mixin bg-cover($position-x: center, $position-y: center) {
+  background-size: cover;
+  background-position: $position-x $position-y;
+}
+
+// 移动端 1px 线
+@mixin px1($dir: 'x', $origin: center center) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+    @if ($dir == 'x') {
+      transform: scaleY(0.7);
+    }
+    @if ($dir == 'y') {
+      transform: scaleX(0.7);
+    }
+  }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+    @if ($dir == 'x') {
+      transform: scaleY(0.5);
+    }
+    @if ($dir == 'y') {
+      transform: scaleX(0.5);
+    }
+  }
+}
+
+// 响应式
+@mixin res($attr, $base-value, $options: null) {
+  @if ($mode == responsive) {
+    
+  }
+}

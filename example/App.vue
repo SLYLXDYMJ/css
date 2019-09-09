@@ -1,68 +1,23 @@
 <template>
-  <main id="app">
-    <!-- header -->
-    <header class="header">
-      <div class="container">
-        <nav class="nav flex align-items-center justify-content-center">
-          <router-link
-            class="nav-item"
-            v-for="name in navArr"
-            :key="name"
-            :to="{ name }">
-            {{ name }}
-          </router-link>
-        </nav>
+  <div class="scroll-x">
+    <div class="scroll-x-wrapper">
+      <div class="scroll-x-item" v-for="i in 200">
+        <a class="item" href="#">{{ i }}</a>
       </div>
-    </header>
-    <!-- body -->
-    <section class="body">
-      <div class="container">
-        <div class="content">
-          <router-view/>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    data () {
-      return {
-        navArr: [
-          'page-index',
-          'page-reset',
-          'page-utils',
-          'page-layout',
-          'page-component'
-        ]
-      };
-    }
-  };
+    name: 'app'
+  }
 </script>
 
-<style lang="scss">
-  @import "./assets/style/utils";
-
-  .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  .nav {
-    height: 60px;
-    background-color: #fff;
-    &-item {
-      padding: 10px;
-      font-size: 20px;
-      border-bottom: 1px solid rgba(#000, .2);
-    }
-  }
-  .body {
-    padding-top: 60px;
-  }
-  .content {
-    padding: 15px;
+<style lang="scss" scoped>
+  @import "./styles/utils";
+  .item {
+    display: block;
+    margin: 20px;
   }
 </style>
