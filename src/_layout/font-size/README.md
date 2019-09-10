@@ -16,4 +16,4 @@
  $layout-fs-max-level        | 20      | 字号大小最大级别
  $layout-fs-span             | 2px     | 字号大小级别间的跨度
  $layout-fs-min-ratio        | 0.7     | 字号大小自动缩放的最小缩放比例
- $layout-fs-min              | 12px    | 字号大小自动缩放时的最小值
+ $layout-fs-min              | 14px    | 字号大小自动缩放时的最小值

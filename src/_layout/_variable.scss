@@ -1,8 +1,11 @@
 @import "./grid/variable";
 @import "./font-size/variable";
+@import "./line-height/variable";
+@import "./margin/variable";
+@import "./padding/variable";
 
 // 是否响应式
-$_layout-is-responsive: $mode == responsive;
+$_layout-is-responsive: $_mode == responsive;
 // 响应式断点名称，从小到大
 $_layout-responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint);
 // 响应式断点名称，从大到小

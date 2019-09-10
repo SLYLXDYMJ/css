@@ -1,4 +1,8 @@
 @import "./variable";
 @import "./mixin";
-@import "./grid";
-@import "./font-size";
+@import "./grid/index";
+@import "./font-size/index";
+@import "./line-height/index";
+@import "./margin/index";
+@import "./padding/index";
+@import "./text/index";

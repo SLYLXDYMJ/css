@@ -10,15 +10,31 @@ const miniProgramScss = path.resolve(__dirname, './src/mini-program/index.scss')
 const output = './dist'
 
 gulp.task('build', async function () {
-  await gulp.src([ normalScss, responsiveScss ])
+  await gulp.src(normalScss)
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(postcss())
+    .pipe(rename({
+      basename: 'normal'
+    }))
     .pipe(gulp.dest(output))
+  
+  await gulp.src(responsiveScss)
+    .pipe(sass())
+    .on('error', sass.logError)
+    .pipe(postcss())
+    .pipe(rename({
+      basename: 'responsive'
+    }))
+    .pipe(gulp.dest(output))
+  
   await gulp.src(miniProgramScss)
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(postcss())
-    .pipe(rename({ extname: '.wxss' }))
+    .pipe(rename({
+      basename: 'mini-program',
+      extname: '.wxss'
+    }))
     .pipe(gulp.dest(output))
 })
