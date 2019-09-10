@@ -1,8 +1,128 @@
-// 响应式断点名称
-// 从小到大
-$responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint);
-// 从大到小
-$responsive-name-max-to-min-list: reverse($responsive-name-min-to-max-list);
+// 断点类
+@mixin _col-base($breakpoint-name: '') {
+  @for $i from 1 through $layout-grid-col-num {
+    &#{$breakpoint-name}-#{$i} {
+      min-height: 1px;
+      @if ($layout-use-flex == false) {
+        float: left;
+      }
+    }
+  }
+}
+@mixin _col-width($breakpoint-name: '') {
+  @for $i from 1 through $layout-grid-col-num {
+    $width: 100% / $layout-grid-col-num * $i;
+    &#{$breakpoint-name}-#{$i} {
+      @if ($layout-use-flex == true) {
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      @if ($layout-use-flex == false) {
+        width: $width;
+      }
+    }
+  }
+}
+@mixin _col-pull($breakpoint-name: '') {
+
+}
+@mixin _col-push($breakpoint-name: '') {
+
+}
+@mixin _col-offset($breakpoint-name: '') {
+
+}
+@mixin _normal-util($type) {
+  @if ($type == col-base) {
+    @include _col-base;
+  }
+  @if ($type == col-width) {
+    @include _col-width;
+  }
+  @if ($type == col-pull) {
+    @include _col-pull;
+  }
+  @if ($type == col-push) {
+    @include _col-push;
+  }
+  @if ($type == col-offset) {
+    @include _col-offset;
+  }
+}
+@mixin _responsive-util($type) {
+  @each $name in $_layout-responsive-name-min-to-max-list {
+    $breakpoint: map_get($layout-responsive-breakpoint, $name);
+    $min-width: map_get($breakpoint, min-width);
+    @media (min-width: $min-width) {
+      @if ($type == col-base) {
+        @include _col-base(-#{$name});
+      }
+      @if ($type == col-width) {
+        @include _col-width(-#{$name});
+      }
+      @if ($type == col-pull) {
+        @include _col-pull(-#{$name});
+      }
+      @if ($type == col-push) {
+        @include _col-push(-#{$name});
+      }
+      @if ($type == col-offset) {
+        @include _col-offset(-#{$name});
+      }
+    }
+  }
+}
+
+// 等级类
+@mixin _row-space($ratio) {
+  @for $i from 1 through $layout-grid-space-max-level {
+    $space: $i * $layout-grid-space-span * $ratio;
+    // 修正最小值
+    @if ($space < $layout-grid-space-min) {
+      $space: $layout-grid-space-min;
+    }
+    &.space-#{$i} {
+      margin: $space / 2 * -1;
+      > * {
+        padding: $space / 2;
+      }
+    }
+  }
+}
+@mixin _normal-level($type) {
+  @if ($type == row-space) {
+    @include _row-space(1)
+  }
+}
+@mixin _responsive-level($type) {
+  $min-ratio: null;
+  // 根据 type 追踪最小值
+  @if ($type == row-space) {
+    $min-ratio: $layout-grid-space-min-ratio;
+  }
+  // 响应式断点数量
+  $breakpoint-length: length($layout-responsive-breakpoint);
+  // 当前的响应系数，默认为最小值
+  $current-ratio: $min-ratio;
+  // 响应系数间的跨度
+  $ratio-span: (1 - $min-ratio) / ($breakpoint-length - 1);
+  // 循环创建响应式等级类
+  @each $name in $_layout-responsive-name-min-to-max-list {
+    // 当前断点
+    $breakpoint: map_get($layout-responsive-breakpoint, $name);
+    // 当前最小屏幕宽度
+    $min-width: map_get($breakpoint, min-width);
+    // @media
+    @media (min-width: $min-width) {
+      // switch
+      @if ($type == row-space) {
+        @include _row-space($current-ratio)
+      }
+    }
+    // 改变现有比例
+    $current-ratio: $current-ratio + $ratio-span;
+  }
+}
 
 // container
 @mixin container-base() {
@@ -16,7 +136,7 @@ $responsive-name-max-to-min-list: reverse($responsive-name-min-to-max-list);
     width: $layout-container-normal-width;
   }
   @if ($mode == responsive) {
-    @each $name in $responsive-name-min-to-max-list {
+    @each $name in $_layout-responsive-name-min-to-max-list {
       $breakpoint: map_get($layout-responsive-breakpoint, $name);
       $min-width: map_get($breakpoint, min-width);
       $container-width: map_get($breakpoint, container-width);
@@ -37,6 +157,59 @@ $responsive-name-max-to-min-list: reverse($responsive-name-min-to-max-list);
     @extend %clearfix;
   }
 }
-@mixin row-space() {
+@mixin row-util() {
+  // equal-height(flex)
+  @if ($layout-use-flex == true) {
+    &.equal-height {
+      // col 元素 align-items：stretch 实现等高
+      > * {
+        display: flex;
+        align-items: stretch;
+      }
+      // col 下第一个子元素，消除宽度影响
+      > * > *:first-child {
+        width: 100%;
+      }
+    }
+  }
+
+  // space
+  @if ($mode == normal) {
+    @include _normal-level(1);
+  }
+  @if ($mode == responsive) {
+    @include _responsive-level(row-space);
+  }
+  @if ($mode == mini-program) {
+    @include _normal-level(1);
+  }
+}
+
+// col
+@mixin col-base() {
+  @if ($_is-responsive == false) {
+    @include _normal-util(col-base);
+  }
+  @if ($_is-responsive == true) {
+    @include _responsive-util(col-base);
+  }
+}
+@mixin col-width() {
+  @if ($_is-responsive == false) {
+    @include _normal-util(col-width);
+  }
+  @if ($_is-responsive == true) {
+    @include _responsive-util(col-width);
+  }
+}
+@mixin col-util() {
   // 待完成
+  // pull(responsive)
+  // push(responsive)
+  // offset(responsive)
+  @if ($_is-responsive == true) {
+    @include _responsive-util(col-pull);
+    @include _responsive-util(col-push);
+    @include _responsive-util(col-offset);
+  }
 }

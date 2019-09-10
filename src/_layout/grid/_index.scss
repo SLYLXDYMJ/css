@@ -4,15 +4,19 @@
 .container {
   @include container-base;
   @include container-width;
-  &-fluid {
-    @include container-base;
-  }
+}
+
+.container-fluid {
+  @include container-base;
 }
 
 .row {
   @include row-base;
+  @include row-util;
 }
 
 .col {
-
+  @include col-base;
+  @include col-width;
+  @include col-util;
 }

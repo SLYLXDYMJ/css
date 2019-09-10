@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: './',
+  publicPath: './',
   outputDir: './docs',
   chainWebpack: config => {
     config.module.rule('md')

@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <div class="row">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectetur dolorem dolorum maxime odio quaerat qui voluptatibus! Architecto cupiditate, deserunt doloremque ipsum laborum libero officia quas quidem reiciendis ut vel.
+    <div class="row space-20">
+      <div class="col-sm-6 col-xs-12"></div>
+      <div class="col-sm-6 col-xs-12"></div>
     </div>
   </div>
 </template>

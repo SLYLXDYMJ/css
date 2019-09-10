@@ -1,9 +1,12 @@
 // 是否使用 flex 实现布局
 $layout-use-flex: true !default;
+
 // container 左右槽宽
 $layout-container-gutter: 15px !default;
+
 // container 定宽模式宽度
 $layout-container-normal-width: 1230px !default;
+
 // 响应式断点，从小到大写
 $layout-responsive-breakpoint: (
   // 手机
@@ -15,3 +18,28 @@ $layout-responsive-breakpoint: (
   // 大屏
   lg: (min-width: 1280px, container-width: 1230px)
 ) !default;
+
+// 栅格间距最大等级
+$layout-grid-space-max-level: 20 !default;
+
+// 栅格间距递增值
+$layout-grid-space-span: 5px !default;
+
+// 栅格间距缩放比例
+$layout-grid-space-min-ratio: 0.5 !default;
+
+// 栅格间距最小值
+$layout-grid-space-min: 5px !default;
+
+// 栅格列数
+$layout-grid-col-num: 12 !default;
+
+// inner =============================================================================
+// 是否响应式
+$_is-responsive: $mode == responsive;
+
+// 响应式断点名称，从小到大
+$_layout-responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint);
+
+// 响应式断点名称，从大到小
+$_layout-responsive-name-max-to-min-list: reverse($_layout-responsive-name-min-to-max-list);
