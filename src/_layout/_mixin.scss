@@ -24,13 +24,30 @@
   }
 }
 @mixin _col-pull($breakpoint-name: '') {
-
+  @for $i from 1 through $layout-grid-col-num {
+    $offset: 100% / $layout-grid-col-num * $i;
+    &#{$breakpoint-name}-pull-#{$i} {
+      position: relative;
+      right: $offset
+    }
+  }
 }
 @mixin _col-push($breakpoint-name: '') {
-
+  @for $i from 1 through $layout-grid-col-num {
+    $offset: 100% / $layout-grid-col-num * $i;
+    &#{$breakpoint-name}-push-#{$i} {
+      position: relative;
+      left: $offset
+    }
+  }
 }
 @mixin _col-offset($breakpoint-name: '') {
-
+  @for $i from 1 through $layout-grid-col-num {
+    $offset: 100% / $layout-grid-col-num * $i;
+    &#{$breakpoint-name}-offset-#{$i} {
+      margin-left: $offset;
+    }
+  }
 }
 @mixin _normal-util($type) {
   @if ($type == col-base) {
@@ -74,7 +91,19 @@
 }
 
 // 等级类
-@mixin _row-space($ratio) {
+@mixin _font-size($ratio: 1) {
+  @for $i from 1 through $layout-fs-max-level {
+    $value: ($layout-fs-min + ($i - 1) * $layout-fs-span) * $ratio;
+    // 修正最小值
+    @if ($value < $layout-fs-min) {
+      $value: $layout-fs-min;
+    }
+    &-#{$i} {
+      font-size: $value;
+    }
+  }
+}
+@mixin _row-space($ratio: 1) {
   @for $i from 1 through $layout-grid-space-max-level {
     $space: $i * $layout-grid-space-span * $ratio;
     // 修正最小值
@@ -93,12 +122,18 @@
   @if ($type == row-space) {
     @include _row-space(1)
   }
+  @if ($type == font-size) {
+    @include _font-size(1)
+  }
 }
 @mixin _responsive-level($type) {
   $min-ratio: null;
   // 根据 type 追踪最小值
   @if ($type == row-space) {
     $min-ratio: $layout-grid-space-min-ratio;
+  }
+  @if ($type == font-size) {
+    $min-ratio: $layout-fs-min-ratio;
   }
   // 响应式断点数量
   $breakpoint-length: length($layout-responsive-breakpoint);
@@ -117,6 +152,9 @@
       // switch
       @if ($type == row-space) {
         @include _row-space($current-ratio)
+      }
+      @if ($type == font-size) {
+        @include _font-size($current-ratio)
       }
     }
     // 改变现有比例
@@ -187,18 +225,18 @@
 
 // col
 @mixin col-base() {
-  @if ($_is-responsive == false) {
+  @if ($_layout-is-responsive == false) {
     @include _normal-util(col-base);
   }
-  @if ($_is-responsive == true) {
+  @if ($_layout-is-responsive == true) {
     @include _responsive-util(col-base);
   }
 }
 @mixin col-width() {
-  @if ($_is-responsive == false) {
+  @if ($_layout-is-responsive == false) {
     @include _normal-util(col-width);
   }
-  @if ($_is-responsive == true) {
+  @if ($_layout-is-responsive == true) {
     @include _responsive-util(col-width);
   }
 }
@@ -207,9 +245,19 @@
   // pull(responsive)
   // push(responsive)
   // offset(responsive)
-  @if ($_is-responsive == true) {
+  @if ($_layout-is-responsive == true) {
     @include _responsive-util(col-pull);
     @include _responsive-util(col-push);
     @include _responsive-util(col-offset);
+  }
+}
+
+// font-size
+@mixin font-size() {
+  @if ($_layout-is-responsive == false) {
+    @include _normal-level(font-size);
+  }
+  @if ($_layout-is-responsive == true) {
+    @include _responsive-level(font-size);
   }
 }
