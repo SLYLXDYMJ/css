@@ -10,3 +10,5 @@ $_layout-is-responsive: $_mode == responsive;
 $_layout-responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint);
 // 响应式断点名称，从大到小
 $_layout-responsive-name-max-to-min-list: reverse($_layout-responsive-name-min-to-max-list);
+// 响应式断点数量
+$_layout_responsive-breakpoint-length: length($layout-responsive-breakpoint);

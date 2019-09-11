@@ -1,3 +1,5 @@
+@import "../../_layout/variable";
+
 // 覆盖的元素
 @mixin cover($z-index: null, $position: absolute) {
   @if ($position) {
@@ -42,7 +44,29 @@
 
 // 响应式
 @mixin res($attr, $base-value, $options: null) {
-  @if ($mode == responsive) {
-    // 未完成
+  @if ($_mode == responsive) {
+    // 赋值基础属性值
+    @if ($base-value) {
+      #{$attr}: $base-value;
+    }
+    // 响应式断点处理
+    @if (type_of($options) == map) {
+      @each $name in $_layout-responsive-name-min-to-max-list {
+        $breakpoint: map_get($layout-responsive-breakpoint, $name);
+        $breakpoint-i: index($_layout-responsive-name-min-to-max-list, $name);
+        $val: map_get($options, $name);
+        @if ($breakpoint-i + 1 <= $_layout_responsive-breakpoint-length) {
+          $next-breakpoint: map_get($layout-responsive-breakpoint, nth($_layout-responsive-name-min-to-max-list, $breakpoint-i + 1));
+          $max-width: map_get($next-breakpoint, min-width) - 1px;
+          @media (max-width: $max-width) {
+            #{$attr}: $val;
+          }
+        }
+      }
+    }
+    // 响应式比例处理
+    @if (type_of($options) == number) {
+
+    }
   }
 }

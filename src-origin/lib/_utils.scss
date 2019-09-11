@@ -482,13 +482,15 @@
           display: none !important;
         }
       }
-    } @else if ($i == $breakpoint-length) {
+    }
+    @else if ($i == $breakpoint-length) {
       &-#{$name}-only {
         @media (min-width: $current-min-width) {
           display: none !important;
         }
       }
-    } @else {
+    }
+    @else {
       // 下一个断点
       $next-breakpoint: map_get($responsive-breakpoint, nth($name-list, $i + 1));
       $next-min-width: map_get($next-breakpoint, min-width);

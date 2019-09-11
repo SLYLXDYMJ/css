@@ -1,0 +1,5 @@
+@if ($layout-use-flex == true) {
+  .flex {
+    @include flex();
+  }
+}

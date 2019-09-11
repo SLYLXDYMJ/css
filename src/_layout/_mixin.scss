@@ -266,22 +266,139 @@
 }
 
 // 区间类
-@mixin _text($breakpoint-name: '') {
+@mixin _flex($breakpoint-name: '', $range: '') {
+  // display
+  &#{$breakpoint-name}#{$range} {
+    display: flex;
+  }
+  &-inline#{$breakpoint-name}#{$range} {
+    display: inline-flex;
+  }
+
+  // flex-direction
+  &-row#{$breakpoint-name}#{$range} {
+    flex-direction: row;
+  }
+  &-row-reverse#{$breakpoint-name}#{$range} {
+    flex-direction: row-reverse;
+  }
+  &-column#{$breakpoint-name}#{$range} {
+    flex-direction: column;
+  }
+  &-column-reverse#{$breakpoint-name}#{$range} {
+    flex-direction: column-reverse;
+  }
+
+  // flex-wrap
+  &-nowrap#{$breakpoint-name}#{$range} {
+    flex-wrap: nowrap;
+  }
+  &-wrap#{$breakpoint-name}#{$range} {
+    flex-wrap: wrap;
+  }
+  &-wrap-reverse#{$breakpoint-name}#{$range} {
+    flex-wrap: wrap-reverse;
+  }
+
+  // justify-content
+  @at-root .justify-content-start#{$breakpoint-name}#{$range} {
+    justify-content: flex-start;
+  }
+  @at-root .justify-content-end#{$breakpoint-name}#{$range} {
+    justify-content: flex-end;
+  }
+  @at-root .justify-content-center#{$breakpoint-name}#{$range} {
+    justify-content: center;
+  }
+  @at-root .justify-content-between#{$breakpoint-name}#{$range} {
+    justify-content: space-between;
+  }
+  @at-root .justify-content-around#{$breakpoint-name}#{$range} {
+    justify-content: space-around;
+  }
+
+  // align-items
+  @at-root .align-items-start#{$breakpoint-name}#{$range} {
+    align-items: flex-start;
+  }
+  @at-root .align-items-end#{$breakpoint-name}#{$range} {
+    align-items: flex-end;
+  }
+  @at-root .align-items-center#{$breakpoint-name}#{$range} {
+    align-items: center;
+  }
+  @at-root .align-items-baseline#{$breakpoint-name}#{$range} {
+    align-items: baseline;
+  }
+  @at-root .align-items-stretch#{$breakpoint-name}#{$range} {
+    align-items: stretch;
+  }
+
+  // align-content
+  @at-root .align-content-start#{$breakpoint-name}#{$range} {
+    align-content: flex-start;
+  }
+  @at-root .align-content-end#{$breakpoint-name}#{$range} {
+    align-content: flex-end;
+  }
+  @at-root .align-content-center#{$breakpoint-name}#{$range} {
+    align-content: center;
+  }
+  @at-root .align-content-between#{$breakpoint-name}#{$range} {
+    align-content: space-between;
+  }
+  @at-root .align-content-around#{$breakpoint-name}#{$range} {
+    align-content: space-around;
+  }
+  @at-root .align-content-stretch#{$breakpoint-name}#{$range} {
+    align-content: stretch;
+  }
+
+  // align-self
+  @at-root .align-self-start#{$breakpoint-name}#{$range} {
+    align-self: start;
+  }
+  @at-root .align-self-end#{$breakpoint-name}#{$range} {
+    align-self: end;
+  }
+  @at-root .align-self-center#{$breakpoint-name}#{$range} {
+    align-self: center;
+  }
+  @at-root .align-self-baseline#{$breakpoint-name}#{$range} {
+    align-self: baseline;
+  }
+  @at-root .align-self-stretch#{$breakpoint-name}#{$range} {
+    align-self: stretch;
+  }
+
+  // order
+  @for $i from 0 through $layout-grid-col-num {
+    @at-root .order-#{$i}#{$breakpoint-name}#{$range} {
+      order: $i
+    }
+  }
+}
+@mixin _hidden($breakpoint-name: '', $range: '') {
+  &#{$breakpoint-name}#{$range} {
+    display: none !important;
+  }
+}
+@mixin _text($breakpoint-name: '', $range: '') {
   // text-align
-  &#{$breakpoint-name}-left {
+  &-left#{$breakpoint-name}#{$range} {
     text-align: left;
   }
-  &#{$breakpoint-name}-right {
+  &-right#{$breakpoint-name}#{$range} {
     text-align: right;
   }
-  &#{$breakpoint-name}-center {
+  &-center#{$breakpoint-name}#{$range} {
     text-align: center;
   }
-  &#{$breakpoint-name}-justify {
+  &-justify#{$breakpoint-name}#{$range} {
     text-align: justify;
   }
   // bold
-  &#{$breakpoint-name}-bold {
+  &-bold#{$breakpoint-name}#{$range} {
     font-weight: bold;
   }
 }
@@ -289,9 +406,108 @@
   @if ($type == text) {
     @include _text();
   }
+  @if ($type == hidden) {
+    @include _hidden();
+  }
+  @if ($type == flex) {
+    @include _flex();
+  }
 }
 @mixin _responsive-range($type) {
+  @each $name in $_layout-responsive-name-min-to-max-list {
+    $breakpoint: map_get($layout-responsive-breakpoint, $name);
+    $min-width: map_get($breakpoint, min-width);
+    $i: index($_layout-responsive-name-min-to-max-list, $name);
 
+    // 以下变量下面会条件赋值
+    // 防止下标溢出
+    $prev-name: null;
+    $prev-breakpoint: null;
+    $prev-min-width: null;
+    $next-name: null;
+    $next-breakpoint: null;
+    $next-min-width: null;
+
+    // 赋值 prev
+    @if ($i > 1) {
+      $prev-name: nth($_layout-responsive-name-min-to-max-list, $_layout_responsive-breakpoint-length - 1);
+      $prev-breakpoint: map_get($layout-responsive-breakpoint, $prev-name);
+      $prev-min-width: map_get($prev-breakpoint, min-width);
+    }
+    // 赋值 next
+    @if ($i < $_layout_responsive-breakpoint-length) {
+      $next-name: nth($_layout-responsive-name-min-to-max-list, $i + 1);
+      $next-breakpoint: map_get($layout-responsive-breakpoint, $next-name);
+      $next-min-width: map_get($next-breakpoint, min-width);
+    }
+
+    // up
+    @if ($i != $_layout_responsive-breakpoint-length) {
+      @media (min-width: $next-min-width) {
+        @if ($type == text) {
+          @include _text(-#{$name}, -up);
+        }
+        @if ($type == hidden) {
+          @include _hidden(-#{$name}, -up);
+        }
+        @if ($type == flex) {
+          @include _flex(-#{$name}, -up);
+        }
+      }
+    }
+    // down
+    @if ($i != 1) {
+      @media (max-width: $min-width - 1px) {
+        @if ($type == text) {
+          @include _text(-#{$name}, -down);
+        }
+        @if ($type == hidden) {
+          @include _hidden(-#{$name}, -down);
+        }
+        @if ($type == flex) {
+          @include _flex(-#{$name}, -down);
+        }
+      }
+    }
+    // only
+    @if ($i == 1) {
+      @media (max-width: $next-min-width - 1px) {
+        @if ($type == text) {
+          @include _text(-#{$name}, -only);
+        }
+        @if ($type == hidden) {
+          @include _hidden(-#{$name}, -only);
+        }
+        @if ($type == flex) {
+          @include _flex(-#{$name}, -only);
+        }
+      }
+    } @else if ($i == $_layout_responsive-breakpoint-length) {
+      @media (min-width: $min-width) {
+        @if ($type == text) {
+          @include _text(-#{$name}, -only);
+        }
+        @if ($type == hidden) {
+          @include _hidden(-#{$name}, -only);
+        }
+        @if ($type == flex) {
+          @include _flex(-#{$name}, -only);
+        }
+      }
+    } @else {
+      @media (min-width: $min-width) and (max-width: $next-min-width - 1px) {
+        @if ($type == text) {
+          @include _text(-#{$name}, -only);
+        }
+        @if ($type == hidden) {
+          @include _hidden(-#{$name}, -only);
+        }
+        @if ($type == flex) {
+          @include _flex(-#{$name}, -only);
+        }
+      }
+    }
+  }
 }
 
 // container
@@ -428,5 +644,27 @@
   @if ($_layout-is-responsive == true) {
     @include _normal-range(text);
     @include _responsive-range(text);
+  }
+}
+
+// hidden
+@mixin hidden() {
+  @if ($_layout-is-responsive == false) {
+    @include _normal-range(hidden);
+  }
+  @if ($_layout-is-responsive == true) {
+    @include _normal-range(hidden);
+    @include _responsive-range(hidden);
+  }
+}
+
+// flex
+@mixin flex() {
+  @if ($_layout-is-responsive == false) {
+    @include _normal-range(flex);
+  }
+  @if ($_layout-is-responsive == true) {
+    @include _normal-range(flex);
+    @include _responsive-range(flex);
   }
 }
