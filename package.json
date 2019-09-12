@@ -18,7 +18,7 @@
   "scripts": {
     "dev:css": "vue-cli-service serve ./test/main.js",
     "dev:docs": "vuepress dev ./",
-    "build": "gulp build",
+    "build": "gulp build & vuepress build ./",
     "build:css": "gulp build",
     "build:docs": "vuepress build ./"
   },
