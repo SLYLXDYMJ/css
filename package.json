@@ -1,10 +1,9 @@
 {
   "name": "jason-css",
   "version": "1.2.0",
-  "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/q-jason/jason-css.git"
+    "url": "git+https://github.com/q-jason/css.git"
   },
   "keywords": [
     "html",
@@ -13,17 +12,20 @@
   "author": "q-jason",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/q-jason/jason-css/issues"
+    "url": "https://github.com/q-jason/css/issues"
   },
-  "homepage": "https://github.com/q-jason/jason-css#readme",
+  "homepage": "https://github.com/q-jason/css#readme",
   "scripts": {
-    "dev": "vue-cli-service serve ./example/main.js",
-    "build": "./node_modules/.bin/gulp build & vue-cli-service build ./example/main.js",
-    "build:scss": "./node_modules/.bin/gulp build"
+    "dev:css": "vue-cli-service serve ./example/main.js",
+    "dev:docs": "vuepress dev ./",
+    "build": "gulp build",
+    "build:css": "gulp build",
+    "build:docs": "vuepress build ./"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
+    "cssnano": "^4.1.8",
     "github-markdown-css": "^2.10.0",
     "gulp": "^4.0.0",
     "gulp-postcss": "^8.0.0",
@@ -31,10 +33,10 @@
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "vue-markdown-loader": "^2.4.1",
-    "vue-template-compiler": "^2.5.17",
-    "cssnano": "^4.1.8",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-markdown-loader": "^2.4.1",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^1.0.4"
   }
 }

@@ -1,3 +1,6 @@
+@import "../../_layout/variable";
+@import "../../_layout/mixin";
+
 // 清除浮动影响
 %clearfix {
   &:after {
@@ -12,4 +15,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+// 响应式隐藏
+@if ($_layout-is-responsive) {
+  %hidden {
+    @include hidden;
+  }
 }

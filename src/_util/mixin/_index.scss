@@ -51,7 +51,7 @@
     }
     // 响应式断点处理
     @if (type_of($options) == map) {
-      @each $name in $_layout-responsive-name-min-to-max-list {
+      @each $name in map_keys($options) {
         $breakpoint: map_get($layout-responsive-breakpoint, $name);
         $breakpoint-i: index($_layout-responsive-name-min-to-max-list, $name);
         $val: map_get($options, $name);
@@ -66,7 +66,27 @@
     }
     // 响应式比例处理
     @if (type_of($options) == number) {
-
+      $min-ratio: $options;
+      // 从大到小便利
+      @each $name in $_layout-responsive-name-max-to-min-list {
+        // 找到响应断点从小到大的下标
+        $breakpoint: map-get($layout-responsive-breakpoint, $name);
+        $breakpoint-i: index($_layout-responsive-name-min-to-max-list, $name);
+        // 若当前不是最后一个下标（最大的屏幕断点），才执行
+        @if ($breakpoint-i != $_layout_responsive-breakpoint-length) {
+          // 找到当前下一个（比当前断点大的）断点
+          $next-breakpoint: (map_get($layout-responsive-breakpoint, nth($_layout-responsive-name-min-to-max-list, $breakpoint-i + 1)));
+          // 获取其最小值，计算当前最大值
+          $max-width: map_get($next-breakpoint, min-width) - 1px;
+          // 根据 $option 算出当前自动缩放的比例
+          // 算法为：
+          //   将 1 ~ $min-ratio 间的系数平分，逐渐将属性值有规律的变小
+          $ratio: $min-ratio + ((1 - $min-ratio) / ($_layout_responsive-breakpoint-length - 1) * ($breakpoint-i - 1));
+          @media (max-width: $max-width) {
+            #{$attr}: $base-value * $ratio;
+          }
+        }
+      }
     }
   }
 }
