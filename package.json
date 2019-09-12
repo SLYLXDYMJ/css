@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/q-jason/css#readme",
   "scripts": {
-    "dev:css": "vue-cli-service serve ./example/main.js",
+    "dev:css": "vue-cli-service serve ./test/main.js",
     "dev:docs": "vuepress dev ./",
     "build": "gulp build",
     "build:css": "gulp build",
