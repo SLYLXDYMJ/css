@@ -27,6 +27,11 @@
 
 // 微信小程序 rpx 报错问题
 @function rpx ($value) {
-  $value: strip-unit($value);
-  @return #{$value}rpx;
+  @if ($_mode == mini-program) {
+    $value: strip-unit($value);
+    @return #{$value}rpx;
+  } @else {
+    @return $value;
+  }
+
 }

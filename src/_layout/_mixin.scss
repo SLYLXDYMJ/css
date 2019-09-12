@@ -99,27 +99,27 @@
       $value: $layout-margin-min;
     }
     &-#{$i} {
-      margin: $value
+      margin: rpx($value);
     }
     &t-#{$i} {
-      margin-top: $value
+      margin-top: rpx($value);
     }
     &r-#{$i} {
-      margin-right: $value
+      margin-right: rpx($value);
     }
     &b-#{$i} {
-      margin-bottom: $value
+      margin-bottom: rpx($value);
     }
     &l-#{$i} {
-      margin-left: $value
+      margin-left: rpx($value);
     }
     &x-#{$i} {
-      margin-left: $value;
-      margin-right: $value;
+      margin-left: rpx($value);
+      margin-right: rpx($value);
     }
     &y-#{$i} {
-      margin-top: $value;
-      margin-bottom: $value;
+      margin-top: rpx($value);
+      margin-bottom: rpx($value);
     }
   }
 }
@@ -131,27 +131,27 @@
       $value: $layout-margin-min;
     }
     &-#{$i} {
-      padding: $value
+      padding: rpx($value);
     }
     &t-#{$i} {
-      padding-top: $value
+      padding-top: rpx($value);
     }
     &r-#{$i} {
-      padding-right: $value
+      padding-right: rpx($value);
     }
     &b-#{$i} {
-      padding-bottom: $value
+      padding-bottom: rpx($value);
     }
     &l-#{$i} {
-      padding-left: $value
+      padding-left: rpx($value);
     }
     &x-#{$i} {
-      padding-left: $value;
-      padding-right: $value;
+      padding-left: rpx($value);
+      padding-right: rpx($value);
     }
     &y-#{$i} {
-      padding-top: $value;
-      padding-bottom: $value;
+      padding-top: rpx($value);
+      padding-bottom: rpx($value);
     }
   }
 }
@@ -175,7 +175,7 @@
       $value: $layout-fs-min;
     }
     &-#{$i} {
-      font-size: $value;
+      font-size: rpx($value);
     }
   }
 }
@@ -187,9 +187,9 @@
       $space: $layout-grid-space-min;
     }
     &.space-#{$i} {
-      margin: $space / 2 * -1;
+      margin: rpx($space / 2 * -1);
       > * {
-        padding: $space / 2;
+        padding: rpx($space / 2);
       }
     }
   }
@@ -514,8 +514,8 @@
 @mixin container-base() {
   margin-left: auto;
   margin-right: auto;
-  padding-left: $layout-container-gutter;
-  padding-right: $layout-container-gutter;
+  padding-left: rpx($layout-container-gutter);
+  padding-right: rpx($layout-container-gutter);
 }
 @mixin container-width() {
   @if ($_mode == normal) {
