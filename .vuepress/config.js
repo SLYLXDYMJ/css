@@ -1,6 +1,6 @@
 module.exports = {
   dest: './docs',
-  base: '/docs/',
+  base: '/css',
   themeConfig: {
     sidebar: 'auto',
     nav: [
