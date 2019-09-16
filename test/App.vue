@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <h1 class="flex align-items-center-xs-only">asd</h1>
-    <h3 class="item">123</h3>
+    <div class="row space-2">
+      <div class="col-6">123123</div>
+      <div class="col-6">123123</div>
+    </div>
   </div>
 </template>
 

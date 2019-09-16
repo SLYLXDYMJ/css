@@ -1,4 +1,4 @@
-## 组件 - 横向滚动（支持小程序）
+## 横向滚动组件（小程序可用）
 > 常用于导航等区域
 
 ![效果](./scroll-x.gif)
@@ -21,8 +21,8 @@
 <!-- 小程序 -->
 <scroll-view class="scroll-x" scroll-x>
   <view class="scroll-x-wrapper">
+    <!-- for -->
     <view class="scroll-x-item">
-      <!-- for -->
       <view class="item">
         ...any
       </view>

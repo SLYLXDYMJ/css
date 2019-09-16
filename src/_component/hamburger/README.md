@@ -1,4 +1,4 @@
-## 组件 - 汉堡包按钮（支持小程序）
+## 汉堡包按钮组件（小程序可用）
 > 移动端常见的汉堡包按钮
 
 ![效果展示](./hamburger.gif)
@@ -14,8 +14,8 @@
 
 <!-- 小程序 -->
 <view class="hamburger hamburger-1">
-  <view></div>
-</div>
+  <view></view>
+</view>
 ```
 
 ### 可改变量
