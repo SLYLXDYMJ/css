@@ -12,3 +12,5 @@ $_layout-responsive-name-min-to-max-list: map-keys($layout-responsive-breakpoint
 $_layout-responsive-name-max-to-min-list: reverse($_layout-responsive-name-min-to-max-list);
 // 响应式断点数量
 $_layout_responsive-breakpoint-length: length($layout-responsive-breakpoint);
+// 小程序属性选择器前缀（没有报错）
+$_layout_mini_prefix: view;
