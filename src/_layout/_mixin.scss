@@ -99,27 +99,27 @@
       $value: $layout-margin-min;
     }
     &-#{$i} {
-      margin: rpx($value);
+      margin: $value;
     }
     &t-#{$i} {
-      margin-top: rpx($value);
+      margin-top: $value;
     }
     &r-#{$i} {
-      margin-right: rpx($value);
+      margin-right: $value;
     }
     &b-#{$i} {
-      margin-bottom: rpx($value);
+      margin-bottom: $value;
     }
     &l-#{$i} {
-      margin-left: rpx($value);
+      margin-left: $value;
     }
     &x-#{$i} {
-      margin-left: rpx($value);
-      margin-right: rpx($value);
+      margin-left: $value;
+      margin-right: $value;
     }
     &y-#{$i} {
-      margin-top: rpx($value);
-      margin-bottom: rpx($value);
+      margin-top: $value;
+      margin-bottom: $value;
     }
   }
 }
@@ -131,27 +131,27 @@
       $value: $layout-margin-min;
     }
     &-#{$i} {
-      padding: rpx($value);
+      padding: $value;
     }
     &t-#{$i} {
-      padding-top: rpx($value);
+      padding-top: $value;
     }
     &r-#{$i} {
-      padding-right: rpx($value);
+      padding-right: $value;
     }
     &b-#{$i} {
-      padding-bottom: rpx($value);
+      padding-bottom: $value;
     }
     &l-#{$i} {
-      padding-left: rpx($value);
+      padding-left: $value;
     }
     &x-#{$i} {
-      padding-left: rpx($value);
-      padding-right: rpx($value);
+      padding-left: $value;
+      padding-right: $value;
     }
     &y-#{$i} {
-      padding-top: rpx($value);
-      padding-bottom: rpx($value);
+      padding-top: $value;
+      padding-bottom: $value;
     }
   }
 }
@@ -175,7 +175,7 @@
       $value: $layout-fs-min;
     }
     &-#{$i} {
-      font-size: rpx($value);
+      font-size: $value;
     }
   }
 }
@@ -187,9 +187,15 @@
       $space: $layout-grid-space-min;
     }
     &.space-#{$i} {
-      margin: rpx($space / 2 * -1);
-      > * {
-        padding: rpx($space / 2);
+      margin: $space / 2 * -1;
+      @if ($_mode == mini-program) {
+        > view[class*="col"] {
+          padding: $space / 2;
+        }
+      } @else {
+        > [class*="col"] {
+          padding: $space / 2;
+        }
       }
     }
   }
@@ -514,8 +520,8 @@
 @mixin container-base() {
   margin-left: auto;
   margin-right: auto;
-  padding-left: rpx($layout-container-gutter);
-  padding-right: rpx($layout-container-gutter);
+  padding-left: $layout-container-gutter;
+  padding-right: $layout-container-gutter;
 }
 @mixin container-width() {
   @if ($_mode == normal) {
@@ -546,22 +552,32 @@
 @mixin row-util() {
   // equal-height(flex)
   @if ($layout-use-flex == true) {
+    // col 元素 align-items：stretch 实现等高
+    // col 下第一个子元素，消除宽度影响
     &.equal-height {
-      // col 元素 align-items：stretch 实现等高
-      > * {
-        display: flex;
-        align-items: stretch;
-      }
-      // col 下第一个子元素，消除宽度影响
-      > * > *:first-child {
-        width: 100%;
+      @if ($_mode == mini-program) {
+        > view[class*="col"] {
+          display: flex;
+          align-items: stretch;
+        }
+        > view[class*="col"] > view {
+          width: 100%;
+        }
+      } @else {
+        > [class*="col"] {
+          display: flex;
+          align-items: stretch;
+        }
+        > [class*="col"] > * {
+          width: 100%;
+        }
       }
     }
   }
 
   // space
   @if ($_layout-is-responsive == false) {
-    @include _normal-level(1);
+    @include _normal-level(row-space);
   }
   @if ($_layout-is-responsive == true) {
     @include _responsive-level(row-space);

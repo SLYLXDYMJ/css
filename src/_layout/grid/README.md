@@ -28,8 +28,21 @@
  ------------------------------- | ------- | --------------------------------
  $layout-container-gutter        | 15px    | 
  $layout-container-normal-width  | 1230px  | normal 库 .container 宽度
- $layout-responsive-breakpoint   | -       | responsive 库 .container 宽度
- 
+ $layout-responsive-breakpoint   | -       | responsive 库 .container 宽度，下面有例子
+
+```scss
+// 响应式断点，从小到大写
+$layout-responsive-breakpoint: (
+  // 手机
+  xs: (min-width: 0px, container-width: 100%),
+  // 平板
+  sm: (min-width: 768px, container-width: 720px),
+  // 小屏
+  md: (min-width: 992px, container-width: 960px),
+  // 大屏
+  lg: (min-width: 1280px, container-width: 1230px)
+) !default;
+```
  
  
 ### row
