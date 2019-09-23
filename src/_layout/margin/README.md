@@ -8,6 +8,7 @@
  class                 | description
  --------------------- | -------------------------------------------
  .m${ dir }-${ level } | 设置外边距，responsive 时会自动按照比例缩放
+ .mx-auto              | margin: 0 auto
  
 #### 相关变量
 
