@@ -179,13 +179,14 @@
     }
   }
 }
-@mixin _row-space($ratio: 1) {
+@mixin _col-space($ratio: 1) {
   @for $i from 1 through $layout-grid-space-max-level {
     $space: $i * $layout-grid-space-span * $ratio;
     // 修正最小值
     @if ($space < $layout-grid-space-min) {
       $space: $layout-grid-space-min;
     }
+    // space
     &.space-#{$i} {
       margin: $space / 2 * -1;
       @if ($_mode == mini-program) {
@@ -198,11 +199,43 @@
         }
       }
     }
+    // space-x
+    &.space-x-#{$i} {
+      margin-left: $space / 2 * -1;
+      margin-right: $space / 2 * -1;
+      @if ($_mode == mini-program) {
+        > view[class*="col"] {
+          padding-left: $space / 2;
+          padding-right: $space / 2;
+        }
+      } @else {
+        > [class*="col"] {
+          padding-left: $space / 2;
+          padding-right: $space / 2;
+        }
+      }
+    }
+    // space-y
+    &.space-y-#{$i} {
+      margin-top: $space / 2 * -1;
+      margin-bottom: $space / 2 * -1;
+      @if ($_mode == mini-program) {
+        > view[class*="col"] {
+          padding-top: $space / 2;
+          padding-bottom: $space / 2;
+        }
+      } @else {
+        > [class*="col"] {
+          padding-top: $space / 2;
+          padding-bottom: $space / 2;
+        }
+      }
+    }
   }
 }
 @mixin _normal-level($type) {
-  @if ($type == row-space) {
-    @include _row-space(1)
+  @if ($type == col-space) {
+    @include _col-space(1)
   }
   @if ($type == font-size) {
     @include _font-size(1)
@@ -220,7 +253,7 @@
 @mixin _responsive-level($type) {
   $min-ratio: null;
   // 根据 type 追踪最小值
-  @if ($type == row-space) {
+  @if ($type == col-space) {
     $min-ratio: $layout-grid-space-min-ratio;
   }
   @if ($type == font-size) {
@@ -250,8 +283,8 @@
     // @media
     @media (min-width: $min-width) {
       // switch
-      @if ($type == row-space) {
-        @include _row-space($current-ratio)
+      @if ($type == col-space) {
+        @include _col-space($current-ratio)
       }
       @if ($type == font-size) {
         @include _font-size($current-ratio)
@@ -577,10 +610,10 @@
 
   // space
   @if ($_layout-is-responsive == false) {
-    @include _normal-level(row-space);
+    @include _normal-level(col-space);
   }
   @if ($_layout-is-responsive == true) {
-    @include _responsive-level(row-space);
+    @include _responsive-level(col-space);
   }
 }
 

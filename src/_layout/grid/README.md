@@ -48,11 +48,14 @@ $layout-responsive-breakpoint: (
 ### row
 > 行元素
 
- class              | description
- ------------------ | --------------------------------
- .row                | 行元素
- .row.equal-height   | 使列元素以及列的第一个子元素等高，$layout-use-flex = true 时才有效
- .row.space-${level} | 列间距
+ class                   | description
+ ----------------------- | --------------------------------
+ .row                    | 行元素
+ .row.equal-height       | 使列元素以及列的第一个子元素等高，$layout-use-flex = true 时才有效
+ .row.space-y-${ level } | 上下列间距
+ .row.space-x-${ level } | 左右列间距
+ .row.space-${ level }   | 上下左右列间距
+ 
  
 #### 相关变量
 
