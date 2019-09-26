@@ -8,8 +8,8 @@
 ## 库
 > 内置了三套 css 库
 
-1. normal - 常规，非响应式非小程序
-2. responsive - 响应式
+1. normal - 电脑、手机网站，webApp
+2. responsive - 响应式网站
 3. mini-program - 小程序
 
 ## 安装
