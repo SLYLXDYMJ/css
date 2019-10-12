@@ -3,9 +3,9 @@
   @return ($value / ($value * 0 + 1));
 }
 
-// 将数值 按照 指定的设计图大小转为 vw 单位
-@function vw ($px, $width: 1920px) {
-  $width: strip-unit($width);
+// 将数值按照设计图宽度转为 vw 单位
+@function vw ($px) {
+  $width: strip-unit($util-vw-width);
   $px: strip-unit($px);
   @return $px / ($width / 100) * 1vw;
 }
@@ -33,5 +33,4 @@
   } @else {
     @return $value;
   }
-
 }

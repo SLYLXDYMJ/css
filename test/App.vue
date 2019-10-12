@@ -1,10 +1,9 @@
 <template>
   <div class="container">
     <div class="row space-2">
-      <div class="col-6"><b style="height: 40px; display: block; background-color: red;"></b></div>
-      <div class="col-6"><b style="height: 40px; display: block; background-color: pink;"></b></div>
-      <div class="col-6"><b style="height: 40px; display: block; background-color: green;"></b></div>
-      <div class="col-6"><b style="height: 40px; display: block; background-color: yellow;"></b></div>
+      <div class="col-6">
+        <div class="item"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +19,6 @@
   .item {
     @extend %hidden-md-only;
     display: block;
-    margin: 20px;
+    height: vw(50px);
   }
 </style>
