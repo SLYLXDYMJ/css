@@ -1,4 +1,5 @@
 ## 布局 - flex
+> $layout-use-flex: true 时有效，在栅格系统中也可以应用
 
 ### 类名
 

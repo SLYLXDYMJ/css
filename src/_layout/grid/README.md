@@ -28,10 +28,10 @@
  ------------------------------- | ------- | --------------------------------
  $layout-container-gutter        | 15px    | 
  $layout-container-normal-width  | 1230px  | normal 库 .container 宽度
- $layout-responsive-breakpoint   | -       | responsive 库 .container 宽度，下面有例子
+ $layout-responsive-breakpoint   | 看下方   | responsive 库断点，以及 .container 响应宽度的定义
 
 ```scss
-// 响应式断点，从小到大写
+// 响应式断点，需要从小到大写
 $layout-responsive-breakpoint: (
   // 手机
   xs: (min-width: 0px, container-width: 100%),
@@ -51,7 +51,7 @@ $layout-responsive-breakpoint: (
  class                   | description
  ----------------------- | --------------------------------
  .row                    | 行元素
- .row.equal-height       | 使列元素以及列的第一个子元素等高，$layout-use-flex = true 时才有效
+ .row.equal-height       | 使同列元素等高, $layout-use-flex = true 时才有效
  .row.space-y-${ level } | 上下列间距
  .row.space-x-${ level } | 左右列间距
  .row.space-${ level }   | 上下左右列间距
@@ -65,7 +65,6 @@ $layout-responsive-breakpoint: (
  $layout-grid-space-span             | 5px     | 列间距级别间的跨度
  $layout-grid-space-min-ratio        | -       | 列间距自动缩放的最小缩放比例
  $layout-grid-space-min              | 5px     | 列间距自动缩放时的最小值
- 
  
  
 ### col

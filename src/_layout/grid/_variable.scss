@@ -7,7 +7,7 @@ $layout-container-gutter: 15px !default;
 // container 定宽模式宽度
 $layout-container-normal-width: 1230px !default;
 
-// 响应式断点，从小到大写
+// 响应式断点，需要从小到大写
 $layout-responsive-breakpoint: (
   // 手机
   xs: (min-width: 0px, container-width: 100%),
