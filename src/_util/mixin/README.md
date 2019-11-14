@@ -6,8 +6,20 @@
  -------- | ---------------------------------------- | -----------------------------------
  cover    | $z-index: null, $position: absolute      | 覆盖相对定位父元素的子元素
  bg-cover | $position-x: center, $position-y: center | 背景处理，cover 显示，默认居中位置
- px1      | $dir: x, $origin: center center          | 用于移动端 1px 解决方案
+ px1      | $direction: x, $position: null           | 用于移动端 1px 解决方案
  res      | $attr, $base-value, $options: null       | 响应式库专属，响应式属性值设置，具体下面例子
+
+## px1 例子
+```scss
+// 上边框
+@include px1('x', 'top');
+// 下边框
+@include px1('x', 'bottom');
+// 左边框
+@include px1('y', 'left');
+// 右边框
+@include px1('y', 'right');
+```
 
 ### res 例子
 > 有两种使用形式
