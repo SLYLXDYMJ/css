@@ -1,13 +1,33 @@
 ## 布局 - 内边距
-> 不建议使用，影响维护性 <br/>
-> 如果你的项目中有大量不知道如何命名 class 的元素，那么就使用它吧！
-
-### p
-> 默认 p-1 => 5px, p-2 => 10px ...
 
  class                 | description
- --------------------- | -------------------------------------------
- .p${ dir }-${ level } | 设置外边距，responsive 时会自动按照比例缩放
+ --------------------- | ----------------------
+ .p${ dir }-${ level } | 设置外边距
+
+```html
+  <!-- 默认值： -->
+  <!-- p-1 = padding: 5px -->
+  <!-- p-2 = padding: 10px -->
+  <!-- p-3 = padding: 15px -->
+  <!-- ... -->
+  <!-- p-20 = padding: 100px -->
+  <div>
+    <!-- padding -->
+    <h6 class="p-1"></h6>
+    
+    <!-- padding-top -->
+    <h5 class="pt-2"></h5>
+    
+    <!-- padding-right -->
+    <h4 class="pr-3"></h4>
+    
+    <!-- padding-bottom -->
+    <h4 class="pb-4"></h4>
+    
+    <!-- padding-left -->
+    <h4 class="pl-5"></h4>
+  </div>
+```
  
 #### 相关变量
 

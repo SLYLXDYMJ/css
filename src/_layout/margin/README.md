@@ -1,14 +1,34 @@
 ## 布局 - 外边距
-> 不建议使用，影响维护性 <br/>
-> 如果你的项目中有大量不知道如何命名 class 的元素，那么就使用它吧！
-
-### m
-> 默认 m-1 => 5px, m-2 => 10px ...
 
  class                 | description
  --------------------- | -------------------------------------------
- .m${ dir }-${ level } | 设置外边距，responsive 时会自动按照比例缩放
+ .m${ dir }-${ level } | 设置外边距
  .mx-auto              | margin: 0 auto
+ 
+```html
+  <!-- 默认值： -->
+  <!-- m-1 = margin: 5px -->
+  <!-- m-2 = margin: 10px -->
+  <!-- m-3 = margin: 15px -->
+  <!-- ... -->
+  <!-- m-20 = margin: 100px -->
+  <div>
+    <!-- margin -->
+    <h6 class="m-1"></h6>
+    
+    <!-- margin-top -->
+    <h5 class="mt-2"></h5>
+    
+    <!-- margin-right -->
+    <h4 class="mr-3"></h4>
+    
+    <!-- margin-bottom -->
+    <h4 class="mb-4"></h4>
+    
+    <!-- margin-left -->
+    <h4 class="ml-5"></h4>
+  </div>
+```
  
 #### 相关变量
 

@@ -1,13 +1,11 @@
 ## scss 工具库 - mixin
 
-### 介绍
-
  name     | params                                   | description
  -------- | ---------------------------------------- | -----------------------------------
- cover    | $z-index: null, $position: absolute      | 覆盖相对定位父元素的子元素
- bg-cover | $position-x: center, $position-y: center | 背景处理，cover 显示，默认居中位置
- px1      | $direction: x, $position: null           | 用于移动端 1px 解决方案
- res      | $attr, $base-value, $options: null       | 响应式库专属，响应式属性值设置，具体下面例子
+ cover    | $z-index: null, $pos: absolute           | 覆盖相对定位父元素
+ bg-cover | $pos-x: center, $pos-y: center           | 背景 cover 显示，默认居中位置
+ px1      | $direction: x, $position                 | 用于移动端 1px 解决方案
+ res      | $attr, $base-value, $options             | 根据预设好的断点设置响应值
 
 ## px1 例子
 ```scss
@@ -21,11 +19,15 @@
 @include px1('y', 'right');
 ```
 
-### res 例子
+## res 例子
 > 有两种使用形式
 
-2. $options 为响应列表（所有属性均可）
-3. $options 为最小缩放比例（属性值为 number 类型的属性才可使用）
+- $options 为响应列表（所有属性均可）
+- $options 为最小缩放比例（属性值为 number 类型的属性才可使用）
+
+注意：<br/>
+响应式断点设置 $layout-responsive-breakpoint 变量 <br/>
+具体去看 layout -> grid 篇
 
 ```scss
 // 断点列表

@@ -1,34 +1,35 @@
 ## 布局 - 栅格布局系统
 
-### 简单介绍
-> 在网页中尽量已 .contaienr > .row > .col > .any 的结构布局
-
 ```html
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-     <a class="any">
-       ...
-     </a>
+<!-- 推荐的栅格结构 -->
+<div class="parent">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+       <div class="any">
+         ...
+       </div>
+      </div>
     </div>
   </div>
 </div>
 ```
-### container
-> 统一网站定宽的元素，应该尽量保证父级位置，左右两侧有槽宽 padding（防止内容太靠页面左右）
 
- class           | description
- --------------- | --------------------------------
- .container       | 定宽元素，使用 scss 变量定制（往下看）
- .container-fluid | 定宽 100% 元素，使用 scss 变量定制（往下看）
- 
+### container
+> 容器类
+
+ class            | description
+ ---------------  | --------------------------------
+ .container       | 宽度固定
+ .container-fluid | 宽度 100% 填充父元素
+
 #### 相关变量
 
  var                             | default | description
  ------------------------------- | ------- | --------------------------------
- $layout-container-gutter        | 15px    | 
+ $layout-container-gutter        | 15px    | 容器类的左右槽宽（左右padding）
  $layout-container-normal-width  | 1230px  | normal 库 .container 宽度
- $layout-responsive-breakpoint   | 看下方   | responsive 库断点，以及 .container 响应宽度的定义
+ $layout-responsive-breakpoint   | 看下方   | responsive 库断点 和各 .container 宽度的定义
 
 ```scss
 // 响应式断点，需要从小到大写
@@ -46,7 +47,7 @@ $layout-responsive-breakpoint: (
  
  
 ### row
-> 行元素
+> 行
 
  class                   | description
  ----------------------- | --------------------------------
@@ -55,7 +56,6 @@ $layout-responsive-breakpoint: (
  .row.space-y-${ level } | 上下列间距
  .row.space-x-${ level } | 左右列间距
  .row.space-${ level }   | 上下左右列间距
- 
  
 #### 相关变量
 
@@ -68,15 +68,16 @@ $layout-responsive-breakpoint: (
  
  
 ### col
-> 列元素
+> 列
 
  class                                        | description
  -------------------------------------------- | --------------------------------
- .col-${ weight }                              | normal 库命名规则
- .col-${ breakpoint-name }-${ weight }         | responsive 库命名规则
- .col-${ breakpoint-name }-pull-${ weight }   | 右移动，responsive 库专有
- .col-${ breakpoint-name }-push-${ weight }   | 左移动，responsive 库专有
- .col-${ breakpoint-name }-offset-${ weight } | 左偏移，responsive 库专有
+ .col-${ weight }                             | normal、小程序专有，列定义
+ ------                                       | ------
+ .col-${ breakpoint-name }-${ weight }        | responsive 库专有，列定义
+ .col-${ breakpoint-name }-pull-${ weight }   | responsive 库专有，右移动
+ .col-${ breakpoint-name }-push-${ weight }   | responsive 库专有，左移动
+ .col-${ breakpoint-name }-offset-${ weight } | responsive 库专有，左偏移
  
 #### 相关变量
 
