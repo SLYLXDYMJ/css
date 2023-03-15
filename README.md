@@ -2,7 +2,7 @@
 > 基于 scss 的 css 基础库
 
 ## 文档
-> [https://q-jason.github.io/css](https://q-jason.github.io/css)
+> [https://slylxdymj.github.io/css/](https://slylxdymj.github.io/css/)
 
 ## 不同项目选择不同的 css 基础库
 > 内部实现了三套适应于不同项目的库
